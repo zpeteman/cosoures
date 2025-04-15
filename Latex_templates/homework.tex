@@ -1,0 +1,80 @@
+\documentclass[12pt]{article}                                                                                
+\usepackage[utf8]{inputenc}                                                                                  
+\usepackage[T1]{fontenc}                                                                                     
+\usepackage{amsmath, amssymb}                                                                                
+\usepackage{geometry}                                                                                        
+\usepackage{xcolor}                                                                                          
+\usepackage{lipsum}                                                                                          
+\usepackage{titlesec}                                                                                        
+\usepackage{fancyhdr}                                                                                        
+\usepackage{tcolorbox}                                                                                       
+\usepackage{graphicx}                                                                                        
+\usepackage{float} % For precise figure placement
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, decorations.markings}
+
+\geometry{a4paper, margin=2.5cm}                                                                             
+\pagestyle{fancy}                                                                                            
+\fancyhf{}                                                                                                   
+\rhead{Devoir Maison}                                                                                        
+\lhead{Ilyas ZANAN}                                                                                          
+\cfoot{\thepage}                                                                                             
+                                                                                                             
+% Fancy titles                                                                                               
+\titleformat{\section}{\normalfont\Large\bfseries}{Exercise \thesection:}{1em}{}                             
+\titleformat{\subsection}{\normalfont\bfseries}{Correction:}{1em}{}                                          
+                                                                                                             
+% Custom box for correction                                                                                  
+\tcbuselibrary{listingsutf8}                                                                                 
+\newtcolorbox{correctionbox}{                                                                                
+  colback=gray!5,                                                                                            
+  colframe=black,                                                                                            
+  fonttitle=\bfseries,                                                                                       
+  title=Correction,                                                                                          
+  breakable,                                                                                                 
+  before skip=10pt,                                                                                          
+  after skip=10pt                                                                                            
+}                                                                                                            
+                                                                                                             
+\begin{document}
+
+% Cover info                                                                                                 
+\begin{center}
+	\Large\textbf{UNIVERSITY NAME} \\[1em]
+	\large\textit{COURSE NAME} \\[2em]
+	\normalsize
+	\textbf{Nom:} Ilyas ZANAN \\[0.5em]
+	\textbf{Date:} \today{}
+\end{center}
+
+\vspace{1cm}
+
+% ----------- EXERCISE 1 -------------                                                                       
+\section{}
+exercise content
+
+
+\begin{correctionbox}
+	soution box
+\end{correctionbox}
+
+% ----------- EXERCISE 2 -------------                                                                       
+\section{}
+exercise content
+
+
+\begin{correctionbox}
+	soution box
+\end{correctionbox}
+
+% ----------- EXERCISE 3 -------------                                                                       
+\section{}
+exercise content
+
+
+\begin{correctionbox}
+	soution box
+\end{correctionbox}
+
+% ----------- the documents finishes here body :D -------------                                                                        
+\end{document}
