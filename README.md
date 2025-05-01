@@ -11,7 +11,7 @@ This repository contains educational materials and resources for various academi
   - `analysis_II/`: Analysis II coursework
   - `digital_culture/`: Digital culture materials
   - `electricity_I/`: Electricity I coursework
-  - `latex_files/`: LaTeX documents for various subjects
+  - `solved_problem_sets/`: Solved problem sets for various subjects
   - `optics/`: Optics coursework
 
 ## Usage
