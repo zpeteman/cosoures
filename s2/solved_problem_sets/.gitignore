@@ -1,0 +1,14 @@
+# Ignore specific LaTeX auxiliary files
+*.tex
+*.fdb_latexmk
+*.aux
+*.fls
+*.log
+*.synctex.gz
+
+# Keep PDF files
+/home/illy/Documents/sup/s2/solved_problem_sets.pdf
+
+# Keep README files
+# Keep directory structure
+/home/illy/Documents/sup/s2/solved_problem_sets/
