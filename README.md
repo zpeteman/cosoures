@@ -5,7 +5,6 @@ This repository contains educational materials and resources for various academi
 
 ## Repository Structure
 - `Latex_templates/`: LaTeX document templates
-- `ouiam/`: Project or resource directory
 - `s2/`: Semester 2 course materials
   - `algebra_II/`: Algebra II coursework
   - `algorithm/`: Algorithm studies
