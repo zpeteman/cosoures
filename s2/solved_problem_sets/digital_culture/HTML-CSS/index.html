@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV d'Ilyas Zanan</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --background-color: #f9f9f9;
+        }
+        
+        a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        a:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 5px 5px 0 0;
+        }
+        
+        .header-left {
+            flex: 2;
+        }
+        
+        .header-right {
+            flex: 1;
+            text-align: right;
+        }
+        
+        .photo-placeholder {
+            width: 150px;
+            height: 150px;
+            background-color: var(--light-color);
+            border-radius: 50%;
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: var(--dark-color);
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 5px;
+            color: white;
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin: 30px 0 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary-color);
+        }
+        
+        h3 {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            margin-bottom: 5px;
+        }
+        
+        .profile {
+            padding: 30px;
+            background-color: var(--light-color);
+            margin-bottom: 20px;
+        }
+        
+        .main-content {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .column-left {
+            flex: 2;
+            padding: 0 15px;
+        }
+        
+        .column-right {
+            flex: 1;
+            padding: 0 15px;
+        }
+        
+        .contact-info {
+            margin-bottom: 30px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .contact-icon {
+            width: 20px;
+            margin-right: 10px;
+            color: var(--secondary-color);
+        }
+        
+        .section {
+            margin-bottom: 30px;
+        }
+        
+        .timeline-item {
+            margin-bottom: 20px;
+            position: relative;
+            padding-left: 20px;
+            border-left: 2px solid var(--secondary-color);
+        }
+        
+        .timeline-date {
+            font-weight: bold;
+            color: var(--accent-color);
+            margin-bottom: 5px;
+        }
+        
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .skill-tag {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .project {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: var(--light-color);
+            border-radius: 5px;
+        }
+        
+        .language-level {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .language {
+            flex: 1;
+        }
+        
+        .level-bar {
+            flex: 2;
+            height: 10px;
+            background-color: #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .level-fill {
+            height: 100%;
+            background-color: var(--secondary-color);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-link {
+            color: var(--secondary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .social-link:hover {
+            color: var(--accent-color);
+        }
+        
+        .social-icon {
+            margin-right: 5px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 0 0 5px 5px;
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .header-right {
+                text-align: center;
+                margin-top: 20px;
+            }
+            
+            .photo-placeholder {
+                margin: 0 auto;
+            }
+            
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .column-left, .column-right {
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-left">
+                <h1>Ilyas Zanan</h1>
+                <p>Étudiant en Mathématiques, Informatique et Physique | Développeur IA & Software</p>
+            </div>
+        </header>
+        
+        <div class="profile">
+            <p>Étudiant passionné par les mathématiques, l'intelligence artificielle et le développement informatique. Je combine mes connaissances théoriques avec des compétences pratiques en programmation pour créer des solutions innovantes, notamment dans le domaine de l'IA et des outils en ligne de commande.</p>
+        </div>
+        
+        <div class="main-content">
+            <div class="column-left">
+                <section class="section">
+                    <h2>Formation</h2>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2024 - Présent</div>
+                        <h3>Licence en Mathématiques, Informatique et Physique (MIP)</h3>
+                        <p>Faculté des Sciences de Kénitra (FSK), Maroc</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2023</div>
+                        <h3>Baccalauréat Sciences Mathématiques A</h3>
+                        <p>Maroc</p>
+                    </div>
+                </section>
+                
+                <section class="section">
+                    <h2>Projets</h2>
+                    <div class="project">
+                        <h3><a href="https://github.com/zpeteman/cosmic_verses" target="_blank">Cosmic Verses</a></h3>
+                        <p>Intelligence artificielle générant de la poésie arabe</p>
+                        <div class="skills-list">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">PyTorch</span>
+                            <span class="skill-tag">NLP</span>
+                        </div>
+                    </div>
+                    <div class="project">
+                        <h3><a href="https://github.com/zpeteman/stella_ai" target="_blank">Stella AI</a></h3>
+                        <p>Agent IA personnalisé en terminal</p>
+                        <div class="skills-list">
+                            <span class="skill-tag">Rust</span>
+                            <span class="skill-tag">CLI</span>
+                            <span class="skill-tag">IA</span>
+                        </div>
+                    </div>
+                    <div class="project">
+                        <h3><a href="https://github.com/zpeteman/note_sage" target="_blank">Note Sage</a></h3>
+                        <p>Outil CLI pour la prise de notes</p>
+                        <div class="skills-list">
+                            <span class="skill-tag">Rust</span>
+                            <span class="skill-tag">CLI</span>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="section">
+                    <h2>Expérience</h2>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2021 - 2022</div>
+                        <h3>Développeur de jeux vidéo</h3>
+                        <p>Développement de jeux avec Unity et C#</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2023 - Présent</div>
+                        <h3>Développement d'applications IA et outils CLI</h3>
+                        <p>Projets personnels utilisant Python (PyTorch, TensorFlow) et Rust</p>
+                    </div>
+                </section>
+            </div>
+            
+            <div class="column-right">
+                <section class="section contact-info">
+                    <h2>Contact</h2>
+                    <div class="contact-item">
+                        <span class="contact-icon">📧</span>
+                        <a href="mailto:zanan-ilyas@outlook.fr">zanan-ilyas@outlook.fr</a>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">🔗</span>
+                        <a href="https://www.linkedin.com/in/ilyas-zanan-4a9465301/" target="_blank">LinkedIn</a>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">💻</span>
+                        <a href="https://github.com/zpeteman" target="_blank">GitHub</a>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">📍</span>
+                        <span>Kénitra, Maroc</span>
+                    </div>
+                </section>
+                
+                <section class="section">
+                    <h2>Compétences Techniques</h2>
+                    <h3>Langages de programmation</h3>
+                    <div class="skills-list">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">C#</span>
+                        <span class="skill-tag">Rust</span>
+                        <span class="skill-tag">LaTeX</span>
+                        <span class="skill-tag">MATLAB</span>
+                        <span class="skill-tag">HTML</span>
+                        <span class="skill-tag">CSS</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">Kotlin</span>
+                    </div>
+                    
+                    <h3>Technologies</h3>
+                    <div class="skills-list">
+                        <span class="skill-tag">PyTorch</span>
+                        <span class="skill-tag">TensorFlow</span>
+                        <span class="skill-tag">OpenCV</span>
+                        <span class="skill-tag">Unity</span>
+                        <span class="skill-tag">Unreal Engine</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">GitHub</span>
+                        <span class="skill-tag">Vim</span>
+                    </div>
+                    
+                    <h3>Domaines</h3>
+                    <div class="skills-list">
+                        <span class="skill-tag">Machine Learning</span>
+                        <span class="skill-tag">Outils CLI</span>
+                        <span class="skill-tag">Mathématiques</span>
+                        <span class="skill-tag">Programmation</span>
+                    </div>
+                </section>
+                
+                <section class="section">
+                    <h2>Langues</h2>
+                    <div class="language-level">
+                        <div class="language">Arabe</div>
+                        <div class="level-bar">
+                            <div class="level-fill" style="width: 100%"></div>
+                        </div>
+                    </div>
+                    <div class="language-level">
+                        <div class="language">Anglais</div>
+                        <div class="level-bar">
+                            <div class="level-fill" style="width: 100%"></div>
+                        </div>
+                    </div>
+                    <div class="language-level">
+                        <div class="language">Français</div>
+                        <div class="level-bar">
+                            <div class="level-fill" style="width: 80%"></div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="section">
+                    <h2>Centres d'intérêt</h2>
+                    <div class="skills-list">
+                        <span class="skill-tag">Intelligence Artificielle</span>
+                        <span class="skill-tag">Mathématiques</span>
+                        <span class="skill-tag">Programmation</span>
+                        <span class="skill-tag">les algorithmes</span>
+                    </div>
+                </section>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2025 Ilyas Zanan - Tous droits reservés</p>
+        </footer>
+    </div>
+</body>
+</html>
