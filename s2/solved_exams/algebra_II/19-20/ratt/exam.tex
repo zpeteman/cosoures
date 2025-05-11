@@ -1,0 +1,108 @@
+\documentclass[12pt]{article}
+
+%----------------- Packages ------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage[breakable]{tcolorbox}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{float}
+\usetikzlibrary{arrows.meta, decorations.markings}
+
+%----------------- Page Setup -----------------
+\geometry{a4paper, margin=2.5cm}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Make-up Exam — \textbf{19-20}}
+\lhead{Algebra II}
+\cfoot{\thepage}
+
+%----------------- Title Styling --------------
+\titleformat{\section}{\normalfont\Large\bfseries}{Exercise \thesection:}{1em}{}
+\titleformat{\subsection}{\normalfont\bfseries}{Answer:}{1em}{}
+
+%----------------- Custom Boxes ----------------
+\tcbuselibrary{listingsutf8}
+\newtcolorbox{answerbox}{
+  colback=gray!10,
+  colframe=black,
+  fonttitle=\bfseries,
+  title=Answer Area,
+  breakable,
+  before skip=10pt,
+  after skip=10pt
+}
+
+%----------------- Document Start --------------
+\begin{document}
+
+%----------------- Exam Info -------------------
+\begin{center}
+  \Large\textbf{Ibn Tofail University} \\[1em]
+  \large\textit{Algebra II — Make-up Exam} \\[0.5em]
+  \large\textit{Year: 19-20} \\[2em]
+\end{center}
+
+\vspace{0.5cm}
+
+%----------------- EXERCISE 1 ------------------
+\section{}
+Let $E$ be a $K$-vector space, $p \in \mathbb{N}^*$, and $u_1, u_2, ..., u_p, u_{p+1}$ be vectors in $E$.
+
+\begin{enumerate}
+    \item[1)] Assume that $\{u_1, u_2, ..., u_p\}$ is linearly independent. Show the equivalence:\\
+    $u_{p+1} \notin \text{span}(\{u_1, u_2, ..., u_p\}) \Leftrightarrow \{u_1, u_2, ..., u_p, u_{p+1}\}$ is linearly independent.
+    
+    \item[2)] Assume that $\{u_1, u_2, ..., u_p, u_{p+1}\}$ is a generating set of $E$ and that\\
+    $u_{p+1} \in \text{span}(\{u_1, u_2, ..., u_p\})$. Show that $\{u_1, u_2, ..., u_p\}$ is a generating set of $E$.
+\end{enumerate}
+
+
+\begin{answerbox}
+% student's answer area
+\end{answerbox}
+
+\newpage  
+%----------------- EXERCISE 2 ------------------
+\section{}
+In the $\mathbb{R}$-vector space $\mathbb{R}^4$, consider the following vector subspaces:\\
+$F = \text{span}(\{(1,0,1,0), (0,1,0,1)\})$\\
+$G = \{(x,y,z,t) \in \mathbb{R}^4 \mid x + y = 0 \text{ and } z + t = 0\}$\\
+$H = \{(x,y,z,t) \in \mathbb{R}^4 \mid x - y + z - t = 0\}$
+
+\begin{enumerate}
+    \item[1)] Determine a basis and the dimension of $G$.
+    \item[2)] Determine a basis and the dimension of $H$.
+    \item[3)] Determine a basis of the vector subspace $F \cap G$.
+    \item[4)] Show that $\mathbb{R}^4 = (F \cap G) \oplus H$.
+\end{enumerate}
+
+
+\begin{answerbox}
+% student's answer area
+\end{answerbox}
+
+\newpage  
+%----------------- EXERCISE 3 ------------------
+\section{}
+Let $E = \mathbb{R}_2[X]$ be the vector space of polynomials with real coefficients of degree less than or equal to 2. And let $f: E \rightarrow E$ be the linear map defined by:\\
+for all $P(X) \in E$, $f(P(X)) = 2P(X) - (X - 1)P'(X)$\\
+(where $P'(X)$ denotes the derivative of the polynomial $P(X)$).
+
+\begin{enumerate}
+    \item[1)] Determine $\text{Ker}f$.
+    \item[2)] Determine a complement of $\text{Ker}f$ in $E$.
+\end{enumerate}
+
+
+\begin{answerbox}
+% student's answer area
+\end{answerbox}
+
+%----------------- END ------------------
+\end{document}

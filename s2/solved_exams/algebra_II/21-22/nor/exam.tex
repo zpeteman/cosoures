@@ -1,0 +1,117 @@
+\documentclass[12pt]{article}
+
+%----------------- Packages ------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage[breakable]{tcolorbox}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{float}
+\usetikzlibrary{arrows.meta, decorations.markings}
+
+%----------------- Page Setup -----------------
+\geometry{a4paper, margin=2.5cm}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Normal Exam — \textbf{21-22}}
+\lhead{Algebra II}
+\cfoot{\thepage}
+
+%----------------- Title Styling --------------
+\titleformat{\section}{\normalfont\Large\bfseries}{Exercise \thesection:}{1em}{}
+\titleformat{\subsection}{\normalfont\bfseries}{Answer:}{1em}{}
+
+%----------------- Custom Boxes ----------------
+\tcbuselibrary{listingsutf8}
+\newtcolorbox{answerbox}{
+  colback=gray!10,
+  colframe=black,
+  fonttitle=\bfseries,
+  title=Answer Area,
+  breakable,
+  before skip=10pt,
+  after skip=10pt
+}
+
+%----------------- Document Start --------------
+\begin{document}
+
+%----------------- Exam Info -------------------
+\begin{center}
+  \Large\textbf{Ibn Tofail University} \\[1em]
+  \large\textit{Algebra II — Normal Exam} \\[0.5em]
+  \large\textit{Year: 21-22} \\[2em]
+\end{center}
+
+\vspace{0.5cm}
+
+%----------------- EXERCISE 1 ------------------
+\section{}
+Consider the set $E = \{(x,y,z) \in \mathbb{R}^3 \mid 2x + y = 0 \text{ and } -2x + y - z = 0\}$.
+
+\begin{enumerate}
+    \item Show that $E$ is a vector subspace of $\mathbb{R}^3$.
+    \item Determine a basis of $E$ and deduce the dimension of $E$.
+    \item Let $F = \text{Vect}\{(1,0,0), (0,-1,1)\}$. Show that $\mathbb{R}^3 = E \oplus F$.
+\end{enumerate}
+
+
+\begin{answerbox}
+% student's answer area
+\end{answerbox}
+
+\newpage  
+%----------------- EXERCISE 2 ------------------
+\section{}
+Consider the following matrix $A$:
+\[
+A = \begin{pmatrix}
+2 & 1 & 1 \\
+1 & 2 & 1 \\
+1 & 1 & 2
+\end{pmatrix}
+\]
+
+\begin{enumerate}
+    \item Calculate $A^2$ and verify that $A^2 - 3A + 2I_3 = 0$, where $I_3$ is the identity matrix of $\mathcal{M}_3(\mathbb{R})$.
+    \item Deduce that matrix $A$ is invertible and determine its inverse $A^{-1}$.
+\end{enumerate}
+
+
+\begin{answerbox}
+% student's answer area
+\end{answerbox}
+
+\newpage  
+%----------------- EXERCISE 3 ------------------
+\section{}
+Let $f$ be the endomorphism of $\mathbb{R}^3$ defined by:
+\[
+f(x,y,z) = (2x+y+z, x+2y+z, x+y+2z)
+\]
+
+\begin{enumerate}
+    \item Calculate the matrix $A$ of $f$ in the canonical basis $B = \{e_1, e_2, e_3\}$ of $\mathbb{R}^3$.
+    
+    \item Consider the vectors $v_1 = (1,1,0)$, $v_2 = (0,1,1)$, and $v_3 = (1,0,1)$ of $\mathbb{R}^3$.
+    \begin{enumerate}
+        \item Show that the family $B' = \{v_1, v_2, v_3\}$ is a basis of $\mathbb{R}^3$.
+        \item Calculate $f(v_1)$, $f(v_2)$, and $f(v_3)$ in the basis $B'$.
+        \item Determine $A'$, the matrix of $f$ in the basis $B'$.
+        \item Determine the matrices $P$ and $P^{-1}$ where $P$ is the change of basis matrix from $B$ to $B'$.
+        \item Using the change of basis formula, calculate again the matrix $A'$.
+    \end{enumerate}
+\end{enumerate}
+
+
+\begin{answerbox}
+% student's answer area
+\end{answerbox}
+
+%----------------- END ------------------
+\end{document}

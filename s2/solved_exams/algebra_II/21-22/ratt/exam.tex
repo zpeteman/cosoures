@@ -1,0 +1,131 @@
+\documentclass[12pt]{article}
+
+%----------------- Packages ------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage[breakable]{tcolorbox}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{float}
+\usetikzlibrary{arrows.meta, decorations.markings}
+
+%----------------- Page Setup -----------------
+\geometry{a4paper, margin=2.5cm}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Make-up Exam — \textbf{21-22}}
+\lhead{Algebra II}
+\cfoot{\thepage}
+
+%----------------- Title Styling --------------
+\titleformat{\section}{\normalfont\Large\bfseries}{Exercise \thesection:}{1em}{}
+\titleformat{\subsection}{\normalfont\bfseries}{Answer:}{1em}{}
+
+%----------------- Custom Boxes ----------------
+\tcbuselibrary{listingsutf8}
+\newtcolorbox{answerbox}{
+  colback=gray!10,
+  colframe=black,
+  fonttitle=\bfseries,
+  title=Answer Area,
+  breakable,
+  before skip=10pt,
+  after skip=10pt
+}
+
+%----------------- Document Start --------------
+\begin{document}
+
+%----------------- Exam Info -------------------
+\begin{center}
+  \Large\textbf{Ibn Tofail University} \\[1em]
+  \large\textit{Algebra II — Make-up Exam} \\[0.5em]
+  \large\textit{Year: 21-22} \\[2em]
+\end{center}
+
+\vspace{0.5cm}
+
+%----------------- EXERCISE 1 ------------------
+\section{}
+Consider the matrix $C(r)$ defined by
+$\begin{pmatrix}
+r+1 & 3r+1 & 2r+1 \\
+r+2 & r+2 & 3r+2 \\
+3r+3 & 2r+3 & r+3
+\end{pmatrix}$
+where $r$ is a real number.
+\begin{enumerate}
+\item[a)] Calculate $\det(C(r))$ as a function of $r$.
+\item[b)] Give the values of $r$ for which $C(r)$ is invertible.
+\end{enumerate}
+
+\begin{answerbox}
+% student's answer area
+\end{answerbox}
+
+\newpage  
+%----------------- EXERCISE 2 ------------------
+\section{}
+In $\mathbb{R}_2[X]$, the vector space of polynomials with real coefficients of degree less than or equal to 2, we define the linear map $f: \mathbb{R}^2 \rightarrow \mathbb{R}_2[X]$ by
+\begin{equation*}
+f(a,b) = (a + b) + (2a - b)x + (3a - b)x^2
+\end{equation*}
+
+\begin{enumerate}
+\item Using the rank theorem, show that $f$ is not surjective.
+\item Show that $f$ is injective.
+\item Determine $\text{Im}\ f$, the image of $f$ (give a basis of $\text{Im}\ f$).
+\end{enumerate}
+
+
+\begin{answerbox}
+% student's answer area
+\end{answerbox}
+
+\newpage  
+%----------------- EXERCISE 3 ------------------
+\section{}
+Let $B = \{e_1, e_2, e_3\}$ be the canonical basis of $\mathbb{R}^3$ and $B' = \{e'_1, e'_2, e'_3\}$ a family of vectors of $\mathbb{R}^3$ with
+$e'_1 = (2,3,2)$, $e'_2 = (1,2,1)$ and $e'_3 = (1,1,2)$.
+
+\begin{enumerate}
+\item[1.] 
+   \begin{enumerate}
+   \item[a)] Show that $B'$ is a basis of $\mathbb{R}^3$.
+   \item[b)] Determine the coordinates of the vector $v = (4,6,5)$ in the basis $B'$.
+   \end{enumerate}
+
+\item[2.] 
+   \begin{enumerate}
+   \item[a)] Determine $P = P^{B'}_B$, the transition matrix from basis $B$ to basis $B'$.
+   \item[b)] Using the comatrix of $P$, show that the transition matrix from basis $B'$ to basis $B$ is
+   \[
+   \begin{pmatrix}
+   5 & -1 & -1 \\
+   -4 & 2 & 1 \\
+   -1 & 0 & 1
+   \end{pmatrix}
+   \]
+   \end{enumerate}
+
+\item[3.] Let $g: \mathbb{R}^3 \rightarrow \mathbb{R}^3$ be the linear map defined by
+\begin{equation*}
+g(x,y,z) = (-x + 2y - z, -6x + 5y, 2y - 2z)
+\end{equation*}
+   \begin{enumerate}
+   \item[a)] Determine $A$, the matrix of $g$ in basis $B$.
+   \item[b)] Determine $A'$, the matrix of $g$ in basis $B'$.
+   \end{enumerate}
+\end{enumerate}
+
+\begin{answerbox}
+% student's answer area
+\end{answerbox}
+
+%----------------- END ------------------
+\end{document}
