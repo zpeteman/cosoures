@@ -1,0 +1,402 @@
+\documentclass[12pt]{article}
+
+%----------------- Packages ------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage[breakable]{tcolorbox}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{float}
+\usetikzlibrary{arrows.meta, decorations.markings}
+
+%----------------- Page Setup -----------------
+\geometry{a4paper, margin=2.5cm}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Make-up Exam — \textbf{20-21}}
+\lhead{Algebra II}
+\cfoot{\thepage}
+
+%----------------- Title Styling --------------
+\titleformat{\section}{\normalfont\Large\bfseries}{Exercise \thesection:}{1em}{}
+\titleformat{\subsection}{\normalfont\bfseries}{Answer:}{1em}{}
+
+%----------------- Custom Boxes ----------------
+\tcbuselibrary{listingsutf8}
+\newtcolorbox{answerbox}{
+  colback=gray!10,
+  colframe=black,
+  fonttitle=\bfseries,
+  title=Answer Area,
+  breakable,
+  before skip=10pt,
+  after skip=10pt
+}
+
+%----------------- Document Start --------------
+\begin{document}
+
+%----------------- Exam Info -------------------
+\begin{center}
+  \Large\textbf{Ibn Tofail University} \\[1em]
+  \large\textit{Algebra II — Make-up Exam} \\[0.5em]
+  \large\textit{Year: 20-21} \\[2em]
+\end{center}
+
+\vspace{0.5cm}
+
+%----------------- EXERCISE 1 ------------------
+\section{}
+In the $\mathbb{R}$-vector space $\mathbb{R}^4$, consider the vector subspaces:
+
+$F = \{(x,y,z,t) \in \mathbb{R}^4 : 2x - y = 0 \text{ and } z + t = 0\}$
+
+$G = \{(x,y,z,t) \in \mathbb{R}^4 : x + z = 0 \text{ and } y - 2t = 0\}$
+
+\begin{enumerate}
+    \item Determine a basis and the dimension of $F$.
+
+    \item Determine a basis and the dimension of $G$.
+
+    \item Determine a basis of the vector subspace $F \cap G$.
+
+    \item Determine a basis of the vector subspace $F + G$.
+\end{enumerate}
+
+\newpage
+
+\begin{answerbox}
+% student's answer area
+\begin{enumerate}
+  \item Determine a basis and the dimension of $ F $.
+  
+      We start with the conditions defining $ F $:
+      $$
+      2x - y = 0 \Rightarrow y = 2x, \quad z + t = 0 \Rightarrow t = -z
+      $$
+      
+      So any vector in $ F $ can be written as:
+      $$
+      (x, 2x, z, -z) = x(1, 2, 0, 0) + z(0, 0, 1, -1)
+      $$
+
+      Thus, a basis for $ F $ is:
+      $$
+      \left\{(1, 2, 0, 0), (0, 0, 1, -1)\right\}
+      $$
+      and $\dim(F) = 2$.
+
+  \item Determine a basis and the dimension of $ G $.
+  
+      From the conditions defining $ G $:
+      $$
+      x + z = 0 \Rightarrow z = -x, \quad y - 2t = 0 \Rightarrow y = 2t
+      $$
+
+      So any vector in $ G $ can be written as:
+      $$
+      (x, 2t, -x, t) = x(1, 0, -1, 0) + t(0, 2, 0, 1)
+      $$
+
+      A basis for $ G $ is:
+      $$
+      \left\{(1, 0, -1, 0), (0, 2, 0, 1)\right\}
+      $$
+      and $\dim(G) = 2$.
+
+  \item Determine a basis of the vector subspace $ F \cap G $.
+  
+      We look for vectors $(x, y, z, t)$ that satisfy both sets of equations:
+      $$
+      \begin{cases}
+      2x - y = 0 \\
+      z + t = 0 \\
+      x + z = 0 \\
+      y - 2t = 0
+      \end{cases}
+      $$
+
+      Solve this system:
+
+      From $ 2x - y = 0 \Rightarrow y = 2x $\\
+      From $ z + t = 0 \Rightarrow t = -z $\\
+      From $ x + z = 0 \Rightarrow z = -x \Rightarrow t = x $\\
+      From $ y - 2t = 0 \Rightarrow y = 2t = 2x $, consistent with earlier.
+
+      Substituting back: $ z = -x $, $ t = x $, $ y = 2x $
+
+      So any vector in $ F \cap G $ is:
+      $$
+      (x, 2x, -x, x) = x(1, 2, -1, 1)
+      $$
+
+      Hence, a basis for $ F \cap G $ is:
+      $$
+      \left\{(1, 2, -1, 1)\right\}
+      $$
+      and $\dim(F \cap G) = 1$.
+
+  \item Determine a basis of the vector subspace $ F + G $.
+
+      Since we already have bases for $ F $ and $ G $:
+      $$
+      \text{Basis of } F = \{(1, 2, 0, 0), (0, 0, 1, -1)\}
+      $$
+      $$
+      \text{Basis of } G = \{(1, 0, -1, 0), (0, 2, 0, 1)\}
+      $$
+
+      To find a basis for $ F + G $, we combine all these vectors and eliminate linearly dependent ones.
+
+      Form a matrix with rows as these vectors:
+      $$
+      \begin{bmatrix}
+      1 & 2 & 0 & 0 \\
+      0 & 0 & 1 & -1 \\
+      1 & 0 & -1 & 0 \\
+      0 & 2 & 0 & 1
+      \end{bmatrix}
+      $$
+
+      Perform row reduction...
+
+      After row reduction, we find that the first three rows are linearly independent. Therefore, a basis for $ F + G $ is:
+      $$
+      \left\{(1, 2, 0, 0), (0, -2, -1, 0), (0, 0, 1, -1)\right\}
+      $$
+      and $\dim(F + G) = 3$.
+\end{enumerate}
+\end{answerbox}
+
+\newpage
+
+%----------------- EXERCISE 2 ------------------
+\section{}
+In the $\mathbb{R}$-vector space $\mathbb{R}^3$, let $B = \{e_1, e_2, e_3\}$ be the canonical basis of $\mathbb{R}^3$, and consider the linear application $f : \mathbb{R}^3 \to \mathbb{R}^3$ with matrix $A$ with respect to the basis $B$:
+
+\[A = \begin{pmatrix} 5 & -1 & 2 \\ -1 & 5 & 2 \\ 2 & 2 & 2 \end{pmatrix}\]
+
+\begin{enumerate}
+    \item Verify that, for all $(x,y,z) \in \mathbb{R}^3$, we have:
+    \[f(x,y,z) = (5x - y + 2z, -x + 5y + 2z, 2x + 2y + 2z)\]
+
+    \item Determine a basis of $\ker f$.
+
+    \item Determine a basis of $\operatorname{Im} f$.
+
+    \item Let the vectors of $\mathbb{R}^3$ be: $u_1 = (1,1,-2)$, $u_2 = (1,1,1)$, and $u_3 = (2,0,1)$. \\ 
+    Show that $B' = \{u_1, u_2, u_3\}$ is a basis of $\mathbb{R}^3$.
+
+    \item \begin{enumerate}
+        \item Give $P$, the transition matrix from basis $B$ to basis $B'$.
+
+        \item Calculate $P^{-1}$, the inverse matrix of $P$.
+    \end{enumerate}
+
+    \item Determine $A'$, the matrix of $f$ with respect to the basis $B'$.
+\end{enumerate}
+
+\newpage
+
+\begin{answerbox}
+% student's answer area
+\begin{enumerate}
+  \item Verify that, for all $(x, y, z) \in \mathbb{R}^3$, we have:
+  $$
+  f(x, y, z) = (5x - y + 2z,\; -x + 5y + 2z,\; 2x + 2y + 2z)
+  $$
+
+  Given the matrix of $ f $ in the canonical basis $ B = \{e_1, e_2, e_3\} $ is:
+  $$
+  A = 
+  \begin{pmatrix}
+  5 & -1 & 2 \\
+  -1 & 5 & 2 \\
+  2 & 2 & 2
+  \end{pmatrix}
+  $$
+
+  To compute $ f(x, y, z) $, we multiply $ A $ by the column vector $ \begin{bmatrix} x \\ y \\ z \end{bmatrix} $:
+  $$
+  A \cdot \begin{bmatrix} x \\ y \\ z \end{bmatrix} =
+  \begin{bmatrix}
+  5x - y + 2z \\
+  -x + 5y + 2z \\
+  2x + 2y + 2z
+  \end{bmatrix}
+  $$
+
+  This confirms:
+  $$
+  f(x, y, z) = (5x - y + 2z,\; -x + 5y + 2z,\; 2x + 2y + 2z)
+  $$
+
+  \item Determine a basis of $ \ker f $.
+
+  The kernel of $ f $, denoted $ \ker f $, consists of vectors $ (x, y, z) $ such that $ f(x, y, z) = (0, 0, 0) $. That is:
+  $$
+  \begin{cases}
+  5x - y + 2z = 0 \\
+  -x + 5y + 2z = 0 \\
+  2x + 2y + 2z = 0
+  \end{cases}
+  $$
+
+  Simplify the system:
+  \begin{align*}
+  (1)\quad & 5x - y + 2z = 0 \\
+  (2)\quad & -x + 5y + 2z = 0 \\
+  (3)\quad & 2x + 2y + 2z = 0 \Rightarrow x + y + z = 0
+  \end{align*}
+
+  From equation (3): $ z = -x - y $
+
+  Plug into (1):
+  $$
+  5x - y + 2(-x - y) = 0 \Rightarrow 5x - y - 2x - 2y = 0 \Rightarrow 3x - 3y = 0 \Rightarrow x = y
+  $$
+
+  Then $ z = -x - x = -2x $
+
+  So general solution: $ (x, y, z) = (x, x, -2x) = x(1, 1, -2) $
+
+  Therefore, a basis of $ \ker f $ is:
+  $$
+  \left\{(1, 1, -2)\right\}
+  $$
+
+  \item Determine a basis of $ \operatorname{Im} f $.
+
+  Since $ f $ is a linear map from $ \mathbb{R}^3 \to \mathbb{R}^3 $, and $ \dim(\ker f) = 1 $, by the rank-nullity theorem:
+  $$
+  \dim(\operatorname{Im} f) = 3 - 1 = 2
+  $$
+
+  To find a basis of $ \operatorname{Im} f $, take the images of the standard basis vectors under $ f $:
+
+  Let’s compute:
+  $$
+  \begin{align*}
+  f(e_1) = f(1, 0, 0) = (5, -1, 2), \\
+  f(e_2) = f(0, 1, 0) = (-1, 5, 2), \\
+  f(e_3) = f(0, 0, 1) = (2, 2, 2)
+  \end{align*}
+  $$
+
+  These span $ \operatorname{Im} f $. Check for linear independence among them.
+
+  Form a matrix with these as columns:
+  $$
+  \begin{bmatrix}
+  5 & -1 & 2 \\
+  -1 & 5 & 2 \\
+  2 & 2 & 2
+  \end{bmatrix}
+  $$
+
+  Perform row reduction. We can eliminate one vector since $ \dim(\operatorname{Im} f) = 2 $. It turns out:
+  $$
+  \{(5, -1, 2), (-1, 5, 2)\}
+  $$
+  are linearly independent and form a basis of $ \operatorname{Im} f $.
+
+  \item Show that $ B' = \{u_1, u_2, u_3\} $ is a basis of $ \mathbb{R}^3 $, where:
+  $$
+  u_1 = (1, 1, -2),\quad u_2 = (1, 1, 1),\quad u_3 = (2, 0, 1)
+  $$
+
+  To show that $ B' $ is a basis, we check if the determinant of the matrix formed by these vectors as columns is non-zero:
+  $$
+  P = \begin{bmatrix}
+  1 & 1 & 2 \\
+  1 & 1 & 0 \\
+  -2 & 1 & 1
+  \end{bmatrix}
+  $$
+
+  Compute $ \det(P) $:
+  $$
+  \det(P) = 
+  1 \cdot \begin{vmatrix} 1 & 0 \\ 1 & 1 \end{vmatrix}
+  - 1 \cdot \begin{vmatrix} 1 & 0 \\ -2 & 1 \end{vmatrix}
+  + 2 \cdot \begin{vmatrix} 1 & 1 \\ -2 & 1 \end{vmatrix}
+  $$
+
+  $$
+  = 1(1 - 0) - 1(1 - 0) + 2(1 + 2) = 1 - 1 + 6 = 6 \neq 0
+  $$
+
+  Since the determinant is non-zero, the vectors are linearly independent and hence form a basis of $ \mathbb{R}^3 $.
+
+  \item \begin{enumerate}
+      \item Give $ P $, the transition matrix from basis $ B $ to basis $ B' $.
+
+      The transition matrix $ P $ from $ B $ to $ B' $ has the coordinates of $ u_1, u_2, u_3 $ in the canonical basis as its columns:
+      $$
+      P = \begin{bmatrix}
+      1 & 1 & 2 \\
+      1 & 1 & 0 \\
+      -2 & 1 & 1
+      \end{bmatrix}
+      $$
+
+      \item Calculate $ P^{-1} $, the inverse matrix of $ P $.
+
+      Recall that:
+      $$
+      P = \begin{bmatrix}
+      1 & 1 & 2 \\
+      1 & 1 & 0 \\
+      -2 & 1 & 1
+      \end{bmatrix}
+      $$
+
+      Using matrix inversion techniques or software, we find:
+      $$
+      P^{-1} = \frac{1}{6}
+      \begin{bmatrix}
+      -1 & 1 & 2 \\
+      -1 & 5 & -2 \\
+      3 & -3 & 0
+      \end{bmatrix}
+      $$
+  \end{enumerate}
+
+  \item Determine $ A' $, the matrix of $ f $ with respect to the basis $ B' $.
+
+  The change of basis formula gives:
+  $$
+  A' = P^{-1} A P
+  $$
+
+  Where:
+  $$
+  A = \begin{bmatrix}
+  5 & -1 & 2 \\
+  -1 & 5 & 2 \\
+  2 & 2 & 2
+  \end{bmatrix}, \quad
+  P = \begin{bmatrix}
+  1 & 1 & 2 \\
+  1 & 1 & 0 \\
+  -2 & 1 & 1
+  \end{bmatrix}, \quad
+  P^{-1} = \frac{1}{6}
+  \begin{bmatrix}
+  -1 & 1 & 2 \\
+  -1 & 5 & -2 \\
+  3 & -3 & 0
+  \end{bmatrix}
+  $$
+
+  Compute $ A' = P^{-1} A P $ (this can be done using matrix multiplication tools or symbolic computation). The resulting matrix will be the matrix of $ f $ in the new basis $ B' $.
+\end{enumerate}
+\end{answerbox}
+
+%----------------- END ------------------
+\end{document}

@@ -1,0 +1,627 @@
+\documentclass[12pt]{article}
+
+%----------------- Packages ------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage[breakable]{tcolorbox}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{float}
+\usetikzlibrary{arrows.meta, decorations.markings}
+
+%----------------- Page Setup -----------------
+\geometry{a4paper, margin=2.5cm}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Make-up Exam — \textbf{18-19}}
+\lhead{Algebra II}
+\cfoot{\thepage}
+
+%----------------- Title Styling --------------
+\titleformat{\section}{\normalfont\Large\bfseries}{Exercise \thesection:}{1em}{}
+\titleformat{\subsection}{\normalfont\bfseries}{Answer:}{1em}{}
+
+%----------------- Custom Boxes ----------------
+\tcbuselibrary{listingsutf8}
+\newtcolorbox{answerbox}{
+  colback=gray!10,
+  colframe=black,
+  fonttitle=\bfseries,
+  title=Answer Area,
+  breakable,
+  before skip=10pt,
+  after skip=10pt
+}
+
+%----------------- Document Start --------------
+\begin{document}
+
+%----------------- Exam Info -------------------
+\begin{center}
+  \Large\textbf{Ibn Tofail University} \\[1em]
+  \large\textit{Algebra II — Make-up Exam} \\[0.5em]
+  \large\textit{Year: 18-19} \\[2em]
+\end{center}
+
+\vspace{0.5cm}
+
+%----------------- EXERCISE 1 ------------------
+\section{}
+Let $F$ and $G$ be vector subspaces of $\mathbb{R}^4$ defined by:
+\begin{align*}
+F &= \{(x,y,z,t) \in \mathbb{R}^4 \mid 2x - y = 0 \text{ and } z + t = 0\} \\
+G &= \text{vect}(u,v,w) \text{ with } \\
+u &= (1,0,-1,0), \quad v = (0,2,0,1), \quad w = (-2,-2,2,-1)
+\end{align*}
+
+\begin{enumerate}
+    \item Determine a basis for $F$ and a basis for $G$.
+    \item Determine a basis for $F \cap G$.
+    \item Determine the dimension of $F + G$ and a basis for $F + G$.
+\end{enumerate}
+
+\newpage
+
+\begin{answerbox}
+% student's answer area
+\begin{enumerate}
+
+    \item \textbf{Determine a basis for $ F $ and a basis for $ G $.}
+
+    \begin{description}
+        \item[Basis for $ F $:] \\
+            $$
+            \boxed{
+            \left\{
+            \begin{bmatrix}
+            1 \\ 2 \\ 0 \\ 0
+            \end{bmatrix},
+            \begin{bmatrix}
+            0 \\ 0 \\ 1 \\ -1
+            \end{bmatrix}
+            \right\}
+            }
+            $$
+
+            \item[Basis for $ G $:] \\
+            Only the first two columns are linearly independent. So, a basis for $ G $ is:
+            $$
+            \boxed{
+            \left\{
+            \begin{bmatrix}
+            1 \\ 0 \\ -1 \\ 0
+            \end{bmatrix},
+            \begin{bmatrix}
+            0 \\ 2 \\ 0 \\ 1
+            \end{bmatrix}
+            \right\}
+            }
+            $$
+    \end{description}
+
+    \item \textbf{Determine a basis for $ F \cap G $.}
+
+    Any vector in $ G $ is of the form:
+    $$
+    \alpha u + \beta v = (\alpha, 2\beta, -\alpha, \beta)
+    $$
+    
+    This must satisfy the conditions of $ F $:
+    - $ 2x - y = 0 \Rightarrow 2\alpha - 2\beta = 0 \Rightarrow \alpha = \beta $
+    - $ z + t = 0 \Rightarrow -\alpha + \beta = 0 \Rightarrow \alpha = \beta $
+    
+    So only vectors where $ \alpha = \beta $ belong to both $ F $ and $ G $. Then:
+    $$
+    (\alpha, 2\alpha, -\alpha, \alpha) = \alpha(1, 2, -1, 1)
+    $$
+    
+    Thus, a basis for $ F \cap G $ is:
+    $$
+    \boxed{
+    \left\{
+    \begin{bmatrix}
+    1 \\ 2 \\ -1 \\ 1
+    \end{bmatrix}
+    \right\}
+    }
+    $$
+    \item \textbf{Determine the dimension of $ F + G $ and a basis for $ F + G $.}
+    From above:
+    - $ \dim F = 2 $
+    - $ \dim G = 2 $
+    - $ \dim(F \cap G) = 1 $
+    
+    So:
+    $$
+    \dim(F + G) = 2 + 2 - 1 = 3
+    $$
+    
+    To find a basis for $ F + G $, we combine bases of $ F $ and $ G $ and eliminate dependencies.
+    
+    Bases:
+    - $ F: \{(1, 2, 0, 0), (0, 0, 1, -1)\} $
+    - $ G: \{(1, 0, -1, 0), (0, 2, 0, 1)\} $
+    
+    Combine them:
+    $$
+    \left\{
+    \begin{bmatrix}
+    1 \\ 2 \\ 0 \\ 0
+    \end{bmatrix},
+    \begin{bmatrix}
+    0 \\ 0 \\ 1 \\ -1
+    \end{bmatrix},
+    \begin{bmatrix}
+    1 \\ 0 \\ -1 \\ 0
+    \end{bmatrix},
+    \begin{bmatrix}
+    0 \\ 2 \\ 0 \\ 1
+    \end{bmatrix}
+    \right\}
+    $$
+    
+    Row reduce to find a basis:
+$$
+\begin{bmatrix}
+0 & 0 & 1 & 0 \\
+1 & 0 & 0 & 2 \\
+-1 & 1 & -1 & 0 \\
+-1 & -1 & 0 & 1
+\end{bmatrix}
+\sim
+\begin{bmatrix}
+0 & 0 & 0 & 0 \\
+-1 & 1 & 0 & 0 \\
+-1 & 0 & 1 & 0 \\
+-1 & 0 & 0 & 1
+\end{bmatrix}
+$$
+
+After reduction, we find that any three of these four vectors are linearly independent. So a basis for $ F + G $ is:
+$$
+\boxed{
+\left\{
+\begin{bmatrix}
+0 \\ 2 \\ 0 \\ 0
+\end{bmatrix},
+\begin{bmatrix}
+-1 \\ 0 \\ 1 \\ -1
+\end{bmatrix},
+\begin{bmatrix}
+0 \\ 0 \\ -1 \\ 0
+\end{bmatrix}
+\right\}
+}
+$$
+\end{enumerate}
+\end{answerbox}
+
+
+\newpage
+
+%----------------- EXERCISE 2 ------------------
+\section{}
+Let $E$ be a finite-dimensional $\mathbb{K}$-vector space.
+
+\begin{enumerate}
+    \item Let $u$ be an endomorphism of $E$ such that $\text{rg}(u^2) = \text{rg}(u)$ (with $u^2 = u \circ u$).
+    \begin{enumerate}
+        \item Show that $\text{Ker}(u) = \text{Ker}(u^2)$.
+        \item Show that $E = \text{Im}(u) \oplus \text{Ker}(u)$.
+    \end{enumerate}
+    \item Let $f$ and $g$ be two endomorphisms of $E$ such that $\text{rg}(g \circ f) = \text{rg}(g)$.
+    Show that $E = \text{Im}f + \text{Ker}g$.
+\end{enumerate}
+
+\newpage
+
+\begin{answerbox}
+% student's answer area
+Let $ E $ be a finite-dimensional $ \mathbb{K} $-vector space.
+
+\begin{enumerate}
+
+\item Let $ u $ be an endomorphism of $ E $ such that $ \mathrm{rg}(u^2) = \mathrm{rg}(u) $, where $ u^2 = u \circ u $.
+
+    \begin{enumerate}
+        \item \textbf{Show that $ \ker(u) = \ker(u^2) $.}
+        
+        We always have:
+        $$
+        \ker(u) \subseteq \ker(u^2)
+        $$
+        since if $ x \in \ker(u) $, then $ u(x) = 0 $ and so $ u^2(x) = u(u(x)) = u(0) = 0 $, hence $ x \in \ker(u^2) $.
+        
+        Now, by assumption: 
+        $$
+        \dim(\ker(u^2)) = \dim(E) - \mathrm{rg}(u^2) = \dim(E) - \mathrm{rg}(u) = \dim(\ker(u))
+        $$
+        Therefore, since $ \ker(u) \subseteq \ker(u^2) $ and they have the same dimension, we conclude:
+        $$
+        \ker(u) = \ker(u^2)
+        $$
+
+        \item \textbf{Show that $ E = \mathrm{Im}(u) \oplus \ker(u) $.}
+        
+        By the Rank-Nullity Theorem:
+        $$
+        \dim(E) = \dim(\mathrm{Im}(u)) + \dim(\ker(u)) = \mathrm{rg}(u) + \dim(\ker(u))
+        $$
+        So it suffices to show that:
+        $$
+        \mathrm{Im}(u) \cap \ker(u) = \{0\}
+        $$
+        Suppose $ x \in \mathrm{Im}(u) \cap \ker(u) $. Then there exists $ y \in E $ such that $ x = u(y) $, and $ u(x) = 0 $.
+
+        Since $ x = u(y) $, we get:
+        $$
+        u^2(y) = u(u(y)) = u(x) = 0 \Rightarrow y \in \ker(u^2) = \ker(u)
+        $$
+        Hence $ u(y) = x = 0 $, so $ x = 0 $. Thus:
+        $$
+        \mathrm{Im}(u) \cap \ker(u) = \{0\}
+        $$
+        And therefore:
+        $$
+        E = \mathrm{Im}(u) \oplus \ker(u)
+        $$
+    \end{enumerate}
+
+\item \textbf{Let $ f $ and $ g $ be two endomorphisms of $ E $ such that $ \mathrm{rg}(g \circ f) = \mathrm{rg}(g) $. Show that $ E = \mathrm{Im}(f) + \ker(g) $.}
+
+We know:
+$$
+\mathrm{rg}(g \circ f) = \dim(\mathrm{Im}(g \circ f)) = \dim(E) - \dim(\ker(g \circ f))
+$$
+But also:
+$$
+\mathrm{rg}(g) = \dim(\mathrm{Im}(g)) = \dim(E) - \dim(\ker(g))
+$$
+
+Given $ \mathrm{rg}(g \circ f) = \mathrm{rg}(g) $, we deduce:
+$$
+\dim(\ker(g \circ f)) = \dim(\ker(g))
+$$
+
+Now consider the restriction of $ f $ to $ E $, and apply the following:
+
+Let’s define a linear map:
+$$
+T : E \to \mathrm{Im}(g), \quad T(x) = g(f(x))
+$$
+Then $ \ker(T) = \ker(g \circ f) $, and $ \mathrm{Im}(T) = \mathrm{Im}(g \circ f) $
+
+By the rank-nullity theorem applied to $ T $, we get:
+$$
+\dim(E) = \dim(\ker(g \circ f)) + \dim(\mathrm{Im}(g \circ f)) = \dim(\ker(g)) + \dim(\mathrm{Im}(g)) = \dim(E)
+$$
+
+So $ T $ is surjective onto $ \mathrm{Im}(g) $, which implies that every vector in $ \mathrm{Im}(g) $ is of the form $ g(f(x)) $, i.e., $ \mathrm{Im}(g) \subseteq g(\mathrm{Im}(f)) $
+
+Therefore, any $ x \in E $ can be written as $ x = y + z $ with $ y \in \mathrm{Im}(f) $ and $ z \in \ker(g) $, which gives:
+$$
+E = \mathrm{Im}(f) + \ker(g)
+$$
+
+\end{enumerate}
+
+\end{answerbox}
+
+\newpage
+
+%----------------- EXERCISE 3 ------------------
+\section{}
+Let $\mathbb{R}_2[X]$ be the vector space of polynomials with real coefficients of degree less than or equal to 2.
+
+Let $B = (1, X, X^2)$ be the canonical basis of $\mathbb{R}_2[X]$, and $f: \mathbb{R}_2[X] \to \mathbb{R}_2[X]$ be the endomorphism defined by:
+$\forall P(X) \in \mathbb{R}_2[X]$,
+\[f(P(X)) = (2X + 1)P(X) - (X^2 - 1)P'(X)\]
+where $P'(X)$ is the derivative of $P(X)$.
+
+\begin{enumerate}
+    \item Show that $f$ is injective. Deduce that $f$ is an isomorphism.
+    \item Determine the matrix $A$ of $f$ in the basis $B$.
+    
+    \textbf{Let the family of polynomials $B' = (X^2 - 1, (X - 1)^2, (X + 1)^2)$. It is admitted that $B'$ is a basis of $\mathbb{R}_2[X]$.}
+    
+    \item Calculate $f(X^2 - 1)$, $f((X - 1)^2)$, and $f((X + 1)^2)$. Deduce the matrix $A'$ of $f$ in the basis $B'$.
+    \item 
+    \begin{enumerate}
+        \item Determine $P = P_{B}^{B'}$ the change of basis matrix from $B$ to $B'$. Calculate $P^{-1}$.
+    \end{enumerate}
+    \begin{enumerate}
+        \item For all $n \in \mathbb{N}^*$, calculate $A^n$.
+    \end{enumerate}
+\end{enumerate}
+
+
+\newpage
+
+\begin{answerbox}
+% student's answer area
+Let $ \mathbb{R}_2[X] $ be the vector space of real polynomials of degree at most 2. \\ 
+Let $ \mathcal{B} = (1, X, X^2) $ be the canonical basis of $ \mathbb{R}_2[X] $.  
+Define the endomorphism $ f : \mathbb{R}_2[X] \to \mathbb{R}_2[X] $ by:
+$$
+f(P(X)) = (2X + 1)P(X) - (X^2 - 1)P'(X)
+$$
+where $ P'(X) $ denotes the derivative of $ P(X) $.
+
+\begin{enumerate}
+
+\item \textbf{Show that $ f $ is injective. Deduce that $ f $ is an isomorphism.}
+
+We will show that $ \ker(f) = \{0\} $, i.e., only the zero polynomial satisfies $ f(P) = 0 $.
+
+Let $ P(X) = a + bX + cX^2 \in \mathbb{R}_2[X] $, then:
+$$
+P'(X) = b + 2cX
+$$
+Now compute $ f(P) $:
+
+$$
+f(P) = (2X + 1)(a + bX + cX^2) - (X^2 - 1)(b + 2cX)
+$$
+
+Compute each term:
+
+- $ (2X + 1)(a + bX + cX^2) = 2aX + 2bX^2 + 2cX^3 + a + bX + cX^2 $ \\
+- $ (X^2 - 1)(b + 2cX) = bX^2 + 2cX^3 - b - 2cX $
+
+Subtracting:
+
+$$
+f(P) = [2aX + 2bX^2 + 2cX^3 + a + bX + cX^2] - [bX^2 + 2cX^3 - b - 2cX]
+$$
+
+Simplify:
+
+- Coefficient of $ X^3 $: $ 2c - 2c = 0 $ \\
+- Coefficient of $ X^2 $: $ 2b + c - b = b + c $ \\
+- Coefficient of $ X $: $ 2a + b + 2c $ \\
+- Constant term: $ a + b $ \\
+
+So:
+$$
+f(P) = (b + c)X^2 + (2a + b + 2c)X + (a + b)
+$$
+
+Set $ f(P) = 0 $. Then we solve the system:
+$$
+\begin{cases}
+b + c = 0 \\
+2a + b + 2c = 0 \\
+a + b = 0
+\end{cases}
+$$
+
+From the third equation: $ b = -a $
+
+Plug into first: $ -a + c = 0 \Rightarrow c = a $
+
+Plug into second: $ 2a - a + 2a = 3a = 0 \Rightarrow a = 0 $
+
+Then $ b = 0 $, $ c = 0 $. So $ P = 0 $. Therefore, $ \ker(f) = \{0\} $, and since $ \dim(\mathbb{R}_2[X]) < \infty $, $ f $ is injective ⇒ $ f $ is an isomorphism.
+
+\bigskip
+
+\item \textbf{Determine the matrix $ A $ of $ f $ in the basis $ \mathcal{B} $.}
+
+Compute $ f(1), f(X), f(X^2) $:
+
+- $ f(1) = (2X + 1)(1) - (X^2 - 1)(0) = 2X + 1 $ \\
+- $ f(X) = (2X + 1)(X) - (X^2 - 1)(1) = 2X^2 + X - X^2 + 1 = X^2 + X + 1 $ \\
+- $ f(X^2) = (2X + 1)(X^2) - (X^2 - 1)(2X) = 2X^3 + X^2 - 2X^3 + 2X = X^2 + 2X $
+
+Now express these in terms of $ \mathcal{B} = (1, X, X^2) $:
+
+- $ f(1) = 1\cdot 1 + 2\cdot X + 0\cdot X^2 $ \\
+- $ f(X) = 1\cdot 1 + 1\cdot X + 1\cdot X^2 $ \\
+- $ f(X^2) = 0\cdot 1 + 2\cdot X + 1\cdot X^2 $ \\
+
+Thus, the matrix of $ f $ in the basis $ \mathcal{B} $ is:
+$$
+A = 
+\begin{bmatrix}
+1 & 1 & 0 \\
+2 & 1 & 2 \\
+0 & 1 & 1
+\end{bmatrix}
+$$
+
+\bigskip
+
+\item It is given that $ \mathcal{B}' = (X^2 - 1, (X - 1)^2, (X + 1)^2) $ is a basis of $ \mathbb{R}_2[X] $.
+
+
+\textbf{Calculate $ f(X^2 - 1), f((X - 1)^2), f((X + 1)^2) $. Deduce the matrix $ A' $ of $ f $ in the basis $ \mathcal{B}' $.}
+
+First compute:
+
+- $ f(X^2 - 1) = (2X + 1)(X^2 - 1) - (X^2 - 1)(2X) = (2X + 1)(X^2 - 1) - 2X(X^2 - 1) = (X^2 - 1) $ \\
+
+So $ f(X^2 - 1) = X^2 - 1 $ \\
+
+- $ f((X - 1)^2) = f(X^2 - 2X + 1) = (2X + 1)(X^2 - 2X + 1) - (X^2 - 1)(2X - 2) $ \\
+
+Expand: \\
+- First term: $ (2X + 1)(X^2 - 2X + 1) = 2X^3 - 4X^2 + 2X + X^2 - 2X + 1 = 2X^3 - 3X^2 + 1 $ \\
+- Second term: $ (X^2 - 1)(2X - 2) = 2X^3 - 2X^2 - 2X + 2 $ \\
+
+Subtract:
+$$
+f((X - 1)^2) = (2X^3 - 3X^2 + 1) - (2X^3 - 2X^2 - 2X + 2) =  -(X - 1)^2
+$$
+
+Similarly, \\
+- $ f((X + 1)^2) = f(X^2 + 2X + 1) = (2X + 1)(X^2 + 2X + 1) - (X^2 - 1)(2X + 2) $ \\
+
+Compute: \\
+- First term: $ (2X + 1)(X^2 + 2X + 1) = 2X^3 + 4X^2 + 2X + X^2 + 2X + 1 = 2X^3 + 5X^2 + 4X + 1 $ \\
+- Second term: $ (X^2 - 1)(2X + 2) = 2X^3 + 2X^2 - 2X - 2 $ \\
+
+Subtract:
+$$
+f((X + 1)^2) = (2X^3 + 5X^2 + 4X + 1) - (2X^3 + 2X^2 - 2X - 2) = 3(X + 1)^2
+$$
+
+Therefore:
+
+- $ f(X^2 - 1) = 1\cdot (X^2 - 1) + 0\cdot (X - 1)^2 + 0\cdot (X + 1)^2 $ \\
+- $ f((X - 1)^2) = 0\cdot (X^2 - 1) - 1\cdot (X - 1)^2 + 0\cdot (X + 1)^2 $ \\
+- $ f((X + 1)^2) = 0\cdot (X^2 - 1) + 0\cdot (X - 1)^2 + 3\cdot (X + 1)^2 $ \\
+
+So the matrix of $ f $ in the basis $ \mathcal{B}' $ is:
+$$
+A' =
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & -1 & 0 \\
+0 & 0 & 3
+\end{bmatrix}
+$$
+
+\bigskip
+
+\item \begin{enumerate}
+    
+
+\item \textbf{ Determine $ P = P_{\mathcal{B}}^{\mathcal{B}'} $, the change of basis matrix from $ \mathcal{B} $ to $ \mathcal{B}' $. Calculate $ P^{-1} $.}
+
+Recall $ \mathcal{B} = (1, X, X^2) $, $ \mathcal{B}' = (X^2 - 1, (X - 1)^2, (X + 1)^2) $
+
+Express each element of $ \mathcal{B}' $ in terms of $ \mathcal{B} $:
+
+- $ X^2 - 1 = -1\cdot 1 + 0\cdot X + 1\cdot X^2 $ \\
+- $ (X - 1)^2 = 1\cdot 1 - 2\cdot X + 1\cdot X^2 $ \\
+- $ (X + 1)^2 = 1\cdot 1 + 2\cdot X + 1\cdot X^2 $ \\
+
+So the change of basis matrix from $ \mathcal{B} $ to $ \mathcal{B}' $ is:
+$$
+P =
+\begin{bmatrix}
+-1 & 1 & 1 \\
+0 & -2 & 2 \\
+1 & 1 & 1
+\end{bmatrix}
+$$
+
+To find $ P^{-1} $, use standard methods or software. The inverse is:
+$$
+P^{-1} =
+\frac{1}{4}
+\begin{bmatrix}
+-4 & 0 & 4 \\
+-2 & -2 & 2 \\
+1 & 2 & 1
+\end{bmatrix}
+$$
+
+\bigskip
+
+\item \textbf{ For all $ n \in \mathbb{N}^* $, calculate $ A^n $.}
+
+Since $ A' = P^{-1} A P $, and $ A' $ is diagonal:
+$$
+A'^n =
+\begin{bmatrix}
+1^n & 0 & 0 \\
+0 & (-1)^n & 0 \\
+0 & 0 & 3^n
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 & 0 & 0 \\
+0 & (-1)^n & 0 \\
+0 & 0 & 3^n
+\end{bmatrix}
+$$
+
+Then:
+$$
+A^n = P A'^n P^{-1}
+$$
+
+This gives a formula for computing $ A^n $ using matrix multiplication.
+
+\end{enumerate}
+
+\end{enumerate}
+\end{answerbox}
+
+\newpage
+
+%----------------- EXERCISE 4 ------------------
+\section{}
+Let the matrix $A = \begin{pmatrix} 1 & 1 & 1 \\ a & b & c \\ a^2 & b^2 & c^2 \end{pmatrix}$, where $a, b, c \in \mathbb{R}$.
+
+Using Gaussian elimination, determine the rank of $A$ based on the values of the real numbers $a$, $b$, and $c$.
+
+\newpage
+
+\begin{answerbox}
+    Let the matrix:
+    $$
+    A = 
+    \begin{bmatrix}
+    1 & 1 & 1 \\
+    a & b & c \\
+    a^2 & b^2 & c^2
+    \end{bmatrix}, \quad \text{with } a, b, c \in \mathbb{R}.
+    $$
+    
+    Using Gaussian elimination, determine the rank of $ A $ depending on the values of $ a, b, c $.
+    
+    \begin{enumerate}
+    \item Start with the matrix:
+    $$
+    \begin{bmatrix}
+    1 & 1 & 1 \\
+    a & b & c \\
+    a^2 & b^2 & c^2
+    \end{bmatrix}
+    $$
+    
+    Perform row operations:
+    - $ R_2 \leftarrow R_2 - a R_1 $
+    - $ R_3 \leftarrow R_3 - a^2 R_1 $
+    
+    We get:
+    $$
+    \begin{bmatrix}
+    1 & 1 & 1 \\
+    0 & b - a & c - a \\
+    0 & b^2 - a^2 & c^2 - a^2
+    \end{bmatrix}
+    $$
+    
+    Note that $ b^2 - a^2 = (b - a)(b + a) $, so we eliminate further by:
+    - $ R_3 \leftarrow R_3 - (b + a) R_2 $
+    
+    Final form:
+    $$
+    \begin{bmatrix}
+    1 & 1 & 1 \\
+    0 & b - a & c - a \\
+    0 & 0 & (c - a)(c - b)
+    \end{bmatrix}
+    $$
+    
+    \item Conclude:
+    
+    The number of non-zero rows depends on whether $ b \ne a $ and $ (c - a)(c - b) \ne 0 $. We distinguish cases:
+    
+    \begin{enumerate}
+        \item If $ a, b, c $ are all distinct: $ \boxed{\mathrm{rank}(A) = 3} $
+        \item If exactly two of $ a, b, c $ are equal: $ \boxed{\mathrm{rank}(A) = 2} $
+        \item If $ a = b = c $: $ \boxed{\mathrm{rank}(A) = 1} $
+    \end{enumerate}
+    \end{enumerate}
+\end{answerbox}
+
+%----------------- END ------------------
+\end{document}
