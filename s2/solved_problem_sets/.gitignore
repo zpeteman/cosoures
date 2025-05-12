@@ -1,5 +1,4 @@
 # Ignore specific LaTeX auxiliary files
-*.tex
 *.fdb_latexmk
 *.aux
 *.fls
