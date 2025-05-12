@@ -62,9 +62,75 @@ Let $E$ be a $K$-vector space, $p \in \mathbb{N}^*$, and $u_1, u_2, ..., u_p, u_
     $u_{p+1} \in \text{span}(\{u_1, u_2, ..., u_p\})$. Show that $\{u_1, u_2, ..., u_p\}$ is a generating set of $E$.
 \end{enumerate}
 
+\newpage
 
 \begin{answerbox}
 % student's answer area
+Let $ E $ be a $ K $-vector space, $ p \in \mathbb{N}^* $, and let $ u_1, u_2, \ldots, u_p, u_{p+1} $ be vectors in $ E $.
+
+\begin{enumerate}
+    \item Assume that $ \{u_1, u_2, \ldots, u_p\} $ is linearly independent. Show the equivalence:
+    $$
+    u_{p+1} \notin \text{span}(\{u_1, u_2, \ldots, u_p\}) \iff \{u_1, u_2, \ldots, u_p, u_{p+1}\} \text{is linearly independent}.
+    $$
+
+    \textbf{Proof:}
+    
+    \begin{description}
+        \item[$\Rightarrow$] Suppose $ u_{p+1} \notin \text{span}(\{u_1, \ldots, u_p\}) $. We want to show that $ \{u_1, \ldots, u_p, u_{p+1}\} $ is linearly independent.
+        
+        Let 
+        $$
+        \lambda_1 u_1 + \cdots + \lambda_p u_p + \lambda_{p+1} u_{p+1} = 0.
+        $$
+        
+        If $ \lambda_{p+1} \neq 0 $, then we can solve for $ u_{p+1} $:
+        $$
+        u_{p+1} = -\frac{\lambda_1}{\lambda_{p+1}} u_1 - \cdots - \frac{\lambda_p}{\lambda_{p+1}} u_p,
+        $$
+        which contradicts the assumption that $ u_{p+1} \notin \text{span}(\{u_1, \ldots, u_p\}) $. Therefore, $ \lambda_{p+1} = 0 $.
+
+        Then we are left with:
+        $$
+        \lambda_1 u_1 + \cdots + \lambda_p u_p = 0.
+        $$
+        Since $ \{u_1, \ldots, u_p\} $ is linearly independent, all $ \lambda_i = 0 $. Hence, $ \{u_1, \ldots, u_p, u_{p+1}\} $ is linearly independent.
+
+        \item[$\Leftarrow$] Conversely, suppose $ \{u_1, \ldots, u_p, u_{p+1}\} $ is linearly independent. Then $ u_{p+1} $ cannot be written as a linear combination of $ u_1, \ldots, u_p $, otherwise we would have a nontrivial linear relation among these vectors. Thus:
+        $$
+        u_{p+1} \notin \text{span}(\{u_1, \ldots, u_p\}).
+        $$
+    \end{description}
+
+    This completes the proof of the equivalence.
+
+    \item Assume that $ \{u_1, u_2, \ldots, u_p, u_{p+1}\} $ is a generating set of $ E $ and that
+    $$
+    u_{p+1} \in \text{span}(\{u_1, \ldots, u_p\}).
+    $$
+    Show that $ \{u_1, \ldots, u_p\} $ is a generating set of $ E $.
+
+    \textbf{Proof:}
+    
+    Since $ \{u_1, \ldots, u_p, u_{p+1}\} $ generates $ E $, every vector $ v \in E $ can be written as:
+    $$
+    v = \lambda_1 u_1 + \cdots + \lambda_p u_p + \lambda_{p+1} u_{p+1}.
+    $$
+
+    But since $ u_{p+1} \in \text{span}(\{u_1, \ldots, u_p\}) $, there exist scalars $ \mu_1, \ldots, \mu_p \in K $ such that:
+    $$
+    u_{p+1} = \mu_1 u_1 + \cdots + \mu_p u_p.
+    $$
+
+    Substituting into the expression for $ v $, we get:
+    $$
+    v = \lambda_1 u_1 + \cdots + \lambda_p u_p + \lambda_{p+1} (\mu_1 u_1 + \cdots + \mu_p u_p)
+    = (\lambda_1 + \lambda_{p+1} \mu_1) u_1 + \cdots + (\lambda_p + \lambda_{p+1} \mu_p) u_p.
+    $$
+
+    So $ v \in \text{span}(\{u_1, \ldots, u_p\}) $, hence $ \{u_1, \ldots, u_p\} $ generates $ E $.
+
+\end{enumerate}
 \end{answerbox}
 
 \newpage  
@@ -82,9 +148,153 @@ $H = \{(x,y,z,t) \in \mathbb{R}^4 \mid x - y + z - t = 0\}$
     \item[4)] Show that $\mathbb{R}^4 = (F \cap G) \oplus H$.
 \end{enumerate}
 
+\newpage
 
 \begin{answerbox}
-% student's answer area
+In the $ \mathbb{R} $-vector space $ \mathbb{R}^4 $, consider the following vector subspaces:
+
+$$
+F = \text{span}\left(\{(1, 0, 1, 0), (0, 1, 0, 1)\}\right)
+$$
+
+$$
+G = \{(x, y, z, t) \in \mathbb{R}^4 \mid x + y = 0 \text{ and } z + t = 0 \}
+$$
+
+$$
+H = \{(x, y, z, t) \in \mathbb{R}^4 \mid x - y + z - t = 0 \}
+$$
+
+\begin{enumerate}
+    \item \textbf{Determine a basis and the dimension of $ G $.}
+
+    A vector $ (x, y, z, t) \in G $ satisfies:
+    $$
+    x + y = 0 \quad \text{and} \quad z + t = 0
+    $$
+
+    Solving these equations:
+    $$
+    y = -x, \quad t = -z
+    $$
+
+    So any vector in $ G $ can be written as:
+    $$
+    (x, -x, z, -z) = x(1, -1, 0, 0) + z(0, 0, 1, -1)
+    $$
+
+    Therefore, a basis for $ G $ is:
+    $$
+    \{(1, -1, 0, 0), (0, 0, 1, -1)\}
+    $$
+    and
+    $$
+    \dim(G) = 2
+    $$
+
+    \item \textbf{Determine a basis and the dimension of $ H $.}
+
+    A vector $ (x, y, z, t) \in H $ satisfies:
+    $$
+    x - y + z - t = 0
+    $$
+
+    We can express one variable in terms of others. Let’s solve for $ t $:
+    $$
+    t = x - y + z
+    $$
+
+    Then any vector in $ H $ can be written as:
+    $$
+    (x, y, z, x - y + z) = x(1, 0, 0, 1) + y(0, 1, 0, -1) + z(0, 0, 1, 1)
+    $$
+
+    Therefore, a basis for $ H $ is:
+    $$
+    \{(1, 0, 0, 1), (0, 1, 0, -1), (0, 0, 1, 1)\}
+    $$
+    and
+    $$
+    \dim(H) = 3
+    $$
+
+    \item \textbf{Determine a basis of the vector subspace $ F \cap G $.}
+
+    Recall:
+    $$
+    F = \text{span}\left(\{(1, 0, 1, 0), (0, 1, 0, 1)\}\right)
+    $$
+    $$
+    G = \text{span}\left(\{(1, -1, 0, 0), (0, 0, 1, -1)\}\right)
+    $$
+
+    Let’s find vectors in $ F $ that also belong to $ G $.
+
+    Any vector in $ F $ has the form:
+    $$
+    a(1, 0, 1, 0) + b(0, 1, 0, 1) = (a, b, a, b)
+    $$
+
+    For this vector to be in $ G $, it must satisfy:
+    $$
+    x + y = a + b = 0 \Rightarrow b = -a
+    $$
+    $$
+    z + t = a + b = 0 \Rightarrow b = -a
+    $$
+
+    So, substituting $ b = -a $, we get:
+    $$
+    (a, -a, a, -a) = a(1, -1, 1, -1)
+    $$
+
+    Therefore, $ F \cap G = \text{span}\left(\{(1, -1, 1, -1)\}\right) $, and a basis is:
+    $$
+    \{(1, -1, 1, -1)\}
+    $$
+    with
+    $$
+    \dim(F \cap G) = 1
+    $$
+
+    \item \textbf{Show that $ \mathbb{R}^4 = (F \cap G) \oplus H $.}
+
+    To prove that $ \mathbb{R}^4 = (F \cap G) \oplus H $, we need to show two things:
+
+    
+        
+- $ \dim((F \cap G) \oplus H) = 4 $
+        
+- $ (F \cap G) \cap H = \{0\} $
+    
+
+    From above:
+    $$
+    \dim(F \cap G) = 1, \quad \dim(H) = 3 \Rightarrow \dim((F \cap G) + H) \leq 4
+    $$
+
+    Since both are subspaces of $ \mathbb{R}^4 $, their sum is at most 4-dimensional.
+
+    Now check if the intersection is trivial: suppose $ v \in (F \cap G) \cap H $
+
+    Then $ v = a(1, -1, 1, -1) $, and also $ v \in H \Rightarrow x - y + z - t = 0 $
+
+    Compute:
+    $$
+    x - y + z - t = a - (-a) + a - (-a) = a + a + a + a = 4a
+    $$
+
+    Set equal to zero:
+    $$
+    4a = 0 \Rightarrow a = 0 \Rightarrow v = 0
+    $$
+
+    Therefore, $ (F \cap G) \cap H = \{0\} $, and since the dimensions add up to 4, we conclude:
+    $$
+    \mathbb{R}^4 = (F \cap G) \oplus H
+    $$
+
+\end{enumerate}
 \end{answerbox}
 
 \newpage  
@@ -99,9 +309,128 @@ for all $P(X) \in E$, $f(P(X)) = 2P(X) - (X - 1)P'(X)$\\
     \item[2)] Determine a complement of $\text{Ker}f$ in $E$.
 \end{enumerate}
 
+\newpage
 
 \begin{answerbox}
 % student's answer area
+Let $ E = \mathbb{R}_2[X] $ be the vector space of real polynomials of degree less than or equal to 2. Define the linear map $ f: E \to E $ by:
+$$
+f(P(X)) = 2P(X) - (X - 1)P'(X)
+$$
+where $ P'(X) $ denotes the derivative of $ P(X) $.
+
+We are asked to:
+
+\begin{enumerate}
+    \item \textbf{Determine $ \ker(f) $.}
+    
+    Recall that:
+    $$
+    \ker(f) = \{ P(X) \in E \mid f(P(X)) = 0 \}
+    $$
+
+    Let $ P(X) = a + bX + cX^2 $, where $ a, b, c \in \mathbb{R} $. Then:
+    $$
+    P'(X) = b + 2cX
+    $$
+    So,
+    \begin{align*}
+    f(P(X)) &= 2P(X) - (X - 1)P'(X) \\
+    &= 2(a + bX + cX^2) - (X - 1)(b + 2cX)
+    \end{align*}
+
+    Compute each part:
+    $$
+    2P(X) = 2a + 2bX + 2cX^2
+    $$
+    $$
+    (X - 1)(b + 2cX) = X(b + 2cX) - 1(b + 2cX) = bX + 2cX^2 - b - 2cX
+    $$
+    Combine:
+    $$
+    f(P(X)) = 2a + 2bX + 2cX^2 - (bX + 2cX^2 - b - 2cX)
+    $$
+    Simplify:
+    $$
+    f(P(X)) = 2a + 2bX + 2cX^2 - bX - 2cX^2 + b + 2cX
+    $$
+    Group like terms:
+    $$
+    f(P(X)) = (2a + b) + (2b - b + 2c)X + (2c - 2c)X^2 = (2a + b) + (b + 2c)X
+    $$
+
+    Set this equal to the zero polynomial:
+    $$
+    (2a + b) + (b + 2c)X = 0
+    $$
+
+    This gives the system:
+    $$
+    \begin{cases}
+    2a + b = 0 \\
+    b + 2c = 0
+    \end{cases}
+    $$
+
+    Solve:
+    From the second equation: $ b = -2c $
+
+    Plug into the first: $ 2a - 2c = 0 \Rightarrow a = c $
+
+    Therefore, the general form of $ P(X) \in \ker(f) $ is:
+    $$
+    P(X) = c + (-2c)X + cX^2 = c(1 - 2X + X^2)
+    $$
+
+    Thus:
+    $$
+    \ker(f) = \text{span}\left(\{1 - 2X + X^2\}\right)
+    $$
+    and
+    $$
+    \dim(\ker(f)) = 1
+    $$
+
+    \item \textbf{Determine a complement of $ \ker(f) $ in $ E $.}
+
+    Since $ E = \mathbb{R}_2[X] $ has dimension 3, and $ \dim(\ker(f)) = 1 $, we need to find a subspace $ W \subset E $ such that:
+    $$
+    E = \ker(f) \oplus W
+    $$
+    i.e., $ W $ has dimension 2 and intersects $ \ker(f) $ trivially.
+
+    A standard basis for $ E $ is $ \{1, X, X^2\} $. We already know that:
+    $$
+    \ker(f) = \text{span}\left(\{1 - 2X + X^2\}\right)
+    $$
+
+    To find a complement, pick two vectors from the standard basis that are not in $ \ker(f) $, and whose span does not intersect $ \ker(f) $ except at 0.
+
+    Consider the subspace:
+    $$
+    W = \text{span}\left(\{1, X\}\right)
+    $$
+
+    Check if $ W \cap \ker(f) = \{0\} $:
+
+    Suppose $ a + bX = c(1 - 2X + X^2) $
+
+    Then:
+    $$
+    a = c,\quad b = -2c,\quad 0 = cX^2
+    \Rightarrow c = 0 \Rightarrow a = b = 0
+    $$
+
+    So $ W \cap \ker(f) = \{0\} $
+
+    Also, $ \dim(W) = 2 $, $ \dim(\ker(f)) = 1 $, so:
+    $$
+    E = \ker(f) \oplus W
+    $$
+
+    Therefore, $ W = \text{span}(\{1, X\}) $ is a complement of $ \ker(f) $ in $ E $.
+
+\end{enumerate}
 \end{answerbox}
 
 %----------------- END ------------------

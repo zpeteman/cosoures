@@ -3,6 +3,9 @@
 %----------------- Packages ------------------
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
+
+% Set headheight for fancyhdr
+\setlength{\headheight}{14.5pt}
 \usepackage{amsmath, amssymb}
 \usepackage{geometry}
 \usepackage{xcolor}
@@ -64,8 +67,64 @@ where $r$ is a real number.
 \item[b)] Give the values of $r$ for which $C(r)$ is invertible.
 \end{enumerate}
 
+\newpage
+
 \begin{answerbox}
 % student's answer area
+We are given the matrix:
+$$
+C(r) = \begin{pmatrix}
+r+1 & 3r+1 & 2r+1 \\
+r+2 & r+2 & 3r+2 \\
+3r+3 & 2r+3 & r+3
+\end{pmatrix}
+$$
+
+\begin{enumerate}
+\item Calculate $\det(C(r))$ as a function of $r$.
+
+Using cofactor expansion along the first row:
+
+$$
+\begin{align*}
+\det(C(r)) &= (r+1) \cdot \begin{vmatrix} r+2 & 3r+2 \\ 2r+3 & r+3 \end{vmatrix} \\
+&- (3r+1) \cdot \begin{vmatrix} r+2 & 3r+2 \\ 3r+3 & r+3 \end{vmatrix} \\
+&+ (2r+1) \cdot \begin{vmatrix} r+2 & r+2 \\ 3r+3 & 2r+3 \end{vmatrix}
+\end{align*}
+$$
+Computing each minor:
+
+    
+- First minor: $(r+2)(r+3) - (3r+2)(2r+3) = -5r^2 - 8r$
+    
+- Second minor: $(r+2)(r+3) - (3r+2)(3r+3) = -8r^2 - 10r$
+    
+- Third minor: $(r+2)(2r+3) - (r+2)(3r+3) = -r(r+2)$
+
+
+Substituting back and simplifying gives:
+$$
+\det(C(r)) = 17r^3 + 20r^2
+$$
+
+\item Give the values of $r$ for which $C(r)$ is invertible.
+
+A matrix is invertible when its determinant is non-zero.
+
+$$
+\det(C(r)) = r^2(17r + 20)
+$$
+
+Setting equal to zero:
+$$
+r^2(17r + 20) = 0 \Rightarrow r = 0 \quad \text{or} \quad r = -\frac{20}{17}
+$$
+
+So, $C(r)$ is invertible for:
+$$
+\boxed{r \in \mathbb{R} \setminus \left\{0, -\frac{20}{17}\right\}}
+$$
+\end{enumerate}
 \end{answerbox}
 
 \newpage  
@@ -82,9 +141,57 @@ f(a,b) = (a + b) + (2a - b)x + (3a - b)x^2
 \item Determine $\text{Im}\ f$, the image of $f$ (give a basis of $\text{Im}\ f$).
 \end{enumerate}
 
+\newpage
 
 \begin{answerbox}
 % student's answer area
+Let $f: \mathbb{R}^2 \to \mathbb{R}_2[X]$ be defined by:
+$$
+f(a, b) = (a + b) + (2a - b)x + (3a - b)x^2
+$$
+
+\begin{enumerate}
+\item Using the rank theorem, show that $f$ is not surjective.
+
+Recall the rank-nullity theorem:
+$$
+\dim(\mathbb{R}^2) = \dim(\ker f) + \dim(\mathrm{Im}\,f)
+$$
+
+Since $\dim(\mathbb{R}^2) = 2$, then $\dim(\mathrm{Im}\,f) \leq 2$
+
+But $\dim(\mathbb{R}_2[X]) = 3$, so $f$ cannot be surjective.
+
+\item Show that $f$ is injective.
+
+To prove injectivity, we must show that $\ker f = \{(0, 0)\}$
+
+Suppose $f(a, b) = 0$. Then all coefficients of the polynomial must be zero:
+$$
+\begin{cases}
+a + b = 0 \\
+2a - b = 0 \\
+3a - b = 0
+\end{cases}
+$$
+
+Solving this system yields $a = 0$, $b = 0$, hence $f$ is injective.
+
+\item Determine $\mathrm{Im}\,f$, the image of $f$, and give a basis.
+
+From the definition:
+$$
+f(a, b) = a(1 + 2x + 3x^2) + b(1 - x - x^2)
+$$
+
+Thus,
+$$
+\mathrm{Im}\,f = \mathrm{Span}\{1 + 2x + 3x^2,\; 1 - x - x^2\}
+$$
+
+These two vectors are linearly independent, so they form a basis of $\mathrm{Im}\,f$.
+
+\end{enumerate}
 \end{answerbox}
 
 \newpage  
@@ -123,8 +230,195 @@ g(x,y,z) = (-x + 2y - z, -6x + 5y, 2y - 2z)
    \end{enumerate}
 \end{enumerate}
 
+\newpage
+
 \begin{answerbox}
 % student's answer area
+Let $B = \{e_1, e_2, e_3\}$ be the canonical basis of $\mathbb{R}^3$, and let $B' = \{e'_1, e'_2, e'_3\}$ with:
+$$
+e'_1 = (2, 3, 2), \quad e'_2 = (1, 2, 1), \quad e'_3 = (1, 1, 2)
+$$
+
+\begin{enumerate}
+\item \textbf{a)} Show that $B'$ is a basis of $\mathbb{R}^3$.
+
+We form the matrix whose columns are $e'_1, e'_2, e'_3$:
+$$
+P = \begin{pmatrix}
+2 & 1 & 1 \\
+3 & 2 & 1 \\
+2 & 1 & 2
+\end{pmatrix}
+$$
+
+Compute the determinant:
+$$
+\det(P) = 2(4 - 1) - 1(6 - 2) + 1(3 - 4) = 6 - 4 - 1 = 1
+$$
+
+Since $\det(P) \ne 0$, the vectors are linearly independent and hence form a basis.
+
+ \textbf{b)} Determine the coordinates of the vector $v = (4, 6, 5)$ in the basis $B'$.
+
+We solve:
+$$
+\alpha e'_1 + \beta e'_2 + \gamma e'_3 = v
+\Rightarrow 
+\begin{cases}
+2\alpha + \beta + \gamma = 4 \\
+3\alpha + 2\beta + \gamma = 6 \\
+2\alpha + \beta + 2\gamma = 5
+\end{cases}
+$$
+
+Solving gives:
+$$
+\alpha = 1,\quad \beta = 1,\quad \gamma = 1
+$$
+
+So the coordinates of $v$ in basis $B'$ are:
+$$
+[v]_{B'} = \begin{pmatrix}1\\1\\1\end{pmatrix}
+$$
+
+\item \textbf{a)} Determine $P = P_{B \to B'}$, the transition matrix from basis $B$ to basis $B'$.
+
+$$
+P = \begin{pmatrix}
+2 & 1 & 1 \\
+3 & 2 & 1 \\
+2 & 1 & 2
+\end{pmatrix}
+$$
+
+\textbf{b)} Using the comatrix of $P$, show that the transition matrix from basis $B'$ to basis $B$ is:
+$$
+Q = \begin{pmatrix}
+5 & -1 & -1 \\
+-4 & 2 & -1 \\
+0 & 1 & -1
+\end{pmatrix}
+$$
+
+We compute:
+$$
+P^{-1} = \frac{1}{\det(P)} \cdot \text{comatrix}(P)^T
+$$
+
+We already know $\det(P) = 1$, so $P^{-1} = \text{comatrix}(P)^T$
+
+After computing the cofactor matrix and transposing it, we find:
+$$
+P^{-1} = \begin{pmatrix}
+5 & -1 & -1 \\
+-4 & 2 & -1 \\
+0 & 1 & -1
+\end{pmatrix}
+$$
+
+Hence verified.
+
+\item Let $g: \mathbb{R}^3 \to \mathbb{R}^3$ be defined by:
+$$
+g(x, y, z) = (-x + 2y - z,\; -6x + 5y,\; 2y - 2z)
+$$
+
+\textbf{a)} Determine $A$, the matrix of $g$ in basis $B$.
+
+Apply $g$ to each standard basis vector:
+
+- $g(e_1) = g(1,0,0) = (-1, -6, 0)$
+- $g(e_2) = g(0,1,0) = (2, 5, 2)$
+- $g(e_3) = g(0,0,1) = (-1, 0, -2)$
+
+So the matrix $A$ is:
+$$
+A = \begin{pmatrix}
+-1 & 2 & -1 \\
+-6 & 5 & 0 \\
+0 & 2 & -2
+\end{pmatrix}
+$$
+
+\textbf{b)} Determine $A'$, the matrix of $g$ in basis $B'$.
+
+Use the change-of-basis formula:
+$$
+A' = P^{-1} A P
+$$
+
+Where:
+$$
+P = \begin{pmatrix}
+2 & 1 & 1 \\
+3 & 2 & 1 \\
+2 & 1 & 2
+\end{pmatrix},\quad
+P^{-1} = \begin{pmatrix}
+5 & -1 & -1 \\
+-4 & 2 & -1 \\
+0 & 1 & -1
+\end{pmatrix},\quad
+A = \begin{pmatrix}
+-1 & 2 & -1 \\
+-6 & 5 & 0 \\
+0 & 2 & -2
+\end{pmatrix}
+$$
+
+Let's compute $A' = P^{-1} A P$ step by step:
+
+First compute $A P$:
+$$
+AP = \begin{pmatrix}
+-1 & 2 & -1 \\
+-6 & 5 & 0 \\
+0 & 2 & -2
+\end{pmatrix}
+\begin{pmatrix}
+2 & 1 & 1 \\
+3 & 2 & 1 \\
+2 & 1 & 2
+\end{pmatrix}
+=
+\begin{pmatrix}
+3 & 2 & 1 \\
+-7 & -1 & -1 \\
+-2 & 2 & 0
+\end{pmatrix}
+$$
+
+Now compute $P^{-1} (AP)$:
+$$
+A' = P^{-1} (AP) =
+\begin{pmatrix}
+5 & -1 & -1 \\
+-4 & 2 & -1 \\
+0 & 1 & -1
+\end{pmatrix}
+\begin{pmatrix}
+3 & 2 & 1 \\
+-7 & -1 & -1 \\
+-2 & 2 & 0
+\end{pmatrix}
+=
+\begin{pmatrix}
+24 & 5 & 6 \\
+-27 & -11 & -7 \\
+5 & 3 & 1
+\end{pmatrix}
+$$
+
+So the matrix $A'$ of $g$ in basis $B'$ is:
+$$
+A' = \begin{pmatrix}
+24 & 5 & 6 \\
+-27 & -11 & -7 \\
+5 & 3 & 1
+\end{pmatrix}
+$$
+
+\end{enumerate}
 \end{answerbox}
 
 %----------------- END ------------------

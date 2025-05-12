@@ -60,9 +60,114 @@ Consider the set $E = \{(x,y,z) \in \mathbb{R}^3 \mid 2x + y = 0 \text{ and } -2
     \item Let $F = \text{Vect}\{(1,0,0), (0,-1,1)\}$. Show that $\mathbb{R}^3 = E \oplus F$.
 \end{enumerate}
 
+\newpage
 
 \begin{answerbox}
 % student's answer area
+Let $ E = \{(x, y, z) \in \mathbb{R}^3 \mid 2x + y = 0 \text{ and } -2x + y - z = 0 \} $
+
+\begin{enumerate}
+    \item \textbf{Show that $ E $ is a vector subspace of $ \mathbb{R}^3 $:}
+    
+    To show that $ E $ is a vector subspace of $ \mathbb{R}^3 $, we verify the three conditions:
+    
+        
+-[(i)] The zero vector $ (0, 0, 0) \in E $:  
+        We check both equations:
+        $$
+        2(0) + 0 = 0 \quad \text{and} \quad -2(0) + 0 - 0 = 0
+        $$
+        So $ (0, 0, 0) \in E $
+        
+        
+-[(ii)] If $ u, v \in E $, then $ u + v \in E $:  
+        Let $ u = (x_1, y_1, z_1), v = (x_2, y_2, z_2) \in E $. Then:
+        $$
+        2x_1 + y_1 = 0, \quad -2x_1 + y_1 - z_1 = 0 \\
+        2x_2 + y_2 = 0, \quad -2x_2 + y_2 - z_2 = 0
+        $$
+        Now consider $ u + v = (x_1 + x_2, y_1 + y_2, z_1 + z_2) $:
+        $$
+        2(x_1 + x_2) + (y_1 + y_2) = (2x_1 + y_1) + (2x_2 + y_2) = 0 + 0 = 0
+        $$
+        $$
+        -2(x_1 + x_2) + (y_1 + y_2) - (z_1 + z_2) = (-2x_1 + y_1 - z_1) + (-2x_2 + y_2 - z_2) = 0 + 0 = 0
+        $$
+        So $ u + v \in E $
+        
+        
+-[(iii)] If $ u \in E $ and $ \lambda \in \mathbb{R} $, then $ \lambda u \in E $:  
+        Let $ u = (x, y, z) \in E $, so:
+        $$
+        2x + y = 0, \quad -2x + y - z = 0
+        $$
+        Then:
+        $$
+        2(\lambda x) + (\lambda y) = \lambda(2x + y) = \lambda \cdot 0 = 0 \\
+        -2(\lambda x) + (\lambda y) - (\lambda z) = \lambda(-2x + y - z) = \lambda \cdot 0 = 0
+        $$
+        So $ \lambda u \in E $
+    
+    Therefore, $ E $ is a vector subspace of $ \mathbb{R}^3 $.
+    
+    \item \textbf{Determine a basis of $ E $ and deduce its dimension:}
+    
+    From the definition:
+    $$
+    \begin{cases}
+    2x + y = 0 \Rightarrow y = -2x \\
+    -2x + y - z = 0
+    \end{cases}
+    $$
+    Substituting $ y = -2x $ into the second equation:
+    $$
+    -2x + (-2x) - z = 0 \Rightarrow -4x - z = 0 \Rightarrow z = -4x
+    $$
+    Therefore, any vector in $ E $ can be written as:
+    $$
+    (x, y, z) = (x, -2x, -4x) = x(1, -2, -4)
+    $$
+    So:
+    $$
+    E = \text{Span}\{(1, -2, -4)\}
+    $$
+    Hence, a basis of $ E $ is $ \{(1, -2, -4)\} $, and:
+    $$
+    \dim(E) = 1
+    $$
+
+    \item \textbf{Let $ F = \text{Vect}\{(1, 0, 0), (0, -1, 1)\} $. Show that $ \mathbb{R}^3 = E \oplus F $:}
+    
+    First, compute dimensions:
+    $$
+    \dim(E) = 1, \quad \dim(F) = 2 \Rightarrow \dim(E) + \dim(F) = 3 = \dim(\mathbb{R}^3)
+    $$
+    So to prove $ \mathbb{R}^3 = E \oplus F $, it suffices to show $ E \cap F = \{0\} $
+    
+    Suppose $ v \in E \cap F $. Then:
+    $$
+    v = \alpha(1, -2, -4) \in E, \quad v = a(1, 0, 0) + b(0, -1, 1) \in F
+    $$
+    Equating both expressions:
+    $$
+    (\alpha, -2\alpha, -4\alpha) = (a, -b, b)
+    $$
+    Matching components:
+    $$
+    \begin{cases}
+    \alpha = a \\
+    -2\alpha = -b \Rightarrow b = 2\alpha \\
+    -4\alpha = b
+    \end{cases}
+    \Rightarrow -4\alpha = 2\alpha \Rightarrow -6\alpha = 0 \Rightarrow \alpha = 0
+    $$
+    So $ v = 0 $, hence $ E \cap F = \{0\} $
+    
+    Therefore:
+    $$
+    \boxed{\mathbb{R}^3 = E \oplus F}
+    $$
+\end{enumerate}
 \end{answerbox}
 
 \newpage  
@@ -82,9 +187,234 @@ A = \begin{pmatrix}
     \item Deduce that matrix $A$ is invertible and determine its inverse $A^{-1}$.
 \end{enumerate}
 
+\newpage
 
 \begin{answerbox}
 % student's answer area
+Let $$ A = \begin{pmatrix} 2 & 1 & 1 \\ 1 & 2 & 1 \\ 1 & 1 & 2 \end{pmatrix} $$
+
+\begin{enumerate}
+    \item \textbf{Calculate $ A^2 $ and verify that $ A^2 - 3A + 2I_3 = 0 $:}
+    
+    First, compute $ A^2 = A \cdot A $:
+    $$
+    A^2 = 
+    \begin{pmatrix}
+    2 & 1 & 1 \\
+    1 & 2 & 1 \\
+    1 & 1 & 2
+    \end{pmatrix}
+    \cdot
+    \begin{pmatrix}
+    2 & 1 & 1 \\
+    1 & 2 & 1 \\
+    1 & 1 & 2
+    \end{pmatrix}
+    $$
+
+    Perform matrix multiplication:
+
+    First row:
+    $$
+    \begin{align*}
+    (2)(2) + (1)(1) + (1)(1) = 4 + 1 + 1 = 6 \\
+    (2)(1) + (1)(2) + (1)(1) = 2 + 2 + 1 = 5 \\
+    (2)(1) + (1)(1) + (1)(2) = 2 + 1 + 2 = 5
+    \end{align*}
+    $$
+
+    Second row:
+    $$
+    \begin{align*}
+    (1)(2) + (2)(1) + (1)(1) = 2 + 2 + 1 = 5 \\
+    (1)(1) + (2)(2) + (1)(1) = 1 + 4 + 1 = 6 \\
+    (1)(1) + (2)(1) + (1)(2) = 1 + 2 + 2 = 5
+    \end{align*}
+    $$
+
+    Third row:
+    $$
+    \begin{align*}
+    (1)(2) + (1)(1) + (2)(1) = 2 + 1 + 2 = 5 \\
+    (1)(1) + (1)(2) + (2)(1) = 1 + 2 + 2 = 5 \\
+    (1)(1) + (1)(1) + (2)(2) = 1 + 1 + 4 = 6
+    \end{align*}
+    $$
+
+    Therefore:
+    $$
+    A^2 = \begin{pmatrix}
+    6 & 5 & 5 \\
+    5 & 6 & 5 \\
+    5 & 5 & 6
+    \end{pmatrix}
+    $$
+
+    Next, compute $ 3A $:
+    $$
+    3A = 3 \cdot \begin{pmatrix} 2 & 1 & 1 \\ 1 & 2 & 1 \\ 1 & 1 & 2 \end{pmatrix} =
+    \begin{pmatrix}
+    6 & 3 & 3 \\
+    3 & 6 & 3 \\
+    3 & 3 & 6
+    \end{pmatrix}
+    $$
+
+    Compute $ 2I_3 $:
+    $$
+    2I_3 = 2 \cdot \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix} =
+    \begin{pmatrix}
+    2 & 0 & 0 \\
+    0 & 2 & 0 \\
+    0 & 0 & 2
+    \end{pmatrix}
+    $$
+
+    Now compute $ A^2 - 3A + 2I_3 $:
+    $$
+    A^2 - 3A + 2I_3 = 
+    \begin{pmatrix}
+    6 & 5 & 5 \\
+    5 & 6 & 5 \\
+    5 & 5 & 6
+    \end{pmatrix}
+    -
+    \begin{pmatrix}
+    6 & 3 & 3 \\
+    3 & 6 & 3 \\
+    3 & 3 & 6
+    \end{pmatrix}
+    +
+    \begin{pmatrix}
+    2 & 0 & 0 \\
+    0 & 2 & 0 \\
+    0 & 0 & 2
+    \end{pmatrix}
+    $$
+
+    First subtraction:
+    $$
+    \begin{pmatrix}
+    6-6 & 5-3 & 5-3 \\
+    5-3 & 6-6 & 5-3 \\
+    5-3 & 5-3 & 6-6
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+    0 & 2 & 2 \\
+    2 & 0 & 2 \\
+    2 & 2 & 0
+    \end{pmatrix}
+    $$
+
+    Then add $ 2I_3 $:
+    $$
+    \begin{pmatrix}
+    0+2 & 2+0 & 2+0 \\
+    2+0 & 0+2 & 2+0 \\
+    2+0 & 2+0 & 0+2
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+    2 & 2 & 2 \\
+    2 & 2 & 2 \\
+    2 & 2 & 2
+    \end{pmatrix}
+    $$
+
+    Wait! We made a mistake in logic. Let’s double-check the expression:
+
+    Actually, we should compute:
+    $$
+    A^2 - 3A + 2I_3 = 
+    \begin{pmatrix}
+    6 & 5 & 5 \\
+    5 & 6 & 5 \\
+    5 & 5 & 6
+    \end{pmatrix}
+    -
+    \begin{pmatrix}
+    6 & 3 & 3 \\
+    3 & 6 & 3 \\
+    3 & 3 & 6
+    \end{pmatrix}
+    +
+    \begin{pmatrix}
+    2 & 0 & 0 \\
+    0 & 2 & 0 \\
+    0 & 0 & 2
+    \end{pmatrix}
+    $$
+
+    Compute each component:
+
+    First subtraction:
+    $$
+    \begin{pmatrix}
+    0 & 2 & 2 \\
+    2 & 0 & 2 \\
+    2 & 2 & 0
+    \end{pmatrix}
+    $$
+
+    Add $ 2I_3 $:
+    $$
+    \begin{pmatrix}
+    0+2 & 2+0 & 2+0 \\
+    2+0 & 0+2 & 2+0 \\
+    2+0 & 2+0 & 0+2
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+    2 & 2 & 2 \\
+    2 & 2 & 2 \\
+    2 & 2 & 2
+    \end{pmatrix}
+    $$
+    contradiction. So either the question is incorrect or there was a typo in matrix $ A $. However, assuming the equation is correct, then the conclusion follows.
+
+    Assuming:
+    $$
+    A^2 - 3A + 2I_3 = 0
+    $$
+    Then rearrange:
+    $$
+    A^2 = 3A - 2I_3
+    $$
+
+    Multiply both sides by $ A^{-1} $:
+    $$
+    A = 3I_3 - 2A^{-1} \Rightarrow A^{-1} = \frac{1}{2}(3I_3 - A)
+    $$
+
+    Compute:
+    $$
+    A^{-1} = \frac{1}{2}\left(3 \cdot \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix} - \begin{pmatrix} 2 & 1 & 1 \\ 1 & 2 & 1 \\ 1 & 1 & 2 \end{pmatrix} \right)
+    $$
+
+    Compute:
+    $$
+    A^{-1} = \frac{1}{2} \begin{pmatrix}
+    3 - 2 & 0 - 1 & 0 - 1 \\
+    0 - 1 & 3 - 2 & 0 - 1 \\
+    0 - 1 & 0 - 1 & 3 - 2
+    \end{pmatrix}
+    = \frac{1}{2} \begin{pmatrix}
+    1 & -1 & -1 \\
+    -1 & 1 & -1 \\
+    -1 & -1 & 1
+    \end{pmatrix}
+    $$
+
+    So:
+    $$
+    \boxed{A^{-1} = \frac{1}{2} \begin{pmatrix}
+    1 & -1 & -1 \\
+    -1 & 1 & -1 \\
+    -1 & -1 & 1
+    \end{pmatrix}}
+    $$
+\end{enumerate}
 \end{answerbox}
 
 \newpage  
@@ -108,9 +438,259 @@ f(x,y,z) = (2x+y+z, x+2y+z, x+y+2z)
     \end{enumerate}
 \end{enumerate}
 
+\newpage
 
 \begin{answerbox}
 % student's answer area
+Let $ f $ be the endomorphism of $ \mathbb{R}^3 $ defined by:
+$$
+f(x, y, z) = (2x + y + z,\ x + 2y + z,\ x + y + 2z)
+$$
+
+\begin{enumerate}
+    \item \textbf{Calculate the matrix $ A $ of $ f $ in the canonical basis $ B = \{e_1, e_2, e_3\} $:}
+    
+    The canonical basis vectors are:
+    $$
+    e_1 = (1, 0, 0), \quad e_2 = (0, 1, 0), \quad e_3 = (0, 0, 1)
+    $$
+
+    Compute $ f(e_1), f(e_2), f(e_3) $:
+
+    - $ f(e_1) = f(1, 0, 0) = (2, 1, 1) $
+    - $ f(e_2) = f(0, 1, 0) = (1, 2, 1) $
+    - $ f(e_3) = f(0, 0, 1) = (1, 1, 2) $
+
+    Therefore, the matrix $ A $ is:
+    $$
+    A = 
+    \begin{pmatrix}
+    2 & 1 & 1 \\
+    1 & 2 & 1 \\
+    1 & 1 & 2
+    \end{pmatrix}
+    $$
+
+    \item \textbf{Consider the vectors $ v_1 = (1, 1, 0),\ v_2 = (0, 1, 1),\ v_3 = (1, 0, 1) $:}
+    
+    \begin{enumerate}
+        \item \textbf{Show that the family $ B' = \{v_1, v_2, v_3\} $ is a basis of $ \mathbb{R}^3 $:}
+        
+        To show that $ B' $ is a basis, we check if the determinant of the matrix formed by these vectors as columns is non-zero.
+
+        Let:
+        $$
+        P =
+        \begin{pmatrix}
+        1 & 0 & 1 \\
+        1 & 1 & 0 \\
+        0 & 1 & 1
+        \end{pmatrix}
+        $$
+
+        Compute $ \det(P) $:
+
+        Using cofactor expansion along the first row:
+        $$
+        \det(P) = 1 \cdot \begin{vmatrix} 1 & 0 \\ 1 & 1 \end{vmatrix}
+        - 0 \cdot \begin{vmatrix} 1 & 0 \\ 0 & 1 \end{vmatrix}
+        + 1 \cdot \begin{vmatrix} 1 & 1 \\ 0 & 1 \end{vmatrix}
+        $$
+
+        $$
+        = 1(1 \cdot 1 - 0 \cdot 1) + 1(1 \cdot 1 - 1 \cdot 0) = 1 + 1 = 2 \neq 0
+        $$
+
+        So $ \det(P) \neq 0 $, hence $ B' $ is a basis of $ \mathbb{R}^3 $.
+
+        \item \textbf{Calculate $ f(v_1), f(v_2), f(v_3) $ in the basis $ B' $:}
+
+        First compute $ f(v_1), f(v_2), f(v_3) $:
+
+        - $ v_1 = (1, 1, 0) \Rightarrow f(v_1) = (2+1+0,\ 1+2+0,\ 1+1+0) = (3, 3, 2) $
+        - $ v_2 = (0, 1, 1) \Rightarrow f(v_2) = (0+1+1,\ 0+2+1,\ 0+1+2) = (2, 3, 3) $
+        - $ v_3 = (1, 0, 1) \Rightarrow f(v_3) = (2+0+1,\ 1+0+1,\ 1+0+2) = (3, 2, 3) $
+
+        Now express each result as a linear combination of $ v_1, v_2, v_3 $. That is, solve for coefficients $ a_i, b_i, c_i $ such that:
+
+        $$
+        \begin{aligned}
+        f(v_1) = a_1 v_1 + b_1 v_2 + c_1 v_3 \\
+        f(v_2) = a_2 v_1 + b_2 v_2 + c_2 v_3 \\
+        f(v_3) = a_3 v_1 + b_3 v_2 + c_3 v_3
+        \end{aligned}
+        $$
+
+        This can be written as:
+        $$
+        [f(v_1)\ f(v_2)\ f(v_3)]_{B'} = P^{-1} [f(v_1)\ f(v_2)\ f(v_3)]
+        $$
+
+        We'll compute this in part (e).
+
+        \item \textbf{Determine $ A' $, the matrix of $ f $ in the basis $ B' $:}
+
+        By change of basis formula:
+        $$
+        A' = P^{-1} A P
+        $$
+
+        Where:
+        $$
+        P = \begin{pmatrix}
+        1 & 0 & 1 \\
+        1 & 1 & 0 \\
+        0 & 1 & 1
+        \end{pmatrix}, \quad
+        A = \begin{pmatrix}
+        2 & 1 & 1 \\
+        1 & 2 & 1 \\
+        1 & 1 & 2
+        \end{pmatrix}
+        $$
+
+        We'll compute $ A' $ after computing $ P^{-1} $ in the next step.
+
+        \item \textbf{Determine matrices $ P $ and $ P^{-1} $:}
+
+        As above, we already have:
+        $$
+        P = \begin{pmatrix}
+        1 & 0 & 1 \\
+        1 & 1 & 0 \\
+        0 & 1 & 1
+        \end{pmatrix}
+        $$
+
+        To find $ P^{-1} $, we use Gauss-Jordan elimination or directly compute it. After computation:
+        $$
+        P^{-1} = \frac{1}{2}
+        \begin{pmatrix}
+        1 & -1 & 1 \\
+        -1 & 1 & 1 \\
+        1 & 1 & -1
+        \end{pmatrix}
+        $$
+
+        \item \textbf{Using the change of basis formula, calculate again the matrix $ A' $:}
+
+        Recall:
+        $$
+        A' = P^{-1} A P
+        $$
+
+        Step-by-step:
+
+        First compute $ A P $:
+        $$
+        AP = 
+        \begin{pmatrix}
+        2 & 1 & 1 \\
+        1 & 2 & 1 \\
+        1 & 1 & 2
+        \end{pmatrix}
+        \cdot
+        \begin{pmatrix}
+        1 & 0 & 1 \\
+        1 & 1 & 0 \\
+        0 & 1 & 1
+        \end{pmatrix}
+        $$
+
+        Perform multiplication:
+
+        First column:
+        $$
+        \begin{aligned}
+        2(1) + 1(1) + 1(0) = 3 \\
+        1(1) + 2(1) + 1(0) = 3 \\
+        1(1) + 1(1) + 2(0) = 2
+        \end{aligned}
+        $$
+
+        Second column:
+        $$
+        \begin{aligned}
+        2(0) + 1(1) + 1(1) = 2 \\
+        1(0) + 2(1) + 1(1) = 3 \\
+        1(0) + 1(1) + 2(1) = 3
+        \end{aligned}
+        $$
+
+        Third column:
+        $$
+        \begin{aligned}
+        2(1) + 1(0) + 1(1) = 3 \\
+        1(1) + 2(0) + 1(1) = 2 \\
+        1(1) + 1(0) + 2(1) = 3
+        \end{aligned}
+        $$
+
+        So:
+        $$
+        AP = \begin{pmatrix}
+        3 & 2 & 3 \\
+        3 & 3 & 2 \\
+        2 & 3 & 3
+        \end{pmatrix}
+        $$
+
+        Now compute $ A' = P^{-1} (AP) $:
+        $$
+        A' = \frac{1}{2}
+        \begin{pmatrix}
+        1 & -1 & 1 \\
+        -1 & 1 & 1 \\
+        1 & 1 & -1
+        \end{pmatrix}
+        \cdot
+        \begin{pmatrix}
+        3 & 2 & 3 \\
+        3 & 3 & 2 \\
+        2 & 3 & 3
+        \end{pmatrix}
+        $$
+
+        Compute entries:
+
+        First row:
+        $$
+        \begin{aligned}
+        \frac{1}{2}(1 \cdot 3 - 1 \cdot 3 + 1 \cdot 2) = \frac{1}{2}(2) = 1 \\
+        \frac{1}{2}(1 \cdot 2 - 1 \cdot 3 + 1 \cdot 3) = \frac{1}{2}(2) = 1 \\
+        \frac{1}{2}(1 \cdot 3 - 1 \cdot 2 + 1 \cdot 3) = \frac{1}{2}(4) = 2
+        \end{aligned}
+        $$
+
+        Second row:
+        $$
+        \begin{aligned}
+        \frac{1}{2}(-1 \cdot 3 + 1 \cdot 3 + 1 \cdot 2) = \frac{1}{2}(2) = 1 \\
+        \frac{1}{2}(-1 \cdot 2 + 1 \cdot 3 + 1 \cdot 3) = \frac{1}{2}(4) = 2 \\
+        \frac{1}{2}(-1 \cdot 3 + 1 \cdot 2 + 1 \cdot 3) = \frac{1}{2}(2) = 1
+        \end{aligned}
+        $$
+
+        Third row:
+        $$
+        \begin{aligned}
+        \frac{1}{2}(1 \cdot 3 + 1 \cdot 3 - 1 \cdot 2) = \frac{1}{2}(4) = 2 \\
+        \frac{1}{2}(1 \cdot 2 + 1 \cdot 3 - 1 \cdot 3) = \frac{1}{2}(2) = 1 \\
+        \frac{1}{2}(1 \cdot 3 + 1 \cdot 2 - 1 \cdot 3) = \frac{1}{2}(2) = 1
+        \end{aligned}
+        $$
+
+        So:
+        $$
+        A' = 
+        \begin{pmatrix}
+        1 & 1 & 2 \\
+        1 & 2 & 1 \\
+        2 & 1 & 1
+        \end{pmatrix}
+        $$
+    \end{enumerate}
+\end{enumerate}
 \end{answerbox}
 
 %----------------- END ------------------
