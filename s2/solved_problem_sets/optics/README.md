@@ -1,0 +1,2 @@
+### Note: 
+#### those problems sets were solved in my local device but because of some problem i dont have the .tex files anymore or even the solved version because i havent upload it to git, so i hoping that someone else will soleve them in the future.

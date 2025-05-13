@@ -1,0 +1,230 @@
+\documentclass[12pt]{article}
+
+%----------------- Packages ------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage[breakable]{tcolorbox}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{float}
+\usetikzlibrary{arrows.meta, decorations.markings}
+
+%----------------- Page Setup -----------------
+\geometry{a4paper, margin=2.5cm}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Normal Exam — \textbf{20-21}}
+\lhead{Electricity I}
+\cfoot{\thepage}
+
+%----------------- Title Styling --------------
+\titleformat{\section}{\normalfont\Large\bfseries}{Exercise \thesection:}{1em}{}
+\titleformat{\subsection}{\normalfont\bfseries}{Answer:}{1em}{}
+
+%----------------- Custom Boxes ----------------
+\tcbuselibrary{listingsutf8}
+\newtcolorbox{answerbox}{
+  colback=gray!10,
+  colframe=black,
+  fonttitle=\bfseries,
+  title=Answer Area,
+  breakable,
+  before skip=10pt,
+  after skip=10pt
+}
+
+%----------------- Document Start --------------
+\begin{document}
+
+%----------------- Exam Info -------------------
+\begin{center}
+  \Large\textbf{Ibn Tofail University} \\[1em]
+  \large\textit{Electricity I — Normal Exam} \\[0.5em]
+  \large\textit{Year: 20-21} \\[2em]
+\end{center}
+
+\vspace{0.5cm}
+
+%----------------- EXERCISE 1 ------------------
+\section{}
+\subsection*{A/} An infinite cylinder with axis Oz and radius $R$ carries a uniform positive surface charge density $\sigma$.
+
+\begin{enumerate}
+    \item Show that the electrostatic field created at any point $M$ is radial and depends only on the distance $r = HM$ where $H$ is the projection of $M$ on the Oz axis (figure 1).
+    
+    We can therefore write:
+    $\vec{E}(r) = E(r) \vec{e_r}$
+    
+    \item Calculate $E(r)$ at any point $M$ in space.
+    
+    \item Plot the variation of the magnitude of the electrostatic field $E$ as a function of $r$.
+\end{enumerate}
+
+
+\begin{figure}[H]
+    \centering
+    % Cylinder figure - compact version
+    \begin{tikzpicture}[scale=1.5] % Reduced scale to make it smaller
+
+    % Z-axis
+    \draw[-{Stealth[length=2mm]}] (0,0) -- (0,3.5) node[above] {$z$};
+    
+    % Cylinder
+    \draw (0,0.5) ellipse (0.8cm and 0.25cm); % Bottom ellipse
+    \draw (0,2.5) ellipse (0.8cm and 0.25cm); % Top ellipse
+    \draw (-0.8,0.5) -- (-0.8,2.5); % Left line
+    \draw (0.8,0.5) -- (0.8,2.5);   % Right line
+    
+    % Dotted lines for cylinder
+    \draw[dotted] (-0.8,0) -- (-0.8,0.5);
+    \draw[dotted] (0.8,0) -- (0.8,0.5);
+    \draw[dotted] (-0.8,2.5) -- (-0.8,3.5);
+    \draw[dotted] (0.8,2.5) -- (0.8,3.5);
+    \draw[dotted] (0,0) -- (0,0.5);
+    
+    % Radius R with arrow
+    \draw[<->] (-0.8,0) -- (0,0) node[midway, below] {$R$};
+    
+    % Point H on z-axis
+    \filldraw (0,1.7) circle (0.04) node[left=0.08cm] {$H$};
+    
+    % Point M
+    \filldraw (1.6,1.7) circle (0.04) node[right=0.08cm] {$M$};
+    
+    % r vector from H to M
+    \draw[->] (0,1.7) -- (1.6,1.7) node[midway, above] {$r$};
+    
+    % Vector e_r
+    \draw[-{Stealth[length=2mm]}] (1.7,1.7) -- (2.2,1.7) node[right] {$\vec{e}_{r}$};
+    
+\end{tikzpicture}
+\caption{Cylinder figure}
+\end{figure}
+
+\subsection*{B/} Consider a cylindrical capacitor formed by two armatures with the same Oz axis, height $h$, and respective radii $R_1$ and $R_2$ with $R_1 < R_2$.
+
+The internal armature carries a charge $Q > 0$, and the electrostatic potentials of the internal and external armatures are $V_1$ and $V_2$ respectively.
+
+\begin{enumerate}
+    \item Determine the capacitance $C$ of the capacitor as a function of $\varepsilon_0$, $h$, $R_1$, and $R_2$.
+    
+    \item What becomes of the expression for $C$ if the radii of the armatures are very close.
+    Let $R_2 - R_1 = e \ll R_1$. Express $C$ as a function of the surface area $s$ of the internal armature.
+\end{enumerate}
+
+\newpage
+
+\begin{answerbox}
+\subsection*{A/}
+    \begin{enumerate}
+        \item \textbf{Show that the electrostatic field is radial and depends only on $r = HM$:}
+    
+            The infinite cylinder has cylindrical symmetry. Due to this symmetry:
+            
+                
+    - The electric field must be radial (i.e., directed along $\vec{e}_r$).
+                
+    - The magnitude of the field depends only on the radial distance $r$ from the axis (Oz), since there is no dependence on $z$ or angular direction.
+            
+    
+            Therefore, we can write:
+            $$
+            \vec{E}(r) = E(r)\,\vec{e}_r
+            $$
+    
+        \item \textbf{Calculate $E(r)$ at any point M in space:}
+    
+            Use Gauss's Law:
+            $$
+            \oint \vec{E} \cdot d\vec{S} = \frac{Q_{\text{enc}}}{\varepsilon_0}
+            $$
+    
+            Consider a Gaussian surface as a coaxial cylinder of radius $r$ and height $h$:
+            
+                
+    - For $r < R$: No charge enclosed, so
+                    $$
+                    E(r) = 0
+                    $$
+                
+    - For $r \geq R$: Enclosed charge is $Q_{\text{enc}} = \sigma \cdot 2\pi R h$, and the flux becomes:
+                    $$
+                    E(r) \cdot 2\pi r h = \frac{\sigma \cdot 2\pi R h}{\varepsilon_0}
+                    \Rightarrow E(r) = \frac{\sigma R}{\varepsilon_0 r}
+                    $$
+            
+    
+            Final result:
+            $$
+            E(r) =
+            \begin{cases}
+                0 & \text{if } r < R \\
+                \dfrac{\sigma R}{\varepsilon_0 r} & \text{if } r \geq R
+            \end{cases}
+            $$
+    
+        \item \textbf{Plot the variation of the magnitude of the electrostatic field $E$ as a function of $r$:}
+    
+            A qualitative plot shows:
+            
+                
+    - $E(r) = 0$ for $r < R$
+                
+    - $E(r)$ decreases as $1/r$ for $r \geq R$
+            
+    
+            The graph would have a sharp jump at $r = R$, starting from zero to a maximum value of $\frac{\sigma}{\varepsilon_0}$, then decreasing.
+    
+    \end{enumerate}
+
+\subsection*{B/}
+    \begin{enumerate}
+        \item \textbf{Determine the capacitance $C$ of the capacitor:}
+    
+            The electric field between two cylinders is given by (from Gauss’s law):
+            $$
+            E(r) = \frac{\lambda}{2\pi\varepsilon_0 r}, \quad \text{where } \lambda = \frac{Q}{h}
+            $$
+    
+            The potential difference between the two cylinders is:
+            $$
+            V = \int_{R_1}^{R_2} E(r)\,dr = \frac{Q}{2\pi\varepsilon_0 h} \ln\left(\frac{R_2}{R_1}\right)
+            $$
+    
+            Then, the capacitance is:
+            $$
+            C = \frac{Q}{V} = \frac{2\pi\varepsilon_0 h}{\ln\left(\frac{R_2}{R_1}\right)}
+            $$
+    
+        \item \textbf{Approximation when $R_2 - R_1 = e \ll R_1$:}
+    
+            When $e \ll R_1$, we can approximate:
+            $$
+            \ln\left(\frac{R_2}{R_1}\right) = \ln\left(1 + \frac{e}{R_1}\right) \approx \frac{e}{R_1}
+            $$
+    
+            Substituting into the expression for $C$:
+            $$
+            C \approx \frac{2\pi\varepsilon_0 h R_1}{e}
+            $$
+    
+            Now, note that the surface area of the internal armature is:
+            $$
+            S = 2\pi R_1 h
+            $$
+    
+            So:
+            $$
+            C \approx \frac{\varepsilon_0 S}{e}
+            $$
+    
+    \end{enumerate}
+\end{answerbox}
+
+%----------------- END ------------------
+\end{document}
