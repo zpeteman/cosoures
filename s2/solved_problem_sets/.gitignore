@@ -4,6 +4,8 @@
 *.fls
 *.log
 *.synctex.gz
+*.png
+
 
 # Keep PDF files
 /home/illy/Documents/sup/s2/solved_problem_sets.pdf
