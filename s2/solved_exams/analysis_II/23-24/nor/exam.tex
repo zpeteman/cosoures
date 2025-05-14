@@ -1,0 +1,127 @@
+\documentclass[12pt]{article}
+
+%----------------- Packages ------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage[breakable]{tcolorbox}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{float}
+\usetikzlibrary{arrows.meta, decorations.markings}
+
+%----------------- Page Setup -----------------
+\geometry{a4paper, margin=2.5cm}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Normal Exam — \textbf{23-24}}
+\lhead{Analysis II}
+\cfoot{\thepage}
+
+%----------------- Title Styling --------------
+\titleformat{\section}{\normalfont\Large\bfseries}{Exercise \thesection:}{1em}{}
+\titleformat{\subsection}{\normalfont\bfseries}{Answer:}{1em}{}
+
+%----------------- Custom Boxes ----------------
+\tcbuselibrary{listingsutf8}
+\newtcolorbox{answerbox}{
+  colback=gray!10,
+  colframe=black,
+  fonttitle=\bfseries,
+  title=Answer Area,
+  breakable,
+  before skip=10pt,
+  after skip=10pt
+}
+
+%----------------- Document Start --------------
+\begin{document}
+
+%----------------- Exam Info -------------------
+\begin{center}
+  \Large\textbf{Ibn Tofail University} \\[1em]
+  \large\textit{Analysis II — Normal Exam} \\[0.5em]
+  \large\textit{Year: 23-24} \\[2em]
+\end{center}
+
+\vspace{0.5cm}
+
+%----------------- EXERCISE 1 ------------------
+\section{}
+Let $f$ be the function defined on $\mathbb{R}$ by:
+$$\forall x \in \mathbb{R}, f(x) = \frac{1}{e^x + 1}.$$
+
+\begin{enumerate}
+\item Find the Taylor expansion of $f$ up to order 3 at zero.
+\item Deduce the equation of the tangent line to the curve $C_f$ of $f$ at the point with abscissa 0.
+\item Also deduce that the curve $C_f$ crosses the tangent line at 0 (i.e., $(0, f(0))$ is an inflection point).
+\item \begin{enumerate}
+   \item Study the convexity and concavity of the function $f$ on $\mathbb{R}$.
+   \item Deduce that for all $(a, b) \in \mathbb{R}^2$ such that $a \geq 1$ and $b \geq 1$, we have:
+   $$\frac{2}{1 + \sqrt{ab}} \leq \frac{1}{1 + a} + \frac{1}{1 + b}.$$
+   \end{enumerate}
+\end{enumerate}
+N.B.: Question 4 is independent of the previous questions.
+
+\newpage
+
+\begin{answerbox}
+
+
+\end{answerbox}
+
+\newpage
+
+%----------------- EXERCISE 2 ------------------
+\section{}
+Consider the function $F: \mathbb{R} \rightarrow \mathbb{R}$ defined by:
+$$F(x) = \int_{x}^{2x} e^{-t^2} dt.$$
+
+\begin{enumerate}
+\item Verify that $F$ is defined on $\mathbb{R}$. Also show that $F$ is odd.
+\item Show that $F$ is differentiable on $\mathbb{R}$, and calculate its derivative. Deduce the variations of $F$ on $\mathbb{R}$.\\
+(Hint: use any antiderivative $F_0$ of the function $t \mapsto e^{-t^2}$).
+\item Show that
+$$\forall x \geq 0, 0 \leq F(x) \leq x \cdot e^{-x^2}.$$
+\item Deduce $\lim_{x \to +\infty} F(x)$.
+\item Sketch the curve $C_F$ of the function $F$.
+\end{enumerate}
+
+\newpage
+
+\begin{answerbox}
+
+
+\end{answerbox}
+
+\newpage
+
+%----------------- exercise 3 ------------------
+\section{}
+For all $(n, m) \in \mathbb{N} \times \mathbb{N}$, let:
+$$I_{n,m} = \int_{0}^{1} t^n \cdot (1-t)^m dt.$$
+
+\begin{enumerate}
+\item Calculate $I_{n,0}$ for all $n \in \mathbb{N}$.
+\item Show (using an appropriate change of variable) that $I_{n,m} = I_{m,n}$ for all $(n, m) \in \mathbb{N} \times \mathbb{N}$.
+\item Show (using integration by parts) that
+$$\forall (n, m) \in \mathbb{N}^* \times \mathbb{N}, I_{n,m} = \frac{n}{m+1} \cdot I_{n-1,m+1}.$$
+\item Deduce that
+$$\forall (n, m) \in \mathbb{N}^2, I_{n,m} = \frac{n! \, m!}{(n+m+1)!}.$$
+\item Show (using the binomial theorem) that
+$$\forall (n, m) \in \mathbb{N}^2, I_{n,m} = \sum_{k=0}^{n} \binom{n}{k} \cdot \frac{(-1)^k}{m+k+1}.$$
+\end{enumerate}
+
+\newpage
+
+\begin{answerbox}
+
+
+\end{answerbox}
+
+%----------------- END ------------------
+\end{document}

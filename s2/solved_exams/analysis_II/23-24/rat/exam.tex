@@ -1,0 +1,112 @@
+\documentclass[12pt]{article}
+
+%----------------- Packages ------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage[breakable]{tcolorbox}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{float}
+\usetikzlibrary{arrows.meta, decorations.markings}
+
+%----------------- Page Setup -----------------
+\geometry{a4paper, margin=2.5cm}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Make-up Exam — \textbf{23-24}}
+\lhead{Analysis II}
+\cfoot{\thepage}
+
+%----------------- Title Styling --------------
+\titleformat{\section}{\normalfont\Large\bfseries}{Exercise \thesection:}{1em}{}
+\titleformat{\subsection}{\normalfont\bfseries}{Answer:}{1em}{}
+
+%----------------- Custom Boxes ----------------
+\tcbuselibrary{listingsutf8}
+\newtcolorbox{answerbox}{
+  colback=gray!10,
+  colframe=black,
+  fonttitle=\bfseries,
+  title=Answer Area,
+  breakable,
+  before skip=10pt,
+  after skip=10pt
+}
+
+%----------------- Document Start --------------
+\begin{document}
+
+%----------------- Exam Info -------------------
+\begin{center}
+  \Large\textbf{Ibn Tofail University} \\[1em]
+  \large\textit{Analysis II — Make-up Exam} \\[0.5em]
+  \large\textit{Year: 23-24} \\[2em]
+\end{center}
+
+\vspace{0.5cm}
+
+%----------------- EXERCISE 1 ------------------
+\section{}
+Let $f: [0, 1] \rightarrow \mathbb{R}$ be an arbitrary continuous function.
+\begin{enumerate}
+\item Show that if $\int_{0}^{1} f(x) , dx = 0$, then there exists $c \in [0, 1]$ such that $f(c) = 0$.
+\item Deduce that if $\int_{0}^{1} f(x) , dx = \frac{1}{2}$, then there exists $d \in [0, 1]$ such that $f(d) = d$.
+\end{enumerate}
+
+\newpage
+
+\begin{answerbox}
+
+
+\end{answerbox}
+
+\newpage
+
+%----------------- EXERCISE 2 ------------------
+\section{}
+Consider the function $F: \mathbb{R} \rightarrow \mathbb{R}$ defined by:
+$$F(x)=\int_{x}^{2x} \frac{e^{-t}}{t} \, dt.$$
+\begin{enumerate}
+\item Verify that $F$ is defined on $\mathbb{R}^+$, i.e., $D_F = \mathbb{R}^+$.
+\item Show that $F$ is differentiable on $\mathbb{R}^+$, and calculate its derivative. Deduce the variations of $F$ on $\mathbb{R}^+$.
+(Hint: use any primitive $F_0$ of the function $t \mapsto e^{-t}/t$).
+\item Show that $\forall x > 0, (\ln 2) \cdot e^{-2x} \leq F(x) \leq (\ln 2) \cdot e^{-x}$.
+\item Deduce $\lim_{x \to 0^+} F(x)$ and $\lim_{x \to +\infty} F(x)$.
+\end{enumerate}
+
+\newpage
+
+\begin{answerbox}
+
+
+\end{answerbox}
+
+\newpage
+
+%----------------- EXERCISE 3 ------------------
+\section{}
+For all $n \in \mathbb{N}$, let:
+$$I_n=\int_{0}^{1} x^n \cdot e^{-x} \, dx.$$
+\begin{enumerate}
+\item Justify the existence of $I_n$ for all $n \in \mathbb{N}$. Then calculate $I_0$.
+\item Show that $\forall n \geq 0, 0 \leq I_n \leq \frac{1}{n+1}$.
+\item Deduce that the sequence $(I_n){n \geq 0}$ is convergent and calculate its limit.
+\item Show (using integration by parts) that $\forall n \in \mathbb{N}, I{n+1} = (n+1)I_n - e^{-1}$.
+\item Deduce that $\forall n \geq 0, 0 \leq I_n - \frac{e^{-1}}{n+1} \leq \frac{1}{(n+1)(n+2)}$.
+\item From 5, deduce a simple equivalent of $I_n$ as $n$ approaches infinity (i.e., a non-zero numerical sequence $(J_n){n \geq 0}$ such that $\lim{n \to +\infty} \frac{I_n}{J_n} = 1$).
+\end{enumerate}
+
+\newpage
+
+\begin{answerbox}
+
+
+\end{answerbox}
+
+%----------------- END ------------------
+\end{document}

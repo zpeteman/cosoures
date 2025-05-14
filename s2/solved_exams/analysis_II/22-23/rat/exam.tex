@@ -1,0 +1,131 @@
+\documentclass[12pt]{article}
+
+%----------------- Packages ------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage[breakable]{tcolorbox}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{float}
+\usetikzlibrary{arrows.meta, decorations.markings}
+
+%----------------- Page Setup -----------------
+\geometry{a4paper, margin=2.5cm}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Make-up Exam — \textbf{22-23}}
+\lhead{Analysis II}
+\cfoot{\thepage}
+
+%----------------- Title Styling --------------
+\titleformat{\section}{\normalfont\Large\bfseries}{Exercise \thesection:}{1em}{}
+\titleformat{\subsection}{\normalfont\bfseries}{Answer:}{1em}{}
+
+%----------------- Custom Boxes ----------------
+\tcbuselibrary{listingsutf8}
+\newtcolorbox{answerbox}{
+  colback=gray!10,
+  colframe=black,
+  fonttitle=\bfseries,
+  title=Answer Area,
+  breakable,
+  before skip=10pt,
+  after skip=10pt
+}
+
+%----------------- Document Start --------------
+\begin{document}
+
+%----------------- Exam Info -------------------
+\begin{center}
+  \Large\textbf{Ibn Tofail University} \\[1em]
+  \large\textit{Analysis II — Make-up Exam} \\[0.5em]
+  \large\textit{Year: 22-23} \\[2em]
+\end{center}
+
+\vspace{0.5cm}
+
+%----------------- EXERCISE 1 ------------------
+\section{}
+Let $a, b \in \mathbb{R}$ such that $a < b$ and $f: [a, b] \rightarrow \mathbb{R}$ a non-zero continuous function on $[a, b]$ such that
+\begin{align*}
+\int_a^b f(x) , dx = 0 \quad \text{and} \quad \int_a^b x f(x) , dx = 0.
+\end{align*}
+\begin{enumerate}
+\item Using the mean value theorem, show that there exists at least one $c \in [a, b]$ such that $f(c) = 0$.
+\item Verify that $f$ necessarily changes sign on $[a, b]$. (Hint: use the fact that $f$ is continuous and not identically zero on $[a, b]$).
+\item Suppose that $c$ is the only point in $[a, b]$ such that $f(c) = 0$. In this case, we have
+\begin{align*}
+\forall x \in [a, c[, f(x) < 0 \quad \text{and} \quad \forall x \in ]c, b], f(x) > 0.
+\end{align*}
+\begin{enumerate}
+\item Show that $\int_a^b (x-c)f(x) , dx > 0$.
+\item Deduce a contradiction.
+\end{enumerate}
+\item State a conclusion summarizing the preceding results.
+\end{enumerate}
+
+\newpage
+
+\begin{answerbox}
+
+
+\end{answerbox}
+
+\newpage
+
+%----------------- EXERCISE 2 ------------------
+\section{}
+Consider the two integrals $I$ and $J$ defined by:
+\begin{align*}
+I = \int_0^{\pi/2} \frac{\cos x}{\cos x + \sin x} , dx \quad \text{and} \quad J = \int_0^{\pi/2} \frac{\sin x}{\cos x + \sin x} , dx.
+\end{align*}
+\begin{enumerate}
+\item Using an appropriate change of variable, show that $I = J$.
+\item Calculate $I + J$. Deduce the common value of $I$ and $J$.
+\item Deduce (using an appropriate change of variable) the integral $\int_0^1 \frac{1}{\sqrt{1-t^2} + t} , dt$.
+\end{enumerate}
+
+\newpage
+
+\begin{answerbox}
+
+
+\end{answerbox}
+
+\newpage
+
+%----------------- EXERCISE 3 ------------------
+\section{}
+For all $n \in \mathbb{N}$, we define:
+\begin{align*}
+I_n = \int_0^1 \frac{x^n}{x+1} , dx.
+\end{align*}
+\begin{enumerate}
+\item Justify the existence of $I_n$ for all $n \in \mathbb{N}$. Then calculate $I_0$.
+\item Verify that for all $n \in \mathbb{N}$, we have the following inequality:
+\begin{align*}
+\forall x \in [0, 1], \frac{x^n}{2} \leq \frac{x^n}{x+1} \leq x^n.
+\end{align*}
+\item Deduce that $\lim_{n \to +\infty} I_n = 0$.
+\item Calculate for all $n \in \mathbb{N}$, the value of $I_n + I_{n+1}$.
+\item Deduce that
+\begin{align*}
+\lim_{n \to +\infty} \left( \sum_{k=1}^n \frac{(-1)^{k+1}}{k} \right) = \ln 2.
+\end{align*}
+\end{enumerate}
+
+\newpage
+
+\begin{answerbox}
+
+
+\end{answerbox}
+
+%----------------- END ------------------
+\end{document}

@@ -1,0 +1,131 @@
+\documentclass[12pt]{article}
+
+%----------------- Packages ------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage[breakable]{tcolorbox}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{float}
+\usetikzlibrary{arrows.meta, decorations.markings}
+
+%----------------- Page Setup -----------------
+\geometry{a4paper, margin=2.5cm}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Make-up Exam — \textbf{21-22}}
+\lhead{Analysis II}
+\cfoot{\thepage}
+
+%----------------- Title Styling --------------
+\titleformat{\section}{\normalfont\Large\bfseries}{Exercise \thesection:}{1em}{}
+\titleformat{\subsection}{\normalfont\bfseries}{Answer:}{1em}{}
+
+%----------------- Custom Boxes ----------------
+\tcbuselibrary{listingsutf8}
+\newtcolorbox{answerbox}{
+  colback=gray!10,
+  colframe=black,
+  fonttitle=\bfseries,
+  title=Answer Area,
+  breakable,
+  before skip=10pt,
+  after skip=10pt
+}
+
+%----------------- Document Start --------------
+\begin{document}
+
+%----------------- Exam Info -------------------
+\begin{center}
+  \Large\textbf{Ibn Tofail University} \\[1em]
+  \large\textit{Analysis II — Make-up Exam} \\[0.5em]
+  \large\textit{Year: 21-22} \\[2em]
+\end{center}
+
+\vspace{0.5cm}
+
+%----------------- EXERCISE 1 ------------------
+\section{}
+The three questions are independent:
+\begin{enumerate}
+    \item Show that:
+    $\forall x \in \mathbb{R}^+ : x - \frac{x^2}{2} \leq \ln(1 + x) \leq x - \frac{x^2}{2} + \frac{x^3}{3}$.
+    
+    \item Calculate the following limit:
+    $\lim_{x\to 0}\left(\cot^2(3x) - \frac{1}{9x^2}\right)$
+    
+    \item Find an equivalent near 0 of $2\exp u - \sqrt{1 + 4u} - \sqrt{1 + 6u^2}$.
+\end{enumerate}
+
+\newpage
+
+\begin{answerbox}
+
+
+\end{answerbox}
+
+\newpage
+
+%----------------- EXERCISE 2 ------------------
+\section{}
+\begin{enumerate}
+  \item Using concavity:
+  \begin{enumerate}
+      \item Show that: $\forall x \in [0; \frac{\pi}{2}] : \sin(x) \leq x$.
+      
+      \item Also show that: $\forall u \in [0; 1] : \sin(\frac{\pi}{2}u) \geq u$. Deduce that $\forall x \in [0; \frac{\pi}{2}] : \sin(x) \geq \frac{2}{\pi}x$ and give the resulting bounds for $\sin x$ on $[0; \frac{\pi}{2}]$.
+  \end{enumerate}
+  
+  \item Let $n \in \mathbb{N}^*$ and $a_1, \cdots, a_n \in \mathbb{R}^*_+$. Show that:
+  $\frac{n}{\frac{1}{a_1} + \cdots + \frac{1}{a_n}} \leq (a_1 \cdots a_n)^{\frac{1}{n}} \leq \frac{a_1 + \cdots + a_n}{n}$
+\end{enumerate}
+
+\newpage
+
+\begin{answerbox}
+
+
+\end{answerbox}
+
+\newpage
+
+%----------------- EXERCISE 3 ------------------
+\section{}
+Show that the function below is of class $C^1$ on $\mathbb{R}$. Using a Taylor expansion, give the equation of the tangent to the curve $C_f$ at the point with abscissa 0, as well as the position of the curve, near 0, with respect to the tangent:
+$f(x) = \frac{1}{x}\ln\frac{\exp(2x) - 1}{2x}$.
+
+\newpage
+
+\begin{answerbox}
+
+
+\end{answerbox}
+
+\newpage
+
+%----------------- EXERCISE 4 ------------------
+\section{}
+Let $f$ be the function defined by: $f(x) = (x - 2)\exp\left(\frac{x-1}{x+1}\right)$.
+\begin{enumerate}
+    \item Does the curve $C_f$, representing $f$, have a vertical asymptote? Justify.
+    
+    \item Study the equation of the asymptote to the representative curve of $f$ in the neighborhood of $+\infty$ and $-\infty$.
+    
+    \item Study the relative position of this asymptote with respect to the curve $C_f$.
+\end{enumerate}
+
+\newpage
+
+\begin{answerbox}
+
+
+\end{answerbox}
+
+%----------------- END ------------------
+\end{document}

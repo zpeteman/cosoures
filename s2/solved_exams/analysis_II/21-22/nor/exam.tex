@@ -1,0 +1,142 @@
+\documentclass[12pt]{article}
+
+%----------------- Packages ------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage[breakable]{tcolorbox}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{float}
+\usetikzlibrary{arrows.meta, decorations.markings}
+
+%----------------- Page Setup -----------------
+\geometry{a4paper, margin=2.5cm}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Normal Exam — \textbf{21-22}}
+\lhead{Analysis II}
+\cfoot{\thepage}
+
+%----------------- Title Styling --------------
+\titleformat{\section}{\normalfont\Large\bfseries}{Exercise \thesection:}{1em}{}
+\titleformat{\subsection}{\normalfont\bfseries}{Answer:}{1em}{}
+
+%----------------- Custom Boxes ----------------
+\tcbuselibrary{listingsutf8}
+\newtcolorbox{answerbox}{
+  colback=gray!10,
+  colframe=black,
+  fonttitle=\bfseries,
+  title=Answer Area,
+  breakable,
+  before skip=10pt,
+  after skip=10pt
+}
+
+%----------------- Document Start --------------
+\begin{document}
+
+%----------------- Exam Info -------------------
+\begin{center}
+  \Large\textbf{Ibn Tofail University} \\[1em]
+  \large\textit{Analysis II — Normal Exam} \\[0.5em]
+  \large\textit{Year: 21-22} \\[2em]
+\end{center}
+
+\vspace{0.5cm}
+
+%----------------- EXERCISE 1 ------------------
+\section{}
+Calculate the following limits:
+\begin{enumerate}
+    \item $\displaystyle \lim_{x \to 0} \frac{\sin x - \arcsin x}{\sin^2 x}$.
+    
+    \item $\displaystyle \lim_{x \to 0} \frac{4^x - 2^x}{5^x - 3^x}$.
+    
+    \item $\displaystyle \lim_{x \to +\infty} \left(a^\frac{1}{x} + b^\frac{1}{x} + 
+    c^\frac{1}{x^3}\right)^x$, where $a, b, c \in \mathbb{R}^*_+$ are fixed.
+\end{enumerate}
+
+\newpage
+
+\begin{answerbox}
+
+
+\end{answerbox}
+
+\newpage
+
+%----------------- EXERCISE 2 ------------------
+\section{}
+Course questions and applications:
+\begin{enumerate}
+    \item State Leibniz's formula.
+    
+    \item Let $f$ be the function defined by $f(x) = x^3 e^{3x}$. For all $n \in \mathbb{N}$, determine the $n$-th derivative of $f$.
+    
+    \item State Taylor's formula with integral remainder.
+    
+    For the remainder of this exercise, assume that $x \geq 0$.
+    
+    \item Show that
+    $\forall x \geq 0 : \left| e^{-x} - \sum_{k=0}^{n}\frac{(-1)^k x^k}{k!} \right| \leq \frac{x^{n+1}}{(n+1)!}$
+    
+    \item Show that $\forall n \in \mathbb{N}^* : \lim_{n \to +\infty} \frac{x^n}{n!} = 0$.
+    
+    \item Deduce $\lim_{n \to +\infty} \sum_{k=0}^{n}\frac{(-1)^k x^k}{k!}$.
+\end{enumerate}
+
+\newpage
+
+\begin{answerbox}
+
+
+\end{answerbox}
+
+\newpage
+
+%----------------- EXERCISE 3 ------------------
+\section{}
+Let $f$ be the function defined by $f(x) = \frac{e^x - \ln(1+2x)}{1+\sin(x)}$.
+\begin{enumerate}
+    \item Why can we state that this function has a Taylor expansion of any order around $0$?
+    
+    \item Determine a third-order Taylor expansion of $f$ around $0$. What are the values of $f''(0)$ and $f^{(3)}(0)$?
+    
+    \item Give the equation of the tangent line to the curve of $f$ at the point with $x$-coordinate $0$.
+    
+    \item What is the relative position of the curve of $f$ with respect to this tangent line?
+\end{enumerate}
+
+\newpage
+
+\begin{answerbox}
+
+
+\end{answerbox}
+
+\newpage
+
+%----------------- EXERCISE 4 ------------------
+\section{}
+Let $f$ be the function defined by: $f(x) = e^{\frac{1}{x}}\sqrt{x^2 + x + 1}$.
+\begin{enumerate}
+    \item Study the asymptote of the curve representing $f$ in the neighborhood of $+\infty$.
+    
+    \item Study the relative position of this asymptote with respect to the curve representing $f$.
+\end{enumerate}
+
+\newpage
+
+\begin{answerbox}
+
+
+\end{answerbox}
+
+%----------------- END ------------------
+\end{document}
