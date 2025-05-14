@@ -70,8 +70,103 @@ N.B.: Question 4 is independent of the previous questions.
 \newpage
 
 \begin{answerbox}
+  \begin{enumerate}
+    \item Find the Taylor expansion of $ f(x) = \frac{1}{e^x + 1} $ up to order 3 at zero.
+    
+    First, recall that:
+    $$
+    e^x = 1 + x + \frac{x^2}{2} + \frac{x^3}{6} + o(x^3)
+    $$
+    So,
+    $$
+    e^x + 1 = 2 + x + \frac{x^2}{2} + \frac{x^3}{6} + o(x^3)
+    $$
+    Now compute $ \frac{1}{e^x + 1} $ using a series expansion. Let:
+    $$
+    f(x) = \frac{1}{2 + x + \frac{x^2}{2} + \frac{x^3}{6}} = \frac{1}{2} \cdot \frac{1}{1 + \frac{x}{2} + \frac{x^2}{4} + \frac{x^3}{12}}
+    $$
+    Use the geometric series expansion:
+    $$
+    \frac{1}{1 + u} = 1 - u + u^2 - u^3 + \cdots
+    $$
+    where $ u = \frac{x}{2} + \frac{x^2}{4} + \frac{x^3}{12} $. Expand up to order 3:
+    $$
+    f(x) = \frac{1}{2} \left(1 - \left(\frac{x}{2} + \frac{x^2}{4} + \frac{x^3}{12}\right) + \left(\frac{x}{2} + \frac{x^2}{4}\right)^2 - \left(\frac{x}{2}\right)^3 + \cdots \right)
+    $$
+    Compute each term:
+    $$
+    \left(\frac{x}{2} + \frac{x^2}{4}\right)^2 = \frac{x^2}{4} + \frac{x^3}{4} + \cdots,\quad \left(\frac{x}{2}\right)^3 = \frac{x^3}{8}
+    $$
+    Combine all terms:
+    $$
+    f(x) = \frac{1}{2} \left(1 - \frac{x}{2} - \frac{x^2}{4} - \frac{x^3}{12} + \frac{x^2}{4} + \frac{x^3}{4} - \frac{x^3}{8} + \cdots \right)
+    $$
+    Simplify:
+    $$
+    f(x) = \frac{1}{2} \left(1 - \frac{x}{2} + \left(-\frac{x^2}{4} + \frac{x^2}{4}\right) + \left(-\frac{x^3}{12} + \frac{x^3}{4} - \frac{x^3}{8}\right) + \cdots \right)
+    $$
+    Final simplification gives:
+    $$
+    f(x) = \frac{1}{2} - \frac{x}{4} + \frac{x^3}{48} + o(x^3)
+    $$
 
+    \item Deduce the equation of the tangent line to the curve $ C_f $ of $ f $ at the point with abscissa 0.
 
+    The tangent line at $ x = 0 $ is given by:
+    $$
+    y = f(0) + f'(0)(x - 0)
+    $$
+    From the expansion:
+    $$
+    f(0) = \frac{1}{2},\quad f'(0) = -\frac{1}{4}
+    $$
+    So the equation is:
+    $$
+    y = \frac{1}{2} - \frac{x}{4}
+    $$
+
+    \item Show that the curve $ C_f $ crosses the tangent line at $ x = 0 $, i.e., $ (0, f(0)) $ is an inflection point.
+
+    An inflection point occurs when the concavity changes, or equivalently, when the second derivative changes sign. From the Taylor expansion:
+    $$
+    f''(0) = 0,\quad f'''(0) = \frac{1}{8} \neq 0
+    $$
+    Since the first non-zero derivative after the second is odd (third), the function changes concavity at $ x = 0 $, so $ (0, \frac{1}{2}) $ is an inflection point.
+
+    \item Study the convexity and concavity of $ f $ on $ \mathbb{R} $.
+
+    Recall:
+    $$
+    f''(x) = \frac{e^x(e^x - 1)}{(e^x + 1)^3}
+    $$
+    Sign of $ f''(x) $ depends on $ e^x - 1 $:
+    $$
+    f''(x) > 0 \iff x > 0,\quad f''(x) < 0 \iff x < 0
+    $$
+    Therefore:
+    - $ f $ is concave on $ (-\infty, 0) $
+    - $ f $ is convex on $ (0, \infty) $
+
+    \item Deduce that for all $ a, b \geq 1 $, we have:
+    $$
+    \frac{2}{1 + \sqrt{ab}} \leq \frac{1}{1 + a} + \frac{1}{1 + b}
+    $$
+
+    Consider the function $ g(x) = \frac{1}{1 + e^x} $. This is convex on $ [0, \infty) $ since $ f(x) = \frac{1}{1 + e^x} $ is convex there.
+
+    Apply Jensen's inequality for convex functions:
+    $$
+    g\left(\frac{\ln a + \ln b}{2}\right) \leq \frac{g(\ln a) + g(\ln b)}{2}
+    $$
+    Note that $ g(\ln a) = \frac{1}{1 + a} $, etc., and:
+    $$
+    g\left(\frac{\ln a + \ln b}{2}\right) = \frac{1}{1 + \sqrt{ab}}
+    $$
+    Multiply both sides by 2:
+    $$
+    \frac{2}{1 + \sqrt{ab}} \leq \frac{1}{1 + a} + \frac{1}{1 + b}
+    $$
+\end{enumerate}
 \end{answerbox}
 
 \newpage
@@ -94,8 +189,79 @@ $$\forall x \geq 0, 0 \leq F(x) \leq x \cdot e^{-x^2}.$$
 \newpage
 
 \begin{answerbox}
+  \begin{enumerate}
+    \item Verify that $ F $ is defined on $ \mathbb{R} $. Also show that $ F $ is odd.
 
+    The function $ t \mapsto e^{-t^2} $ is continuous on $ \mathbb{R} $, so it is integrable over any interval. Hence, for all $ x \in \mathbb{R} $, the integral $ \int_0^{2x} e^{-t^2} dt $ exists, and therefore $ F(x) $ is well-defined on $ \mathbb{R} $.
 
+    To show that $ F $ is odd:
+    $$
+    F(-x) = \int_0^{-2x} e^{-t^2} dt = -\int_{-2x}^0 e^{-t^2} dt = -\int_0^{2x} e^{-u^2} du = -F(x)
+    $$
+    (using substitution $ u = -t $). So $ F $ is odd.
+
+    \item Show that $ F $ is differentiable on $ \mathbb{R} $, and calculate its derivative. Deduce the variations of $ F $ on $ \mathbb{R} $.
+
+    Let $ F_0 $ be an antiderivative of $ t \mapsto e^{-t^2} $. Then:
+    $$
+    F(x) = F_0(2x) - F_0(0)
+    $$
+    Differentiate using the chain rule:
+    $$
+    F'(x) = 2 \cdot e^{-(2x)^2} = 2e^{-4x^2}
+    $$
+    Since $ e^{-4x^2} > 0 $ for all $ x \in \mathbb{R} $, we have $ F'(x) > 0 $ for all $ x $. Therefore, $ F $ is strictly increasing on $ \mathbb{R} $.
+
+    \item Show that $ \forall x \geq 0, \; 0 \leq F(x) \leq x \cdot e^{-x^2} $.
+
+    First, since $ e^{-t^2} \geq 0 $, the integral from 0 to $ 2x $ is non-negative:
+    $$
+    F(x) = \int_0^{2x} e^{-t^2} dt \geq 0
+    $$
+
+    Next, observe that for $ t \in [0, 2x] $, we have $ t^2 \geq x^2 $ when $ t \geq x $. But more simply, use the inequality:
+    $$
+    e^{-t^2} \leq e^{-x^2}, \quad \text{for } t \in [0, 2x]
+    $$
+    because $ t \geq x \Rightarrow t^2 \geq x^2 $, so $ -t^2 \leq -x^2 \Rightarrow e^{-t^2} \leq e^{-x^2} $
+
+    Therefore:
+    $$
+    F(x) = \int_0^{2x} e^{-t^2} dt \leq \int_0^{2x} e^{-x^2} dt = 2x \cdot e^{-x^2}
+    $$
+    So:
+    $$
+    0 \leq F(x) \leq 2x \cdot e^{-x^2}
+    $$
+
+    \item Deduce $ \lim_{x \to +\infty} F(x) $.
+
+    From the previous inequality:
+    $$
+    0 \leq F(x) \leq 2x \cdot e^{-x^2}
+    $$
+    As $ x \to +\infty $, $ 2x \cdot e^{-x^2} \to 0 $ (because exponential decay dominates polynomial growth), so by the squeeze theorem:
+    $$
+    \lim_{x \to +\infty} F(x) = 0
+    $$
+
+    \item Sketch the curve $ C_F $ of the function $ F $.
+
+    Based on our findings:
+    
+        
+- $ F $ is odd ⇒ symmetric about the origin.
+        
+- $ F'(x) = 2e^{-4x^2} > 0 $ ⇒ strictly increasing.
+        
+- $ F(x) \to 0 $ as $ x \to +\infty $, and $ F(x) \to 0 $ as $ x \to -\infty $ due to oddness.
+        
+- At $ x = 0 $, $ F(0) = 0 $.
+    
+
+    So the graph starts at the origin, increases smoothly, approaching a horizontal asymptote at $ y = 0 $ as $ x \to \pm\infty $, with symmetry about the origin.
+
+\end{enumerate}
 \end{answerbox}
 
 \newpage
@@ -119,8 +285,79 @@ $$\forall (n, m) \in \mathbb{N}^2, I_{n,m} = \sum_{k=0}^{n} \binom{n}{k} \cdot \
 \newpage
 
 \begin{answerbox}
+  \begin{enumerate}
+    \item Verify that $ F $ is defined on $ \mathbb{R} $. Also show that $ F $ is odd.
 
+    The function $ t \mapsto e^{-t^2} $ is continuous on $ \mathbb{R} $, so it is integrable over any interval. Hence, for all $ x \in \mathbb{R} $, the integral $ \int_0^{2x} e^{-t^2} dt $ exists, and therefore $ F(x) $ is well-defined on $ \mathbb{R} $.
 
+    To show that $ F $ is odd:
+    $$
+    F(-x) = \int_0^{-2x} e^{-t^2} dt = -\int_{-2x}^0 e^{-t^2} dt = -\int_0^{2x} e^{-u^2} du = -F(x)
+    $$
+    (using substitution $ u = -t $). So $ F $ is odd.
+
+    \item Show that $ F $ is differentiable on $ \mathbb{R} $, and calculate its derivative. Deduce the variations of $ F $ on $ \mathbb{R} $.
+
+    Let $ F_0 $ be an antiderivative of $ t \mapsto e^{-t^2} $. Then:
+    $$
+    F(x) = F_0(2x) - F_0(0)
+    $$
+    Differentiate using the chain rule:
+    $$
+    F'(x) = 2 \cdot e^{-(2x)^2} = 2e^{-4x^2}
+    $$
+    Since $ e^{-4x^2} > 0 $ for all $ x \in \mathbb{R} $, we have $ F'(x) > 0 $ for all $ x $. Therefore, $ F $ is strictly increasing on $ \mathbb{R} $.
+
+    \item Show that $ \forall x \geq 0, \; 0 \leq F(x) \leq x \cdot e^{-x^2} $.
+
+    First, since $ e^{-t^2} \geq 0 $, the integral from 0 to $ 2x $ is non-negative:
+    $$
+    F(x) = \int_0^{2x} e^{-t^2} dt \geq 0
+    $$
+
+    Next, observe that for $ t \in [0, 2x] $, we have $ t^2 \geq x^2 $ when $ t \geq x $. But more simply, use the inequality:
+    $$
+    e^{-t^2} \leq e^{-x^2}, \quad \text{for } t \in [0, 2x]
+    $$
+    because $ t \geq x \Rightarrow t^2 \geq x^2 $, so $ -t^2 \leq -x^2 \Rightarrow e^{-t^2} \leq e^{-x^2} $
+
+    Therefore:
+    $$
+    F(x) = \int_0^{2x} e^{-t^2} dt \leq \int_0^{2x} e^{-x^2} dt = 2x \cdot e^{-x^2}
+    $$
+    So:
+    $$
+    0 \leq F(x) \leq 2x \cdot e^{-x^2}
+    $$
+
+    \item Deduce $ \lim_{x \to +\infty} F(x) $.
+
+    From the previous inequality:
+    $$
+    0 \leq F(x) \leq 2x \cdot e^{-x^2}
+    $$
+    As $ x \to +\infty $, $ 2x \cdot e^{-x^2} \to 0 $ (because exponential decay dominates polynomial growth), so by the squeeze theorem:
+    $$
+    \lim_{x \to +\infty} F(x) = 0
+    $$
+
+    \item Sketch the curve $ C_F $ of the function $ F $.
+
+    Based on our findings:
+    
+        
+- $ F $ is odd ⇒ symmetric about the origin.
+        
+- $ F'(x) = 2e^{-4x^2} > 0 $ ⇒ strictly increasing.
+        
+- $ F(x) \to 0 $ as $ x \to +\infty $, and $ F(x) \to 0 $ as $ x \to -\infty $ due to oddness.
+        
+- At $ x = 0 $, $ F(0) = 0 $.
+    
+
+    So the graph starts at the origin, increases smoothly, approaching a horizontal asymptote at $ y = 0 $ as $ x \to \pm\infty $, with symmetry about the origin.
+
+\end{enumerate}
 \end{answerbox}
 
 %----------------- END ------------------

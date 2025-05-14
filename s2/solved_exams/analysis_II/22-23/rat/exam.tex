@@ -73,8 +73,68 @@ Let $a, b \in \mathbb{R}$ such that $a < b$ and $f: [a, b] \rightarrow \mathbb{R
 \newpage
 
 \begin{answerbox}
+\begin{enumerate}
+  \item \textbf{Using the mean value theorem, show that there exists at least one $ c \in [a, b] $ such that $ f(c) = 0 $.}
+  
+  Since $ f $ is continuous on $[a, b]$ and $\int_a^b f(x)\,dx = 0$, by the Mean Value Theorem for integrals, there exists a point $ c \in [a, b] $ such that:
+  $$
+  \int_a^b f(x)\,dx = f(c)(b - a).
+  $$
+  Given that $ \int_a^b f(x)\,dx = 0 $ and $ b - a > 0 $, it follows that:
+  $$
+  f(c)(b - a) = 0 \Rightarrow f(c) = 0.
+  $$
+  Therefore, there exists at least one $ c \in [a, b] $ such that $ f(c) = 0 $.
 
+  \item \textbf{Verify that $ f $ necessarily changes sign on $[a, b]$.}
 
+  Suppose $ f $ does not change sign on $[a, b]$. Then either $ f(x) \geq 0 $ or $ f(x) \leq 0 $ for all $ x \in [a, b] $. Since $ f $ is continuous and not identically zero, then the integral $ \int_a^b f(x)\,dx \neq 0 $, which contradicts the given condition $ \int_a^b f(x)\,dx = 0 $. Hence, $ f $ must change sign on $[a, b]$.
+
+  \item \textbf{Suppose that $ c $ is the only point in $[a, b]$ such that $ f(c) = 0 $. In this case, we have:}
+  $$
+  \forall x \in [a, c),\ f(x) < 0 \quad \text{and} \quad \forall x \in (c, b],\ f(x) > 0.
+  $$
+
+  \begin{enumerate}
+      \item \textbf{Show that $ \int_a^b (x - c)f(x)\,dx > 0 $.}
+
+      Consider the function $ g(x) = (x - c)f(x) $. Note that:
+      
+          
+- On $ [a, c) $, $ x - c < 0 $ and $ f(x) < 0 $, so $ g(x) > 0 $.
+          
+- At $ x = c $, $ g(c) = 0 $.
+          
+- On $ (c, b] $, $ x - c > 0 $ and $ f(x) > 0 $, so $ g(x) > 0 $.
+      
+      Thus, $ g(x) \geq 0 $ on $[a, b]$, and $ g(x) > 0 $ on a set of positive measure. Since $ g $ is continuous and non-negative with positive values on a subset of $[a, b]$, we conclude:
+      $$
+      \int_a^b (x - c)f(x)\,dx > 0.
+      $$
+
+      \item \textbf{Deduce a contradiction.}
+
+      Now expand the integral:
+      $$
+      \int_a^b (x - c)f(x)\,dx = \int_a^b x f(x)\,dx - c \int_a^b f(x)\,dx.
+      $$
+      But from the problem statement:
+      $$
+      \int_a^b f(x)\,dx = 0 \quad \text{and} \quad \int_a^b x f(x)\,dx = 0,
+      $$
+      so the entire expression becomes:
+      $$
+      \int_a^b (x - c)f(x)\,dx = 0 - c \cdot 0 = 0.
+      $$
+      This contradicts the earlier result that the integral is strictly positive. Therefore, our assumption that $ c $ is the only zero of $ f $ must be false.
+
+  \end{enumerate}
+
+  \item \textbf{State a conclusion summarizing the preceding results.}
+
+  From the above, since assuming that $ f $ has only one zero leads to a contradiction, we conclude that $ f $ must have at least two distinct zeros in $[a, b]$. Additionally, since $ f $ changes sign and is continuous, it must vanish at least twice in the interval $[a, b]$.
+
+\end{enumerate}
 \end{answerbox}
 
 \newpage
@@ -94,8 +154,57 @@ I = \int_0^{\pi/2} \frac{\cos x}{\cos x + \sin x} , dx \quad \text{and} \quad J 
 \newpage
 
 \begin{answerbox}
+  \begin{enumerate}
+    \item \textbf{Using an appropriate change of variable, show that $ I = J $.}
 
+    Recall:
+    $$
+    I = \int_0^{\frac{\pi}{2}} \frac{\cos x}{\cos x + \sin x}\,dx, \quad J = \int_0^{\frac{\pi}{2}} \frac{\sin x}{\cos x + \sin x}\,dx.
+    $$
 
+    Consider the substitution $ u = \frac{\pi}{2} - x $. Then when $ x = 0 $, $ u = \frac{\pi}{2} $; and when $ x = \frac{\pi}{2} $, $ u = 0 $. Also, $ dx = -du $.
+
+    Apply this substitution to $ I $:
+    $$
+    \begin{aligned}
+    I & = \int_0^{\frac{\pi}{2}} \frac{\cos x}{\cos x + \sin x}\,dx \\ 
+    & = \int_{\frac{\pi}{2}}^{0} \frac{\cos\left(\frac{\pi}{2} - u\right)}{\cos\left(\frac{\pi}{2} - u\right) + \sin\left(\frac{\pi}{2} - u\right)}(-du) \\
+    & = \int_0^{\frac{\pi}{2}} \frac{\sin u}{\sin u + \cos u}\,du \\ 
+    & = J.
+    \end{aligned}
+    $$
+    Therefore, $ I = J $.
+
+    \item \textbf{Calculate $ I + J $. Deduce the common value of $ I $ and $ J $.}
+
+    We compute:
+    $$
+    \begin{aligned}
+    I + J & = \int_0^{\frac{\pi}{2}} \frac{\cos x}{\cos x + \sin x}\,dx + \int_0^{\frac{\pi}{2}} \frac{\sin x}{\cos x + \sin x}\,dx \\
+    & = \int_0^{\frac{\pi}{2}} \frac{\cos x + \sin x}{\cos x + \sin x}\,dx \\
+    & = \int_0^{\frac{\pi}{2}} 1\,dx \\
+    & = \frac{\pi}{2} \\
+    \end{aligned}
+    $$
+
+    Since $ I = J $, we have:
+    $$
+    2I = \frac{\pi}{2} \Rightarrow I = J = \frac{\pi}{4}.
+    $$
+
+    \item \textbf{Deduce (using an appropriate change of variable) the integral $ \int_0^1 \frac{1}{\sqrt{1 - t^2} + t}\,dt $.}
+
+    Consider the substitution $ t = \sin x $. Then $ dt = \cos x\,dx $, and when $ t = 0 $, $ x = 0 $; when $ t = 1 $, $ x = \frac{\pi}{2} $. The integral becomes:
+    $$
+    \begin{aligned}
+    \int_0^1 \frac{1}{\sqrt{1 - t^2} + t}\,dt  &= \int_0^{\frac{\pi}{2}} \frac{\cos x}{\sqrt{1 - \sin^2 x} + \sin x}\,dx \\
+    &= \int_0^{\frac{\pi}{2}} \frac{\cos x}{\cos x + \sin x}\,dx \\ 
+    &= I \\ 
+    &= \frac{\pi}{4} \\.
+    \end{aligned} 
+    $$
+
+\end{enumerate}
 \end{answerbox}
 
 \newpage
@@ -123,8 +232,73 @@ I_n = \int_0^1 \frac{x^n}{x+1} , dx.
 \newpage
 
 \begin{answerbox}
+  \begin{enumerate}
+    \item \textbf{Justify the existence of $ I_n $ for all $ n \in \mathbb{N} $. Then calculate $ I_0 $.}
 
+    The function $ f_n(x) = \frac{x^n}{x + 1} $ is continuous on $[0, 1]$ for all $ n \in \mathbb{N} $, since both numerator and denominator are continuous and the denominator does not vanish on $[0, 1]$. Therefore, the integral
+    $$
+    I_n = \int_0^1 \frac{x^n}{x + 1}\,dx
+    $$
+    exists for all $ n \in \mathbb{N} $.
 
+    For $ n = 0 $, we have:
+    $$
+    I_0 = \int_0^1 \frac{1}{x + 1}\,dx = \Big[\ln|x + 1|\Big]_0^1 = \ln(2) - \ln(1) = \ln(2).
+    $$
+
+    \item \textbf{Verify that for all $ n \in \mathbb{N} $, we have the inequality: $ \forall x \in [0, 1],\ \frac{x^n}{x + 1} \leq x^n $.}
+
+    On $[0, 1]$, we know that $ x + 1 \geq 1 $, so $ \frac{1}{x + 1} \leq 1 $. Multiplying both sides by $ x^n \geq 0 $, we get:
+    $$
+    \frac{x^n}{x + 1} \leq x^n, \quad \forall x \in [0, 1].
+    $$
+
+    \item \textbf{Deduce that $ \lim_{n \to +\infty} I_n = 0 $.}
+
+    Since $ \frac{x^n}{x + 1} \leq x^n $, integrating both sides over $[0, 1]$ gives:
+    $$
+    0 \leq I_n = \int_0^1 \frac{x^n}{x + 1}\,dx \leq \int_0^1 x^n\,dx = \frac{1}{n + 1}.
+    $$
+    As $ n \to \infty $, $ \frac{1}{n + 1} \to 0 $, so by the squeeze theorem:
+    $$
+    \lim_{n \to +\infty} I_n = 0.
+    $$
+
+    \item \textbf{Calculate for all $ n \in \mathbb{N} $, the value of $ I_n + I_{n+1} $.}
+
+    We compute:
+    $$
+    \begin{aligned}
+    I_n + I_{n+1} &= \int_0^1 \frac{x^n}{x + 1}\,dx + \int_0^1 \frac{x^{n+1}}{x + 1}\,dx \\
+    &= \int_0^1 \frac{x^n(1 + x)}{x + 1}\,dx \\ 
+    &= \int_0^1 x^n\,dx = \frac{1}{n + 1} \\.
+    \end{aligned}
+    $$
+
+    \item \textbf{Deduce that $ \lim_{n \to +\infty} \sum_{k=1}^n \frac{(-1)^{k+1}}{k} = \ln 2 $.}
+
+    From the recurrence:
+    $$
+    I_k + I_{k+1} = \frac{1}{k + 1},
+    $$
+    summing from $ k = 0 $ to $ n - 1 $, we get:
+    $$
+    \sum_{k=0}^{n-1} (I_k + I_{k+1}) = \sum_{k=0}^{n-1} \frac{1}{k + 1} = \sum_{k=1}^{n} \frac{1}{k}.
+    $$
+    But the left-hand side telescopes:
+    $$
+    \sum_{k=0}^{n-1} (I_k + I_{k+1}) = I_0 + 2(I_1 + I_2 + \cdots + I_{n-1}) + I_n.
+    $$
+    Alternatively, consider the partial sums of the alternating harmonic series:
+    $$
+    \sum_{k=1}^n \frac{(-1)^{k+1}}{k} = 1 - \frac{1}{2} + \frac{1}{3} - \cdots + \frac{(-1)^{n+1}}{n}.
+    $$
+    It is known that this converges to $ \ln 2 $ as $ n \to \infty $. Therefore:
+    $$
+    \lim_{n \to +\infty} \sum_{k=1}^n \frac{(-1)^{k+1}}{k} = \ln 2.
+    $$
+
+\end{enumerate}
 \end{answerbox}
 
 %----------------- END ------------------

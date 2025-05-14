@@ -66,8 +66,42 @@ The three questions are independent:
 \newpage
 
 \begin{answerbox}
-
-
+    \begin{enumerate}
+        \item Consider the Taylor expansion of $\ln(1+x)$ around $x = 0$:
+        $$
+        \ln(1+x) = x - \frac{x^2}{2} + \frac{x^3}{3} - \frac{x^4}{4} + \cdots
+        $$
+        Since the series is alternating and decreasing in absolute value for $x > 0$, truncating after an even number of terms gives a lower bound, and after an odd number gives an upper bound. Therefore:
+        $$
+        x - \frac{x^2}{2} \leq \ln(1+x) \leq x - \frac{x^2}{2} + \frac{x^3}{3}.
+        $$
+    
+        
+        \item Recall that $\tan x \sim x + \frac{x^3}{3}$ as $x \to 0$. Then:
+        $$
+        \tan(3x) \sim 3x + 9x^3 \Rightarrow \cot^2(3x) = \frac{1}{\tan^2(3x)} \sim \frac{1}{9x^2} - \frac{2}{9} + o(1)
+        $$
+        So:
+        $$
+        \cot^2(3x) - \frac{1}{9x^2} \sim -\frac{2}{9} 
+        $$
+    
+        \item Use Taylor expansions up to order 3:
+        $$
+        e^u = 1 + u + \frac{u^2}{2} + \frac{u^3}{6} + o(u^3) \Rightarrow 2e^u = 2 + 2u + u^2 + \frac{u^3}{3} + o(u^3)
+        $$
+        $$
+        \sqrt{1 + 4u} = 1 + 2u - 2u^2 + \frac{4u^3}{3} + o(u^3), \quad \sqrt{1 + 6u^2} = 1 + 3u^2 - \frac{9u^4}{2} + o(u^4)
+        $$
+        Combine:
+        $$
+        f(u) = (2 + 2u + u^2 + \frac{u^3}{3}) - (1 + 2u - 2u^2 + \frac{4u^3}{3}) - (1 + 3u^2) + o(u^3)
+        $$
+        Simplify:
+        $$
+        f(u) = -u^3 + o(u^3)
+        $$
+    \end{enumerate}
 \end{answerbox}
 
 \newpage
@@ -89,8 +123,55 @@ The three questions are independent:
 \newpage
 
 \begin{answerbox}
+  \begin{enumerate}
+    \item
+    \begin{enumerate}
+        \item Consider the function $ f(x) = x - \sin x $ on $[0, \frac{\pi}{2}]$. We have:
+        $$
+        f'(x) = 1 - \cos x \geq 0,\quad \forall x \in [0, \tfrac{\pi}{2}]
+        $$
+        So $f$ is increasing and since $f(0) = 0$, we get:
+        $$
+        f(x) \geq 0 \Rightarrow x - \sin x \geq 0 \Rightarrow \sin x \leq x
+        $$
 
+        \item Define $ g(u) = u - \sin\left(\frac{\pi}{2}u \right) $ on $[0,1]$. Compute its derivative:
+        $$
+        g'(u) = 1 - \frac{\pi}{2} \cos\left( \frac{\pi}{2}u \right)
+        $$
+        Since $\cos$ is decreasing on $[0, \frac{\pi}{2}]$, $g'(u)$ is increasing. Also:
+        $$
+        g(0) = 0,\quad g(1) = 1 - \sin\left(\frac{\pi}{2}\right) = 0
+        $$
+        So $g(u) \leq 0$ implies $ \sin\left(\frac{\pi}{2}u\right) \ge u $
 
+        Let $x = \frac{\pi}{2}u \Rightarrow u = \frac{2}{\pi}x$. Then:
+        $$
+        \sin x \ge \frac{2}{\pi}x,\quad \forall x \in \left[0, \tfrac{\pi}{2} \right]
+        $$
+        Combining with the previous inequality:
+        $$
+        \frac{2}{\pi}x \le \sin x \le x,\quad \forall x \in \left[0, \tfrac{\pi}{2} \right]
+        $$
+    \end{enumerate}
+
+    \item This is a standard inequality between the geometric mean and arithmetic mean:
+    $$
+    (a_1 a_2 \cdots a_n)^{1/n} \le \frac{a_1 + a_2 + \cdots + a_n}{n},\quad \text{for } a_i > 0
+    $$
+    The left inequality follows from the AM–GM inequality applied to reciprocals:
+    $$
+    \frac{1}{(a_1 a_2 \cdots a_n)^{1/n}} \le \frac{\frac{1}{a_1} + \cdots + \frac{1}{a_n}}{n}
+    $$
+    However, it's also known that:
+    $$
+    \min(a_1, \dots, a_n) \le (a_1 \cdots a_n)^{1/n} \le \max(a_1, \dots, a_n)
+    $$
+    Thus:
+    $$
+    \frac{1}{a_n} \le (a_1 \cdots a_n)^{1/n} \le \frac{a_1 + \cdots + a_n}{n}
+    $$
+\end{enumerate}
 \end{answerbox}
 
 \newpage
@@ -103,8 +184,54 @@ $f(x) = \frac{1}{x}\ln\frac{\exp(2x) - 1}{2x}$.
 \newpage
 
 \begin{answerbox}
+    First, define:
+    $$
+    f(x) = \frac{1}{x} \ln(e^{2x} - 1)
+    $$
 
+    To study regularity and behavior at $ x = 0 $, note that $ f $ is undefined at 0. We define $ f(0) $ by continuity if possible.
 
+    As $ x \to 0 $:
+    $$
+    e^{2x} - 1 = 2x + 2x^2 + \frac{4x^3}{3} + o(x^3)
+    \Rightarrow \ln(e^{2x} - 1) = \ln(2x + 2x^2 + \tfrac{4x^3}{3} + o(x^3))
+    $$
+    Factor out $ 2x $:
+    $$
+    \ln(2x) + \ln\left(1 + x + \tfrac{2x^2}{3} + o(x^2)\right)
+    = \ln(2x) + x + \tfrac{x^2}{6} + o(x^2)
+    $$
+    So:
+    $$
+    f(x) = \frac{1}{x} \left( \ln(2x) + x + \tfrac{x^2}{6} + o(x^2) \right)
+    = \frac{\ln(2x)}{x} + 1 + \frac{x}{6} + o(x)
+    $$
+    But:
+    $$
+    \frac{\ln(2x)}{x} = \frac{\ln 2 + \ln x}{x} \to 0 \quad \text{as } x \to 0^+
+    $$
+    Similarly from the left:
+    $$
+    \lim_{x \to 0^-} f(x) = \lim_{x \to 0^-} \frac{1}{x} \ln(e^{2x} - 1)
+    $$
+    Since $ e^{2x} - 1 \to 0^- $, $ \ln(e^{2x} - 1) $ is not defined in real numbers → $ f $ is only defined on $ \mathbb{R}^* $
+
+    Extend $ f $ continuously at 0 by defining:
+    $$
+    f(0) = \lim_{x \to 0} f(x) = 1 + \ln 2
+    $$
+    This extension is smooth around 0, so $ f \in C^1(\mathbb{R}) $
+
+    The Taylor expansion gives:
+    $$
+    f(x) = (1 + \ln 2) + \frac{x}{6} + o(x)
+    $$
+    So the tangent line at $ x = 0 $ is:
+    $$
+    y = (1 + \ln 2) + \frac{x}{6}
+    $$
+
+    The curve lies \textbf{above} the tangent since the first non-zero correction term is positive.
 \end{answerbox}
 
 \newpage
@@ -123,8 +250,73 @@ Let $f$ be the function defined by: $f(x) = (x - 2)\exp\left(\frac{x-1}{x+1}\rig
 \newpage
 
 \begin{answerbox}
+  \begin{enumerate}
+    \item Does the curve $\mathcal{C}_f$, representing $f(x) = (x - 2)e^{\frac{x-1}{x+1}}$, have a vertical asymptote? Justify.
 
+    \textbf{Solution:}  
+    The function involves an exponential, which is always defined except where the exponent may blow up. The exponent is:
+    $$
+    \frac{x - 1}{x + 1}
+    $$
+    This expression becomes undefined when $x + 1 = 0 \Rightarrow x = -1$. Let's check the behavior near $x = -1$:
 
+    As $x \to -1^-$, the denominator goes to 0 from the negative side, so:
+    $$
+    \frac{x - 1}{x + 1} \to \frac{-2}{0^-} \to +\infty \Rightarrow f(x) \to (x - 2)e^{+\infty} \to \pm\infty
+    $$
+
+    As $x \to -1^+$, the denominator goes to 0 from the positive side:
+    $$
+    \frac{x - 1}{x + 1} \to \frac{-2}{0^+} \to -\infty \Rightarrow f(x) \to (x - 2)e^{-\infty} \to 0
+    $$
+
+    So there is a vertical asymptote at $x = -1$.
+
+    \item Study the equation of the asymptote to the representative curve of $f(x)$ in the neighborhood of $+\infty$ and $-\infty$.
+
+    \textbf{Solution:}  
+    First, analyze the exponent:
+    $$
+    \frac{x - 1}{x + 1} = 1 - \frac{2}{x + 1}
+    \Rightarrow e^{\frac{x - 1}{x + 1}} = e^{1 - \frac{2}{x + 1}} = e \cdot e^{-\frac{2}{x + 1}}
+    \sim e \left(1 - \frac{2}{x + 1}\right)
+    $$
+
+    Then:
+    $$
+    f(x) = (x - 2)e^{\frac{x - 1}{x + 1}} \sim (x - 2)\cdot e \left(1 - \frac{2}{x + 1} \right)
+    = e(x - 2) - \frac{2e(x - 2)}{x + 1}
+    $$
+
+    As $x \to \pm\infty$, the second term tends to 0, so:
+    $$
+    f(x) \sim e(x - 2)
+    $$
+
+    Therefore, the oblique asymptote is:
+    $$
+    y = e(x - 2)
+    $$
+
+    \item Study the relative position of this asymptote with respect to the curve $\mathcal{C}_f$.
+
+    \textbf{Solution:}  
+    From the previous expansion:
+    $$
+    f(x) - e(x - 2) \sim -\frac{2e(x - 2)}{x + 1}
+    $$
+    As $x \to +\infty$, this difference behaves like:
+    $$
+    -\frac{2e(x)}{x} = -2e < 0 \Rightarrow f(x) < e(x - 2)
+    $$
+    So the curve lies \textbf{below} the asymptote as $x \to +\infty$.
+
+    As $x \to -\infty$, we also get:
+    $$
+    f(x) - e(x - 2) \sim -\frac{2e(x)}{x} = -2e < 0 \Rightarrow f(x) < e(x - 2)
+    $$
+    So again, the curve lies \textbf{below} the asymptote as $x \to -\infty$.
+\end{enumerate}
 \end{answerbox}
 
 %----------------- END ------------------

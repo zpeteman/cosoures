@@ -65,8 +65,53 @@ Calculate the following limits:
 \newpage
 
 \begin{answerbox}
+  \begin{enumerate}
+    \item 
+    $$
+    \lim_{x \to 0} \frac{\sin x - \arcsin x}{\sin^2 x}
+    $$
+    Using Taylor expansions:
+    $$
+    \sin x = x - \frac{x^3}{6} + o(x^3), \quad \arcsin x = x + \frac{x^3}{6} + o(x^3), \quad \sin^2 x = x^2 + o(x^2)
+    $$
+    Then:
+    $$
+    \sin x - \arcsin x = -\frac{x^3}{3} + o(x^3), \quad \sin^2 x = x^2 + o(x^2)
+    $$
+    So:
+    $$
+    \lim_{x \to 0} \frac{\sin x - \arcsin x}{\sin^2 x} = \lim_{x \to 0} \frac{-\frac{x^3}{3}}{x^2} = \lim_{x \to 0} -\frac{x}{3} = 0
+    $$
+    \item 
+    $$
+    \lim_{x \to 0} \frac{4^x - 2^x}{5^x - 3^x}
+    $$
+    Using $ a^x = 1 + x \ln a + o(x) $, we get:
+    $$
+    4^x - 2^x = x \ln 2 + o(x), \quad 5^x - 3^x = x(\ln 5 - \ln 3) + o(x)
+    $$
+    Therefore:
+    $$
+    \lim_{x \to 0} \frac{4^x - 2^x}{5^x - 3^x} = \frac{\ln 2}{\ln 5 - \ln 3}
+    $$
 
-
+    \item 
+    $$
+    \lim_{x \to +\infty} \left(a^{1/x} + b^{1/x} + c^{1/x}\right)^x
+    $$
+    Use $ a^{1/x} \approx 1 + \frac{\ln a}{x} $, so:
+    $$
+    a^{1/x} + b^{1/x} + c^{1/x} \approx 3 + \frac{\ln(abc)}{x}
+    $$
+    Then:
+    $$
+    \ln f(x) = x \ln\left(3 + \frac{\ln(abc)}{x}\right) \approx x \cdot \frac{\ln(abc)}{3x} = \frac{\ln(abc)}{3}
+    $$
+    So:
+    $$
+    \lim_{x \to +\infty} f(x) = e^{\frac{1}{3} \ln(abc)} = (abc)^{1/3}
+    $$
+\end{enumerate}
 \end{answerbox}
 
 \newpage
@@ -94,8 +139,78 @@ Course questions and applications:
 \newpage
 
 \begin{answerbox}
+  \begin{enumerate}
+    \item \textbf{State Leibniz's formula:} \\
+    For two functions $ u $ and $ v $ that are $ n $-times differentiable, the $ n $-th derivative of their product is:
+    $$
+    (uv)^{(n)} = \sum_{k=0}^n \binom{n}{k} u^{(k)} v^{(n-k)}
+    $$
 
+    \item \textbf{Let } $ f(x) = x^3 e^{3x} $. \textbf{Find the } $ n $-\textbf{th derivative of } $ f $: \\
+    Apply Leibniz's formula:
+    $$
+    f^{(n)}(x) = \sum_{k=0}^n \binom{n}{k} \frac{d^k}{dx^k}(x^3) \cdot \frac{d^{n-k}}{dx^{n-k}}(e^{3x})
+    $$
+    - Derivatives of $ x^3 $ vanish for $ k \geq 4 $
+    - $ \frac{d^{n-k}}{dx^{n-k}}(e^{3x}) = 3^{n-k} e^{3x} $
 
+    So:
+    $$
+    f^{(n)}(x) = \sum_{k=0}^{\min(n,3)} \binom{n}{k} \cdot \frac{d^k}{dx^k}(x^3) \cdot 3^{n-k} e^{3x}
+    $$
+
+    Compute derivatives of $ x^3 $:
+    $$
+    \begin{aligned}
+    &\frac{d^0}{dx^0}(x^3) = x^3, \quad
+    \frac{d^1}{dx^1}(x^3) = 3x^2, \quad
+    \frac{d^2}{dx^2}(x^3) = 6x, \quad
+    \frac{d^3}{dx^3}(x^3) = 6
+    \end{aligned}
+    $$
+
+    Therefore:
+    $$
+    f^{(n)}(x) = e^{3x} \sum_{k=0}^{\min(n,3)} \binom{n}{k} \cdot \frac{d^k}{dx^k}(x^3) \cdot 3^{n-k}
+    $$
+
+    \item \textbf{State Taylor's formula with integral remainder:} \\
+    Let $ f \in C^{n+1}([a,b]) $, then for all $ x \in [a,b] $:
+    $$
+    f(x) = \sum_{k=0}^n \frac{f^{(k)}(a)}{k!}(x-a)^k + R_n(x)
+    $$
+    where the remainder is:
+    $$
+    R_n(x) = \int_a^x \frac{(x-t)^n}{n!} f^{(n+1)}(t)\, dt
+    $$
+
+    \item \textbf{Show that } $ \left| e^{-x} - \sum_{k=0}^n \frac{(-1)^k x^k}{k!} \right| \leq \frac{x^{n+1}}{(n+1)!} $: \\
+    Consider Taylor expansion of $ e^{-x} $ around 0:
+    $$
+    e^{-x} = \sum_{k=0}^n \frac{(-1)^k x^k}{k!} + R_n(x)
+    $$
+    Using Lagrange remainder:
+    $$
+    |R_n(x)| = \left| \frac{(-1)^{n+1} x^{n+1}}{(n+1)!} e^{-c} \right| \leq \frac{x^{n+1}}{(n+1)!}, \quad \text{for some } c \in [0,x]
+    $$
+
+    \item \textbf{Show that } $ \lim_{n \to +\infty} \frac{x^n}{n!} = 0 $: \\
+    Since factorial grows faster than exponential:
+    $$
+    \forall x > 0, \quad \lim_{n \to \infty} \frac{x^n}{n!} = 0
+    $$
+    This follows from ratio test or comparison with geometric series.
+
+    \item \textbf{Deduce } $ \lim_{n \to +\infty} \sum_{k=0}^n \frac{(-1)^k x^k}{k!} $: \\
+    From previous parts:
+    $$
+    \sum_{k=0}^n \frac{(-1)^k x^k}{k!} = e^{-x} + R_n(x), \quad |R_n(x)| \leq \frac{x^{n+1}}{(n+1)!}
+    $$
+    As $ n \to \infty $, remainder goes to 0, so:
+    $$
+    \lim_{n \to \infty} \sum_{k=0}^n \frac{(-1)^k x^k}{k!} = e^{-x}
+    $$
+\end{enumerate}
 \end{answerbox}
 
 \newpage
@@ -116,8 +231,62 @@ Let $f$ be the function defined by $f(x) = \frac{e^x - \ln(1+2x)}{1+\sin(x)}$.
 \newpage
 
 \begin{answerbox}
+  \begin{enumerate}
+    \item \textbf{Why can we state that } $ f(x) = \frac{e^x - \ln(1 + 2x)}{1 + \sin x} $ \textbf{ has a Taylor expansion of any order around } $ x = 0 $? \\
+    The function $ f(x) $ is a combination of smooth functions:
+    
+        
+- $ e^x $ is analytic (infinite differentiable, with Taylor series everywhere).
+        
+- $ \ln(1 + 2x) $ is analytic for $ x > -\frac{1}{2} $, so it's analytic at $ x = 0 $.
+        
+- $ \sin x $ is analytic everywhere.
+        
+- Denominator $ 1 + \sin x \neq 0 $ near $ x = 0 $ since $ \sin 0 = 0 $, so $ 1 + \sin x = 1 $ at $ x = 0 $, hence non-zero in a neighborhood of 0.
+    
+    Therefore, $ f(x) $ is smooth near $ x = 0 $ and admits a Taylor expansion of any order.
 
+    \item \textbf{Determine a third-order Taylor expansion of } $ f $ \textbf{around } $ x = 0 $. \textbf{Find } $ f''(0) $ \textbf{and } $ f^{(3)}(0) $: \\
+    We expand numerator and denominator up to order 3:
+    $$
+    e^x = 1 + x + \frac{x^2}{2} + \frac{x^3}{6} + o(x^3)
+    $$
+    $$
+    \ln(1 + 2x) = 2x - 2x^2 + \frac{8x^3}{3} + o(x^3)
+    $$
+    So:
+    $$
+    e^x - \ln(1 + 2x) = (1 + x + \frac{x^2}{2} + \frac{x^3}{6}) - (2x - 2x^2 + \frac{8x^3}{3}) = 1 - x + \frac{5x^2}{2} - \frac{13x^3}{6} + o(x^3)
+    $$
+    $$
+    1 + \sin x = 1 + x - \frac{x^3}{6} + o(x^3)
+    $$
+    Now divide:
+    $$
+    f(x) = \frac{1 - x + \frac{5x^2}{2} - \frac{13x^3}{6}}{1 + x - \frac{x^3}{6}} = (1 - x + \frac{5x^2}{2} - \frac{13x^3}{6})(1 - x + x^2 - x^3 + \cdots)
+    $$
+    After simplifying up to order 3:
+    $$
+    f(x) = 1 - 2x + 3x^2 - \frac{19x^3}{6} + o(x^3)
+    $$
+    Therefore:
+    $$
+    f''(0) = 6, \quad f^{(3)}(0) = -\frac{19}{2}
+    $$
 
+    \item \textbf{Give the equation of the tangent line to the curve of } $ f $ \textbf{at } $ x = 0 $: \\
+    From the expansion:
+    $$
+    f(x) \approx 1 - 2x \Rightarrow \text{Tangent line: } y = 1 - 2x
+    $$
+
+    \item \textbf{What is the relative position of the curve of } $ f $ \textbf{with respect to this tangent line}? \\
+    The next term in the expansion is $ +3x^2 $, which is positive. So:
+    $$
+    f(x) - (1 - 2x) = 3x^2 + o(x^2) > 0 \text{ as } x \to 0
+    $$
+    Hence, the curve lies \textbf{above} the tangent line near $ x = 0 $.
+\end{enumerate}
 \end{answerbox}
 
 \newpage
@@ -134,8 +303,40 @@ Let $f$ be the function defined by: $f(x) = e^{\frac{1}{x}}\sqrt{x^2 + x + 1}$.
 \newpage
 
 \begin{answerbox}
+  \begin{enumerate}
+    \item \textbf{Study the asymptote of the curve representing } $ f(x) = e^{\frac{1}{x}} \sqrt{x^2 + x + 1} $ \textbf{as } $ x \to +\infty $: \\
+    As $ x \to +\infty $:
+    $$
+    \sqrt{x^2 + x + 1} = x \sqrt{1 + \frac{1}{x} + \frac{1}{x^2}} \approx x\left(1 + \frac{1}{2x} + \frac{1}{2x^2} - \frac{1}{8x^2} + \cdots\right)
+    $$
+    So:
+    $$
+    \sqrt{x^2 + x + 1} \approx x + \frac{1}{2} + \frac{3}{8x} + o\left(\frac{1}{x}\right)
+    $$
+    Also:
+    $$
+    e^{1/x} = 1 + \frac{1}{x} + \frac{1}{2x^2} + o\left(\frac{1}{x^2}\right)
+    $$
+    Therefore:
+    $$
+    f(x) = e^{1/x} \sqrt{x^2 + x + 1} \approx \left(1 + \frac{1}{x} + \frac{1}{2x^2}\right)\left(x + \frac{1}{2} + \frac{3}{8x}\right)
+    $$
+    Multiplying and keeping terms up to $ \frac{1}{x} $:
+    $$
+    f(x) \approx x + \frac{3}{2} + \frac{7}{8x} + o\left(\frac{1}{x}\right)
+    $$
+    Hence, the asymptote is:
+    $$
+    y = x + \frac{3}{2}
+    $$
 
-
+    \item \textbf{Study the relative position of this asymptote with respect to the curve}: \\
+    From above:
+    $$
+    f(x) - \left(x + \frac{3}{2}\right) \approx \frac{7}{8x} + o\left(\frac{1}{x}\right) > 0 \text{ as } x \to +\infty
+    $$
+    Therefore, the curve lies \textbf{above} its asymptote as $ x \to +\infty $.
+\end{enumerate}
 \end{answerbox}
 
 %----------------- END ------------------

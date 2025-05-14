@@ -65,8 +65,48 @@ $$f(x) = \frac{1}{x}$$
 \newpage
 
 \begin{answerbox}
+\begin{enumerate}
+  \item The function $ f(x) = \frac{1}{x} $ is continuous on $[1,3]$ because it is a rational function and the denominator does not vanish on this interval. Since every continuous function on a closed and bounded interval is Riemann integrable, $ f $ is integrable on $[1,3]$.
 
+  \item We are given the subdivision $ S = \{1, 2, 3\} $. This divides $[1,3]$ into two subintervals: $[1,2]$ and $[2,3]$. On each subinterval, we compute the infimum and supremum of $ f(x) = \frac{1}{x} $:
+  $$
+  \begin{aligned}
+      &\text{On } [1, 2]: \quad m_1 = \min_{x \in [1,2]} f(x) = \frac{1}{2}, \quad M_1 = \max_{x \in [1,2]} f(x) = 1 \\
+      &\text{On } [2, 3]: \quad m_2 = \min_{x \in [2,3]} f(x) = \frac{1}{3}, \quad M_2 = \max_{x \in [2,3]} f(x) = \frac{1}{2}
+  \end{aligned}
+  $$
 
+  Compute the lower Darboux sum:
+  $$
+  D_{-}(S, f) = m_1(2 - 1) + m_2(3 - 2) = \frac{1}{2} \cdot 1 + \frac{1}{3} \cdot 1 = \frac{5}{6}
+  $$
+
+  Compute the upper Darboux sum:
+  $$
+  D_{+}(S, f) = M_1(2 - 1) + M_2(3 - 2) = 1 \cdot 1 + \frac{1}{2} \cdot 1 = \frac{3}{2}
+  $$
+
+  \item The Darboux sums satisfy the following inequality:
+  $$
+  D_{-}(S, f) \leq \int_1^3 f(x)\,dx \leq D_{+}(S, f)
+  $$
+  That is:
+  $$
+  \frac{5}{6} \leq \int_1^3 \frac{1}{x}\,dx \leq \frac{3}{2}
+  $$
+
+  \item Since $ \int_1^3 \frac{1}{x}\,dx = \ln 3 $, we deduce:
+  $$
+  \frac{5}{6} \leq \ln 3 \leq \frac{3}{2}
+  $$
+
+  A reasonable approximation can be obtained by taking the average:
+  $$
+  \ln 3 \approx \frac{\frac{5}{6} + \frac{3}{2}}{2} = \frac{\frac{5}{6} + \frac{9}{6}}{2} = \frac{14}{12} \cdot \frac{1}{2} = \frac{7}{6}
+  $$
+
+  So, $ \ln 3 $ lies between $ \frac{5}{6} $ and $ \frac{3}{2} $, and one rational approximation is $ \frac{7}{6} $.
+\end{enumerate}
 \end{answerbox}
 
 \newpage
@@ -89,8 +129,80 @@ $$G(x) = \int_x^{2x} \frac{dt}{\sqrt{t^2 + 1}}$$
 \newpage
 
 \begin{answerbox}
+  \begin{enumerate}
+    \item The function $ G(x) = \int_{x}^{2x} \frac{dt}{\sqrt{t^2 + 1}} $ is defined for all $ x \in \mathbb{R} $ because the integrand $ \frac{1}{\sqrt{t^2 + 1}} $ is continuous on $ \mathbb{R} $. Therefore, the integral over any finite interval exists. \\
+    To show that $ G $ is odd, we compute:
+    $$
+    G(-x) = \int_{-x}^{-2x} \frac{dt}{\sqrt{t^2 + 1}}
+    $$
+    Perform the substitution $ u = -t $, so $ du = -dt $, and the limits become:
+    $$
+    G(-x) = \int_{x}^{2x} \frac{-du}{\sqrt{u^2 + 1}} = -\int_{x}^{2x} \frac{du}{\sqrt{u^2 + 1}} = -G(x)
+    $$
+    Hence, $ G $ is an odd function.
 
+    \item Since the integrand $ f(t) = \frac{1}{\sqrt{t^2 + 1}} $ is continuous on $ \mathbb{R} $, by the Fundamental Theorem of Calculus, $ G(x) $ is differentiable on $ \mathbb{R} $. Let $ F $ be an antiderivative of $ f $, then:
+    $$
+    G(x) = F(2x) - F(x)
+    $$
+    Differentiating using the chain rule:
+    $$
+    G'(x) = 2F'(2x) - F'(x) = 2f(2x) - f(x) = \frac{2}{\sqrt{(2x)^2 + 1}} - \frac{1}{\sqrt{x^2 + 1}}
+    $$
 
+    \item From the previous part:
+    $$
+    G'(x) = \frac{2}{\sqrt{4x^2 + 1}} - \frac{1}{\sqrt{x^2 + 1}}
+    $$
+    We analyze the sign of $ G'(x) $. For $ x > 0 $, clearly:
+    $$
+    \frac{2}{\sqrt{4x^2 + 1}} > \frac{1}{\sqrt{x^2 + 1}} \quad \Rightarrow \quad G'(x) > 0
+    $$
+    For $ x < 0 $, since $ G $ is odd, $ G' $ is even (you can verify this), so $ G'(x) > 0 $ also holds. Thus, $ G $ is strictly increasing on $ \mathbb{R} $.
+
+    \item First, observe that for $ t > 0 $,
+    $$
+    t^2 \leq t^2 + 1 \leq (t + 1)^2
+    $$
+    Taking square roots:
+    $$
+    t \leq \sqrt{t^2 + 1} \leq t + 1
+    $$
+    Inverting (and reversing inequalities):
+    $$
+    \frac{1}{t + 1} \leq \frac{1}{\sqrt{t^2 + 1}} \leq \frac{1}{t}
+    $$
+    Now integrate from $ x $ to $ 2x $:
+    $$
+    \int_x^{2x} \frac{dt}{t + 1} \leq G(x) \leq \int_x^{2x} \frac{dt}{t}
+    $$
+    Compute both sides:
+    $$
+    \ln(2x + 1) - \ln(x + 1) \leq G(x) \leq \ln(2x) - \ln(x) = \ln 2
+    $$
+
+    \item From the inequality:
+    $$
+    \ln(2x + 1) - \ln(x + 1) \leq G(x) \leq \ln 2
+    $$
+    As $ x \to +\infty $, the left-hand side tends to:
+    $$
+    \ln\left(\frac{2x + 1}{x + 1}\right) \to \ln 2
+    $$
+    So by the Squeeze Theorem:
+    $$
+    \lim_{x \to +\infty} G(x) = \ln 2
+    $$
+
+    \item We solve $ G(x) = 0 $, i.e.,
+    $$
+    \int_x^{2x} \frac{dt}{\sqrt{t^2 + 1}} = 0
+    $$
+    This implies $ x = 0 $, since the integrand is positive for all $ t $, and the only way the integral is zero is if the lower and upper limits are equal. Therefore:
+    $$
+    x = 0
+    $$
+\end{enumerate}
 \end{answerbox}
 
 \newpage
@@ -110,8 +222,84 @@ $$I_n = \int_0^1 (1 - t^2)^n dt$$
 \newpage
 
 \begin{answerbox}
+  \begin{enumerate}
+    \item The function $ (1 - t^2)^n $ is continuous on the closed interval $[0, 1]$ for all $ n \in \mathbb{N} $, because it is a composition and power of continuous functions. Since any continuous function on a closed and bounded interval is Riemann integrable, the integral
+    $$
+    I_n = \int_0^1 (1 - t^2)^n \, dt
+    $$
+    exists for all $ n \in \mathbb{N} $.
 
+    \item We use integration by parts to prove the recurrence relation. Let:
+    $$
+    I_{n+1} = \int_0^1 (1 - t^2)^{n+1} dt
+    $$
+    Write:
+    $$
+    (1 - t^2)^{n+1} = (1 - t^2)(1 - t^2)^n
+    $$
+    Now integrate by parts. Set:
+    $$
+    u = (1 - t^2)^{n+1}, \quad dv = dt \quad \Rightarrow \quad du = -2(n+1)t(1 - t^2)^n dt, \quad v = t
+    $$
+    Then:
+    $$
+    I_{n+1} = \left. t(1 - t^2)^{n+1} \right|_0^1 + 2(n+1) \int_0^1 t^2 (1 - t^2)^n dt
+    $$
+    The boundary term vanishes at both ends. So:
+    $$
+    I_{n+1} = 2(n+1) \int_0^1 t^2 (1 - t^2)^n dt
+    $$
+    Now observe that:
+    $$
+    t^2 = 1 - (1 - t^2)
+    $$
+    Hence:
+    $$
+    I_{n+1} = 2(n+1) \left[ \int_0^1 (1 - t^2)^n dt - \int_0^1 (1 - t^2)^{n+1} dt \right]
+    = 2(n+1)(I_n - I_{n+1})
+    $$
+    Solving for $ I_{n+1} $:
+    $$
+    I_{n+1}(1 + 2(n+1)) = 2(n+1)I_n \quad \Rightarrow \quad I_{n+1} = \frac{2(n+1)}{2n + 3} I_n
+    $$
 
+    \item We now deduce the general formula:
+    $$
+    I_n = \frac{2^n (n!)^2}{(2n + 1)!}
+    $$
+    This can be proved by induction using the recurrence:
+    $$
+    I_{n+1} = \frac{2(n+1)}{2n + 3} I_n
+    $$
+    The base case $ n = 0 $:
+    $$
+    I_0 = \int_0^1 (1 - t^2)^0 dt = \int_0^1 1 dt = 1
+    $$
+    Also:
+    $$
+    \frac{2^0 (0!)^2}{1!} = \frac{1}{1} = 1
+    $$
+    Assume the formula holds for $ n $. Then:
+    $$
+    I_{n+1} = \frac{2(n+1)}{2n + 3} \cdot \frac{2^n (n!)^2}{(2n + 1)!}
+    = \frac{2^{n+1} (n+1)(n!)^2}{(2n + 3)(2n + 1)!}
+    = \frac{2^{n+1} ((n+1)!)^2}{(2n + 3)!}
+    $$
+    Thus, the formula holds for all $ n \in \mathbb{N} $.
+
+    \item Using Newton's binomial formula:
+    $$
+    (1 - t^2)^n = \sum_{k=0}^n \binom{n}{k} (-1)^k t^{2k}
+    $$
+    Integrate term by term from 0 to 1:
+    $$
+    \begin{aligned}
+    I_n & = \int_0^1 (1 - t^2)^n dt = \int_0^1 \sum_{k=0}^n \binom{n}{k} (-1)^k t^{2k} dt \\
+    & = \sum_{k=0}^n \binom{n}{k} (-1)^k \int_0^1 t^{2k} dt \\
+    & = \sum_{k=0}^n \binom{n}{k} \frac{(-1)^k}{2k + 1}
+    \end{aligned}
+    $$
+\end{enumerate}
 \end{answerbox}
 
 \newpage

@@ -61,8 +61,15 @@ Let $f: [0, 1] \rightarrow \mathbb{R}$ be an arbitrary continuous function.
 \newpage
 
 \begin{answerbox}
+  \begin{enumerate}
+    \item Since $ f $ is continuous on $[0,1]$, it is integrable. Suppose $ \int_0^1 f(x)\,dx = 0 $. If $ f(x) > 0 $ for all $ x \in [0,1] $, then the integral would be positive; similarly, if $ f(x) < 0 $ everywhere, the integral would be negative. Thus, $ f $ must take both non-negative and non-positive values. By the Intermediate Value Theorem, there exists $ c \in [0,1] $ such that $ f(c) = 0 $.
 
-
+    \item Define $ g(x) = f(x) - x $. Then:
+    $$
+    \int_0^1 g(x)\,dx = \int_0^1 f(x)\,dx - \int_0^1 x\,dx = \frac{1}{2} - \frac{1}{2} = 0.
+    $$
+    From part (1), since $ g $ is continuous and its integral is zero, there exists $ d \in [0,1] $ such that $ g(d) = 0 $, i.e., $ f(d) = d $.
+\end{enumerate}
 \end{answerbox}
 
 \newpage
@@ -82,8 +89,33 @@ $$F(x)=\int_{x}^{2x} \frac{e^{-t}}{t} \, dt.$$
 \newpage
 
 \begin{answerbox}
+\begin{enumerate}
+  \item The function $ t \mapsto \frac{e^{-t}}{t} $ is continuous on $ (0, \infty) $, hence integrable on any interval $ [x, 2x] $ for $ x > 0 $. Therefore, $ F(x) = \int_x^{2x} \frac{e^{-t}}{t} \, dt $ is well-defined for all $ x > 0 $, so $ \mathcal{D}_F = \mathbb{R}_+^* $.
 
+  \item Define $ F_0 $ as a primitive of $ t \mapsto \frac{e^{-t}}{t} $. Then we can write $ F(x) = F_0(2x) - F_0(x) $. By the Fundamental Theorem of Calculus, $ F $ is differentiable on $ \mathbb{R}_+ $ and:
+  $$
+  F'(x) = 2F_0'(2x) - F_0'(x) = 2 \cdot \frac{e^{-2x}}{2x} - \frac{e^{-x}}{x} = \frac{e^{-2x} - e^{-x}}{x}.
+  $$
+  Since $ e^{-2x} < e^{-x} $ for all $ x > 0 $, we have $ F'(x) < 0 $, so $ F $ is strictly decreasing on $ \mathbb{R}_+ $.
 
+  \item For $ t \in [x, 2x] $, we have $ e^{-2x} \leq e^{-t} \leq e^{-x} $, since $ x \leq t \leq 2x $. Dividing by $ t $ (which is positive), and integrating over $ [x, 2x] $, we get:
+  $$
+  \int_x^{2x} \frac{e^{-2x}}{t} \, dt \leq \int_x^{2x} \frac{e^{-t}}{t} \, dt \leq \int_x^{2x} \frac{e^{-x}}{t} \, dt.
+  $$
+  Evaluating the left and right integrals gives:
+  $$
+  e^{-2x} \ln 2 \leq F(x) \leq e^{-x} \ln 2.
+  $$
+
+  \item From part (3), as $ x \to 0^+ $, both bounds tend to $ \ln 2 $, so by the Squeeze Theorem:
+  $$
+  \lim_{x \to 0^+} F(x) = \ln 2.
+  $$
+  As $ x \to +\infty $, $ e^{-x} \to 0 $, so again by squeezing:
+  $$
+  \lim_{x \to +\infty} F(x) = 0.
+  $$
+\end{enumerate}
 \end{answerbox}
 
 \newpage
@@ -104,8 +136,46 @@ $$I_n=\int_{0}^{1} x^n \cdot e^{-x} \, dx.$$
 \newpage
 
 \begin{answerbox}
+  \begin{enumerate}
+    \item The function $ x \mapsto x^n e^{-x} $ is continuous on $[0, 1]$ for all $ n \in \mathbb{N} $, hence integrable. Therefore, $ I_n $ exists for all $ n \in \mathbb{N} $. For $ n = 0 $, we have:
+    $$
+    I_0 = \int_0^1 e^{-x} dx = \left[ -e^{-x} \right]_0^1 = 1 - \frac{1}{e}.
+    $$
 
+    \item On $ [0, 1] $, we have $ 0 \leq x^n e^{-x} \leq x^n $, since $ 0 < e^{-x} \leq 1 $. Therefore:
+    $$
+    0 \leq I_n = \int_0^1 x^n e^{-x} dx \leq \int_0^1 x^n dx = \frac{1}{n+1}.
+    $$
 
+    \item From part (2), $ 0 \leq I_n \leq \frac{1}{n+1} $. Since $ \frac{1}{n+1} \to 0 $ as $ n \to \infty $, by the Squeeze Theorem, $ I_n \to 0 $ as $ n \to \infty $.
+
+    \item Use integration by parts with $ u = x^{n+1} $, $ dv = -e^{-x} dx $. Then $ du = (n+1)x^n dx $, $ v = e^{-x} $. We get:
+    $$
+    I_{n+1} = \int_0^1 x^{n+1} e^{-x} dx = \left[ -x^{n+1} e^{-x} \right]_0^1 + (n+1) \int_0^1 x^n e^{-x} dx = -\frac{1}{e} + (n+1) I_n.
+    $$
+    Hence,
+    $$
+    I_{n+1} = (n+1) I_n - \frac{1}{e}.
+    $$
+
+    \item From part (4):
+    $$
+    I_n = \frac{I_{n+1} + \frac{1}{e}}{n+1}.
+    $$
+    Using $ 0 \leq I_{n+1} \leq \frac{1}{n+2} $ from part (2), we deduce:
+    $$
+    0 \leq I_n - \frac{1}{e(n+1)} \leq \frac{1}{(n+1)(n+2)}.
+    $$
+
+    \item From part (5), we have:
+    $$
+    I_n \sim \frac{1}{e(n+1)} \quad \text{as } n \to \infty.
+    $$
+    So a simple equivalent of $ I_n $ is $ J_n = \frac{1}{e(n+1)} $, since:
+    $$
+    \lim_{n \to \infty} \frac{I_n}{J_n} = \lim_{n \to \infty} \frac{I_n}{\frac{1}{e(n+1)}} = 1.
+    $$
+\end{enumerate}
 \end{answerbox}
 
 %----------------- END ------------------
