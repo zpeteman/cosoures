@@ -4,12 +4,13 @@ This directory contains solved exam papers for Electricity I course.
 
 ## Academic Years
 
-- [Add academic years as they become available]
+- 20-21
+- 21-22
 
 ## Exam Types
 
-- `ratt/` - Regular exam papers
-- `nor/` - Make-up exam papers
+- `ratt/` - Make-up exam papers
+- `nor/` - Regular exam papers
 
 ## File Structure
 

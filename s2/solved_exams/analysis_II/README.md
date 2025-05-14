@@ -4,12 +4,14 @@ This directory contains solved exam papers for Analysis II course.
 
 ## Academic Years
 
-- [Add academic years as they become available]
+- 21-22
+- 22-23
+- 23-24 
 
 ## Exam Types
 
-- `ratt/` - Regular exam papers
-- `nor/` - Make-up exam papers
+- `ratt/` - Make-up exam papers
+- `nor/` - Normal exam papers
 
 ## File Structure
 
