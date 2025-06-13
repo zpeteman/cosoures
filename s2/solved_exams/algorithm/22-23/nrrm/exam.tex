@@ -1,0 +1,304 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{eurosym}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+
+\title{Correction de l'Examen de Mathématiques et Algorithmique}
+\author{Gemini}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section*{Remarque Générale}
+Ce document fournit une correction détaillée des exercices présentés dans les images. Il est important de noter que plusieurs questions ou algorithmes dans l'énoncé original semblent contenir des erreurs, des typos ou des ambiguïtés. Les solutions proposées ci-dessous sont basées sur l'interprétation la plus probable de l'intention de l'examinateur, et les incohérences sont signalées le cas échéant.
+
+\newpage
+
+\section{Exercice 4 (Image 1)}
+
+\subsection{Fonction A}
+La fonction A est une implémentation de l'algorithme d'Euclide, qui calcule le plus grand diviseur commun (PGCD) de deux entiers n et m.
+
+\subsubsection{Question 15}
+\textbf{Question:} Pour n=12 et m=3 quelle est la valeur renvoyée par la fonction A ?
+
+\textbf{Analyse:} On calcule le PGCD(12, 3). Comme 12 est un multiple de 3, PGCD(12, 3) = 3.
+L'algorithme s'exécute comme suit :
+\begin{itemize}
+    \item \texttt{max = 12}, \texttt{min = 3}
+    \item La condition de la boucle \texttt{tant que (max mod min != 0)} est fausse (12 mod 3 = 0).
+    \item L'algorithme retourne \texttt{min}, qui est 3.
+\end{itemize}
+
+\textbf{Réponse:} \textbf{B. 3}
+
+\subsubsection{Question 16}
+\textbf{Question:} Pour n=70 et m=15 quelle est la valeur renvoyée par la fonction A ?
+
+\textbf{Analyse:} On calcule le PGCD(70, 15).
+\begin{itemize}
+    \item \texttt{max = 70}, \texttt{min = 15}. r = 70 mod 15 = 10.
+    \item \texttt{max = 15}, \texttt{min = 10}. r = 15 mod 10 = 5.
+    \item \texttt{max = 10}, \texttt{min = 5}. r = 10 mod 5 = 0.
+    \item La boucle s'arrête. Le dernier reste non nul est 5, qui est le PGCD.
+\end{itemize}
+Le résultat est 5.
+
+\textbf{Note:} Aucune des options (A. 45, B. 3, C. 15, D. 30) ne correspond à la bonne réponse. La question ou les options proposées contiennent une erreur.
+
+\subsubsection{Question 17}
+\textbf{Question:} Que calcule la fonction A?
+
+\textbf{Analyse:} Comme expliqué précédemment, la fonction implémente l'algorithme d'Euclide.
+
+\textbf{Réponse:} \textbf{D. Plus grand diviseur commun}
+
+\subsubsection{Question 18}
+\textbf{Question:} Pour n=$100^{99}$ et m=$100^{100}$ quelle est la valeur renvoyée par la fonction A?
+
+\textbf{Analyse:} On cherche PGCD($100^{99}, 100^{100}$). Sachant que $100^{100} = 100 \times 100^{99}$, $100^{99}$ est un diviseur de $100^{100}$. Le PGCD de deux nombres dont l'un divise l'autre est le plus petit des deux.
+
+\textbf{Réponse:} \textbf{B. $100^{99}$}
+
+\subsection{Fonction B}
+L'algorithme B, tel qu'écrit, est ambigu. Pour répondre aux questions, nous devons supposer l'intention du programmeur. L'interprétation la plus logique est que la fonction B a pour but de compter le nombre d'éléments dans un tableau qui sont des puissances de 2. Cela nécessite que la variable \texttt{p} soit réinitialisée à 1 à chaque itération de la boucle principale.
+
+\subsubsection{Question 19}
+\textbf{Question:} Que retourne la fonction B pour le tableau T = \{8, 0, 1, 4, 2\} ?
+
+\textbf{Analyse:} En supposant que la fonction compte les puissances de 2 (avec $2^0=1$) :
+\begin{itemize}
+    \item 8 est une puissance de 2 ($2^3$).
+    \item 0 n'est pas une puissance de 2.
+    \item 1 est une puissance de 2 ($2^0$).
+    \item 4 est une puissance de 2 ($2^2$).
+    \item 2 est une puissance de 2 ($2^1$).
+\end{itemize}
+Il y a 4 nombres qui sont des puissances de 2 dans le tableau.
+
+\textbf{Réponse:} \textbf{C. 4}
+
+\subsubsection{Question 20}
+\textbf{Question:} Que fait la fonction B?
+
+\textbf{Analyse:} Basé sur l'analyse de la Q19.
+
+\textbf{Réponse:} \textbf{B. Compte le nombre de puissances de 2 dans T}
+
+\subsubsection{Question 21}
+\textbf{Question:} Que retourne la fonction B pour le tableau T = \{1, 1, 0, $2^4, 2^{10}, 2^{10}, 2^{10}, 2^{12}$\}?
+
+\textbf{Analyse:} Nous comptons les puissances de 2 dans le tableau :
+\begin{itemize}
+    \item 1 (présent 2 fois)
+    \item $2^4$ (présent 1 fois)
+    \item $2^{10}$ (présent 3 fois)
+    \item $2^{12}$ (présent 1 fois)
+    \item 0 n'est pas une puissance de 2.
+\end{itemize}
+Le total est $2 + 1 + 3 + 1 = 7$.
+
+\textbf{Réponse:} \textbf{B. 7}
+
+\section{Exercice 2 (Image 2)}
+
+\subsection{Fonction F}
+La fonction F est une définition récursive classique de la fonction factorielle.
+\texttt{F(n) = n * F(n-1)} avec \texttt{F(0) = 1}. Donc, $F(n) = n!$.
+
+\subsubsection{Question 6}
+\textbf{Question:} Pour n=4 quelle est la valeur renvoyée par la fonction F?
+
+\textbf{Analyse:} $F(4) = 4! = 4 \times 3 \times 2 \times 1 = 24$.
+
+\textbf{Réponse:} \textbf{A. 24}
+
+\subsubsection{Question 7}
+\textbf{Question:} Quelle est la valeur $f_n$ renvoyée par F en fonction de n?
+
+\textbf{Analyse:} La fonction calcule la factorielle de n.
+
+\textbf{Réponse:} \textbf{B. $f_n = n!$}
+
+\subsection{Fonction G}
+La fonction G est définie par $G(n,m) = n^m + G(n-1,m)$ avec $G(0,m)=0$.
+En développant la récurrence, on obtient :
+$G(n,m) = n^m + (n-1)^m + \dots + 1^m + G(0,m) = \sum_{i=1}^{n} i^m$.
+
+\subsubsection{Question 8}
+\textbf{Question:} Donner la valeur $g_{n,m}$ renvoyée par G en fonction de n et m.
+
+\textbf{Analyse:} D'après l'analyse ci-dessus.
+
+\textbf{Réponse:} \textbf{B. $g_{n,m} = \sum_{i=1}^{n} i^m$}
+
+\section{Exercice 3 (Image 2)}
+
+\textbf{Note importante:} Il y a une incohérence majeure dans cet exercice. La fonction \texttt{M} telle qu'elle est écrite ne correspond pas aux questions Q9, Q10 et Q11 et leurs options. La fonction \texttt{M} écrite calcule une valeur liée à la somme des premiers entiers, tandis que les questions suggèrent une fonction liée aux puissances de 3. Nous supposerons que la fonction \texttt{M} voulue est la suivante:
+\begin{lstlisting}[language=python]
+def M_prime(a: int) -> int:
+    k = 0
+    p = 1
+    while p < a:
+        p = p * 3
+        k = k + 1
+    return k
+\end{lstlisting}
+Cette fonction \texttt{M\_prime(a)} trouve le plus petit entier $k$ tel que $3^k \ge a$.
+
+\subsection{Fonction M (corrigée)}
+\subsubsection{Question 9}
+\textbf{Question:} Pour a=70 quelle est la valeur renvoyée par la fonction M?
+
+\textbf{Analyse:} Avec la fonction \texttt{M\_prime}, on cherche le plus petit $k$ tel que $3^k \ge 70$.
+$3^1=3, 3^2=9, 3^3=27, 3^4=81$.
+Le plus petit $k$ est 4.
+
+\textbf{Réponse:} \textbf{C. 4}
+
+\subsubsection{Question 10}
+\textbf{Question:} Que détermine la fonction M?
+
+\textbf{Analyse:} La fonction \texttt{M\_prime} renvoie la plus petite puissance $k$ pour laquelle $3^k$ est supérieur ou égal à $a$.
+
+\textbf{Réponse:} \textbf{A. min\{$k \in \mathbb{N} / 3^k \ge a$\}}
+
+\subsubsection{Question 11}
+\textbf{Question:} Pour $a=3^{27}+1$ quelle est la valeur renvoyée par la fonction M?
+
+\textbf{Analyse:} La question est probablement mal retranscrite. En se basant sur les options, il est très probable que la valeur de $a$ était $a=3^{99}+1$. Avec cette hypothèse et la fonction \texttt{M\_prime}, on cherche le plus petit $k$ tel que $3^k \ge 3^{99}+1$.
+\begin{itemize}
+    \item pour $k=99$, $3^{99} < 3^{99}+1$.
+    \item pour $k=100$, $3^{100} > 3^{99}+1$.
+\end{itemize}
+Le plus petit entier $k$ est donc 100.
+
+\textbf{Réponse (sous hypothèse):} \textbf{B. 100}
+
+\subsection{Fonction N}
+La fonction N calcule $p = 1 + \sum_{i \in D}$, où D est l'ensemble des diviseurs de $n$ entre 1 et $n/2$. Cela revient à calculer $1 + (\text{somme des diviseurs propres de } n)$. La somme des diviseurs propres de $n$ est $\sigma_1(n) - n$.
+
+\subsubsection{Question 12}
+\textbf{Question:} Que retourne la fonction N pour n=40?
+
+\textbf{Analyse:} Les diviseurs de 40 sont \{1, 2, 4, 5, 8, 10, 20, 40\}. Les diviseurs propres (excluant 40) sont \{1, 2, 4, 5, 8, 10, 20\}. Leur somme est 50.
+L'algorithme, tel qu'il est écrit, initialise \texttt{p=1} puis ajoute les diviseurs. Le résultat serait donc $1 + (1+2+4+5+8+10+20) = 51$.
+Cependant, 50 est une option et 51 ne l'est pas. Il est probable qu'il y ait une erreur d'initialisation dans le code et que \texttt{p} aurait dû être initialisé à 0 pour calculer directement la somme des diviseurs propres, qui est 50.
+
+\textbf{Réponse (sous hypothèse d'une erreur de code):} \textbf{B. 50}
+
+\section{Exercice 5 et questions diverses (Image 3)}
+
+\subsection{Question 22}
+\textbf{Question:} Que retourne la fonction H pour le tableau T tel que: T est de taille 1000 et $\forall k \in \{0, ..., 999\}, T[k] = 1$ si $k$ est impair, $4$ si $k$ est pair.
+
+\textbf{Analyse:} La fonction H n'est pas définie. En supposant que H est la fonction B de l'exercice 4 (qui compte les puissances de 2), nous avons :
+\begin{itemize}
+    \item Le tableau contient 500 nombres pairs (pour $k=0, 2, ..., 998$), donc 500 fois la valeur 4.
+    \item Le tableau contient 500 nombres impairs (pour $k=1, 3, ..., 999$), donc 500 fois la valeur 1.
+    \item $4 = 2^2$ est une puissance de 2.
+    \item $1 = 2^0$ est une puissance de 2.
+\end{itemize}
+Tous les 1000 éléments du tableau sont des puissances de 2.
+
+\textbf{Réponse (sous hypothèse H=B):} \textbf{A. 1000}
+
+\subsection{Question 23}
+\textbf{Question:} Soient f et g deux suites à valeurs strictement positives. On suppose que: $f(n)=O(g(n))$. Quelle proposition logique cela implique?
+
+\textbf{Analyse:} La définition de la notation "Grand O" est: il existe une constante $c > 0$ et un rang $n_0$ à partir duquel $|f(n)| \le c \cdot |g(n)|$. Comme les suites sont strictement positives, cela devient $f(n) \le c \cdot g(n)$.
+
+\textbf{Réponse:} \textbf{B. $(\exists \epsilon > 0)(\exists n_0 \in \mathbb{N})(\forall n \ge n_0): f(n) < \epsilon \cdot g(n)$} (Note: l'usage de $\epsilon$ pour la constante et de l'inégalité stricte ne change pas la nature de la définition de O).
+
+\subsection{Question 24}
+\textbf{Question:} Quelle est la complexité temporelle de l'algorithme suivant?
+
+\textbf{Analyse:} L'algorithme a deux boucles imbriquées. Nous devons compter le nombre d'exécutions de l'instruction interne `S = S+1`.
+\begin{itemize}
+    \item Pour i=0, la boucle interne s'exécute 1 fois (j=0).
+    \item Pour i=1, la boucle interne s'exécute 2 fois (j=1, 0).
+    \item Pour i=n, la boucle interne s'exécute n+1 fois (j=n, n-1, ..., 0).
+\end{itemize}
+Le nombre total d'opérations est $S = 1 + 2 + \dots + (n+1) = \frac{(n+1)(n+2)}{2}$. C'est un polynôme de degré 2 en $n$.
+
+\textbf{Réponse:} \textbf{B. O($n^2$)}
+
+\subsection{Fonction mystère}
+Cette fonction utilise une méthode itérative pour converger vers une valeur. Si elle converge, alors $Y \approx X$.
+En posant $Y=X$ dans l'équation de mise à jour:
+$X = \frac{2X + A/X^2}{3} \implies 3X = 2X + A/X^2 \implies X = A/X^2 \implies X^3 = A \implies X = \sqrt[3]{A}$.
+Il s'agit de la méthode de Newton-Raphson pour trouver la racine cubique de A.
+
+\subsubsection{Question 25}
+\textbf{Question:} Quelle relation vérifient X et Y après l'exécution de la boucle?
+
+\textbf{Analyse:} La boucle se termine lorsque la condition `Jusqu'à (abs(Y-X) <= epsilon)` est satisfaite. C'est la relation qui lie X et Y à la fin de la boucle. Aucune des options ne correspond exactement. L'option B (`|Y-X| > epsilon`) est la négation de la condition d'arrêt. Il y a probablement une erreur dans les options. La relation correcte est $|Y-X| \le \epsilon$.
+
+\subsubsection{Question 26}
+\textbf{Question:} Quelle est la relation entre la valeur renvoyée par la fonction mystère et le paramètre A?
+
+\textbf{Analyse:} Comme démontré ci-dessus, la fonction calcule la racine cubique de A.
+
+\textbf{Réponse:} \textbf{C. $Y = \sqrt[3]{A}$}
+
+\section{Exercice 1 (Image 4)}
+Cet exercice demande de compléter un algorithme qui saisit les données de 20 élèves et trouve celui avec la meilleure moyenne. Les questions sont mal formulées et les numéros de ligne sont incohérents. Nous allons répondre en nous basant sur la logique de l'algorithme.
+
+\subsubsection{Algorithme Corrigé}
+\begin{lstlisting}[language=Pascal]
+// ... (déclarations)
+Début
+  // remplir le tableau d'eleves
+  Pour i de 1 a 20 Faire
+    Ecrire("Eleve n ", i, ":")
+    Ecrire("Nom:")
+    Lire(T[i].nom) // Ligne 7
+    Ecrire("Classe:")
+    Lire(T[i].classe) // Ligne 9
+    Ecrire("Moyenne:")
+    Lire(T[i].moyenne) // Ligne 11
+  FinPour
+  // Recherche de la moyenne maximale
+  moyMax := T[1].moyenne
+  iMax := 1
+  Pour i de 2 a 20 Faire
+    Si T[i].moyenne > moyMax alors
+      moyMax := T[i].moyenne // Mise a jour
+      iMax := i             // Mise a jour
+    FinSi
+  FinPour
+  // Affichage
+  Ecrire("L'eleve qui a la moyenne maximale est : ",
+         T[iMax].nom, T[iMax].classe, T[iMax].moyenne) // Lignes 27-28
+Fin
+\end{lstlisting}
+
+\subsubsection{Question 1}
+\textbf{Question:} Pour la ligne 7 quelle est l'instruction correcte :
+\textbf{Analyse:} La ligne 7 doit lire le nom de l'élève. La variable correcte est \texttt{T[i].nom}.
+\textbf{Réponse:} \textbf{B. T[i].nom}
+
+\subsubsection{Questions 2 et 3}
+Ces questions sont inexploitables car les numéros de ligne et les options proposées sont incohérents avec le code.
+
+\subsubsection{Question 4}
+\textbf{Question:} Pour la ligne 23 quelle est l'instruction correcte :
+\textbf{Analyse:} En ignorant le numéro de ligne et en se fiant aux options, cette question semble porter sur la mise à jour de la moyenne maximale.
+\textbf{Réponse:} \textbf{B. moyMax <- T[i].moyenne}
+
+\subsubsection{Question 5}
+\textbf{Question:} Pour les lignes 27 et 28 quelles sont les instructions correctes :
+\textbf{Analyse:} Il faut afficher les informations de l'élève ayant la moyenne maximale, qui se trouve à l'indice \texttt{iMax}.
+\textbf{Réponse:} \textbf{D. T[iMax].nom T[iMax].classe}
+
+
+\end{document}
