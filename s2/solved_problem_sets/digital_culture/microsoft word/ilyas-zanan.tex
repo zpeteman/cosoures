@@ -1,0 +1,258 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TP Culture Digitale: IA générative
+%
+% Réalisé par: Ilyas Zanan
+%
+% This LaTeX file is a solution to the assignment described in
+% "TP Microsoft Word.pdf". It follows all the specified formatting instructions.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[12pt,a4paper]{article}
+
+%-------------------------------------------------------------------------------
+% PACKAGES
+%-------------------------------------------------------------------------------
+
+% Font and language support for French
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage[table]{xcolor}
+
+% Required for advanced table formatting
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{booktabs}
+
+% Page layout and spacing
+\usepackage[margin=2.5cm]{geometry} % Page margins
+\usepackage{setspace} % For line spacing
+\usepackage{parskip}  % To set space between paragraphs
+\setlength{\parskip}{6pt} % Set paragraph spacing to 6pt as per instructions 
+\usepackage{indentfirst} % To indent the first line of paragraphs 
+
+% Headers and Footers
+\usepackage{fancyhdr}
+
+% Graphics and Color
+\usepackage{graphicx}
+\usepackage{xcolor}
+
+% Section Title Formatting
+\usepackage{titlesec}
+
+% Table enhancements
+\usepackage{booktabs}
+\usepackage{longtable} % For tables that might span pages
+
+% For wrapping text around figures
+\usepackage{wrapfig}
+
+% Hyperlinks and references
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=cyan,
+    pdftitle={IA générative},
+}
+
+%-------------------------------------------------------------------------------
+% STYLING AND CONFIGURATION
+%-------------------------------------------------------------------------------
+
+% --- Header and Footer Configuration (as per instructions) ---
+\pagestyle{fancy}
+\fancyhf{} % Clear all header and footer fields
+% Header: logo.png and title "IA générative" 
+\fancyhead[L]{\includegraphics[height=10pt]{logo.png}} % Adjust height as needed
+\fancyhead[R]{IA générative}
+% Footer: page number and academic year 
+\fancyfoot[L]{\thepage}
+\fancyfoot[R]{Année universitaire 2023-2024}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+% --- Title and Paragraph Formatting (as per instructions) ---
+
+% Title style 
+\definecolor{titleblue}{RGB}{46, 116, 181} % An "appropriate color"
+\titleformat{\section}
+  {\normalfont\sffamily\large\bfseries\color{titleblue}} % Calibri-like, 14pt size (\large on 12pt base), bold, color
+  {\thesection.} % Automatic numbering
+  {1em}
+  {}
+\titlespacing*{\section}{0pt}{12pt}{12pt} % 12pt spacing before and after
+
+% Paragraph style 
+% Font: Calibri 12pt -> set in \documentclass
+% Alignment: Justify -> default in LaTeX
+% First-line indent -> handled by \indentfirst
+% Paragraph spacing: 6pt -> handled by \parskip
+% Line spacing: 1.5 -> handled by \onehalfspacing
+\onehalfspacing
+
+
+%-------------------------------------------------------------------------------
+% DOCUMENT START
+%-------------------------------------------------------------------------------
+\begin{document}
+
+% --- Cover Page (as per instructions) ---
+\begin{titlepage}
+    \centering
+    \vspace*{2cm}
+    
+    {\huge\bfseries\sffamily IA générative\par}
+    
+    \vspace{1.5cm}
+    
+    {\Large \sffamily Travail Pratique de Culture Digitale\par}
+    
+    \vfill % Pushes content to the vertical center
+    
+    {\Large Fait par :\par}
+    \vspace{0.5cm}
+    {\Huge\bfseries Ilyas Zanan\par}
+    
+    \vfill % Pushes the date to the bottom
+    
+    {\large Année universitaire 2023-2024\par}
+    
+    \clearpage
+\end{titlepage}
+
+
+% --- Table of Contents (as per instructions) ---
+\pagestyle{fancy} % Apply header/footer style from here on
+\renewcommand{\contentsname}{Table des matières}
+\tableofcontents
+\newpage
+
+% --- Main Content ---
+% The text is taken from the source file and formatted according to the instructions.
+
+\section{Définition}
+
+L'intelligence artificielle générative ou IA générative (ou GenAl) est un type de système d'intelligence artificielle (IA) capable de générer du texte, des images ou d'autres médias en réponse à des invites (ou prompts en anglais). Les modèles génératifs apprennent les modèles et la structure des données d'entrée, puis génèrent un nouveau contenu similaire aux données d'apprentissage mais avec un certain degré de nouveauté (plutôt que de simplement classer ou prédire les données)\footnote{« Artificial Intelligence Glossary: Neural Networks and Other Terms Explained », The New York Times, 27 mars 2023 (consulté le 22 avril 2023)}.
+
+L'IA générative peut être unimodale ou multimodale; les systèmes unimodaux n'acceptent qu'un seul type d'entrée (par exemple, du texte), tandis que les systèmes multimodaux peuvent accepter plusieurs types d'entrée (par exemple, du texte et des images). Les cadres les plus importants pour aborder l'IA générative comprennent les réseaux antagonistes génératifs (GAN) et les transformateurs génératifs pré-entraînés (GPT)\footnote{https://pub.towardsai.net/generative-ai-and-future-c3b1695876f2}. Les GPT sont des réseaux de neurones artificiels fondés sur l'architecture du transformateur, pré-entraînés sur de grands ensembles de données de texte non étiqueté et capables de générer un nouveau texte de type humain\footnote{https://www.weforum.org/agenda/2023/01/davos23-generative-al-a-game-changer-industries-and-society-code-developers/}.
+
+\section{Applications de l'IA Générative}
+
+L'IA générative a de nombreuses applications potentielles, notamment dans des domaines créatifs tels que l'art, la musique et l'écriture, ainsi que dans des domaines tels que les soins de santé, la finance et les jeux. Cependant, il existe également des inquiétudes quant à l'utilisation abusive potentielle de l'IA générative, par exemple dans la création de fausses nouvelles (fake news en anglais) ou de deepfakes\footnote{« Risques de cybersécurité liés à l'IA générative » [archive], sur powerdmarc.com, 26 juillet 2023 (consulté le 27 août 2023)}. Les systèmes d'IA génératifs notables incluent ChatGPT, Bard et d'autres modèles d'IA générative incluent des systèmes artistiques tels que Stable Diffusion, Midjourney et DALL-E\footnote{Roose, « A Coming-Out Party for Generative A.I., Silicon Valley's New Craze » [archive], The New York Times, 21 octobre 2022 (consulté le 14 mars 2023)}.
+
+\section{Modalités}
+
+Un système d'IA générative est construit en appliquant un apprentissage automatique non supervisé ou auto-supervisé à un ensemble de données. Les capacités d'un système d'IA générative dépendent de la modalité ou du type d'ensemble de données utilisé.
+% --- Image Insertion (as per instructions) ---
+% Image "Théâtre d'Opéra Spatial" with left-aligned text wrapping  and adjusted size.
+\begin{wrapfigure}{l}{0.4\textwidth}
+    \centering
+    \vspace{-15pt} % Minor adjustment to align better with the top of the paragraph
+    \includegraphics[width=0.38\textwidth]{Théâtre_dOpéra_Spatial.png}
+    \caption*{\footnotesize \textit{Théâtre d'Opéra Spatial}}
+    \vspace{-15pt} % Reduce space after the figure
+\end{wrapfigure}
+%
+% --- Bulleted List (as per instructions) ---
+\begin{itemize}
+    \item \textbf{Texte:} Formés sur des mots ou des jetons de mots, ces systèmes incluent GPT-3, LaMDA, LLAMA, BLOOM, GPT-4. Ils sont capables de traitement du langage naturel, de traduction et de génération de texte.
+    
+    \item \textbf{Code:} De grands modèles de langage peuvent être entraînés sur du code source pour générer de nouveaux programmes informatiques.
+    
+    \item \textbf{Images:} Des systèmes comme Imagen, DALL-E, Midjourney, et Stable Diffusion, formés sur des images avec légendes, génèrent des images à partir de texte.
+
+    \item \textbf{Molécules:} Des systèmes comme AlphaFold sont entraînés sur des séquences d'acides aminés pour la prédiction de la structure des protéines et la découverte de médicaments.
+
+    \item \textbf{Musique:} Des systèmes comme MusicLM génèrent de nouveaux échantillons musicaux à partir de descriptions textuelles.
+    
+    \item \textbf{Vidéo:} L'IA générative entraînée sur une vidéo annotée peut générer des clips vidéo. Des exemples incluent Gen1 et Make-A-Video.
+    
+    \item \textbf{Multimodal:} Un système peut être construit à partir de plusieurs modèles ou entraîné sur plusieurs types de données, comme GPT-4 qui accepte du texte et des images.
+\end{itemize}
+
+\newpage
+\section{Tableau Récapitulatif des Modalités}
+\vspace{0.5cm}
+
+% Define colors for the table
+\definecolor{lightgray}{gray}{0.95}
+\definecolor{headerblue}{RGB}{46, 116, 181}
+
+\begingroup
+\setlength{\tabcolsep}{10pt} % Horizontal padding
+\renewcommand{\arraystretch}{1.5} % Vertical padding
+
+\begin{longtable}{>{\bfseries}l >{\raggedright\arraybackslash}p{3cm} >{\raggedright\arraybackslash}p{5cm} >{\raggedright\arraybackslash}p{2.5cm}}
+\caption{Synthèse des systèmes d'IA générative par modalité}
+\label{tab:modalites}\\
+\toprule
+\rowcolor{headerblue!90}\textcolor{white}{\textbf{Modalité}} & 
+\textcolor{white}{\textbf{Exemples de systèmes}} & 
+\textcolor{white}{\textbf{Capacités}} & 
+\textcolor{white}{\textbf{Ensembles de données}} \\
+\midrule
+\endfirsthead
+
+\toprule[1.5pt]
+\rowcolor{headerblue!90}\textcolor{white}{\textbf{Modalité}} & 
+\textcolor{white}{\textbf{Exemples de systèmes}} & 
+\textcolor{white}{\textbf{Capacités}} & 
+\textcolor{white}{\textbf{Ensembles de données}} \\
+\midrule
+\endhead
+
+\bottomrule[1.5pt]
+\endfoot
+
+\rowcolor{lightgray!30}
+Texte & 
+GPT-3, LaMDA, BLOOM & 
+Traitement du langage naturel, traduction, génération de texte & 
+BookCorpus, Wikipédia, etc. \\
+
+\rowcolor{white}
+Code & 
+Grands modèles de langage & 
+Génération de code source & 
+Texte en langage de programmation \\
+
+\rowcolor{lightgray!30}
+Images & 
+Imagen, DALL-E, Midjourney & 
+Génération d'images à partir de texte, transfert de style & 
+LAION-5B, etc. \\
+
+\rowcolor{white}
+Molécules & 
+AlphaFold & 
+Prédiction de la structure des protéines, découverte de médicaments & 
+Ensembles de données biologiques \\
+
+\rowcolor{lightgray!30}
+Musique & 
+MusicLM & 
+Génération de musique basée sur des descriptions textuelles & 
+Formes d'ondes sonores \\
+
+\rowcolor{white}
+Vidéo & 
+Gen1, Make-A-Video & 
+Génération de clips vidéo cohérents dans le temps & 
+Vidéos annotées \\
+
+\rowcolor{lightgray!30}
+Multimodal & 
+GPT-4 d'OpenAI & 
+Accepte et traite simultanément plusieurs types de données (texte, images) & 
+Données multimodales \\
+
+\end{longtable}
+\endgroup
+
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% END OF DOCUMENT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
