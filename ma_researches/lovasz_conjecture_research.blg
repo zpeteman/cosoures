@@ -1,0 +1,98 @@
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: lovasz_conjecture_research.aux
+Reallocating 'name_of_file' (item size: 1) to 9 items.
+The style file: biblatex.bst
+Reallocating 'name_of_file' (item size: 1) to 31 items.
+Reallocating 'name_of_file' (item size: 1) to 11 items.
+Reallocating 'glb_str_end' (item size: 4) to 20 items.
+Reallocating 'glb_str_ptr' (item size: 4) to 20 items.
+Reallocating 'global_strs' (item size: 1) to 4000000 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'wiz_functions' (item size: 4) to 6000 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+Database file #1: lovasz_conjecture_research-blx.bib
+Database file #2: references.bib
+You're missing a field name---line 31 of file references.bib
+ :   year={1978}, 
+ :                % Often cited as 1975 from conference, but published in 1978.
+I'm skipping whatever remains of this entry
+I was expecting an "="---line 49 of file references.bib
+ :   
+ :   edition={5th}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting an "="---line 59 of file references.bib
+ :   
+ :   title={Introduction to graph theory},\
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting an "="---line 75 of file references.bib
+ :   
+ :   journal={Journal of Graph Theory},\
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting an "="---line 95 of file references.bib
+ :   
+ :   title={An introduction to the theory of groups},\
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting an "="---line 111 of file references.bib
+ :   
+ :   journal={Springer Science & Business Media},\
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Biblatex version: 3.20
+Reallocating 'wiz_functions' (item size: 4) to 9000 items.
+Reallocating 'singl_function' (item size: 4) to 100 items.
+You've used 1 entry,
+            6402 wiz_defined-function locations,
+            1203 strings with 9044 characters,
+and the built_in function-call counts, 1534 in all, are:
+= -- 73
+> -- 70
+< -- 1
++ -- 49
+- -- 28
+* -- 32
+:= -- 370
+add.period$ -- 0
+call.type$ -- 1
+change.case$ -- 0
+chr.to.int$ -- 42
+cite$ -- 0
+duplicate$ -- 11
+empty$ -- 104
+format.name$ -- 0
+if$ -- 325
+int.to.chr$ -- 0
+int.to.str$ -- 0
+missing$ -- 0
+newline$ -- 20
+num.names$ -- 0
+pop$ -- 47
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 78
+stack$ -- 0
+substring$ -- 154
+swap$ -- 1
+text.length$ -- 20
+text.prefix$ -- 0
+top$ -- 1
+type$ -- 22
+warning$ -- 0
+while$ -- 64
+width$ -- 0
+write$ -- 20
+(There were 6 error messages)
