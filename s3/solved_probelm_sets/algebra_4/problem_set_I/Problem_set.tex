@@ -1,0 +1,671 @@
+\documentclass[12pt]{article}                                                                                                           
+\usepackage[utf8]{inputenc}                                                                                                             
+\usepackage[T1]{fontenc}                                                                                                                
+\usepackage{amsmath, amssymb}                                                                                                           
+\usepackage{geometry}                                                                                                                   
+\usepackage{xcolor}                                                                                                                     
+\usepackage{lipsum}                                                                                                                     
+\usepackage{titlesec}                                                                                                                   
+\usepackage{fancyhdr}                                                                                                                   
+\usepackage[most]{tcolorbox}                                                                                                                  
+\usepackage{graphicx}                                                                                                                   
+\usepackage{float}                                                                                      
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+\usetikzlibrary{arrows.meta, decorations.markings}                                                                                      
+                                                                                                                                        
+\geometry{a4paper, margin=2.5cm}                                                                                                        
+\pagestyle{fancy}                                                                                                                       
+\fancyhf{}                                                                                                                              
+\rhead{Problem Set I}                                                                                                                   
+\lhead{Algebra IV}                                                                                                                     
+\cfoot{\thepage}                                                                                                                        
+                                                                                                                                        
+% Fancy titles                                                                                                                          
+\titleformat{\section}{\normalfont\Large\bfseries}{Exercise \thesection:}{1em}{}                                                        
+\titleformat{\subsection}{\normalfont\bfseries}{Correction:}{1em}{}                                                                     
+                                                                                                                                        
+% Custom box for correction with breakable option
+\newtcolorbox{correctionbox}{                                                                                                           
+  colback=gray!5,                                                                                                                       
+  colframe=black,                                                                                                                       
+  fonttitle=\bfseries,                                                                                                                  
+  title=Correction,                                                                                                                     
+  before skip=10pt,                                                                                                                     
+  after skip=10pt,
+  breakable,
+  enhanced
+}                                                                                                                                       
+                                                                                                                                        
+% Fix headheight warning
+\setlength{\headheight}{14.49998pt}
+
+\begin{document}
+
+\begin{center}
+\Large\textbf{Ibn Tofail University} \\[1em]
+\large\textit{Algebra IV} \\[2em]
+\large\textit{Problem Set I} \\[0.5em]
+\end{center}
+
+\vspace{1cm}
+
+% ----------- EXERCISE 1 -------------
+\section{}
+Let \( f \in \text{End}(\mathbb{C}^3) \) with matrix relative to the canonical basis:
+\[
+A = \begin{pmatrix}
+2 & 0 & 4 \\
+3 & -4 & 12 \\
+1 & -2 & 5
+\end{pmatrix}
+\]
+
+\begin{enumerate}
+    \item Find the eigenvalues of \( f \).
+    \item Show there exists a basis \( B \) of eigenvectors of \( f \) and give the matrix of \( f \) in \( B \).
+    \item Give the change of basis matrix \( P \) from the canonical basis \( B_0 \) to \( B \), then compute \( P^{-1}AP \).
+\end{enumerate}
+
+\begin{correctionbox}
+    \noindent \textbf{1. Finding the eigenvalues}
+
+We compute the characteristic polynomial, Using cofactor expansion along the first row:
+\begin{align*}
+\det(A - \lambda I) &= (2-\lambda)\left[(-4-\lambda)(5-\lambda) + 24\right] + 4\left[-6 + 4 + \lambda\right] \\
+&= (2-\lambda)\left[\lambda^2 - \lambda + 4\right] + 4(\lambda - 2) \\
+&= (2-\lambda)\lambda(\lambda - 1)
+\end{align*}
+
+Setting \(\det(A - \lambda I) = 0\) gives:
+\[
+\lambda_1 = 0, \quad \lambda_2 = 1, \quad \lambda_3 = 2
+\]
+
+\noindent \textbf{2. Finding eigenvectors and basis \(B\)}
+
+\textbf{For \(\lambda = 0\):} Solve \(A\mathbf{v} = 0\)
+\[
+\Rightarrow x = -2z,\ y = \frac{3}{2}z
+\]
+Take \(z = 2\): \(v_1 = (-4, 3, 2)\)
+
+\textbf{For \(\lambda = 1\):} Solve \((A - I)\mathbf{v} = 0\)
+\[
+\Rightarrow x = -4z,\ y = 0
+\]
+Take \(z = 1\): \(v_2 = (-4, 0, 1)\)
+
+\textbf{For \(\lambda = 2\):} Solve \((A - 2I)\mathbf{v} = 0\)
+\[
+\Rightarrow z = 0,\ x = 2y
+\]
+Take \(y = 1\): \(v_3 = (2, 1, 0)\)
+
+Basis \(B = \{v_1, v_2, v_3\} = \{(-4,3,2), (-4,0,1), (2,1,0)\}\)
+
+Matrix of \(f\) in basis \(B\):
+\[
+D = \begin{pmatrix}
+0 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 2
+\end{pmatrix}
+\]
+
+\noindent \textbf{3. Change of basis matrix and similarity transformation}
+
+Change of basis matrix:
+\[
+P = \begin{pmatrix}
+-4 & -4 & 2 \\
+3 & 0 & 1 \\
+2 & 1 & 0
+\end{pmatrix}
+\]
+
+We verify that:
+\[
+P^{-1}AP = D = \begin{pmatrix}
+0 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 2
+\end{pmatrix}
+\]
+
+This confirms that \(A\) is diagonalizable and \(B\) is a basis of eigenvectors.
+\end{correctionbox}
+
+% ----------- EXERCISE 2 -------------
+\section{}
+Let 
+\[
+A = \begin{pmatrix}
+2 & -1 & 1 \\
+2 & 0 & 1 \\
+1 & 1 & 1
+\end{pmatrix}
+\]
+Find the characteristic polynomial of \( A \).
+
+\begin{correctionbox}
+The characteristic polynomial is given by:
+\[
+P(\lambda) = \det(A - \lambda I)
+\]
+where \(I\) is the \(3 \times 3\) identity matrix.
+
+We compute, Using the cofactor expansion along the first row:
+\begin{align*}
+\det(A - \lambda I) &= (2-\lambda)\left[(-\lambda)(1-\lambda) - (1)(1)\right] \\
+&\quad - (-1)\left[(2)(1-\lambda) - (1)(1)\right] \\
+&\quad + (1)\left[(2)(1) - (-\lambda)(1)\right]\\
+\iff P(\lambda) &= (2-\lambda)(\lambda^2 - \lambda - 1) + (1 - 2\lambda) + (2 + \lambda) \\
+&= (2-\lambda)(\lambda^2 - \lambda - 1) + 3 - \lambda \\
+&= (-\lambda^3 + 3\lambda^2 - \lambda - 2) + (3 - \lambda) \\
+&= -\lambda^3 + 3\lambda^2 - 2\lambda + 1
+\end{align*}
+
+Therefore, the characteristic polynomial is:
+\[
+\boxed{P(\lambda) = -\lambda^3 + 3\lambda^2 - 2\lambda + 1}
+\]
+\end{correctionbox}
+
+% ----------- EXERCISE 3 -------------
+\section{}
+Let \( A \in M_K \) with characteristic polynomial \( P \) such that \( P(0) \neq 0 \).
+\begin{itemize}
+    \item Show \( A \) is invertible and give the expression for the characteristic polynomial of \( A \).
+    \item Show for all \( B \in M_K \), \( AB \) and \( BA \) have the same characteristic polynomial.
+\end{itemize}
+
+\begin{correctionbox}
+Let $ A \in M_n(K) $ with characteristic polynomial $ P $ such that $ P(0) \neq 0 $.
+
+\begin{enumerate}
+    \item Since $ P(\lambda) = \det(A - \lambda I) $, we have $ P(0) = \det(A) $. The hypothesis $ P(0) \neq 0 $ implies $ \det(A) \neq 0 $, so $ A $ is invertible. 
+    
+    Let $ Q(\lambda) $ be the characteristic polynomial of $ A^{-1} $. Then:
+    \[
+    Q(\lambda) = \det(A^{-1} - \lambda I) = \det(A^{-1}(I - \lambda A)) = \det(A^{-1})\det(I - \lambda A).
+    \]
+    Since $ \det(A^{-1}) = 1/\det(A) = 1/P(0) $ and 
+    \[
+    \det(I - \lambda A) = \det(-\lambda(A - \lambda^{-1}I)) = (-\lambda)^n \det(A - \lambda^{-1}I) = (-\lambda)^n P(\lambda^{-1}),
+    \]
+    we obtain
+    \[
+    Q(\lambda) = \frac{1}{P(0)} \cdot (-\lambda)^n P(\lambda^{-1}) = (-1)^n \frac{\lambda^n}{P(0)} P\left(\frac{1}{\lambda}\right).
+    \]
+
+    \item Since $ A $ is invertible (from the first part), for any $ B \in M_n(K) $ we have
+    \[
+    BA = A^{-1}(AB)A,
+    \]
+    which shows that $ AB $ and $ BA $ are similar matrices. Similar matrices have the same characteristic polynomial, so $ AB $ and $ BA $ share the same characteristic polynomial.
+\end{enumerate}
+\end{correctionbox}
+
+% ----------- EXERCISE 4 -------------
+\section{}
+Given 
+\[
+A = \begin{pmatrix}
+3 & 1 & 1 \\
+2 & 4 & 2 \\
+1 & 1 & 3
+\end{pmatrix}
+\]
+
+\begin{enumerate}
+    \item Determine the characteristic polynomial of \( A \).
+    \item Determine eigenvalues and give a basis for each eigenspace of \( A \).
+    \item Is \( A \) triangulable? Diagonalizable?
+\end{enumerate}
+
+\begin{correctionbox}
+\begin{enumerate}
+    \item The characteristic polynomial of $A$ is $P(\lambda) = \det(A - \lambda I)$. We compute, Using cofactor expansion along the first row:
+    \begin{align*}
+    P(\lambda) &= (3-\lambda)\det\begin{pmatrix}4-\lambda & 2 \\ 1 & 3-\lambda\end{pmatrix} 
+    - 1\cdot\det\begin{pmatrix}2 & 2 \\ 1 & 3-\lambda\end{pmatrix} 
+    + 1\cdot\det\begin{pmatrix}2 & 4-\lambda \\ 1 & 1\end{pmatrix} \\
+    &= (3-\lambda)(\lambda-2)(\lambda-5) + 3\lambda - 6 \\
+    &= -( \lambda-2)(\lambda-3)(\lambda-5) + 3(\lambda-2) \\
+    &= (\lambda-2)(-\lambda^2 + 8\lambda - 12) \\
+    &= -(\lambda-2)(\lambda-2)(\lambda-6) \\
+    &= -(\lambda-2)^2(\lambda-6).
+    \end{align*}
+    Thus, up to sign convention (since some authors define $P(\lambda)=\det(\lambda I-A)$), the characteristic polynomial is 
+    \[
+    P(\lambda) = (\lambda-2)^2(\lambda-6).
+    \]
+
+    \item The eigenvalues are the roots of $P(\lambda)$: $\lambda_1 = 2$ (algebraic multiplicity 2) and $\lambda_2 = 6$ (algebraic multiplicity 1).
+
+    \textbf{Eigenspace for $\lambda = 2$:} Solve $(A - 2I)v = 0$:
+    \[
+    A - 2I = \begin{pmatrix}
+    1 & 1 & 1 \\
+    2 & 2 & 2 \\
+    1 & 1 & 1
+    \end{pmatrix} \xrightarrow{\text{row reduction}} \begin{pmatrix}
+    1 & 1 & 1 \\
+    0 & 0 & 0 \\
+    0 & 0 & 0
+    \end{pmatrix}.
+    \]
+    The equation is $x + y + z = 0$, so $x = -y - z$. A basis is:
+    \[
+    \left\{ \begin{pmatrix}-1 \\ 1 \\ 0\end{pmatrix}, \begin{pmatrix}-1 \\ 0 \\ 1\end{pmatrix} \right\}.
+    \]
+    The geometric multiplicity is 2.
+
+    \textbf{Eigenspace for $\lambda = 6$:} Solve $(A - 6I)v = 0$:
+    \[
+    A - 6I = \begin{pmatrix}
+    -3 & 1 & 1 \\
+    2 & -2 & 2 \\
+    1 & 1 & -3
+    \end{pmatrix} \xrightarrow{\text{row reduction}} \begin{pmatrix}
+    1 & 0 & -1 \\
+    0 & 1 & -2 \\
+    0 & 0 & 0
+    \end{pmatrix}.
+    \]
+    The equations are $x = z$ and $y = 2z$. A basis is:
+    \[
+    \left\{ \begin{pmatrix}1 \\ 2 \\ 1\end{pmatrix} \right\}.
+    \]
+    The geometric multiplicity is 1.
+
+    \item Since all eigenvalues are real (assuming $K = \mathbb{R}$ or $\mathbb{C}$) and the characteristic polynomial splits into linear factors, $A$ is triangulable over $K$.
+
+    For diagonalizability, we check if the geometric multiplicity equals the algebraic multiplicity for each eigenvalue:
+   ,For $\lambda = 2$: algebraic multiplicity = 2, geometric multiplicity = 2.
+   ,For $\lambda = 6$: algebraic multiplicity = 1, geometric multiplicity = 1.
+    Since these match for all eigenvalues, $A$ is diagonalizable.
+\end{enumerate}
+\end{correctionbox}
+
+% ----------- EXERCISE 5 -------------
+\section{}
+Let \( n \in \mathbb{N} \), \( K \) a commutative field, and \( A \in M \).
+\begin{itemize}
+    \item If \( \mathrm{rank}(A) = 1 \), show \( A \) is diagonalizable if and only if \( \mathrm{tr}(A) = 0 \).
+\end{itemize}
+
+\begin{correctionbox}
+Let $ n \in \mathbb{N} $, $ K $ a commutative field, and $ A \in M_n(K) $ with $ \mathrm{rank}(A) = 1 $.
+
+Since $ \mathrm{rank}(A) = 1 $, the image of $ A $ is a one-dimensional subspace of $ K^n $. Therefore, there exist non-zero vectors $ u, v \in K^n $ such that 
+\[
+A = u v^\top,
+\]
+where $ v^\top $ denotes the transpose of $ v $ (so $ A_{ij} = u_i v_j $).
+
+The characteristic polynomial of a rank-1 matrix has a well-known form. Indeed, for any $ \lambda \in K $,
+\[
+\det(A - \lambda I) = (-\lambda)^{n-1} \bigl( \mathrm{tr}(A) - \lambda \bigr).
+\]
+This can be seen by noting that $ 0 $ is an eigenvalue of $ A $ with geometric multiplicity at least $ n - 1 $ (since $ \dim \ker A = n - \mathrm{rank}(A) = n - 1 $), and the remaining eigenvalue must be $ \mathrm{tr}(A) $, because the trace equals the sum of all eigenvalues (counted with algebraic multiplicities).
+
+Thus, the eigenvalues of $ A $ are:
+\[
+\lambda_1 = \mathrm{tr}(A) \quad \text{(algebraic multiplicity 1)}, \qquad \lambda_2 = 0 \quad \text{(algebraic multiplicity } n-1\text{)}.
+\]
+
+Now, $ A $ is diagonalizable if and only if, for each eigenvalue, its geometric multiplicity equals its algebraic multiplicity.
+
+- The eigenspace for $ \lambda = 0 $ is $ \ker A $, which has dimension $ n - \mathrm{rank}(A) = n - 1 $. Hence, the geometric multiplicity of $ 0 $ is $ n - 1 $, which already matches its algebraic multiplicity.
+
+- For $ \lambda = \mathrm{tr}(A) $, the geometric multiplicity is $ 1 $ if $ \mathrm{tr}(A) \neq 0 $ (since the image of $ A $ is one-dimensional and consists of eigenvectors with eigenvalue $ \mathrm{tr}(A) $), and $ 0 $ if $ \mathrm{tr}(A) = 0 $ (because then $ \mathrm{tr}(A) = 0 $ is not a distinct eigenvalue).
+
+We now consider two cases:
+
+\textbf{Case 1: $ \mathrm{tr}(A) \neq 0 $.}  
+Then the eigenvalues are $ \mathrm{tr}(A) $ (multiplicity 1) and $ 0 $ (multiplicity $ n-1 $). The geometric multiplicity of $ \mathrm{tr}(A) $ is 1 (since $ \mathrm{Im}(A) \subseteq E_{\mathrm{tr}(A)} $ and $ \dim \mathrm{Im}(A) = 1 $), so all geometric multiplicities match algebraic multiplicities. Hence, $ A $ is diagonalizable.
+
+\textbf{Case 2: $ \mathrm{tr}(A) = 0 $.}  
+Then the only eigenvalue is $ 0 $, with algebraic multiplicity $ n $. However, the geometric multiplicity of $ 0 $ is $ \dim \ker A = n - 1 < n $. Therefore, $ A $ is \textbf{not} diagonalizable.
+
+But wait—this contradicts the statement we are asked to prove. The issue is in the interpretation: the correct statement is actually:
+
+\[
+\text{If } \mathrm{rank}(A) = 1, \text{ then } A \text{ is diagonalizable } \iff \mathrm{tr}(A) \neq 0.
+\]
+
+However, the problem claims the equivalence with $ \mathrm{tr}(A) = 0 $. This suggests either a typo in the problem or a different convention.
+
+Let us double-check with an example:
+
+- Take $ A = \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix} $. Then $ \mathrm{rank}(A) = 1 $, $ \mathrm{tr}(A) = 1 \neq 0 $, and $ A $ is diagonal (hence diagonalizable).
+
+- Take $ A = \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix} $. Then $ \mathrm{rank}(A) = 1 $, $ \mathrm{tr}(A) = 0 $, but $ A $ is a non-zero nilpotent matrix, so it is not diagonalizable.
+
+Thus, the correct equivalence is:  
+\[
+A \text{ is diagonalizable } \iff \mathrm{tr}(A) \neq 0.
+\]
+
+Therefore, the statement in the problem appears to contain an error. Assuming the intended statement is the correct one, we conclude:
+
+\[
+\boxed{A \text{ is diagonalizable if and only if } \mathrm{tr}(A) \neq 0.}
+\]
+
+If, however, the problem insists on the given formulation, then it is false as stated.
+\end{correctionbox}
+
+% ----------- EXERCISE 6 -------------
+\section{}
+Show matrix \( A \in M_K \) with entries \( a_{ij} = 1 \) for all \( i,j \) is diagonalizable.\\
+Determine eigenvalues and eigenspaces of the linear map defined by
+\[
+f(X) = X \cdot (P X_1 X - 3P - XP)
+\]
+
+\begin{correctionbox}
+We address the two parts of the problem separately.
+
+\medskip
+
+\noindent\textbf{Part 1: Diagonalizability of the all-ones matrix.}
+
+Let $ A \in M_n(K) $ be the matrix defined by $ a_{ij} = 1 $ for all $ i,j $. This is the rank-1 matrix
+\[
+A = \mathbf{1}\,\mathbf{1}^\top,
+\]
+where $ \mathbf{1} = (1,1,\dots,1)^\top \in K^n $.
+
+Since $ \operatorname{rank}(A) = 1 $ (all rows are identical and non-zero), we know from standard results that:
+\begin{enumerate}
+    \item $ 0 $ is an eigenvalue with geometric multiplicity $ n - 1 $ (because $ \dim \ker A = n - \operatorname{rank}(A) = n - 1 $).
+    \item The trace of $ A $ is $ \operatorname{tr}(A) = \sum_{i=1}^n a_{ii} = n $.
+\end{enumerate}
+
+For a rank-1 matrix, the non-zero eigenvalue (if any) equals the trace. Hence the eigenvalues are:
+\[
+\lambda_1 = n \quad \text{(algebraic multiplicity 1)}, \qquad \lambda_2 = 0 \quad \text{(algebraic multiplicity } n-1\text{)}.
+\]
+
+Now, the eigenspace for $ \lambda = n $ is $ \operatorname{Im}(A) = \operatorname{span}\{\mathbf{1}\} $, which is 1-dimensional.  
+The eigenspace for $ \lambda = 0 $ is $ \ker A = \{ x \in K^n \mid x_1 + x_2 + \cdots + x_n = 0 \} $, which has dimension $ n - 1 $.
+
+Thus, the sum of the geometric multiplicities is $ 1 + (n - 1) = n $, so $ A $ is diagonalizable (provided that $ n \neq 0 $ in $ K $; i.e., the characteristic of $ K $ does not divide $ n $). In particular, over $ \mathbb{R} $ or $ \mathbb{C} $, $ A $ is always diagonalizable.
+
+\medskip
+
+\noindent\textbf{Part 2: Eigenvalues and eigenspaces of } $ f(X) = X \cdot (P X_1 X - 3P - XP) $.
+
+The expression for the linear map $ f $ is ambiguous and likely contains typographical errors. The notation $ X \cdot (P X_1 X - 3P - XP) $ is not standard for a linear map on a space of matrices or vectors:
+\begin{enumerate}
+    \item It is unclear what $ X_1 $ denotes (a fixed matrix? a coordinate?).
+    \item The term $ P X_1 X $ suggests a product of three objects, but without knowing the dimensions or nature of $ P $, $ X_1 $, and $ X $, the expression is undefined.
+    \item Moreover, the map as written is generally \textbf{not linear} in $ X $, due to the presence of quadratic terms like $ X P X $ or $ P X_1 X $.
+\end{enumerate}
+Since the problem states that $ f $ is a linear map, the given formula must be incorrect or miswritten. A common linear map involving a fixed matrix $ P $ is, for example:
+\[
+f(X) = PX - XP \quad \text{(the commutator map)},
+\]
+or
+\[
+f(X) = PX + XP,
+\]
+both of which are linear in $ X $.
+
+Without a clear and mathematically consistent definition of $ f $, it is impossible to determine its eigenvalues and eigenspaces.
+
+\medskip
+
+\noindent\textbf{Conclusion:}
+\begin{enumerate}
+    \item The all-ones matrix is diagonalizable (over fields where $ n \neq 0 $), with eigenvalues $ n $ (multiplicity 1) and $ 0 $ (multiplicity $ n-1 $).
+    \item The second part cannot be solved as stated due to ambiguous or erroneous notation.
+\end{enumerate}
+\end{correctionbox}
+
+
+% ----------- EXERCISE 7 -------------
+\section{}
+For \( n \in \mathbb{N} \) and two \( n \times n \) matrices \( A, B \), show every eigenvalue of \( AB \) is an eigenvalue of \( BA \).
+
+\begin{correctionbox}
+Let $ n \in \mathbb{N} $ and let $ A, B \in M_n(K) $. We show that every eigenvalue of $ AB $ is also an eigenvalue of $ BA $.
+
+Let $ \lambda \in K $ be an eigenvalue of $ AB $. Then there exists a non-zero vector $ v \in K^n $ such that
+\[
+ABv = \lambda v.
+\]
+
+We consider two cases.
+
+\medskip
+
+\noindent\textbf{Case 1: $ \lambda \neq 0 $.}
+
+Since $ \lambda \neq 0 $ and $ v \neq 0 $, we have $ Bv \neq 0 $ (otherwise $ ABv = A0 = 0 = \lambda v $ would imply $ \lambda v = 0 $, contradicting $ \lambda \neq 0 $ and $ v \neq 0 $).
+
+Now apply $ B $ to both sides of $ ABv = \lambda v $:
+\[
+B(ABv) = B(\lambda v) \quad \Longrightarrow \quad (BA)(Bv) = \lambda (Bv).
+\]
+Since $ Bv \neq 0 $, this shows that $ Bv $ is an eigenvector of $ BA $ with eigenvalue $ \lambda $. Hence $ \lambda $ is an eigenvalue of $ BA $.
+
+\medskip
+
+\noindent\textbf{Case 2: $ \lambda = 0 $.}
+
+We must show that if $ 0 $ is an eigenvalue of $ AB $, then it is also an eigenvalue of $ BA $. This is equivalent to showing that if $ AB $ is singular, then $ BA $ is singular.
+
+Recall that for square matrices, $ \det(AB) = \det(A)\det(B) = \det(BA) $. Therefore,
+\[
+\det(AB) = 0 \quad \Longleftrightarrow \quad \det(BA) = 0.
+\]
+Thus, $ AB $ is not invertible if and only if $ BA $ is not invertible, which means $ 0 $ is an eigenvalue of $ AB $ if and only if $ 0 $ is an eigenvalue of $ BA $.
+
+\medskip
+
+In both cases, every eigenvalue $ \lambda $ of $ AB $ is also an eigenvalue of $ BA $. (In fact, the same argument with $ A $ and $ B $ swapped shows the converse, so $ AB $ and $ BA $ have exactly the same eigenvalues, including algebraic multiplicities when $ K $ is algebraically closed.)
+
+Therefore, every eigenvalue of $ AB $ is an eigenvalue of $ BA $.
+\end{correctionbox}
+
+% ----------- EXERCISE 8 -------------
+\section{}
+For what values of real parameters \( a,b,c,d,e,f \) are the following matrices diagonalizable?
+\[
+1.
+\quad A = \begin{pmatrix}
+a & b & c \\
+0 & 2 & d \\
+e & 0 & 2
+\end{pmatrix}
+\quad
+2.
+\quad B = \begin{pmatrix}
+a & b & c \\
+0 & 1 & d \\
+e & 0 & 2
+\end{pmatrix}
+\]
+
+\begin{correctionbox}
+The matrix 
+\[
+A = \begin{pmatrix}
+a & b & c \\
+0 & 2 & d \\
+e & 0 & 2
+\end{pmatrix}
+\]
+is diagonalizable over $\mathbb{R}$ **if and only if**:
+
+\[
+e = 0 \quad \text{and} \quad
+\begin{cases}
+d = 0 & \text{if } a \ne 2 \quad (\text{with } b,c \text{ arbitrary}), \\
+b = c = d = 0 & \text{if } a = 2.
+\end{cases}
+\]
+
+In short:  
+- $e$ must be zero (no coupling from row 3 to column 1),  
+- and the lower $2\times2$ block $\begin{pmatrix}2 & d\\0 & 2\end{pmatrix}$ must be diagonalizable, which forces $d = 0$,  
+- unless $a = 2$, in which case the whole matrix must be diagonal (so $b = c = d = 0$).
+\end{correctionbox}
+
+
+% ----------- EXERCISE 9 -------------
+\section{}
+Given 
+\[
+A = \begin{pmatrix}
+1 & 1 & 0 \\
+-1 & 0 & 0 \\
+2 & 0 & -1
+\end{pmatrix}
+\]
+Use Cayley-Hamilton theorem to show \( A \) is invertible and compute its inverse.
+
+\begin{correctionbox}
+\textbf{Step 1: Characteristic polynomial.}  
+Compute $ P(\lambda) = \det(A - \lambda I) $:
+Expand along the third column (only one non-zero entry):
+\[
+P(\lambda) = (-1-\lambda) \cdot \det\begin{pmatrix} 1-\lambda & 1 \\ -1 & -\lambda \end{pmatrix}
+= (-1-\lambda)\big[(1-\lambda)(-\lambda) - (-1)(1)\big].
+\]
+So the characteristic polynomial is  
+\[
+P(\lambda) = -\lambda^3 + 0\lambda^2 + 0\lambda + 1 = -\lambda^3 + 1,
+\]
+or equivalently (multiplying by $-1$, which doesn't affect Cayley–Hamilton):
+\[
+\chi_A(\lambda) = \lambda^3 - 1.
+\]
+
+\textbf{Step 2: Apply Cayley–Hamilton.}  
+The theorem states $ \chi_A(A) = 0 $, so:
+\[
+A^3 - I = 0 \quad \Longrightarrow \quad A^3 = I.
+\]
+
+\textbf{Step 3: Invertibility and inverse.}  
+From $ A^3 = I $, multiply both sides by $ A^{-1} $ (if it exists) to get $ A^2 = A^{-1} $. But more directly:  
+\[
+A \cdot A^2 = A^3 = I,
+\]
+so $ A $ is invertible and 
+\[
+A^{-1} = A^2.
+\]
+
+\textbf{Step 4: Compute $ A^2 $.}
+\[
+A^2 = A \cdot A = 
+\begin{pmatrix}
+1 & 1 & 0 \\
+-1 & 0 & 0 \\
+2 & 0 & -1
+\end{pmatrix}
+\begin{pmatrix}
+1 & 1 & 0 \\
+-1 & 0 & 0 \\
+2 & 0 & -1
+\end{pmatrix}
+=
+\begin{pmatrix}
+0 & 1 & 0 \\
+-1 & -1 & 0 \\
+0 & 2 & 1
+\end{pmatrix}.
+\]
+
+\textbf{Answer:} $ A $ is invertible and 
+\[
+A^{-1} = A^2 = \begin{pmatrix}
+0 & 1 & 0 \\
+-1 & -1 & 0 \\
+0 & 2 & 1
+\end{pmatrix}.
+\]
+\end{correctionbox}
+
+% ----------- EXERCISE 10 -------------
+\section{}
+Let \( E \) be a vector space over \( K \) of dimension \( n \), and \( u \) an endomorphism of \( E \).\\
+Show that for all \( p \in \mathbb{N} \), \( u^p \in Vect(I_d, u, \ldots, u^{m-1}) \).\\
+Application: Let \( A \) be the matrix
+\[
+\begin{pmatrix}
+2 & 0 & 4 \\
+3 & -4 & 12 \\
+1 & -2 & 5
+\end{pmatrix}
+\]
+For \( p \in \mathbb{N} \), write \( A^p \) as a linear combination of \( I, A, A^2 \).
+
+\begin{correctionbox}
+Let $ E $ be a vector space over $ K $ with $ \dim E = n $, and $ u \in \mathrm{End}(E) $.  
+Since $ \dim \mathrm{End}(E) = n^2 $, the $ n^2 + 1 $ endomorphisms $ I, u, u^2, \dots, u^{n^2} $ are linearly dependent. Hence there exists a non-zero polynomial $ P $ such that $ P(u) = 0 $. Let $ m = \deg(\mu_u) \leq n $ be the degree of the minimal polynomial of $ u $. Then
+\[
+u^m \in \mathrm{Vect}(I, u, \dots, u^{m-1}),
+\]
+and by induction, $ u^p \in \mathrm{Vect}(I, u, \dots, u^{m-1}) $ for all $ p \in \mathbb{N} $.
+
+\medskip
+
+\noindent\textbf{Application.} Let 
+\[
+A = \begin{pmatrix}
+2 & 0 & 4 \\
+3 & -4 & 12 \\
+1 & -2 & 5
+\end{pmatrix}.
+\]
+
+Compute the characteristic polynomial:
+\[
+\chi_A(\lambda) = \det(A - \lambda I) = -\lambda(\lambda - 1)(\lambda - 2).
+\]
+
+By the Cayley–Hamilton theorem, $ \chi_A(A) = 0 $, so
+\[
+A^3 - 3A^2 + 2A = 0 \quad \Longrightarrow \quad A^3 = 3A^2 - 2A.
+\]
+
+This recurrence allows us to reduce any higher power of $ A $ to a linear combination of $ I $, $ A $, and $ A^2 $. In fact, since the relation contains no $ I $ term, for $ p \geq 1 $ the powers lie in $ \mathrm{Vect}(A, A^2) $, but we include $ I $ for $ p = 0 $.
+
+Thus, for every $ p \in \mathbb{N} $, there exist scalars $ \alpha_p, \beta_p, \gamma_p \in K $ such that
+\[
+A^p = \alpha_p I + \beta_p A + \gamma_p A^2,
+\]
+with the recurrence (for $ p \geq 3 $):
+\[
+A^p = 3A^{p-1} - 2A^{p-2}.
+\]
+
+Explicitly:
+\[
+\boxed{
+\begin{aligned}
+A^0 &= I, \\
+A^1 &= A, \\
+A^2 &= A^2, \\
+A^3 &= 3A^2 - 2A, \\
+A^4 &= 7A^2 - 6A, \\
+A^5 &= 15A^2 - 14A, \\
+&\vdots \\
+A^p &= (2^p - 1)A^2 - (2^p - 2)A \quad \text{for all } p \geq 1.
+\end{aligned}
+}
+\]
+
+(One verifies the closed form by induction using the recurrence $ A^p = 3A^{p-1} - 2A^{p-2} $ and the base cases $ p=1,2 $.)
+
+Hence, for all $ p \in \mathbb{N} $, $ A^p $ is a linear combination of $ I $, $ A $, and $ A^2 $, as required.
+\end{correctionbox}
+
+\end{document}

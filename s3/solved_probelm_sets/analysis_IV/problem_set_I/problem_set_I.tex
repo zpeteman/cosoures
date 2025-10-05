@@ -1,0 +1,151 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{lipsum}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{tcolorbox}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+\usetikzlibrary{arrows.meta, decorations.markings}
+
+\geometry{a4paper, margin=2.5cm}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Problem Set I}
+\lhead{Analysis IV}
+\cfoot{\thepage}
+
+% Fancy titles
+\titleformat{\section}{\normalfont\Large\bfseries}{Exercise \thesection:}{1em}{}
+\titleformat{\subsection}{\normalfont\bfseries}{Correction:}{1em}{}
+
+% Custom box for correction
+\newtcolorbox{correctionbox}{
+  colback=gray!5,
+  colframe=black,
+  fonttitle=\bfseries,
+  title=Correction,
+  before skip=10pt,
+  after skip=10pt
+}
+
+% Fix headheight warning
+\setlength{\headheight}{14.49998pt}
+
+\begin{document}
+
+\begin{center}
+\Large\textbf{Ibn Tofail University} \\[1em]
+\large\textit{Analysis IV} \\[0.5em]
+\large\textit{Problem Set I} \\[0.5em]
+\end{center}
+
+\vspace{1cm}
+
+% ----------- EXERCISE 1 -------------
+\section{}
+Study the convergence of the following series:
+
+\begin{enumerate}
+    \item \( \displaystyle \sum_{n=1}^{+\infty} \frac{1}{n} \)
+    
+    \item \( \displaystyle \sum_{n=2}^{+\infty} \frac{n^2 + 1}{n^2} \)
+    
+    \item \( \displaystyle \sum_{n=1}^{+\infty} \frac{2}{\sqrt{n}} \)
+    
+    \item \( \displaystyle \sum_{n=1}^{+\infty} \frac{(2n + 1)^4}{(7n^2 + 1)^3} \)
+    
+    \item \( \displaystyle \sum_{n=1}^{+\infty} \left( ne^{\frac{1}{n}} - n \right) \)
+    
+    \item \( \displaystyle \sum_{n=0}^{+\infty} \ln\left(1 + e^{-n}\right) \)
+    
+    \item \( \displaystyle \sum_{n=1}^{+\infty} \left( \frac{n}{n + 1} \right)^{n^2} \)
+\end{enumerate}
+
+\begin{correctionbox}
+Solution here.
+\end{correctionbox}
+
+% ----------- EXERCISE 2 -------------
+\section{}
+Determine the nature of the numerical series with the following general terms:
+
+\begin{enumerate}
+    \item \( u_n = \frac{1}{n \cos^2 n} \)
+    
+    \item \( v_n = \frac{1}{[\ln(n)]^n} \)
+    
+    \item \( w_n = \frac{\tan^n\left(\frac{\pi}{7}\right)}{3^{n+2}} \)
+    
+    \item \( x_n = \frac{1}{n \ln(n)} \)
+    
+    \item \( y_n = \frac{1}{n(\ln n)^2} \)
+    
+    \item \( z_n = \frac{1}{(\ln 2)^2 + (\ln 3)^2 + \ldots + (\ln n)^2} \)
+\end{enumerate}
+
+\begin{correctionbox}
+Solution here.
+\end{correctionbox}
+
+% ----------- EXERCISE 3 -------------
+\section{}
+Show that the series with general term
+\[
+w_n = \frac{(-1)^n}{\ln(1 + \sqrt{n})}
+\]
+is convergent but not absolutely convergent (called semi-convergent).
+
+\begin{correctionbox}
+Solution here.
+\end{correctionbox}
+
+% ----------- EXERCISE 4 -------------
+\section{}
+\begin{enumerate}
+    \item Show that the following two series are absolutely convergent:
+    \[
+    \sum_{n=0}^{+\infty} \frac{1}{n!} \quad \text{and} \quad \sum_{n=0}^{+\infty} \frac{(-1)^n}{2^n}
+    \]
+    
+    \item Deduce that the series:
+    \[
+    \sum_{n=0}^{+\infty} \left[ \sum_{k=0}^{n} \frac{(-1)^{n-k}}{k! \cdot 2^{n-k}} \right]
+    \]
+    is absolutely convergent and determine its value.
+\end{enumerate}
+
+\begin{correctionbox}
+Solution here.
+\end{correctionbox}
+
+% ----------- EXERCISE 5 -------------
+\section{}
+Study the nature of the following series:
+\[
+\sum_{n>2} \ln\left(1 + \frac{(-1)^n}{n}\right), \quad \sum_{n>1} \sin\left(\frac{(-1)^n}{n}\right)
+\]
+
+\begin{correctionbox}
+Solution here.
+\end{correctionbox}
+
+% ----------- EXERCISE 6 -------------
+\section{}
+Show that the series with general terms
+\[
+u_n := \frac{(-1)^n}{\sqrt{n}} \quad \text{and} \quad v_n := \frac{(-1)^n}{\sqrt{n + (-1)^n}}
+\]
+are not of the same nature, although \( u_n \sim v_n \).
+
+\begin{correctionbox}
+Solution here.
+\end{correctionbox}
+
+\end{document}

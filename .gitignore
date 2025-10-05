@@ -1,2 +1,7 @@
 something/
 *.gitignore
+*.synctex.gz
+*.aux
+*.log
+*.fls
+*.fdb_latexmk
