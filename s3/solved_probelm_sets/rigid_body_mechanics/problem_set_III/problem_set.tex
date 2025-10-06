@@ -1,0 +1,108 @@
+\documentclass[12pt]{article}                                                                                                           
+\usepackage[utf8]{inputenc}                                                                                                             
+\usepackage[T1]{fontenc}                                                                                                                
+\usepackage{amsmath, amssymb}                                                                                                           
+\usepackage{geometry}                                                                                                                   
+\usepackage{xcolor}                                                                                                                     
+\usepackage{lipsum}                                                                                                                     
+\usepackage{titlesec}                                                                                                                   
+\usepackage{fancyhdr}                                                                                                                   
+\usepackage[most]{tcolorbox}                                                                                                                  
+\usepackage{graphicx}                                                                                                                   
+\usepackage{float}                                                                                      
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+\usetikzlibrary{arrows.meta, decorations.markings}                                                                                      
+                                                                                                                                        
+\geometry{a4paper, margin=2.5cm}                                                                                                        
+\pagestyle{fancy}                                                                                                                       
+\fancyhf{}                                                                                                                              
+\rhead{Problem Set III}                                                                                                                   
+\lhead{Rigid Body Mechanics}                                                                                                                     
+\cfoot{\thepage}                                                                                                                        
+                                                                                                                                        
+% Fancy titles                                                                                                                          
+\titleformat{\section}{\normalfont\Large\bfseries}{Exercise \thesection:}{1em}{}                                                        
+\titleformat{\subsection}{\normalfont\bfseries}{Correction:}{1em}{}                                                                     
+                                                                                                                                        
+% Custom box for correction with breakable option
+\newtcolorbox{correctionbox}{                                                                                                           
+  colback=gray!5,                                                                                                                       
+  colframe=black,                                                                                                                       
+  fonttitle=\bfseries,                                                                                                                  
+  title=Correction,                                                                                                                     
+  before skip=10pt,                                                                                                                     
+  after skip=10pt,
+  breakable,
+  enhanced
+}                                                                                                                                       
+                                                                                                                                        
+% Fix headheight warning
+\setlength{\headheight}{14.49998pt}
+
+\begin{document}
+
+\begin{center}
+\Large\textbf{Ibn Tofail University} \\[1em]
+\large\textit{Rigid Body Mechanics} \\[0.5em]
+\large\textit{Problem Set III} \\[0.5em]
+\end{center}
+
+\vspace{0.5cm}
+
+\noindent \textbf{Note:} All solids are assumed to be homogeneous and of total mass m.
+
+\vspace{1cm}
+
+% ----------- EXERCISE 1 -------------
+\section{}
+
+Determine the center of mass (center of inertia) of the following solids:
+
+1) A homogeneous circular arc of radius R and angle $2\alpha$.
+
+2) A homogeneous circular plate of radius R and angle $2\alpha$.
+
+3) Hemisphere of center O and radius R.
+
+4) Solid cone.
+
+5) Solid cone surmounted by a hemisphere.
+
+\begin{correctionbox}
+
+\end{correctionbox}
+
+% ----------- EXERCISE 2 -------------
+\section{}
+
+Determine the inertia matrix at O relative to the reference frame $R(O, X, Y, Z)$ of a quarter disk of radius R. The axes $\overrightarrow{OX}$ and $\overrightarrow{OY}$ are on the edges of the quarter disk. Calculate the moment of inertia with respect to the line $(\Delta)$ passing through point O and point A with coordinates $(R, R, 0)$.
+
+\begin{correctionbox}
+
+\end{correctionbox}
+
+% ----------- EXERCISE 3 -------------
+\section{}
+
+Determine the inertia matrix of the following solids:
+
+1) A rod (OA) of length L (at extremity O "$I_O$" and at center of mass G "$I_G$").
+
+2) A rectangular plate (OABC) with sides a and b (at center of mass G and at point O).
+
+3) Solid rectangular parallelepiped with dimensions a, b, c and center of mass G (at center G).
+
+4) A solid cylinder (C), of radius R and height h (at the center of its base O and at center of mass G).
+
+5) Disk (D) with center of inertia G and radius R.
+
+6) Hemisphere (B) of radius R (at the center of its base O) "$I_O$".
+
+7) A sphere (B) with center of inertia G and radius R (at center of mass G).
+
+\begin{correctionbox}
+
+\end{correctionbox}
+
+\end{document}

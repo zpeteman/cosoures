@@ -1,0 +1,142 @@
+\documentclass[12pt]{article}                                                                                                           
+\usepackage[utf8]{inputenc}                                                                                                             
+\usepackage[T1]{fontenc}                                                                                                                
+\usepackage{amsmath, amssymb}                                                                                                           
+\usepackage{geometry}                                                                                                                   
+\usepackage{xcolor}                                                                                                                     
+\usepackage{lipsum}                                                                                                                     
+\usepackage{titlesec}                                                                                                                   
+\usepackage{fancyhdr}                                                                                                                   
+\usepackage[most]{tcolorbox}                                                                                                                  
+\usepackage{graphicx}                                                                                                                   
+\usepackage{float}                                                                                      
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+\usetikzlibrary{arrows.meta, decorations.markings}                                                                                      
+                                                                                                                                        
+\geometry{a4paper, margin=2.5cm}                                                                                                        
+\pagestyle{fancy}                                                                                                                       
+\fancyhf{}                                                                                                                              
+\rhead{Problem Set I}                                                                                                                   
+\lhead{Rigid Body Mechanics}                                                                                                                     
+\cfoot{\thepage}                                                                                                                        
+                                                                                                                                        
+% Fancy titles                                                                                                                          
+\titleformat{\section}{\normalfont\Large\bfseries}{Exercise \thesection:}{1em}{}                                                        
+\titleformat{\subsection}{\normalfont\bfseries}{Correction:}{1em}{}                                                                     
+                                                                                                                                        
+% Custom box for correction with breakable option
+\newtcolorbox{correctionbox}{                                                                                                           
+  colback=gray!5,                                                                                                                       
+  colframe=black,                                                                                                                       
+  fonttitle=\bfseries,                                                                                                                  
+  title=Correction,                                                                                                                     
+  before skip=10pt,                                                                                                                     
+  after skip=10pt,
+  breakable,
+  enhanced
+}                                                                                                                                       
+                                                                                                                                        
+% Fix headheight warning
+\setlength{\headheight}{14.49998pt}
+
+\begin{document}
+
+\begin{center}
+\Large\textbf{Ibn Tofail University} \\[1em]
+\large\textit{Rigid Body Mechanics} \\[0.5em]
+\large\textit{Problem Set 1} \\[0.5em]
+\end{center}
+
+\vspace{1cm}
+
+% ----------- COURSE QUESTION -------------
+\section*{Course Question*}
+
+Show that any antisymmetric vector field is equiprojective and conversely.
+
+\begin{correctionbox}
+
+\end{correctionbox}
+
+% ----------- EXERCISE 1 -------------
+\section{Vector Division}
+
+Solve the vector equation $\vec{U} \times \vec{X} = \vec{V}$ where $\vec{U}$ and $\vec{V}$ are two non-zero vectors.
+
+\begin{correctionbox}
+
+\end{correctionbox}
+
+% ----------- EXERCISE 2 -------------
+\section{}
+
+Let $[T]$ be a torsor defined by its reduction elements at point P: $\vec{R}$ and $\vec{m}(P)$. We consider the points O(0, 0, 0), A(1, 0, 0) and B(1, 1, 0) in a Cartesian reference frame $R(O, \vec{i}, \vec{j}, \vec{k})$. Knowing that we have certain components of the moments at O, A and B namely:
+
+$$\vec{m}(O) = \begin{pmatrix} \alpha \\ \alpha \\ 1 \end{pmatrix}, \quad \vec{m}(A) = \begin{pmatrix} x \\ 1-\alpha \\ 2 \end{pmatrix} \quad \text{and} \quad \vec{m}(B) = \begin{pmatrix} y \\ z \\ -\alpha \end{pmatrix}$$
+
+1) Completely determine $\vec{m}(A)$ and $\vec{m}(B)$ by finding the values of x, y, and z as functions of $\alpha$.
+
+2) Calculate the resultant of the torsor $[T]$ associated with this moment field.
+
+3) Find the central axis of the torsor $[T]$.
+
+4) Can the vector system that generates this field be equivalent to a couple torsor?
+
+\begin{correctionbox}
+
+\end{correctionbox}
+
+% ----------- EXERCISE 3 -------------
+\section{}
+
+Prove that two torsors $[T_1]$ and $[T_2]$ are equal if, and only if, there exist three non-aligned points $P_1$, $P_2$ and $P_3$ at which their moments are equal.
+
+\begin{correctionbox}
+
+\end{correctionbox}
+
+% ----------- EXERCISE 4 -------------
+\section{}
+
+Let [T] be the torsor associated with the field of sliders defined on the domain (D) consisting of four points $M_1$, $M_2$, $M_3$ and $M_4$ such that the resultants associated with each point are:
+
+\begin{align*}
+M_1(2, -2, 3) &\rightarrow \vec{R}_1(5, 0, 0) \\
+M_2(-4, 2, -1) &\rightarrow \vec{R}_2(0, -2, 0) \\
+M_3(5, -2, 3) &\rightarrow \vec{R}_3(0, 0, 3) \\
+M_4(0, 2, 0) &\rightarrow \vec{R}_4(3, 4, 1)
+\end{align*}
+
+1) Determine the resultant of the torsor and its moment at point O.
+
+2) Calculate the scalar invariant of the torsor and conclude.
+
+3) Deduce the moment of the torsor at any point P.
+
+4) Find the equations of its axis.
+
+\begin{correctionbox}
+
+\end{correctionbox}
+
+% ----------- EXERCISE 5 -------------
+\section{}
+
+Consider, in a Cartesian reference frame $R(O, X, Y, Z)$ with basis $(\vec{i}, \vec{j}, \vec{k})$, the system of three bound vectors defined by:
+
+\begin{align*}
+\vec{V}_1 &= a\vec{i} + b\vec{j} + \vec{k} \quad \text{with origin } A_1(1, 0, 0) \\
+\vec{V}_2 &= 2b\vec{i} - 2a\vec{j} - 3\vec{k} \quad \text{with origin } A_2(0, 1, 0) \\
+\vec{V}_3 &= -8\vec{i} + \vec{j} + c\vec{k} \quad \text{with origin } A_3(0, 0, 1)
+\end{align*}
+
+1) For which values of a, b and c is the system of these three bound vectors equivalent to a couple torsor?
+
+2) Then determine its moment at point O.
+
+\begin{correctionbox}
+
+\end{correctionbox}
+
+\end{document}

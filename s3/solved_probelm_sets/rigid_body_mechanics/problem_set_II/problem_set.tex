@@ -1,0 +1,142 @@
+\documentclass[12pt]{article}                                                                                                           
+\usepackage[utf8]{inputenc}                                                                                                             
+\usepackage[T1]{fontenc}                                                                                                                
+\usepackage{amsmath, amssymb}                                                                                                           
+\usepackage{geometry}                                                                                                                   
+\usepackage{xcolor}                                                                                                                     
+\usepackage{lipsum}                                                                                                                     
+\usepackage{titlesec}                                                                                                                   
+\usepackage{fancyhdr}                                                                                                                   
+\usepackage[most]{tcolorbox}                                                                                                                  
+\usepackage{graphicx}                                                                                                                   
+\usepackage{float}                                                                                      
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+\usetikzlibrary{arrows.meta, decorations.markings}                                                                                      
+                                                                                                                                        
+\geometry{a4paper, margin=2.5cm}                                                                                                        
+\pagestyle{fancy}                                                                                                                       
+\fancyhf{}                                                                                                                              
+\rhead{Problem Set II}                                                                                                                   
+\lhead{Rigid Body Mechanics}                                                                                                                     
+\cfoot{\thepage}                                                                                                                        
+                                                                                                                                        
+% Fancy titles                                                                                                                          
+\titleformat{\section}{\normalfont\Large\bfseries}{Exercise \thesection:}{1em}{}                                                        
+\titleformat{\subsection}{\normalfont\bfseries}{Correction:}{1em}{}                                                                     
+                                                                                                                                        
+% Custom box for correction with breakable option
+\newtcolorbox{correctionbox}{                                                                                                           
+  colback=gray!5,                                                                                                                       
+  colframe=black,                                                                                                                       
+  fonttitle=\bfseries,                                                                                                                  
+  title=Correction,                                                                                                                     
+  before skip=10pt,                                                                                                                     
+  after skip=10pt,
+  breakable,
+  enhanced
+}                                                                                                                                       
+                                                                                                                                        
+% Fix headheight warning
+\setlength{\headheight}{14.49998pt}
+
+\begin{document}
+
+\begin{center}
+\Large\textbf{Ibn Tofail University} \\[1em]
+\large\textit{Rigid Body Mechanics} \\[0.5em]
+\large\textit{Problem Set II} \\[0.5em]
+\end{center}
+
+\vspace{1cm}
+
+% ----------- COURSE QUESTION -------------
+\section*{Course Question*}
+
+Show that the velocity vector field of a solid defines a torsor. Specify its reduction elements.
+
+\begin{correctionbox}
+
+\end{correctionbox}
+
+% ----------- EXERCISE 1 -------------
+\section{}
+
+In the following solid motions, define the Euler angles, deduce the number of degrees of freedom, and determine the corresponding instantaneous rotation velocities.
+
+1) A rod OA with negligible cross-section rotating around the axis $(O, \vec{z}_o)$ in the plane $(O, \vec{x}_o, \vec{y}_o)$.
+
+2) A disk of center D linked to a rod OA (D coincides with A and the rod OA is contained in the plane of the disk). The motion takes place in the plane $(O, \vec{x}_o, \vec{y}_o)$.
+
+\quad a) The connection between the disk and the rod is rigid.
+
+\quad b) The connection between the disk and the rod allows the disk to perform a rotation around the axis $(A, \vec{z})$ (fig.1).
+
+3) A solid (S) consisting of a hemisphere of radius a and base center $O_2$ rigidly attached to a rod $OO_2$ (fig.2). The solid is mobile around point O.
+
+4) A homogeneous ball (B), of mass m, of radius R, of center G, moving on a fixed horizontal plane $(O, X, Y)$.
+
+\begin{correctionbox}
+
+\end{correctionbox}
+
+% ----------- EXERCISE 2 -------------
+\section{}
+
+Consider a robot consisting of a base $S_0$ and two arms 1 and 2 (fig.3).
+
+Let the reference frames be:
+
+$R_o(O, \vec{x}_o, \vec{y}_o, \vec{z}_o)$ fixed reference frame linked to the base $S_0$.
+
+$R_1(O, \vec{x}_1, \vec{y}_1, \vec{z}_1)$ reference frame linked to arm 1.
+
+$R_2(A, \vec{x}_2, \vec{y}_2, \vec{z}_2)$ reference frame linked to arm 2.
+
+Given:
+
+$$\overrightarrow{OA} = \ell_1 \vec{x}_1 \quad \text{and} \quad \overrightarrow{AB} = \ell_2 \vec{x}_2$$
+
+1) Calculate the instantaneous rotation velocities $\vec{\Omega}(R_1/R_o)$ and $\vec{\Omega}(R_2/R_o)$.
+
+2) Calculate the velocity $\vec{V}(B/R_o)$ and the acceleration $\vec{\gamma}(B/R_o)$.
+
+\begin{correctionbox}
+
+\end{correctionbox}
+
+% ----------- EXERCISE 3 -------------
+\section{}
+
+A rectangular plate OABC is mobile with respect to a reference frame $R_o(O, \vec{x}_o, \vec{y}_o, \vec{z}_o)$ such that its vertex O remains fixed in $R_o$. The edge OA remains in the plane $(O, \vec{x}_o, \vec{y}_o)$ with $OA = a$ and $AB = b$.
+
+1) Determine the parameters defining the motion of the plate.
+
+2) Find the velocity field of the points of the plate (case of points A, B, C).
+
+\begin{correctionbox}
+
+\end{correctionbox}
+
+% ----------- EXERCISE 4 -------------
+\section{}
+
+Consider (fig.4) the system (S) formed by a horizontal rod AB of length a, and a vertical circular disk perpendicular to AB, of center B, of radius R, in motion in a fixed reference frame $R_o(O, \vec{x}_o, \vec{y}_o, \vec{z}_o)$.
+
+Point A is fixed on the axis $(O, \vec{z}_o)$ at distance R from O. Let I be the point of the disk in contact with the horizontal plane $(O, x_o, y_o)$, and I* the geometric contact point.
+
+We call $(O, \vec{u})$ the axis determined by the vector $\overrightarrow{OI^*}$ and $(O, \vec{v})$ the axis such that the triad $(O, \vec{u}, \vec{v}, \vec{z}_o)$ is direct, and $(B, \vec{y})$ and $(B, \vec{z})$ two orthogonal axes linked to the disk and located in its plane. Let M be the point of the disk such that $\overrightarrow{BM} = R\vec{y}$. We denote $(\vec{x}_o, \vec{u}) = \theta$, measured around $\vec{z}_o$ and $(\overrightarrow{BI^*}, \vec{y}) = \phi$, measured around $\vec{u}$ (fig.5). We call R the reference frame $R(B, \vec{u}, \vec{y}, \vec{z})$ and $R_1$ the reference frame $(O, \vec{u}, \vec{v}, \vec{z}_o)$.
+
+1) Determine the number of parameters necessary to describe the motion of the system.
+
+2) Calculate the instantaneous rotation vectors $\vec{\Omega}(R_1/R_o)$, $\vec{\Omega}(R/R_1)$ and $\vec{\Omega}(R/R_o)$.
+
+3) Study of the motion of R with respect to $R_0$: Determine $\vec{V}(M/R_o)$, $\vec{V}(I/R_o)$, $\vec{V}(I/R_1)$ and $\vec{\gamma}(I/R_o)$.
+
+4) Write the condition of rolling without slipping at I and integrate it assuming that $a = 2R$, $\dot{\theta} = \omega = \text{const}$, and that for $t = 0$ we have $\theta = 0$ and $\phi = 0$. Show that then $\vec{\Omega}(R/R_o) = \lambda \overrightarrow{AI^*}$, where $\lambda$ is a constant to be determined, and that the motion is tangent to a rotation around $\overrightarrow{AI^*}$.
+
+\begin{correctionbox}
+
+\end{correctionbox}
+
+\end{document}

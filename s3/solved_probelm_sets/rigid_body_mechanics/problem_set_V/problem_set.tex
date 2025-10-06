@@ -1,0 +1,167 @@
+\documentclass[12pt]{article}                                                                                                           
+\usepackage[utf8]{inputenc}                                                                                                             
+\usepackage[T1]{fontenc}                                                                                                                
+\usepackage{amsmath, amssymb}                                                                                                           
+\usepackage{geometry}                                                                                                                   
+\usepackage{xcolor}                                                                                                                     
+\usepackage{lipsum}                                                                                                                     
+\usepackage{titlesec}                                                                                                                   
+\usepackage{fancyhdr}                                                                                                                   
+\usepackage[most]{tcolorbox}                                                                                                                  
+\usepackage{graphicx}                                                                                                                   
+\usepackage{float}                                                                                      
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+\usetikzlibrary{arrows.meta, decorations.markings}                                                                                      
+                                                                                                                                        
+\geometry{a4paper, margin=2.5cm}                                                                                                        
+\pagestyle{fancy}                                                                                                                       
+\fancyhf{}                                                                                                                              
+\rhead{Problem Set V}                                                                                                                   
+\lhead{Rigid Body Mechanics}                                                                                                                     
+\cfoot{\thepage}                                                                                                                        
+                                                                                                                                        
+% Fancy titles                                                                                                                          
+\titleformat{\section}{\normalfont\Large\bfseries}{Problem \thesection:}{1em}{}                                                        
+\titleformat{\subsection}{\normalfont\bfseries}{Correction:}{1em}{}                                                                     
+                                                                                                                                        
+% Custom box for correction with breakable option
+\newtcolorbox{correctionbox}{                                                                                                           
+  colback=gray!5,                                                                                                                       
+  colframe=black,                                                                                                                       
+  fonttitle=\bfseries,                                                                                                                  
+  title=Correction,                                                                                                                     
+  before skip=10pt,                                                                                                                     
+  after skip=10pt,
+  breakable,
+  enhanced
+}                                                                                                                                       
+                                                                                                                                        
+% Fix headheight warning
+\setlength{\headheight}{14.49998pt}
+
+\begin{document}
+
+\begin{center}
+\Large\textbf{Ibn Tofail University} \\[1em]
+\large\textit{Rigid Body Mechanics} \\[0.5em]
+\large\textit{Problem Set V} \\[0.5em]
+\end{center}
+
+\vspace{1cm}
+
+% ----------- COURSE QUESTIONS -------------
+\section*{Course Questions*}
+
+1) Show the angular momentum theorem at a mobile point A of the solid in $R_o$
+$$\left[\frac{d}{dt}\vec{L}_A(S/R_o)\right]_{R_o} = \vec{M}_A(\Sigma \vec{F}_{ext}) + m\vec{V}(G/R_o) \times \vec{V}(A/R_o)$$
+
+2) Show that the power of the resultant forces acting on a solid is equal to the product (comoment) of the kinematic torsor and the force torsor.
+$$\mathcal{P}(S/R_o) = [T_V(S/R_o)]_A \otimes [T_F(S/R_o)]_A = \left\{\begin{array}{c} \vec{\Omega}(S/R_o) \\ \vec{V}(A \in S/R_o) \end{array}\right\} \otimes \left\{\begin{array}{c} \vec{F} \\ \vec{M}_A(\vec{F}) \end{array}\right\}$$
+
+3) a) Write the statement of the kinetic energy theorem.
+
+\quad b) Prove this theorem.
+
+\begin{correctionbox}
+
+\end{correctionbox}
+
+% ----------- PROBLEM 1 -------------
+\section{}
+
+A heavy pendulum consists of a homogeneous solid of arbitrary shape, of mass m, rotating around a fixed point O (Figure 1).
+
+This pendulum is fixed at point O by a perfect pivot joint. The pendulum is linked to the reference frame $R_1(O, \vec{x}_1, \vec{y}_1, \vec{z}_1)$ in rotational motion with respect to the fixed reference frame $R_o(O, \vec{x}_o, \vec{y}_o, \vec{z}_o)$. The motion takes place in the plane $(\vec{x}_o, O, \vec{y}_o)$.
+
+Given: $\overrightarrow{OG} = L\vec{x}_1$, $I_G$ the moment of the solid with respect to the axis $(G, \vec{z}_1)$ and $\vec{R} = R_x\vec{x}_1 + R_y\vec{y}_1$ the reaction at point O.
+
+1) Calculate the absolute velocity and acceleration of the center of mass G.
+
+2) By applying the theorems of dynamic resultant and dynamic moment, establish the differential equation of motion.
+
+3) Find the differential equation of motion by applying the kinetic energy theorem.
+
+4) Show that the total mechanical energy is conserved and find the differential equation of motion of the heavy pendulum.
+
+5) Deduce the differential equation of the simple pendulum as well as its period for small oscillations.
+
+\begin{correctionbox}
+
+\end{correctionbox}
+
+% ----------- PROBLEM 2 -------------
+\section{}
+
+A solid of revolution S, solid and homogeneous, consists of a hemisphere and a cylinder with the same base. We denote by a the radius of this base and H its center. We note m the mass of S, G its center of inertia which we locate in S by $\overrightarrow{HG} = h\vec{z}$ (figure 2), A and C its principal moments of inertia at G [C moment of inertia relative to $(G, \vec{z})$].
+
+S is in contact, by its hemispherical part only, at a point I with a horizontal plane $(\Pi)$ to which is linked the reference frame $R_o(O, \vec{x}_o, \vec{y}_o, \vec{z}_o)$, $\vec{z}_o$ vertical upward and on the side of S [i.e. $\overrightarrow{OG} \cdot \vec{z}_o > 0$]. The direct orthonormal reference frame $R(G, \vec{x}, \vec{y}, \vec{z})$ is linked to S. We locate the position of S in $R_o$ by the usual Euler angles $\psi$, $\theta$, $\phi$ and by the coordinates x and y in $R_o$ of the orthogonal projection of G on the plane $(\Pi)$.
+
+We note $\vec{z}_o \times \vec{u} = \vec{v}$ and $\vec{z} \times \vec{u} = \vec{w}$ with $\psi = (\vec{x}_o, \vec{u})$.
+
+\textbf{A) Kinematics and kinetics.}
+
+1) Determine the instantaneous rotation velocity of the solid $\vec{\Omega}(S/R_o)$.
+
+2) Calculate the z-coordinate of G in $R_o$.
+
+3) Calculate the velocities $\vec{V}(G/R_o)$ and $\vec{V}(I \in S/R_o)$. Express these velocities in the basis $(\vec{u}, \vec{v}, \vec{z}_o)$. Does the last velocity have a particular meaning?
+
+4) Calculate in the basis $(\vec{u}, \vec{w}, \vec{z})$, the angular momentum of the solid (S) at point G.
+
+5) Calculate the kinetic energy of the solid with respect to the reference frame $R_o(O, \vec{x}_o, \vec{y}_o, \vec{z}_o)$.
+
+\textbf{B) Dynamics.}
+
+The external actions exerted on S are:
+\begin{itemize}
+\item The uniform and constant gravitational field of acceleration $\vec{g} = -g\vec{z}_o$.
+\item The reaction of the plane $(\Pi)$ on the solid S defined by a slider whose support passes through I and of vector $\vec{R} = R\vec{z}_o$ (no friction).
+\item The action of an unspecified device, defined by a slider whose support passes through G and of vector $\vec{F} = -k\overrightarrow{OG}$ (k positive constant given).
+\end{itemize}
+
+1) By application of the dynamic resultant theorem calculate explicitly x(t) and y(t).
+
+2) By applying the angular momentum theorem at point G, show that:
+$$\vec{L}_G(S/R_o) \cdot \vec{z}_o = \text{cte} = k_1 \quad \text{and} \quad \vec{L}_G(S/R_o) \cdot \vec{z} = \text{cte} = k_2$$
+Deduce two equations of motion in the form of first integrals.
+
+3) By application of the kinetic energy theorem, give a third equation of motion in the form of a first integral.
+
+\begin{correctionbox}
+
+\end{correctionbox}
+
+% ----------- PROBLEM 3 -------------
+\section{}
+
+A homogeneous bar of length $AB = 2L$, of center G and mass m, slides without friction along a staircase as shown in the figure. Point A slides on the ground and point C slides on the edge of the staircase. The initial position of the bar being $A_oB_o$.
+
+$R_1(A, \vec{x}_1, \vec{y}_1, \vec{z}_1)$ reference frame linked to the bar such that $\vec{z}_1 = \vec{z}_0$.
+
+Given $OA = x(t)$ and $\alpha = (\vec{x}_o, \vec{x}_1) = (\vec{y}_o, \vec{y}_1)$.
+
+The inertia matrix of the bar at G in $R_1$ is given by:
+$$I_G(S) = \begin{pmatrix} \frac{mL^2}{3} & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & \frac{mL^2}{3} \end{pmatrix}_{R_1}$$
+
+We will take the reference frame $\mathbf{R_o}(O, \vec{x}_o, \vec{y}_o, \vec{z}_o)$ as the projection reference frame.
+
+1) Determine the position vector $\overrightarrow{OG}$.
+
+2) Calculate the velocity vector $\vec{V}(G/R_o)$ and acceleration $\vec{\gamma}(G/R_o)$.
+
+3) By applying the dynamic resultant theorem to the bar, show the following equations:
+$$R_C \cos\alpha = m\ddot{x} - mL(\ddot{\alpha}\cos\alpha - \dot{\alpha}^2\sin\alpha) \quad (1)$$
+$$R_A + R_C\sin\alpha = mg - mL(\ddot{\alpha}\sin\alpha + \dot{\alpha}^2\cos\alpha) \quad (2)$$
+
+4) By applying the dynamic moment theorem to the bar at point G, show the following equation:
+$$LR_A\sin\alpha - R_C\left(\frac{x}{\sin\alpha} - L\right) = m\frac{L^2}{3}\ddot{\alpha} \quad (3)$$
+
+5) By applying the kinetic energy theorem to the bar, show that the mechanical energy of the bar is conserved $(E_m = \text{cte})$. Deduce the first integral of energy.
+$$\frac{L^2}{3}\dot{\alpha}^2 + \dot{x}^2 + L^2\dot{\alpha}^2 - 2L\dot{x}\dot{\alpha}\cos\alpha + 2gL\cos\alpha = \text{cte} \quad (4)$$
+
+\begin{correctionbox}
+
+\end{correctionbox}
+
+\end{document}
