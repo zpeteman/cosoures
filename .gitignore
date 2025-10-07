@@ -1,5 +1,5 @@
 something/
-*.gitignore
+.gitignore
 *.synctex.gz
 *.aux
 *.log
