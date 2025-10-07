@@ -1,40 +1,42 @@
-\documentclass[12pt]{article}
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{amsmath, amssymb}
-\usepackage{geometry}
-\usepackage{xcolor}
-\usepackage{lipsum}
-\usepackage{titlesec}
-\usepackage{fancyhdr}
-\usepackage{tcolorbox}
-\usepackage{graphicx}
-\usepackage{float}
+\documentclass[12pt]{article}                                                                                                           
+\usepackage[utf8]{inputenc}                                                                                                             
+\usepackage[T1]{fontenc}                                                                                                                
+\usepackage{amsmath, amssymb}                                                                                                           
+\usepackage{geometry}                                                                                                                   
+\usepackage{xcolor}                                                                                                                     
+\usepackage{lipsum}                                                                                                                     
+\usepackage{titlesec}                                                                                                                   
+\usepackage{fancyhdr}                                                                                                                   
+\usepackage[most]{tcolorbox}                                                                                                                  
+\usepackage{graphicx}                                                                                                                   
+\usepackage{float}                                                                                      
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric, arrows.meta}
-\usetikzlibrary{arrows.meta, decorations.markings}
-
-\geometry{a4paper, margin=2.5cm}
-\pagestyle{fancy}
-\fancyhf{}
-\rhead{Problem Set I}
-\lhead{Analysis IV}
-\cfoot{\thepage}
-
-% Fancy titles
-\titleformat{\section}{\normalfont\Large\bfseries}{Exercise \thesection:}{1em}{}
-\titleformat{\subsection}{\normalfont\bfseries}{Correction:}{1em}{}
-
-% Custom box for correction
-\newtcolorbox{correctionbox}{
-  colback=gray!5,
-  colframe=black,
-  fonttitle=\bfseries,
-  title=Correction,
-  before skip=10pt,
-  after skip=10pt
-}
-
+\usetikzlibrary{arrows.meta, decorations.markings}                                                                                      
+                                                                                                                                        
+\geometry{a4paper, margin=2.5cm}                                                                                                        
+\pagestyle{fancy}                                                                                                                       
+\fancyhf{}                                                                                                                              
+\rhead{Problem Set I}                                                                                                                   
+\lhead{Analysis IV}                                                                                                                     
+\cfoot{\thepage}                                                                                                                        
+                                                                                                                                        
+% Fancy titles                                                                                                                          
+\titleformat{\section}{\normalfont\Large\bfseries}{Exercise \thesection:}{1em}{}                                                        
+\titleformat{\subsection}{\normalfont\bfseries}{Correction:}{1em}{}                                                                     
+                                                                                                                                        
+% Custom box for correction with breakable option
+\newtcolorbox{correctionbox}{                                                                                                           
+  colback=gray!5,                                                                                                                       
+  colframe=black,                                                                                                                       
+  fonttitle=\bfseries,                                                                                                                  
+  title=Correction,                                                                                                                     
+  before skip=10pt,                                                                                                                     
+  after skip=10pt,
+  breakable,
+  enhanced
+}                                                                                                                                       
+                                                                                                                                        
 % Fix headheight warning
 \setlength{\headheight}{14.49998pt}
 
@@ -42,56 +44,143 @@
 
 \begin{center}
 \Large\textbf{Ibn Tofail University} \\[1em]
-\large\textit{Analysis IV} \\[0.5em]
+\large\textit{Analysis IV} \\[2em]
 \large\textit{Problem Set I} \\[0.5em]
 \end{center}
 
 \vspace{1cm}
-
 % ----------- EXERCISE 1 -------------
 \section{}
 Study the convergence of the following series:
+\[
+\begin{array}{lll}
+\displaystyle \sum_{n=1}^{\infty} \frac{1}{n}; &
+\displaystyle \sum_{n=2}^{\infty} \frac{n^2 + 1}{n^2}; &
+\displaystyle \sum_{n=1}^{\infty} \frac{2}{\sqrt{n}} \\[1.5em]
+\displaystyle \sum_{n=1}^{\infty} \frac{(2n + 1)^4}{(7n^2 + 1)^3}; &
+\displaystyle \sum_{n=1}^{\infty} \left( ne^{\frac{1}{n}} - n \right); &
+\displaystyle \sum_{n=0}^{\infty} \ln\left(1 + e^{-n}\right)
+\end{array}
+\]
 
-\begin{enumerate}
-    \item \( \displaystyle \sum_{n=1}^{+\infty} \frac{1}{n} \)
-    
-    \item \( \displaystyle \sum_{n=2}^{+\infty} \frac{n^2 + 1}{n^2} \)
-    
-    \item \( \displaystyle \sum_{n=1}^{+\infty} \frac{2}{\sqrt{n}} \)
-    
-    \item \( \displaystyle \sum_{n=1}^{+\infty} \frac{(2n + 1)^4}{(7n^2 + 1)^3} \)
-    
-    \item \( \displaystyle \sum_{n=1}^{+\infty} \left( ne^{\frac{1}{n}} - n \right) \)
-    
-    \item \( \displaystyle \sum_{n=0}^{+\infty} \ln\left(1 + e^{-n}\right) \)
-    
-    \item \( \displaystyle \sum_{n=1}^{+\infty} \left( \frac{n}{n + 1} \right)^{n^2} \)
-\end{enumerate}
+\[
+\displaystyle \sum_{n=1}^{\infty} \left( \frac{n}{n + 1} \right)^{n^2}
+\]
 
 \begin{correctionbox}
-Solution here.
+\begin{enumerate}
+    \item \textbf{Serie I:} We study the convergence of the series $\sum_{n=1}^{\infty} \frac{1}{n}$.
+    \begin{enumerate}
+        \item The general term is positive and tends to 0 as $n \to \infty$.
+        \item we use the integral test: \[\int_{1}^{\infty} \frac{1}{x} \, dx = \lim_{m \to \infty} \ln(m) - \ln(1) = \infty\]
+    \end{enumerate}
+    \[\boxed{\text{The series diverges.}}\]
+
+    \item \textbf{Serie II:} We study the convergence of the series $\sum_{n=2}^{\infty} \frac{n^2 + 1}{n^2}$.
+    \begin{enumerate}
+        \item The general term is positive and tends to 1 as $n \to \infty$.
+    \end{enumerate}
+    \[\boxed{\text{The series diverges.}}\]  
+    
+    \item \textbf{Serie III:} We study the convergence of the series $\sum_{n=1}^{\infty} \frac{2}{\sqrt{n}}$.
+    \begin{enumerate}
+        \item The general term is positive and tends to 0 as $n \to \infty$.
+        \item we use the p-series test: \[a_n = \frac{1}{n^{1/2}}\]. Here, $p = \frac{1}{2} < 1$.
+    \end{enumerate}
+    \[\boxed{\text{The series diverges.}}\]
+
+    \item \textbf{Serie IV:} We study the convergence of the series $\sum_{n=0}^{\infty} \frac{(2n + 1)^4}{(7n^2 + 1)^3}$.
+    \begin{enumerate}
+        \item  The general term is positive and tends to~0 as $n \to \infty$.
+        \item  For large $n$, we approximate:
+    \[a_n \approx \frac{16n^4}{343n^6} = \frac{16}{343}\cdot\frac{1}{n^2}\]
+        \item Compare with the $p$-series $\displaystyle \sum \frac{1}{n^2}$, which converges since $p = 2 > 1$.
+    By the limit comparison test:
+    \[\lim_{n \to \infty} \frac{a_n}{1/n^2} = \frac{16}{343} \neq 0,\infty\]
+    \end{enumerate}
+    \[\boxed{\text{The series converges.}}\]
+
+    \item \textbf{Serie V:} We study the convergence of the series $\sum_{n=1}^{\infty} \left( ne^{\frac{1}{n}} - n \right)$.
+    \begin{enumerate}
+        \item the general term is positive and tends to 1 as $n \to \infty$.
+    \end{enumerate}
+    \[\boxed{\text{The series diverges.}}\]
+
+    \item \textbf{Serie VI:} We study the convergence of the series $\sum_{n=0}^{\infty} \ln\left(1 + e^{-n}\right)$.
+    \begin{enumerate}
+        \item the general term tends to 2 as $n \to \infty$. 
+    \end{enumerate}
+    \[\boxed{\text{The series diverges.}}\]
+
+    \item \textbf{Serie VII:} We study the convergence of the series $\sum_{n=1}^{\infty} \left( \frac{n}{n + 1} \right)^{n^2}$.
+    \begin{enumerate}
+        \item the general term tends to 1 as $n \to \infty$
+    \end{enumerate}
+    \[\boxed{\text{The series diverges.}}\]
+
+\end{enumerate}
 \end{correctionbox}
 
 % ----------- EXERCISE 2 -------------
 \section{}
 Determine the nature of the numerical series with the following general terms:
 
-\begin{enumerate}
-    \item \( u_n = \frac{1}{n \cos^2 n} \)
-    
-    \item \( v_n = \frac{1}{[\ln(n)]^n} \)
-    
-    \item \( w_n = \frac{\tan^n\left(\frac{\pi}{7}\right)}{3^{n+2}} \)
-    
-    \item \( x_n = \frac{1}{n \ln(n)} \)
-    
-    \item \( y_n = \frac{1}{n(\ln n)^2} \)
-    
-    \item \( z_n = \frac{1}{(\ln 2)^2 + (\ln 3)^2 + \ldots + (\ln n)^2} \)
-\end{enumerate}
+\[
+\begin{array}{lll}
+\displaystyle  u_n = \frac{1}{n \cos^2 n};  &
+\displaystyle  v_n = \frac{1}{[\ln(n)]^n};  &
+\displaystyle  w_n = \frac{\tan^n\left(\frac{\pi}{7}\right)}{3^{n+2}}  \\[1.5em]
+\displaystyle  x_n = \frac{1}{n \ln(n)}; &
+\displaystyle  y_n = \frac{1}{n(\ln n)^2}; &
+\displaystyle  z_n = \frac{1}{(\ln 2)^2 + (\ln 3)^2 + \ldots + (\ln n)^2} 
+\end{array}
+\]
 
 \begin{correctionbox}
-Solution here.
+\begin{enumerate}
+    \item We study the convergence of the series $u_n$.
+    \begin{enumerate}
+        \item since the general term does not converge to any number it doesnt converge to 0 too.
+    \end{enumerate}
+    \[\boxed{\text{The series diverges.}}\]
+
+    \item We study the convergence of the series $v_n$.
+    \begin{enumerate}
+        \item the general term is positive and tends to 0 as $n \to \infty$.
+        \item we apply \textbf{the root test}: \[\lim_{n \to \infty} \sqrt[n]{|a_n|} = \lim_{n \to \infty} \frac{1}{\ln(n)} = 0 < 1\]
+    \end{enumerate}
+    \[\boxed{\text{The series converges.}}\]
+
+    \item We study the convergence of the series $w_n$.
+    \begin{enumerate}
+        \item we know it a geometric series with ratio $r = \frac{\tan(\pi/7)}{3}$.
+        \item we apply the \textbf{geometric series test}: we have  $|r| < 1$.
+    \end{enumerate}
+    \[\boxed{\text{The series converges.}}\]
+    
+    \item We study the convergence of the series $x_n$.
+    \begin{enumerate}
+        \item the general term is positive and tends to 0 as $n \to \infty$.
+        \item we apply the \textbf{integral test}: \[\int_{2}^{\infty} \frac{1}{x \ln(x)} \, dx = \lim_{m \to \infty} [\ln(\ln(m)) - \ln(\ln(2))] = \infty\]
+    \end{enumerate}
+    \[\boxed{\text{The series diverges.}}\]
+
+    \item We study the convergence of the series $y_n$.
+    \begin{enumerate}
+        \item the general test is positive and tends to 0 as $n \to \infty$.
+        \item we apply the \textbf{integral test}: \[\int_{2}^{\infty} \frac{1}{x(\ln x)^2} \, dx = \frac{1}{\ln(2)} < \infty\]
+    \end{enumerate}
+    \[\boxed{\text{The series converges.}}\]
+
+    \item We study the convergence of the series $z_n$.
+    \begin{enumerate}
+        \item The general term is positive and tends to 0 as $n \to \infty$.
+        \item We compare with the series $\frac{1}{n(\ln n)^2}$ and apply the \textbf{comparison test}:
+        \[z_n = \frac{1}{(\ln 2)^2 + (\ln 3)^2 + \dots + (\ln n)^2} \sim \frac{1}{n (\ln n)^2}.\]
+        Since $\sum \frac{1}{n (\ln n)^2}$ converges, the series $z_n$ also converges.
+    \end{enumerate}
+    \[\boxed{\text{The series converges.}}\]
+\end{enumerate}
 \end{correctionbox}
 
 % ----------- EXERCISE 3 -------------
@@ -103,7 +192,31 @@ w_n = \frac{(-1)^n}{\ln(1 + \sqrt{n})}
 is convergent but not absolutely convergent (called semi-convergent).
 
 \begin{correctionbox}
-Solution here.
+\begin{enumerate}
+    \item \textbf{Absolute convergence.} We study the convergence of the series  $|w_n|$.
+    \[
+    \sum_{n=1}^{\infty} |w_n| = \sum_{n=1}^{\infty} \frac{1}{\ln(1 + \sqrt{n})}.
+    \]
+    For large $n$, $\ln(1+\sqrt{n}) \sim \frac{1}{2} \ln n$, so
+    \[
+    \frac{1}{\ln(1+\sqrt{n})} \sim \frac{2}{\ln n}.
+    \]
+    Since $\sum 1/\ln n$ diverges, the series is \textbf{not absolutely convergent}.
+
+    \item \textbf{Conditional convergence.} We study the convergence of the series 
+    \[
+    a_n = \frac{1}{\ln(1+\sqrt{n})} > 0.
+    \]
+    - $a_n$ is decreasing for large $n$.  
+    - $\lim_{n \to \infty} a_n = 0$.
+    By the \textbf{alternating series test (Leibniz criterion)}, the series
+    \[
+    \sum_{n=1}^{\infty} (-1)^n a_n
+    \]
+    converges conditionally.
+
+    \[\boxed{\text{The series is convergent (semi-convergent).}}\]
+\end{enumerate}
 \end{correctionbox}
 
 % ----------- EXERCISE 4 -------------
@@ -122,7 +235,51 @@ Solution here.
 \end{enumerate}
 
 \begin{correctionbox}
-Solution here.
+\begin{enumerate}
+    \item \textbf{Absolute convergence of the first two series.}
+    \begin{enumerate}
+        \item Consider $\sum_{n=0}^{\infty} \frac{1}{n!}$. Using the ratio test:
+        \[
+        \frac{a_{n+1}}{a_n} = \frac{1/(n+1)!}{1/n!} = \frac{1}{n+1} \to 0 < 1
+        \]
+        so the series converges absolutely.
+        \item Consider $\sum_{n=0}^{\infty} \frac{(-1)^n}{2^n}$. Its absolute series is geometric:
+        \[
+        \sum_{n=0}^{\infty} \frac{1}{2^n}, \quad r = \frac{1}{2} < 1
+        \]
+        so it converges absolutely.
+    \end{enumerate}
+
+    \item \textbf{Absolute convergence of the Cauchy product.}
+    \begin{enumerate}
+        \item Let 
+        \[
+        a_n = \frac{1}{n!}, \quad b_n = \frac{(-1)^n}{2^n}.
+        \]
+        The series 
+        \[
+        \sum_{n=0}^{\infty} \sum_{k=0}^{n} a_k b_{n-k}
+        \]
+        is the Cauchy product of two absolutely convergent series, hence convergent.
+
+    \item \textbf{Determine its value.}
+    \begin{enumerate}
+        \item Compute the sums:
+        \[
+        \sum_{n=0}^{\infty} a_n = \sum_{n=0}^{\infty} \frac{1}{n!} = e, \quad 
+        \sum_{n=0}^{\infty} b_n = \sum_{n=0}^{\infty} \frac{(-1)^n}{2^n} = \frac{1}{1 - (-1/2)} = \frac{2}{3}.
+        \]
+        \item By the Cauchy product formula, the sum of the series is
+        \[
+        e \cdot \frac{2}{3} = \frac{2e}{3}.
+        \]
+    \end{enumerate}
+    \end{enumerate}
+\end{enumerate}
+
+\[
+\boxed{\text{The series is absolutely convergent and its sum is } \frac{2e}{3}.}
+\]
 \end{correctionbox}
 
 % ----------- EXERCISE 5 -------------
@@ -133,7 +290,45 @@ Study the nature of the following series:
 \]
 
 \begin{correctionbox}
-Solution here.
+\begin{enumerate}
+    \item Consider the series 
+    \[
+    \sum_{n>2} \ln\left(1 + \frac{(-1)^n}{n}\right).
+    \]
+    \begin{enumerate}
+        \item For large $n$, $\ln(1+x) \sim x$:
+        \[
+        \ln\left(1 + \frac{(-1)^n}{n}\right) \sim \frac{(-1)^n}{n}.
+        \]
+        \item The series $\sum \frac{(-1)^n}{n}$ is alternating with terms tending to $0$, so by the \textbf{alternating series test (Leibniz criterion)}, the series converges conditionally.
+        \item Absolute convergence fails since
+        \[
+        \sum_{n>2} \left|\ln\left(1 + \frac{(-1)^n}{n}\right)\right| \sim \sum_{n>2} \frac{1}{n} = \infty.
+        \]
+    \end{enumerate}
+    \[
+    \boxed{\text{The series converges conditionally but not absolutely.}}
+    \]
+
+    \item Consider the series 
+    \[
+    \sum_{n>1} \sin\left(\frac{(-1)^n}{n}\right).
+    \]
+    \begin{enumerate}
+        \item For small $x$, $\sin(x) \sim x$:
+        \[
+        \sin\left(\frac{(-1)^n}{n}\right) \sim \frac{(-1)^n}{n}.
+        \]
+        \item Again, by the \textbf{alternating series test}, the series converges conditionally.
+        \item Absolute convergence fails since
+        \[
+        \sum_{n>1} \left|\sin\left(\frac{(-1)^n}{n}\right)\right| \sim \sum_{n>1} \frac{1}{n} = \infty.
+        \]
+    \end{enumerate}
+    \[
+    \boxed{\text{The series converges conditionally but not absolutely.}}
+    \]
+\end{enumerate}
 \end{correctionbox}
 
 % ----------- EXERCISE 6 -------------
@@ -145,7 +340,23 @@ u_n := \frac{(-1)^n}{\sqrt{n}} \quad \text{and} \quad v_n := \frac{(-1)^n}{\sqrt
 are not of the same nature, although \( u_n \sim v_n \).
 
 \begin{correctionbox}
-Solution here.
+\begin{enumerate}
+    \item Consider $u_n = \frac{(-1)^n}{\sqrt{n}}$.
+    \begin{enumerate}
+        \item The sequence $a_n = 1/\sqrt{n}$ is positive, decreasing, and tends to $0$.
+        \item By the \textbf{alternating series test (Leibniz criterion)}, the series $\sum u_n$ converges conditionally.
+        \item Absolute convergence fails since $\sum |u_n| = \sum 1/\sqrt{n}$ diverges.
+    \end{enumerate}
+
+    \item Consider $v_n = \frac{(-1)^n}{\sqrt{n + (-1)^n}}$.
+    \begin{enumerate}
+        \item Split into even/odd terms: $b_{2k} = 1/\sqrt{2k+1}$, $b_{2k+1} = 1/\sqrt{2k}$.
+        \item The sequence $(b_n)$ is not monotone, so the Leibniz criterion cannot be applied.
+        \item Although $b_n \sim a_n \sim 1/\sqrt{n}$ as $n \to \infty$, the series $\sum v_n$ diverges.
+    \end{enumerate}
+
+    \textbf{The series $\sum u_n$ converges conditionally, while $\sum v_n$ diverges. Hence, they are not of the same nature, despite $u_n \sim v_n$.}
+\end{enumerate}
 \end{correctionbox}
 
 \end{document}
