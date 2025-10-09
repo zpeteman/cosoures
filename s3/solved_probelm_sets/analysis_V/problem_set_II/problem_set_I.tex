@@ -1,0 +1,133 @@
+\documentclass[12pt]{article}                                                                                                           
+\usepackage[utf8]{inputenc}                                                                                                             
+\usepackage[T1]{fontenc}                                                                                                                
+\usepackage{amsmath, amssymb}                                                                                                           
+\usepackage{geometry}                                                                                                                   
+\usepackage{xcolor}                                                                                                                     
+\usepackage{lipsum}                                                                                                                     
+\usepackage{titlesec}                                                                                                                   
+\usepackage{fancyhdr}                                                                                                                   
+\usepackage[most]{tcolorbox}                                                                                                                  
+\usepackage{graphicx}                                                                                                                   
+\usepackage{float}                                                                                      
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+\usetikzlibrary{arrows.meta, decorations.markings}                                                                                      
+                                                                                                                                        
+\geometry{a4paper, margin=2.5cm}                                                                                                        
+\pagestyle{fancy}                                                                                                                       
+\fancyhf{}                                                                                                                              
+\rhead{Problem Set II}                                                                                                                   
+\lhead{Analysis V}                                                                                                                     
+\cfoot{\thepage}                                                                                                                        
+                                                                                                                                        
+% Fancy titles                                                                                                                          
+\titleformat{\section}{\normalfont\Large\bfseries}{Exercise \thesection:}{1em}{}                                                        
+\titleformat{\subsection}{\normalfont\bfseries}{Correction:}{1em}{}                                                                     
+                                                                                                                                        
+% Custom box for correction with breakable option
+\newtcolorbox{correctionbox}{                                                                                                           
+  colback=gray!5,                                                                                                                       
+  colframe=black,                                                                                                                       
+  fonttitle=\bfseries,                                                                                                                  
+  title=Correction,                                                                                                                     
+  before skip=10pt,                                                                                                                     
+  after skip=10pt,
+  breakable,
+  enhanced
+}                                                                                                                                       
+                                                                                                                                        
+% Fix headheight warning
+\setlength{\headheight}{14.49998pt}
+
+\begin{document}
+
+\begin{center}
+\Large\textbf{Ibn Tofail University} \\[1em]
+\large\textit{Analysis V} \\[2em]
+\large\textit{Problem Set II} \\[0.5em]
+\end{center}
+
+\vspace{1cm}
+% ----------- EXERCISE 1 -------------
+\section{}
+Study the existence of a limit at $(0, 0)$ for the following functions:
+\[
+\begin{array}{lll}
+\displaystyle f(x, y) = \dfrac{x}{y}; &
+\displaystyle f(x, y) = \dfrac{1 - \cos(xy)}{y^2}; &
+\displaystyle f(x, y) = \dfrac{(x^2 + y^2)^2}{x^2 - y^2} \\[1.5em]
+\displaystyle f(x, y) = \dfrac{2x^2 + xy}{\sqrt{x^2 + y^2}}; &
+\displaystyle f(x, y) = \dfrac{\sin(xy)}{|x| + |y|}; &
+\displaystyle f(x, y) = \begin{cases} 
+                        \dfrac{|xy|^\alpha}{x^2 + y^2} & \text{if } (x, y) \neq (0, 0) \\[0.5em]
+                        0 & \text{if } (x, y) = (0, 0)
+                        \end{cases}$, where $\alpha > 0
+\end{array}
+\]
+
+\begin{correctionbox}
+
+\end{correctionbox}
+
+% ----------- EXERCISE 2 -------------
+\section{}
+Study the limit at $(0, 0)$ of the two-variable numerical function $f$ defined by:
+$$f(x, y) = \frac{\cos x - \cos y}{x - y}$$
+
+\begin{correctionbox}
+
+\end{correctionbox}
+
+% ----------- EXERCISE 3 -------------
+\section{}
+Study the existence of a limit at the indicated point for the following functions:
+\[
+\begin{array}{ll}
+\displaystyle f(x, y, z) = \dfrac{xyz}{x + y + z}$ at $(0, 0, 0); &
+\displaystyle f(x, y, z) = \dfrac{x + y}{x^2 - y^2 + z^2}$ at $(2, -2, 0) 
+\end{array}
+\]
+
+\begin{correctionbox}
+
+\end{correctionbox}
+
+% ----------- EXERCISE 4 -------------
+\section{}
+Let $f : \mathbb{R}^2 \to \mathbb{R}$ be the function defined by
+$$f(x, y) = \begin{cases}
+2y & \text{if } x \geq y^2 \\[0.5em]
+\dfrac{2x}{y} & \text{if } |x| < y^2 \text{ and } y \neq 0 \\[0.5em]
+-2y & \text{if } x \leq -y^2
+\end{cases}$$
+
+Study the continuity of $f$ on $\mathbb{R}^2$.
+
+\begin{correctionbox}
+
+\end{correctionbox}
+
+% ----------- EXERCISE 5 -------------
+\section{}
+Study the continuity on $\mathbb{R}^2$ of the functions defined in Exercises 2 and 3.
+
+\begin{correctionbox}
+
+\end{correctionbox}
+
+% ----------- EXERCISE 6 -------------
+\section{}
+Let $f : \mathbb{R}^2 \to \mathbb{R}$ be the function defined by
+$$f(x, y) = \begin{cases}
+\dfrac{|x|^\alpha \cdot |y|^{2\alpha}}{|x|^\alpha + |y|^{2\alpha}} & \text{if } (x, y) \neq (0, 0) \\[0.5em]
+0 & \text{if } (x, y) = (0, 0)
+\end{cases}$$
+
+Determine the values of $\alpha$ for which $f$ is continuous at $(0, 0)$.
+
+\begin{correctionbox}
+
+\end{correctionbox}
+
+\end{document}

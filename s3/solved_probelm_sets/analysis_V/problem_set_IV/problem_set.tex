@@ -1,0 +1,182 @@
+\documentclass[12pt]{article}                                                                                                           
+\usepackage[utf8]{inputenc}                                                                                                             
+\usepackage[T1]{fontenc}                                                                                                                
+\usepackage{amsmath, amssymb}                                                                                                           
+\usepackage{geometry}                                                                                                                   
+\usepackage{xcolor}                                                                                                                     
+\usepackage{lipsum}                                                                                                                     
+\usepackage{titlesec}                                                                                                                   
+\usepackage{fancyhdr}                                                                                                                   
+\usepackage[most]{tcolorbox}                                                                                                                  
+\usepackage{graphicx}                                                                                                                   
+\usepackage{float}                                                                                      
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+\usetikzlibrary{arrows.meta, decorations.markings}                                                                                      
+                                                                                                                                        
+\geometry{a4paper, margin=2.5cm}                                                                                                        
+\pagestyle{fancy}                                                                                                                       
+\fancyhf{}                                                                                                                              
+\rhead{Problem Set IV}                                                                                                                   
+\lhead{Analysis V}                                                                                                                     
+\cfoot{\thepage}                                                                                                                        
+                                                                                                                                        
+% Fancy titles                                                                                                                          
+\titleformat{\section}{\normalfont\Large\bfseries}{Exercise \thesection:}{1em}{}                                                        
+\titleformat{\subsection}{\normalfont\bfseries}{Correction:}{1em}{}                                                                     
+                                                                                                                                        
+% Custom box for correction with breakable option
+\newtcolorbox{correctionbox}{                                                                                                           
+  colback=gray!5,                                                                                                                       
+  colframe=black,                                                                                                                       
+  fonttitle=\bfseries,                                                                                                                  
+  title=Correction,                                                                                                                     
+  before skip=10pt,                                                                                                                     
+  after skip=10pt,
+  breakable,
+  enhanced
+}                                                                                                                                       
+                                                                                                                                        
+% Fix headheight warning
+\setlength{\headheight}{14.49998pt}
+
+\begin{document}
+
+\begin{center}
+\Large\textbf{Ibn Tofail University} \\[1em]
+\large\textit{Analysis V} \\[2em]
+\large\textit{Problem Set IV} \\[0.5em]
+\end{center}
+
+\vspace{1cm}
+% ----------- EXERCISE 1 -------------
+\section{}
+For $(x, y) \in \mathbb{R}^2$, we define
+$$f(x, y) = \begin{cases}
+xy \sin\left(\dfrac{\pi}{2} \cdot \dfrac{x^2 - y^2}{x^2 + y^2}\right) & \text{if } (x, y) \neq (0, 0) \\[0.5em]
+0 & \text{if } (x, y) = (0, 0)
+\end{cases}$$
+
+\begin{enumerate}
+    \item Study the continuity of $f$.
+    \item Study the differentiability and determine if $f$ is of class $C^1$.
+    \item Study the second-order partial derivatives and determine if $f$ is of class $C^2$.
+\end{enumerate}
+
+\begin{correctionbox}
+
+\end{correctionbox}
+
+% ----------- EXERCISE 2 -------------
+\section{}
+Let $f$ be a function from $\mathbb{R}^2$ to $\mathbb{R}$, defined by:
+$$f(x, y) = \frac{x^2y^2}{x^2 + y^2} \text{ if } (x, y) \neq (0, 0) \text{ and } f(0, 0) = 0$$
+
+\begin{enumerate}
+    \item Study the continuity of $f$ at $(0, 0)$.
+    \item Calculate the partial derivatives of $f$ at $(0, 0)$.
+    \item Study the differentiability of $f$ at $(0, 0)$.
+    \item Let $(x, y) \neq (0, 0)$. Calculate the partial derivatives of $f$ at $(x, y)$.
+    \item Is $f$ of class $C^1$?
+    \item Deduce the answer to (3) from (5).
+\end{enumerate}
+
+\begin{correctionbox}
+
+\end{correctionbox}
+
+% ----------- EXERCISE 3 -------------
+\section{}
+Let $f$ be a $C^1$ mapping from $\mathbb{R}^n$ to $\mathbb{R}$. We say that $f$ is positively homogeneous of degree $r$ (where $r$ is a given real number) if and only if $\forall \lambda \in ]0, +\infty[$, $\forall x \in \mathbb{R}^n$, $f(\lambda x) = \lambda^r f(x)$.
+
+Show that for such a function, the following Euler identity holds:
+$$\forall x = (x_1, \ldots, x_n) \in \mathbb{R}^n, \quad \sum_{i=1}^{n} x_i \frac{\partial f}{\partial x_i}(x) = rf(x).$$
+
+\begin{correctionbox}
+
+\end{correctionbox}
+
+% ----------- EXERCISE 4 -------------
+\section{}
+Let $f$ be a function from $\mathbb{R}^2$ to $\mathbb{R}$. Let $(a, b) \in \mathbb{R}^2$. Suppose that $f$ is differentiable in a neighborhood of $(a, b)$. Let $S$ be the surface with equation $z = f(x, y)$.
+
+\begin{enumerate}
+    \item Give the equation of the tangent plane $P$ to $S$ at the point $(a, b, f(a, b))$.
+    \item Give two direction vectors $\mathbf{u}$ and $\mathbf{v}$ of $P$ and the normal vector to $P$.
+\end{enumerate}
+
+\textbf{Application:}
+
+Let $f(x, y) = \exp(x \ln(x^2 + y^2))$ for $(x, y) \neq (0, 0)$. Give the equation of the tangent plane to the surface $S = \{(x, y, z) \in \mathbb{R}^3 \mid z = f(x, y)\}$ at the point $(1, 0, f(1, 0))$.
+
+\vspace{0.5em}
+
+\noindent \textbf{Additional question:}
+
+Determine the Taylor expansion of $f$ to order 3 at $(0,1)$ using the uniqueness of a Taylor expansion and certain restrictions of $f$.
+
+\begin{correctionbox}
+
+\end{correctionbox}
+
+% ----------- EXERCISE 5 -------------
+\section{}
+Find the extrema of the following functions:
+
+\begin{enumerate}
+    \item $f(x, y) = x^3 + 3x^2y - 15x - 12y$
+    \item $f(x, y) = -2(x - y)^2 + x^4 + y^4$
+\end{enumerate}
+
+\begin{correctionbox}
+
+\end{correctionbox}
+
+% ----------- EXERCISE 6 -------------
+\section{}
+Find the minimum of $f(x, y) = \sqrt{x^2 + (y - a)^2} + \sqrt{(x - a)^2 + y^2}$, where $a$ is a given real number.
+
+\begin{correctionbox}
+
+\end{correctionbox}
+
+% ----------- EXERCISE 7 -------------
+\section{}
+Solve the following partial differential equations:
+
+\begin{enumerate}
+    \item $2\dfrac{\partial f}{\partial x} - \dfrac{\partial f}{\partial y} = 0$ by setting $u = x + y$ and $v = x + 2y$.
+    
+    \item $x\dfrac{\partial f}{\partial y} - y\dfrac{\partial f}{\partial x} = 0$ on $\mathbb{R}^2 \setminus \{(0, 0)\}$ by using polar coordinates.
+    
+    \item $x^2 \dfrac{\partial^2 f}{\partial x^2} + 2xy \dfrac{\partial^2 f}{\partial x \partial y} + y^2 \dfrac{\partial^2 f}{\partial y^2} = 0$ on $]0, +\infty[ \times \mathbb{R}$ by setting $x = u$ and $y = uv$.
+\end{enumerate}
+
+\begin{correctionbox}
+
+\end{correctionbox}
+
+% ----------- EXERCISE 8 -------------
+\section{}
+Let $f$ be a real-valued function of a real variable defined in a neighborhood of a point $a$ such that $f''(a)$ exists.
+
+\begin{enumerate}
+    \item Let $\varepsilon > 0$ be a given real number. Show that for $t$ sufficiently close to $a$, we have the inequality:
+    $$|f'(t) - f'(a) - (t - a)f''(a)| < \varepsilon|t - a|$$
+    
+    \item Define $H(x) = f(x) - (x - a)f'(a) - \dfrac{(x - a)^2}{2}f''(a)$.
+    
+    Deduce a bound for $H(y) - H(x)$ when $x$ and $y$ are sufficiently close to $a$.
+    
+    \item Define:
+    $$F(x, y) = \frac{f(y) - f(x)}{y - x} \text{ for } y \neq x \text{ and } F(x, x) = f'(x)$$
+    
+    Show that $F$ is differentiable at the point $(a, a)$ and that:
+    $$dF_{(a,a)} = \frac{1}{2}f''(a)(dx + dy)$$
+\end{enumerate}
+
+\begin{correctionbox}
+
+\end{correctionbox}
+
+\end{document}

@@ -1,0 +1,162 @@
+\documentclass[12pt]{article}                                                                                                           
+\usepackage[utf8]{inputenc}                                                                                                             
+\usepackage[T1]{fontenc}                                                                                                                
+\usepackage{amsmath, amssymb}                                                                                                           
+\usepackage{geometry}                                                                                                                   
+\usepackage{xcolor}                                                                                                                     
+\usepackage{lipsum}                                                                                                                     
+\usepackage{titlesec}                                                                                                                   
+\usepackage{fancyhdr}                                                                                                                   
+\usepackage[most]{tcolorbox}                                                                                                                  
+\usepackage{graphicx}                                                                                                                   
+\usepackage{float}                                                                                      
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+\usetikzlibrary{arrows.meta, decorations.markings}                                                                                      
+                                                                                                                                        
+\geometry{a4paper, margin=2.5cm}                                                                                                        
+\pagestyle{fancy}                                                                                                                       
+\fancyhf{}                                                                                                                              
+\rhead{Problem Set III}                                                                                                                   
+\lhead{Analysis V}                                                                                                                     
+\cfoot{\thepage}                                                                                                                        
+                                                                                                                                        
+% Fancy titles                                                                                                                          
+\titleformat{\section}{\normalfont\Large\bfseries}{Exercise \thesection:}{1em}{}                                                        
+\titleformat{\subsection}{\normalfont\bfseries}{Correction:}{1em}{}                                                                     
+                                                                                                                                        
+% Custom box for correction with breakable option
+\newtcolorbox{correctionbox}{                                                                                                           
+  colback=gray!5,                                                                                                                       
+  colframe=black,                                                                                                                       
+  fonttitle=\bfseries,                                                                                                                  
+  title=Correction,                                                                                                                     
+  before skip=10pt,                                                                                                                     
+  after skip=10pt,
+  breakable,
+  enhanced
+}                                                                                                                                       
+                                                                                                                                        
+% Fix headheight warning
+\setlength{\headheight}{14.49998pt}
+
+\begin{document}
+
+\begin{center}
+\Large\textbf{Ibn Tofail University} \\[1em]
+\large\textit{Analysis V} \\[2em]
+\large\textit{Problem Set III} \\[0.5em]
+\end{center}
+
+\vspace{1cm}
+% ----------- EXERCISE 1 -------------
+\section{}
+Let $f : \mathbb{R}^2 \to \mathbb{R}$ be the function defined by
+$$f(x, y) = \begin{cases}
+\dfrac{|xy|^\alpha}{x^2 + y^2} & \text{if } (x, y) \neq (0, 0) \\[0.5em]
+0 & \text{if } (x, y) = (0, 0)
+\end{cases}, \quad \alpha > 0.$$
+
+Determine the values of $\alpha$ for which $f$ is:
+\begin{itemize}
+    \item continuous at $(0, 0)$.
+    \item differentiable at $(0, 0)$.
+\end{itemize}
+
+\begin{correctionbox}
+
+\end{correctionbox}
+
+% ----------- EXERCISE 2 -------------
+\section{}
+Study the existence and continuity of the first partial derivatives and the differentiability for the following functions:
+
+\[
+\begin{array}{ll}
+\displaystyle f(x, y) = \begin{cases} 
+                        \dfrac{x|y|}{\sqrt{x^2 + y^2}} & \text{if } (x, y) \neq (0, 0) \\[0.5em]
+                        0 & \text{if } (x, y) = (0, 0)
+                        \end{cases}; &
+\cr
+\displaystyle f(x, y) = \begin{cases}
+                        \dfrac{xy}{|x| - y} & \text{if } y \neq |x| \\[0.5em]
+                        0 & \text{if } y = |x|
+                        \end{cases} &
+\cr
+\displaystyle f(x, y) = \begin{cases}
+                        \dfrac{x^3 - y^3}{x^2 + y^2} & \text{if } (x, y) \neq (0, 0) \\[0.5em]
+                        0 & \text{if } (x, y) = (0, 0)
+                        \end{cases}; &
+\cr
+\displaystyle f(x, y) = \begin{cases}
+                        y^2 \sin\left(\dfrac{x}{y}\right) & \text{if } y \neq 0 \\[0.5em]
+                        0 & \text{if } y = 0
+                        \end{cases}
+\end{array}
+\]
+
+\begin{correctionbox}
+
+\end{correctionbox}
+
+% ----------- EXERCISE 3 -------------
+\section{}
+Calculate $d_{(1,2)}f(x, y)$ and $d_{(2,3,4)}g(x, y, z)$ where $f(x, y) = \dfrac{x}{y^2}$ and $g(x, y, z) = \dfrac{z}{\sqrt{x^2 + y^2}}$.
+
+\begin{correctionbox}
+
+\end{correctionbox}
+
+% ----------- EXERCISE 4 -------------
+\section{}
+Let $f : \mathbb{R}^2 \to \mathbb{R}$ and $g : \mathbb{R}^2 \to \mathbb{R}^2$ be the functions defined by
+$$f(x, y) = \sin(x^2 - y^2) \quad \text{and} \quad g(x, y) = (x + y, x - y).$$
+
+\begin{enumerate}
+    \item Calculate the gradient of $f$ at $(x, y) \in \mathbb{R}^2$.
+    \item Calculate the Jacobian matrix of $g$ at $(x, y) \in \mathbb{R}^2$.
+    \item Deduce the Jacobian matrix of $f \circ g$ at $(x, y) \in \mathbb{R}^2$ and give the expression of $D(f \circ g)(x, y)(h, k)$.
+\end{enumerate}
+
+\begin{correctionbox}
+
+\end{correctionbox}
+
+% ----------- EXERCISE 5 -------------
+\section{}
+Let $f : \mathbb{R}^n \to \mathbb{R}$ be the function defined by
+$$f(x) = \begin{cases}
+\exp\left(\dfrac{1}{\|x\|^2 - 1}\right) & \text{if } \|x\| < 1 \\[0.5em]
+0 & \text{if } \|x\| \geq 1
+\end{cases},$$
+where $x = (x_1, \ldots, x_n)$ and $\|x\|^2 = \displaystyle\sum_{i=1}^{n} x_i^2$.
+
+Show that $f$ is of class $C^1$ on $\mathbb{R}^n$ and give the expression of its differential.
+
+\begin{correctionbox}
+
+\end{correctionbox}
+
+% ----------- EXERCISE 6 -------------
+\section{}
+Let $f$ be the function defined by
+$$f(x, y) = \begin{cases}
+xy\dfrac{x^2 - y^2}{x^2 + y^2} & \text{if } (x, y) \neq (0, 0) \\[0.5em]
+0 & \text{if } (x, y) = (0, 0)
+\end{cases}$$
+
+Calculate the partial derivatives at the points $(x, 0)$ and $(0, y)$ with $x, y \in \mathbb{R}$. Calculate the second-order partial derivatives at $(0, 0)$.
+
+\begin{correctionbox}
+
+\end{correctionbox}
+
+% ----------- EXERCISE 7 -------------
+\section{}
+Let $f$ be the function defined by $f(x) = \|x\|$, $\forall x \in \mathbb{R}^n$. Study the differentiability of $f$ on $\mathbb{R}^n$.
+
+\begin{correctionbox}
+
+\end{correctionbox}
+
+\end{document}
