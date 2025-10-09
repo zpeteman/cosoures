@@ -1,0 +1,472 @@
+\documentclass[12pt]{article}                                                                                                           
+\usepackage[utf8]{inputenc}                                                                                                             
+\usepackage[T1]{fontenc}                                                                                                                
+\usepackage{amsmath, amssymb}                                                                                                           
+\usepackage{geometry}                                                                                                                   
+\usepackage{xcolor}                                                                                                                     
+\usepackage{lipsum}                                                                                                                     
+\usepackage{titlesec}                                                                                                                   
+\usepackage{fancyhdr}                                                                                                                   
+\usepackage[most]{tcolorbox}                                                                                                                  
+\usepackage{graphicx}                                                                                                                   
+\usepackage{float}                                                                                      
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+\usetikzlibrary{arrows.meta, decorations.markings}                                                                                      
+                                                                                                                                        
+\geometry{a4paper, margin=2.5cm}                                                                                                        
+\pagestyle{fancy}                                                                                                                       
+\fancyhf{}                                                                                                                              
+\rhead{Problem Set II}                                                                                                                   
+\lhead{Analysis V}                                                                                                                     
+\cfoot{\thepage}                                                                                                                        
+                                                                                                                                        
+% Fancy titles                                                                                                                          
+\titleformat{\section}{\normalfont\Large\bfseries}{Exercise \thesection:}{1em}{}                                                        
+\titleformat{\subsection}{\normalfont\bfseries}{Correction:}{1em}{}                                                                     
+                                                                                                                                        
+% Custom box for correction with breakable option
+\newtcolorbox{correctionbox}{                                                                                                           
+  colback=gray!5,                                                                                                                       
+  colframe=black,                                                                                                                       
+  fonttitle=\bfseries,                                                                                                                  
+  title=Correction,                                                                                                                     
+  before skip=10pt,                                                                                                                     
+  after skip=10pt,
+  breakable,
+  enhanced
+}                                                                                                                                       
+                                                                                                                                        
+% Fix headheight warning
+\setlength{\headheight}{14.49998pt}
+
+\begin{document}
+
+\begin{center}
+\Large\textbf{Ibn Tofail University} \\[1em]
+\large\textit{Analysis V} \\[2em]
+\large\textit{Problem Set II} \\[0.5em]
+\end{center}
+
+\vspace{1cm}
+% ----------- EXERCISE 1 -------------
+\section{}
+Study the existence of a limit at $(0, 0)$ for the following functions:
+\[
+\begin{array}{lll}
+\displaystyle f(x, y) = \dfrac{x}{y}; &
+\displaystyle f(x, y) = \dfrac{1 - \cos(xy)}{y^2}; &
+\displaystyle f(x, y) = \dfrac{(x^2 + y^2)^2}{x^2 - y^2} \\[1.5em]
+\displaystyle f(x, y) = \dfrac{2x^2 + xy}{\sqrt{x^2 + y^2}}; &
+\displaystyle f(x, y) = \dfrac{\sin(xy)}{|x| + |y|}; &
+\displaystyle f(x, y) = \begin{cases} 
+                        \dfrac{|xy|^\alpha}{x^2 + y^2} & \text{if } (x, y) \neq (0, 0) \\[0.5em]
+                        0 & \text{if } (x, y) = (0, 0)
+                        \end{cases}$, where $\alpha > 0
+\end{array}
+\]
+
+\begin{correctionbox}
+\begin{enumerate}
+\item \(f(x,y)=\dfrac{x}{y}.\)
+
+\textbf{Conclusion:} The limit does not exist.
+
+\textbf{Proof:} Along the line \(y=x\) (with \(x\to0\)) we get \(f(x,x)=1\). Along the line \(x=0\) (with \(y\to0\)) we get \(f(0,y)=0\). Different path-limits, so the two-variable limit does not exist.
+
+\bigskip
+
+\item \(f(x,y)=\dfrac{1-\cos(xy)}{y^2}.\)
+
+\textbf{Conclusion:} The limit exists and equals \(0\).
+
+\textbf{Proof:} Using \(1-\cos t = 2\sin^2(t/2)\) and \(|\sin u|\le|u|\),
+\[
+\bigl|1-\cos(xy)\bigr| = 2\sin^2\!\frac{xy}{2}\le 2\Bigl(\frac{|xy|}{2}\Bigr)^2=\frac{(xy)^2}{2}.
+\]
+Hence, for \(y\neq0\),
+\[
+\left|\frac{1-\cos(xy)}{y^2}\right|\le \frac{x^2y^2}{2y^2}=\frac{x^2}{2}.
+\]
+Since \(x^2/2\to0\) as \((x,y)\to(0,0)\), we conclude \(\displaystyle\lim_{(x,y)\to(0,0)}\frac{1-\cos(xy)}{y^2}=0.\)
+
+\bigskip
+
+\item \(f(x,y)=\dfrac{(x^2+y^2)^2}{x^2-y^2}.\)
+
+\textbf{Conclusion:} The limit does not exist.
+
+\textbf{Proof:} For any fixed slope \(y=mx\) with \(m\neq\pm1\),
+\[
+f(x,mx)=\frac{(x^2+m^2x^2)^2}{x^2-m^2x^2}
+=\frac{x^4(1+m^2)^2}{x^2(1-m^2)}
+= x^2\cdot\frac{(1+m^2)^2}{1-m^2}\xrightarrow[x\to0]{}0.
+\]
+Thus along every fixed non-characteristic straight line we get \(0\).
+
+But we can find a Cartesian path that yields a different limit. Define a path by
+\[
+y(x)=x\sqrt{\,1-4x^2\,}\qquad\text{for }|x|\le\tfrac12.
+\]
+Then
+\[
+x^2+y(x)^2 = x^2\bigl(1+(1-4x^2)\bigr)=x^2(2-4x^2),
+\]
+so
+\[
+(x^2+y(x)^2)^2 = x^4(2-4x^2)^2,
+\qquad
+x^2-y(x)^2 = x^2\bigl(1-(1-4x^2)\bigr)=4x^4.
+\]
+Therefore for \(x\neq0\) with \(|x|\le\tfrac12\),
+\[
+f\bigl(x,y(x)\bigr)=\frac{x^4(2-4x^2)^2}{4x^4}=(1-2x^2)^2.
+\]
+As \(x\to0\) this tends to \(1\). So along the path \(y=y(x)\) the limit is \(1\), while along lines \(y=mx\) (with fixed \(m\neq\pm1\)) it is \(0\). Different limits \(\Rightarrow\) no limit at \((0,0)\).
+
+\bigskip
+
+\item \(f(x,y)=\dfrac{2x^2+xy}{\sqrt{x^2+y^2}}.\)
+
+\textbf{Conclusion:} The limit exists and equals \(0\).
+
+\textbf{Proof:} Let \(R=\sqrt{x^2+y^2}\). Then \(|x|\le R\) and \(|y|\le R\). Also \(|xy|\le\tfrac{x^2+y^2}{2}=\tfrac{R^2}{2}\). Hence
+\[
+|2x^2+xy|\le 2x^2+|xy|\le 2R^2+\frac{R^2}{2}=\frac{5}{2}R^2.
+\]
+Therefore
+\[
+\left|\frac{2x^2+xy}{\sqrt{x^2+y^2}}\right|\le \frac{\tfrac{5}{2}R^2}{R}=\frac{5}{2}R,
+\]
+which tends to \(0\) as \((x,y)\to(0,0)\). So the limit is \(0\).
+
+\bigskip
+
+\item \(f(x,y)=\dfrac{\sin(xy)}{|x|+|y|}.\)
+
+\textbf{Conclusion:} The limit exists and equals \(0\).
+
+\textbf{Proof:} Use \(|\sin t|\le|t|\):
+\[
+\left|\frac{\sin(xy)}{|x|+|y|}\right|\le \frac{|xy|}{|x|+|y|}.
+\]
+From \((|x|-|y|)^2\ge0\) we get \(x^2+y^2\ge2|x||y|\), hence
+\[
+|xy|\le\frac{x^2+y^2}{2}\le\frac{(|x|+|y|)^2}{4}.
+\]
+Thus
+\[
+\frac{|xy|}{|x|+|y|}\le\frac{(|x|+|y|)^2}{4(|x|+|y|)}=\frac{|x|+|y|}{4}\xrightarrow[(x,y)\to(0,0)]{}0.
+\]
+Hence the given quotient tends to \(0\).
+
+\bigskip
+
+\item
+\[
+f(x,y)=\begin{cases}\dfrac{|xy|^\alpha}{x^2+y^2},&(x,y)\neq(0,0),\\[4pt]
+0,&(x,y)=(0,0),
+\end{cases}\qquad(\alpha>0).
+\]
+
+\textbf{Conclusion:}
+\[
+\lim_{(x,y)\to(0,0)} f(x,y)=
+\begin{cases}
+0 &\text{if }\alpha>1,\\[4pt]
+\text{does not exist} &\text{if }\alpha=1,\\[4pt]
+\text{no finite limit (unbounded) } &\text{if }0<\alpha<1.
+\end{cases}
+\]
+
+\textbf{Proof:} Consider the straight path \(y=mx\) (with fixed \(m\in\mathbb{R}\)). For \(x\neq0\),
+\[
+f(x,mx)=\frac{|x\cdot mx|^\alpha}{x^2+m^2x^2}
+=\frac{|m|^\alpha |x|^{2\alpha}}{x^2(1+m^2)}
+=\frac{|m|^\alpha}{1+m^2}\,|x|^{2\alpha-2}.
+\]
+\begin{itemize}
+\item If \(\alpha>1\), then \(2\alpha-2>0\) so \(|x|^{2\alpha-2}\to0\) as \(x\to0\). The factor \(\dfrac{|m|^\alpha}{1+m^2}\) is bounded in \(m\), hence \(f(x,mx)\to0\) for every \(m\). Moreover the bound is uniform in direction because
+\[
+\frac{|xy|^\alpha}{x^2+y^2}\le \frac{(x^2+y^2)^\alpha}{x^2+y^2}=(x^2+y^2)^{\alpha-1},
+\]
+and when \(\alpha>1\) the right-hand side tends to \(0\). So the limit is \(0\).
+
+\item If \(\alpha=1\), then
+\[
+f(x,mx)=\frac{|m|}{1+m^2},
+\]
+which depends on \(m\). For \(m=0\) the value is \(0\), for \(m=1\) the value is \(1/2\). Different directional limits \(\Rightarrow\) no limit.
+
+\item If \(0<\alpha<1\), then \(2\alpha-2<0\). For any fixed \(m\) with \(m\neq0\),
+\[
+f(x,mx)=\frac{|m|^\alpha}{1+m^2}\,|x|^{2\alpha-2}\xrightarrow[x\to0]{}+\infty,
+\]
+so the function is unbounded near \((0,0)\) and no finite limit exists.
+\end{itemize}
+
+\end{enumerate}
+\end{correctionbox}
+
+% ----------- EXERCISE 2 -------------
+\section{}
+Study the limit at $(0, 0)$ of the two-variable numerical function $f$ defined by:
+$$f(x, y) = \frac{\cos x - \cos y}{x - y}$$
+
+\begin{correctionbox}
+\paragraph{Method 1 — trigonometric identity and estimation (purely Cartesian).}
+For \(x\neq y\) use the identity
+\[
+\cos x-\cos y = -2\sin\!\frac{x+y}{2}\,\sin\!\frac{x-y}{2}.
+\]
+Hence
+\[
+\frac{\cos x-\cos y}{x-y}
+= -2\sin\!\frac{x+y}{2}\cdot\frac{\sin\!\frac{x-y}{2}}{x-y}.
+\]
+Write
+\[
+\frac{\sin\!\frac{x-y}{2}}{x-y}=\frac12\cdot\frac{\sin\!\frac{x-y}{2}}{\frac{x-y}{2}}.
+\]
+Therefore
+\[
+\frac{\cos x-\cos y}{x-y}
+= -\sin\!\frac{x+y}{2}\cdot\frac{\sin\!\frac{x-y}{2}}{\frac{x-y}{2}}.
+\]
+Since for all real \(u\) we have \(\bigl|\sin u / u\bigr|\le 1\), it follows
+\[
+\left|\frac{\cos x-\cos y}{x-y}\right|
+\le \left|\sin\!\frac{x+y}{2}\right|.
+\]
+As \((x,y)\to(0,0)\) we have \(\sin\!\frac{x+y}{2}\to 0\). By the squeeze principle the quotient tends to \(0\). Thus
+\[
+\boxed{\lim_{(x,y)\to(0,0)}\frac{\cos x-\cos y}{x-y}=0.}
+\]
+
+\paragraph{Remark (optional, Cartesian MVT view).}
+Fix a sequence \((x_n,y_n)\to(0,0)\) with \(x_n\neq y_n\). By the one-variable Mean Value Theorem there exists \(c_n\) between \(x_n\) and \(y_n\) such that
+\[
+\frac{\cos x_n-\cos y_n}{x_n-y_n} = -\sin c_n.
+\]
+Since \(c_n\to0\) as \(n\to\infty\), \(-\sin c_n\to0\). This gives the same limit \(0\).
+\end{correctionbox}
+
+% ----------- EXERCISE 3 -------------
+\section{}
+Study the existence of a limit at the indicated point for the following functions:
+\[
+\begin{array}{ll}
+\displaystyle f(x, y, z) = \dfrac{xyz}{x + y + z}$ at $(0, 0, 0); &
+\displaystyle f(x, y, z) = \dfrac{x + y}{x^2 - y^2 + z^2}$ at $(2, -2, 0) 
+\end{array}
+\]
+
+\begin{correctionbox}
+\subsection*{1) \(\displaystyle f(x,y,z)=\frac{xyz}{x+y+z}\) at \((0,0,0)\).}
+
+\paragraph{Claim.} The limit \(\displaystyle\lim_{(x,y,z)\to(0,0,0)}\frac{xyz}{x+y+z}\) does \emph{not} exist.
+
+\paragraph{Proof (explicit Cartesian path giving a nonzero limit).}
+Let \(a_n>0\) be any sequence with \(a_n\to0\) (for instance \(a_n=\tfrac{1}{n}\)). Define
+\[
+x_n=a_n,\qquad y_n=-\tfrac{1}{2}a_n,\qquad z_n=-\tfrac{1}{2}a_n + a_n^3.
+\]
+Then \((x_n,y_n,z_n)\to(0,0,0)\) and
+\[
+x_n+y_n+z_n
+= a_n\Big(1-\tfrac12-\tfrac12 + a_n^2\Big)=a_n^3,
+\]
+while
+\[
+x_n y_n z_n
+= a_n\cdot\Big(-\tfrac12 a_n\Big)\cdot\Big(-\tfrac12 a_n + a_n^3\Big)
+= a_n^3\Big(\tfrac14 + O(a_n^2)\Big).
+\]
+Therefore
+\[
+f(x_n,y_n,z_n)
+=\frac{x_n y_n z_n}{x_n+y_n+z_n}
+=\frac{a_n^3\big(\tfrac14 + O(a_n^2)\big)}{a_n^3}
+\longrightarrow \tfrac14.
+\]
+Thus along this Cartesian path the function values tend to \(1/4\).
+
+\paragraph{Conclusion.} Because one can construct sequences approaching \((0,0,0)\) that produce different limit values (for example many other paths give \(0\) while the path above gives \(1/4\)), the limit does not exist.
+
+\bigskip
+
+\subsection*{2) \(\displaystyle f(x,y,z)=\frac{x+y}{x^2-y^2+z^2}\) at \((2,-2,0)\).}
+
+Introduce small increments
+\[
+u=x-2,\qquad v=y+2,\qquad w=z,
+\]
+so \((u,v,w)\to(0,0,0)\) corresponds to \((x,y,z)\to(2,-2,0)\). Then
+\[
+x+y = u+v,
+\]
+and a direct algebraic expansion gives
+\[
+x^2-y^2+z^2
+= (2+u)^2 -(-2+v)^2 + w^2
+= 4(u+v) + \big(u^2 - v^2 + w^2\big).
+\]
+Therefore for \((u,v,w)\neq(0,0,0)\) with \(u+v\neq0\),
+\[
+f(x,y,z)
+= \frac{u+v}{4(u+v) + (u^2-v^2+w^2)}
+= \frac{1}{4 + \dfrac{u^2-v^2+w^2}{\,u+v\,}}.
+\]
+
+\paragraph{Two Cartesian approaches giving different limits.}
+
+\begin{itemize}
+\item \textbf{Line with \(v=m u\) and \(w=0\) (any fixed \(m\neq-1\)).}  
+Set \(v=mu,\ w=0\). Then \(u+v=(1+m)u\) and
+\[
+u^2-v^2+w^2 = u^2 - m^2u^2 = (1-m^2)u^2.
+\]
+Thus
+\[
+f(x,y,z)
+= \frac{(1+m)u}{4(1+m)u + (1-m^2)u^2}
+= \frac{1}{4 + u\cdot\frac{1-m^2}{1+m}}
+\longrightarrow \frac{1}{4}
+\quad\text{as }u\to0.
+\]
+So along any such straight line (except the degenerate \(m=-1\)) the limit is \(1/4\).
+
+\item \textbf{Path with \(v=-u,\ w=u\).}  
+Take \(v=-u\) and \(w=u\). Then \(u+v=0\) and
+\[
+u^2-v^2+w^2 = u^2 - u^2 + u^2 = u^2,
+\]
+so
+\[
+f(x,y,z)=\frac{u+v}{4(u+v)+ (u^2-v^2+w^2)}=\frac{0}{u^2}=0
+\]
+for \(u\neq0\). Hence along this Cartesian path the function value is \(0\), and the limit along this path is \(0\).
+\end{itemize}
+
+\paragraph{Conclusion.} Two Cartesian approaches give different limits (\(1/4\) and \(0\)), so the full three-variable limit at \((2,-2,0)\) does not exist.
+\end{correctionbox}
+
+% ----------- EXERCISE 4 -------------
+\section{}
+Let $f : \mathbb{R}^2 \to \mathbb{R}$ be the function defined by
+$$f(x, y) = \begin{cases}
+2y & \text{if } x \geq y^2 \\[0.5em]
+\dfrac{2x}{y} & \text{if } |x| < y^2 \text{ and } y \neq 0 \\[0.5em]
+-2y & \text{if } x \leq -y^2
+\end{cases}$$
+
+Study the continuity of $f$ on $\mathbb{R}^2$.
+
+\begin{correctionbox}
+\subsection*{Claim}
+\(f\) is continuous at every point of \(\mathbb{R}^2\).
+
+\subsection*{Proof}
+Clearly \(2y\), \(2x/y\) (on its domain \(y\neq0\)) and \(-2y\) are continuous on their respective open regions. We must check continuity on the boundaries \(x=y^2\), \(x=-y^2\), and on the \(x\)-axis \(y=0\).
+
+\medskip
+
+\textbf{1. Points on \(x=y^2\) with \(y\neq0\).}  
+Let \((x,y)\to (y^2,y)\) with \(y\neq0\). From the right (region \(x\ge y^2\)) the value is \(2y\). From the central region \(|x|<y^2\) we have
+\[
+\frac{2x}{y}\xrightarrow[x\to y^2]{}\frac{2y^2}{y}=2y.
+\]
+Hence both sides give the same limit \(2y\), so \(f\) is continuous at \((y^2,y)\).
+
+\medskip
+
+\textbf{2. Points on \(x=-y^2\) with \(y\neq0\).}  
+Analogously, approaching \(( -y^2,y)\) from the left (region \(x\le -y^2\)) yields \(-2y\), and from the central region
+\[
+\frac{2x}{y}\xrightarrow[x\to -y^2]{}\frac{2(-y^2)}{y}=-2y.
+\]
+Thus \(f\) is continuous at \(( -y^2,y)\).
+
+\medskip
+
+\textbf{3. Points on the \(x\)-axis with \(x_0\neq0\).}  
+Fix \(x_0\neq0\). Choose \(r>0\) so small that \(r<|x_0|/2\). If \((x,y)\) satisfies \(|(x,y)-(x_0,0)|<r\) then
+\[
+|x|\ge |x_0|-|x-x_0|> |x_0|-r \ge |x_0|/2.
+\]
+Also \(|y|<r\) so \(y^2<r^2<(|x_0|/2)^2\). Hence for such points \(|x|>y^2\), so the central region \(|x|<y^2\) is excluded in this neighborhood. Therefore on a small neighborhood of \((x_0,0)\) the formula for \(f\) is either \(2y\) or \(-2y\); in either case
+\[
+|f(x,y)-f(x_0,0)|=| \pm 2y - 0| \le 2|y|\xrightarrow[(x,y)\to(x_0,0)]{}0.
+\]
+Thus \(f\) is continuous at every \((x_0,0)\) with \(x_0\neq0\).
+
+\medskip
+
+\textbf{4. The origin \((0,0)\).}  
+We have \(f(0,0)=0\). If \((x,y)\) lies in the outer regions (where formula is \(\pm 2y\)) then \(|f(x,y)|\le 2|y|\to0\). If \((x,y)\) lies in the central region \(|x|<y^2\) (and \(y\neq0\)), then
+\[
+\left|\frac{2x}{y}\right|\le \frac{2|x|}{|y|}<\frac{2y^2}{|y|}=2|y|\to0.
+\]
+Hence in every case \(f(x,y)\to0=f(0,0)\) as \((x,y)\to(0,0)\). So \(f\) is continuous at the origin.
+
+\medskip
+
+Combining the above, \(f\) is continuous at every point of \(\mathbb{R}^2\).
+\end{correctionbox}
+
+% ----------- EXERCISE 5 -------------
+\section{}
+Study the continuity on $\mathbb{R}^2$ of the functions defined in Exercises 2 and 3.
+
+\begin{correctionbox}
+\text{Same as the correction of Exercise 4.}
+\end{correctionbox}
+
+% ----------- EXERCISE 6 -------------
+\section{}
+Let $f : \mathbb{R}^2 \to \mathbb{R}$ be the function defined by
+$$f(x, y) = \begin{cases}
+\dfrac{|x|^\alpha \cdot |y|^{2\alpha}}{|x|^\alpha + |y|^{2\alpha}} & \text{if } (x, y) \neq (0, 0) \\[0.5em]
+0 & \text{if } (x, y) = (0, 0)
+\end{cases}$$
+
+Determine the values of $\alpha$ for which $f$ is continuous at $(0, 0)$.
+
+\begin{correctionbox}
+\subsection*{Claim}
+\(f\) is continuous at \((0,0)\) exactly for \(\alpha>0\).
+
+\subsection*{Proof}
+
+\paragraph{Case \(\alpha>0\).} Put
+\[
+a:=|x|^\alpha,\qquad b:=|y|^{2\alpha}\qquad(a,b\ge0).
+\]
+For \(a,b>0\) we have
+\[
+0\le \frac{ab}{a+b}\le \min\{a,b\},
+\]
+because if \(a\le b\) then \(\dfrac{ab}{a+b}\le \dfrac{ab}{b}=a\) (and symmetrically if \(b\le a\)). Thus for all \((x,y)\neq(0,0)\),
+\[
+0\le f(x,y)\le \min\{|x|^\alpha,\,|y|^{2\alpha}\}.
+\]
+When \((x,y)\to(0,0)\) both \(|x|^\alpha\to0\) and \(|y|^{2\alpha}\to0\) (since \(\alpha>0\)), hence \(\min\{|x|^\alpha,|y|^{2\alpha}\}\to0\). By the squeeze theorem \(f(x,y)\to0=f(0,0)\). Therefore \(f\) is continuous at \((0,0)\).
+
+\paragraph{Case \(\alpha=0\).} For \((x,y)\neq(0,0)\) one has \(|x|^\alpha=|y|^{2\alpha}=1\), so
+\[
+f(x,y)=\frac{1\cdot1}{1+1}=\tfrac12\qquad\text{for }(x,y)\neq(0,0),
+\]
+while \(f(0,0)=0\). Thus \(\lim_{(x,y)\to(0,0)}f(x,y)=\tfrac12\neq0\), so \(f\) is discontinuous at \((0,0)\).
+
+\paragraph{Case \(\alpha<0\).} Take the diagonal path \(x=y\to0\) (with \(x\neq0\)). Then
+\[
+|x|^\alpha=|y|^\alpha\to+\infty,
+\]
+so \(a=b\to+\infty\) and
+\[
+f(x,x)=\frac{a^2}{2a}=\frac{a}{2}\xrightarrow[x\to0]{}+\infty.
+\]
+Hence \(f\) is unbounded near \((0,0)\) and in particular there is no finite limit; \(f\) is not continuous at \((0,0)\).
+\end{correctionbox}
+
+\end{document}
