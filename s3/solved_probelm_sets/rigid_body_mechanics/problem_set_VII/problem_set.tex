@@ -17,7 +17,7 @@
 \geometry{a4paper, margin=2.5cm}                                                                                                        
 \pagestyle{fancy}                                                                                                                       
 \fancyhf{}                                                                                                                              
-\rhead{Problem Set V}                                                                                                                   
+\rhead{Problem Set VII}                                                                                                                   
 \lhead{Rigid body mechanics}                                                                                                                     
 \cfoot{\thepage}                                                                                                                        
                                                                                                                                         
@@ -45,76 +45,34 @@
 \begin{center}
 \Large\textbf{Ibn Tofail University} \\[1em]
 \large\textit{Rigid body mechanics} \\[2em]
-\large\textit{Problem Set V} \\[0.5em]
+\large\textit{Problem Set VII} \\[0.5em]
 \end{center}
 
 \vspace{1cm}
 % ----------- EXERCISE 1 -------------
 \section{}
 
+A homogeneous solid sphere $S$, of mass $m$, radius $a$, and center $G$, rolls without slipping on a fixed horizontal plane $\Pi$, located at elevation $z = 0$, relative to a frame $R(O, X, Y, Z)$, with basis $(\vec{i}, \vec{j}, \vec{k})$, assumed to be Galilean. The $OZ$ axis is vertical upward. We denote by $H$ the intersection point of plane $\Pi$ with the $OZ$ axis. We denote by $I$ the geometric contact point of $S$ with $\Pi$ and $\vec{\Omega}$ the instantaneous rotation vector of $S$ with respect to $R$. The torsor of contact actions at point $I$ is reduced to the reaction $\vec{R}$.
+
 \begin{enumerate}
-    \item State Koenig's theorem relating to the angular momentum of a perfect rigid body $S$, in motion relative to a reference frame $T_1$.
-    \item Prove this theorem.
+    \item Write the rolling without slipping relation of $S$ on plane $\Pi$, then deduce the velocity and acceleration vectors of the center of mass $G$, with respect to $R$, as a function of $\vec{\Omega}$ and $\dot{\vec{\Omega}}$.
+    \item Determine the time-dependent vector equation of motion of $G$, $\overrightarrow{HG}(t)$, by applying the general theorems. What is the nature of the motion of $G$? We denote by $\vec{v}_0$ the initial velocity vector of $G$ and by $\vec{r}_0$ the initial position vector of $G$.
 \end{enumerate}
 
-\begin{correctionbox}
-
-\end{correctionbox}
-
-% ----------- EXERCISE 2 -------------
-\section{}
-
-A system $S$ consists of a homogeneous rod $S_1$ of mass $m_1$ and length $l$, in motion, in the plane $O_1X_1Y_1$, about the axis $O_1Z$ of the frame $T_1(O_1, X_1, Y_1, Z_1)$, and a disk $S_2$, of mass $m_2$, radius $R$, and center $C$, in motion about the axis $CZ_1$ (fig 1). We denote by $\theta$ the angle that indicates the position of the rod with respect to $T_1$ and by $\varphi$ the angle that indicates the position of the disk with respect to $T_1$. $(\vec{i}, \vec{j}, \vec{k}_1)$ is the basis of the frame $T(O, X, Y, Z_1)$ attached to the rod.
+In what follows, we assume that plane $\Pi$ is rotating about the $OZ$ axis and we denote by $\vec{\omega}$ the instantaneous rotation vector of the plane with respect to $R$.
 
 \begin{enumerate}
-    \item Determine the position of the center of mass $G$ of the system.
-    \item Calculate the kinetic elements of system $S$ with respect to $T_1$, at point $O_1$.
+    \setcounter{enumi}{2}
+    \item Determine the velocity of center of mass $G$, $\vec{v}_G$, using the rolling without slipping relation.
+    \item Find, using the general theorems, the acceleration of center of mass $G$, $\vec{\gamma}_G$, as a function of $\vec{\omega}$ and $\vec{\Omega}$ and their time derivatives. Deduce a first vector integral of motion.
 \end{enumerate}
 
-\begin{correctionbox}
-
-\end{correctionbox}
-
-% ----------- EXERCISE 3 -------------
-\section{}
-
-A homogeneous rod of length $l$ and mass $m$, rotates, in the vertical plane $XOY$, about the axis $OZ$ of a reference frame $R(O, X, Y, Z)$ assumed to be Galilean. The position of the rod with respect to $R$ is indicated by the angle $\theta$ (fig 2). We admit that the torsor of contact actions at $O$ exerted on the rod reduces to the reaction $\vec{R}$.
+Let $r$ and $\varphi$ be the polar coordinates of $G$, defined in the plane $XOY$ by $\overrightarrow{HG} = r\vec{u}_r$. Initially, we have the following values $r_0 = r(0)$, $\dot{r}_0 = \dot{r}(0)$, and $\dot{\varphi}_0 = \dot{\varphi}(0)$. And we denote by $\mu$ the sliding friction coefficient of $S$ on plane $\Pi$.
 
 \begin{enumerate}
-    \item By applying the angular momentum theorem to the rod, at $O$, find a first integral of motion, knowing that $\dot{\theta} = \omega_0$ when $\theta = 0$.
-    \item By applying the momentum theorem, determine the expression of the reaction.
-\end{enumerate}
-
-\begin{correctionbox}
-
-\end{correctionbox}
-
-% ----------- EXERCISE 4 -------------
-\section{}
-
-A homogeneous bar $AB$, of length $2l$ and mass $m$, rests on a point $E$ located at a height $h$ above the horizontal plane as shown in figure 3. Under the action of the force $\vec{F}_A$, point $A$ moves on the axis $OX$ with a constant velocity $v_A$. The contacts at points $A$ and $E$ are frictionless. The position of the bar, with respect to the terrestrial reference frame $R(O, X, Y, Z)$ assumed to be Galilean, is defined by the angle $\theta$. The distance $OH$ is constant.
-
-\begin{enumerate}
-    \item Express $\dot{\theta}$ and $\ddot{\theta}$ as a function of $\theta$ and $v_A$.
-    \item Determine, in the basis of $R$ and as a function of $\dot{\theta}$, the momentum of bar $AB$ and its angular momentum at point $A$.
-    \item By applying the angular momentum theorem to bar $AB$ at point $A$, determine the expression of the reaction $\vec{R}_E$ exerted on the bar at point $E$.
-\end{enumerate}
-
-\begin{correctionbox}
-
-\end{correctionbox}
-
-% ----------- EXERCISE 5 -------------
-\section{}
-
-A material point $A$ of mass $m$ is fixed on the perimeter of a hoop $D$, of center $C$, radius $R$, and mass $M$. This system $S$ rolls without slipping on the axis $OX$ of a terrestrial reference frame $R(O, X, Y, Z)$ assumed to be Galilean. The motion takes place in the plane $XOY$. We denote by $\theta$ the position of point $A$ with respect to the hoop $D$, and $I$ the geometric contact point (fig 4).
-
-\begin{enumerate}
-    \item What is the number of degrees of freedom of the system?
-    \item Calculate the velocities of points $I$, $C$, and $A$ with respect to $R$.
-    \item Find the momentum of $S$.
-    \item Determine the differential equation of motion, in $\theta$, of $S$ by applying the angular momentum theorem at point $I$.
-    \item What is the nature of the motion of $S$?
+    \setcounter{enumi}{4}
+    \item Determine the time-dependent equations of motion $r(t)$ and $\varphi(t)$, and deduce $\overrightarrow{HG}(t)$ as a function of time.
+    \item Determine $\vec{R}$ and $\vec{M}_I$ and indicate the condition that $\mu$ must satisfy for rolling without slipping to persist.
 \end{enumerate}
 
 \begin{correctionbox}

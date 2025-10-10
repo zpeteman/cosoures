@@ -17,7 +17,7 @@
 \geometry{a4paper, margin=2.5cm}                                                                                                        
 \pagestyle{fancy}                                                                                                                       
 \fancyhf{}                                                                                                                              
-\rhead{Problem Set II}                                                                                                                   
+\rhead{Problem Set VI}                                                                                                                   
 \lhead{Rigid body mechanics}                                                                                                                     
 \cfoot{\thepage}                                                                                                                        
                                                                                                                                         
@@ -45,25 +45,19 @@
 \begin{center}
 \Large\textbf{Ibn Tofail University} \\[1em]
 \large\textit{Rigid body mechanics} \\[2em]
-\large\textit{Problem Set II} \\[0.5em]
+\large\textit{Problem Set VI} \\[0.5em]
 \end{center}
 
 \vspace{1cm}
 % ----------- EXERCISE 1 -------------
 \section{}
 
-Determine the number of degrees of freedom of the following systems:
-
 \begin{enumerate}
-    \item Two material points $M_1$ and $M_2$ moving freely on a plane while maintaining a constant distance between them.
-    \item A sphere free to move in space.
-    \item A sphere free to move on a plane.
-    \item A sphere free to move on a line.
-    \item A rod free to move on a plane.
-    \item A rod with one fixed end moving on a plane.
-    \item A system of two articulated rods with one fixed end.
-    \item A hoop free to move on a plane.
-    \item A hoop free to move on a line.
+    \item What is the force necessary to move, at constant velocity, a perfect rigid body, of mass $m$, having the shape of a cube (Fig 1)?
+    \item What is the force necessary to move, at constant velocity and without slipping, a perfect rigid body having the shape of a cylinder of radius $a$ and of the same mass $m$ (fig 2)?
+    
+    We denote by $\vec{R}$ and $\vec{M}_I$ the reduction elements of the torsor of contact actions at point $I$.
+    \item Compare the norms of the two forces $\vec{F}_1$ and $\vec{F}_2$.
 \end{enumerate}
 
 \begin{correctionbox}
@@ -73,9 +67,13 @@ Determine the number of degrees of freedom of the following systems:
 % ----------- EXERCISE 2 -------------
 \section{}
 
-Let $S$ be a perfect rigid body in motion with respect to a fixed reference frame $T$. $\vec{\Omega}$ is the instantaneous rotation vector of $S$ with respect to $T$.
+A perfect and homogeneous solid $S$ having the shape of a disk of mass $m$ and radius $a$, is in motion, in a vertical plane, on the axis $OX$ of a terrestrial reference frame assumed to be Galilean. Initially, the angular velocity is $\omega_0$ and the velocity of the center of mass $G$ is $v_0$.
 
-Show that at a given instant, the projection of the velocities of the points of the solid on the axis $\vec{\Omega}$ is constant.
+\begin{enumerate}
+    \item Using the general theorems, determine the differential equations of motion, in $x$ and $\theta$, of $S$ as a function of $m$, $a$, and $T$, where $T$ is the norm of the tangential component of the reaction at point $I$.
+    \item Determine the sliding velocity of $S$ with respect to $OX$ and express $T$ as a function of $v_g$ and $m$.
+    \item Deduce that the motion ends with a rolling without slipping phase.
+\end{enumerate}
 
 \begin{correctionbox}
 
@@ -84,11 +82,11 @@ Show that at a given instant, the projection of the velocities of the points of 
 % ----------- EXERCISE 3 -------------
 \section{}
 
-A rectangular plate $ABCD$ moves with respect to a direct orthonormal frame $R(O, X, Y, Z)$ such that $A$ remains coincident with point $O$ and side $AB$ remains in the plane $XOY$.
+A homogeneous hoop $S$, of mass $m$ and radius $R$, rolls with slipping on the axis $OX$, inclined at an angle $\alpha$ with respect to the horizontal, of a terrestrial frame assumed to be Galilean.
 
 \begin{enumerate}
-    \item Determine the number of degrees of freedom of the plate.
-    \item What is the rotation vector $\vec{\Omega}$ of the plate with respect to $R$?
+    \item Calculate the mechanical energy of solid $S$.
+    \item By applying the theorem of variation of mechanical energy, find the differential equation of motion of $S$.
 \end{enumerate}
 
 \begin{correctionbox}
@@ -98,17 +96,14 @@ A rectangular plate $ABCD$ moves with respect to a direct orthonormal frame $R(O
 % ----------- EXERCISE 4 -------------
 \section{}
 
-A hoop $S$ of center $C$ and radius $r$ moves in the plane $OX_1Y_1$ of a reference frame $R_1(O, X_1, Y_1, Z_1)$ while remaining in contact with the axis $OX_1$ at point $I$, $\overrightarrow{OI} = x\vec{i}_1$. The frame $R_1(O, X_1, Y_1, Z_1)$ is in motion with respect to the fixed reference frame $T_1(O_1, X_1, Y_1, Z_1)$ such that $\overrightarrow{O_1O} = y\vec{j}_1$.
-
-Let $M$ be a point of the solid $S$. We set $(\vec{i}_1, \overrightarrow{CM}) = \theta$. We attach to the solid a frame $T(C, X, Y, Z)$ with basis $(\vec{i}, \vec{j}, \vec{k})$ such that the $X$ axis passes through point $M$.
+We consider again the system from exercise II of series 5. The revolute joints at points $O$ and $C$ are assumed to be perfect. Initially $\theta = \theta_0$ and $\dot{\theta} = 0$.
 
 \begin{enumerate}
-    \item Determine the number of degrees of freedom of the solid.
-    \item Express the instantaneous rotation vector of the hoop with respect to $T_1$.
-    \item Can there be pivoting of the hoop with respect to $R$?
-    \item Determine the sliding velocity of the hoop with respect to the axis $OX_1$.
-    \item Calculate $\vec{V}(I/R)$ and $\vec{V}(I/S)$ then find again the sliding velocity of the hoop with respect to the axis $OX_1$.
-    \item Calculate the acceleration $\vec{\gamma}(M/T_1)$. Deduce the accelerations $\vec{\gamma}_S(I/T_1)$ and $\vec{\gamma}_S(J/T_1)$ where $J$ is a point diametrically opposite to $I$ on $S$.
+    \item Determine the kinetic energy of the system with respect to $T_1$.
+    \item Determine the potential energy of the system with respect to $T_1$. Deduce the mechanical energy of the system.
+    \item By applying the angular momentum theorem to disk $S_2$ at point $C$, show that the rotation velocity of $S_2$ is constant.
+    \item Using the theorem of variation of mechanical energy of the system, find the differential equation of motion, then deduce the period of small oscillations.
+    \item Determine the period of small oscillations $T'$ in the case where the two solids are rigidly connected. Compare the two periods $T$ and $T'$.
 \end{enumerate}
 
 \begin{correctionbox}
@@ -118,36 +113,12 @@ Let $M$ be a point of the solid $S$. We set $(\vec{i}_1, \overrightarrow{CM}) = 
 % ----------- EXERCISE 5 -------------
 \section{}
 
-Consider a homogeneous sphere $S(G, a)$, of center $G$, mass $m$, and radius $a$, moving on the fixed horizontal plane $(O, X_0, Y_0)$ of a direct orthonormal fixed frame $R_0(O_0, X_0, Y_0, Z_0)$. Let $R_S(G, X, Y, Z)$ be the direct orthonormal frame attached to the sphere. $I$ is the contact point between the sphere $S$ and the plane $(O, X_0, Y_0)$. We denote by $\psi$, $\theta$, and $\varphi$ the three Euler angles of $S/R_0$ and $x$, $y$, and $z$ the coordinates of $G$. We assume that $S$ rolls without slipping on the axis $(O, X_0)$.
-
-\textbf{1. Euler angles}
-\begin{enumerate}
-    \item[a)] Identify the relative Euler frames $R_1$ and $R_2$. Deduce the angular variables.
-    \item[b)] Parameterize the sphere $S$.
-    \item[c)] Determine the expression of the instantaneous rotation vector of $S$ with respect to $R_0$.
-\end{enumerate}
-
-\textbf{2. Kinematics of the contact point}
-\begin{enumerate}
-    \item[a)] Express the non-pivoting condition of $S$ with respect to $R_0$.
-    \item[b)] Express the non-rolling condition of $S$ with respect to $(O, X_0)$. Show that one of the obtained equations is semi-holonomic.
-    \item[c)] Calculate the velocities of the different contact points: Point of the sphere $I \in S$; point of the material plane $I \in (O, X_0, Y_0)$; and geometric point $I \in E$.
-    \item[d)] Give the no-slip condition of $S$ with respect to $(O, X_0, Y_0)$. What is the number of degrees of freedom of $S$ in its motion with respect to $R_0$?
-\end{enumerate}
-
-\begin{correctionbox}
-
-\end{correctionbox}
-
-% ----------- EXERCISE 6 -------------
-\section{}
-
-A horizontal disk $S_2$, of center $O_1$ and radius $R$, is rotated about the axis $O_1Z_1$ of the reference frame $T_1(O_1, X_1, Y_1, Z_1)$ assumed fixed, with angular velocity $\omega$, by a disk $S_1$, of center $C$ and radius $r$. $S_1$ rolls without slipping on the contour of disk $S_2$, with angular velocity $\Omega$, about the rod $AC$ which is parallel to the plane of $S_2$. This rod rotates about the axis $AZ_1$ with angular velocity $\omega_0$ with respect to $S_2$.
+Consider the system from exercise V of series 5 (hoop and a material point).
 
 \begin{enumerate}
-    \item Write the expressions for the rotation velocity vectors $\vec{\Omega}(S_1/AC)$, $\vec{\Omega}(AC/S_2)$, and $\vec{\Omega}(S_2/T_1)$.
-    \item By exploiting the rolling without slipping condition of $S_1$ on $S_2$, deduce a relation between the angular velocities $\Omega$, $\omega_0$, and $\omega$.
-    \item Express the velocity of point $J$ of $S_1$, which is diametrically opposite to $I$. What does this velocity become if disk $S_2$ is stationary?
+    \item Find the potential energy of the system.
+    \item Calculate the power of external actions in two different ways.
+    \item By applying the kinetic energy theorem to the system, find the differential equation of motion.
 \end{enumerate}
 
 \begin{correctionbox}

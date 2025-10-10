@@ -9,7 +9,7 @@
 \usepackage{fancyhdr}                                                                                                                   
 \usepackage[most]{tcolorbox}                                                                                                                  
 \usepackage{graphicx}                                                                                                                   
-\usepackage{float}                                                                                      
+\usepackage{float}                                                                                                      
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric, arrows.meta}
 \usetikzlibrary{arrows.meta, decorations.markings}                                                                                      
@@ -18,7 +18,7 @@
 \pagestyle{fancy}                                                                                                                       
 \fancyhf{}                                                                                                                              
 \rhead{Problem Set III}                                                                                                                   
-\lhead{Rigid Body Mechanics}                                                                                                                     
+\lhead{Rigid body mechanics}                                                                                                                     
 \cfoot{\thepage}                                                                                                                        
                                                                                                                                         
 % Fancy titles                                                                                                                          
@@ -44,30 +44,21 @@
 
 \begin{center}
 \Large\textbf{Ibn Tofail University} \\[1em]
-\large\textit{Rigid Body Mechanics} \\[0.5em]
+\large\textit{Rigid body mechanics} \\[2em]
 \large\textit{Problem Set III} \\[0.5em]
 \end{center}
 
-\vspace{0.5cm}
-
-\noindent \textbf{Note:} All solids are assumed to be homogeneous and of total mass m.
-
 \vspace{1cm}
-
 % ----------- EXERCISE 1 -------------
 \section{}
 
-Determine the center of mass (center of inertia) of the following solids:
+Determine in two different ways (directly and using Guldin's theorems) the center of mass of the following solids:
 
-1) A homogeneous circular arc of radius R and angle $2\alpha$.
-
-2) A homogeneous circular plate of radius R and angle $2\alpha$.
-
-3) Hemisphere of center O and radius R.
-
-4) Solid cone.
-
-5) Solid cone surmounted by a hemisphere.
+\begin{enumerate}
+    \item A homogeneous semicircle of radius $R$.
+    \item A homogeneous quarter disk of radius $R$.
+    \item A homogeneous half-disk of radius $R$.
+\end{enumerate}
 
 \begin{correctionbox}
 
@@ -76,7 +67,11 @@ Determine the center of mass (center of inertia) of the following solids:
 % ----------- EXERCISE 2 -------------
 \section{}
 
-Determine the inertia matrix at O relative to the reference frame $R(O, X, Y, Z)$ of a quarter disk of radius R. The axes $\overrightarrow{OX}$ and $\overrightarrow{OY}$ are on the edges of the quarter disk. Calculate the moment of inertia with respect to the line $(\Delta)$ passing through point O and point A with coordinates $(R, R, 0)$.
+\begin{enumerate}
+    \item Determine the center of mass of a homogeneous hemisphere (solid half-sphere), of mass $m$, radius $R$, and center $C$.
+    \item Determine the center of mass of a homogeneous hollow cone, of mass $M$, height $h$, and circular base of radius $R$.
+    \item Deduce the center of mass of the solid formed by the cone of the second question topped with the hemisphere of the first question.
+\end{enumerate}
 
 \begin{correctionbox}
 
@@ -85,21 +80,58 @@ Determine the inertia matrix at O relative to the reference frame $R(O, X, Y, Z)
 % ----------- EXERCISE 3 -------------
 \section{}
 
-Determine the inertia matrix of the following solids:
+\begin{enumerate}
+    \item Find the moment of inertia of a homogeneous rod of length $2l$ with respect to an axis that is perpendicular to it and passing through its center of mass.
+    \item Deduce its moment of inertia with respect to an axis passing through:
+    \begin{itemize}
+        \item One of the two ends of the rod.
+        \item A point on the rod distant $l/2$ from one end.
+    \end{itemize}
+\end{enumerate}
 
-1) A rod (OA) of length L (at extremity O "$I_O$" and at center of mass G "$I_G$").
+\begin{correctionbox}
 
-2) A rectangular plate (OABC) with sides a and b (at center of mass G and at point O).
+\end{correctionbox}
 
-3) Solid rectangular parallelepiped with dimensions a, b, c and center of mass G (at center G).
+% ----------- EXERCISE 4 -------------
+\section{}
 
-4) A solid cylinder (C), of radius R and height h (at the center of its base O and at center of mass G).
+Consider a homogeneous disk of radius $R$ and mass $M$.
 
-5) Disk (D) with center of inertia G and radius R.
+\begin{enumerate}
+    \item Directly determine its moment of inertia with respect to its center.
+    \item Deduce its moment of inertia with respect to one of its diameters.
+\end{enumerate}
 
-6) Hemisphere (B) of radius R (at the center of its base O) "$I_O$".
+\begin{correctionbox}
 
-7) A sphere (B) with center of inertia G and radius R (at center of mass G).
+\end{correctionbox}
+
+% ----------- EXERCISE 5 -------------
+\section{}
+
+A small disk of radius $a$ and center $I$ is removed from a large homogeneous disk of radius $R$ $(R > a)$, of center $O$. The solid obtained is an eccentric circular annulus of mass $M$. We denote by $d$ the distance between the two centers $(OI = d)$.
+
+\begin{enumerate}
+    \item Determine the position of the center of mass of the solid thus obtained.
+    \item What does this result become if $a = R/2$?
+    \item Determine the moment of inertia of the solid with respect to the line passing through the two centers. What does this moment of inertia become if $a = R/2$?
+\end{enumerate}
+
+\begin{correctionbox}
+
+\end{correctionbox}
+
+% ----------- EXERCISE 6 -------------
+\section{}
+
+A homogeneous solid $S$ consists of a hollow cylinder, of mass $M$, radius $R$, and height $h$, topped by a solid hemisphere of the same radius $R$ and mass $m$.
+
+\begin{enumerate}
+    \item Determine the position of the center of mass of solid $S$.
+    \item Find the central inertia matrix for each of the two parts of the solid.
+    \item Deduce the principal inertia matrix of solid $S$ at the center $O$ of the lower base of the cylinder.
+\end{enumerate}
 
 \begin{correctionbox}
 

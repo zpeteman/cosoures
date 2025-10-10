@@ -9,7 +9,7 @@
 \usepackage{fancyhdr}                                                                                                                   
 \usepackage[most]{tcolorbox}                                                                                                                  
 \usepackage{graphicx}                                                                                                                   
-\usepackage{float}                                                                                      
+\usepackage{float}                                                                                                      
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric, arrows.meta}
 \usetikzlibrary{arrows.meta, decorations.markings}                                                                                      
@@ -18,7 +18,7 @@
 \pagestyle{fancy}                                                                                                                       
 \fancyhf{}                                                                                                                              
 \rhead{Problem Set IV}                                                                                                                   
-\lhead{Rigid Body Mechanics}                                                                                                                     
+\lhead{Rigid body mechanics}                                                                                                                     
 \cfoot{\thepage}                                                                                                                        
                                                                                                                                         
 % Fancy titles                                                                                                                          
@@ -44,50 +44,20 @@
 
 \begin{center}
 \Large\textbf{Ibn Tofail University} \\[1em]
-\large\textit{Rigid Body Mechanics} \\[0.5em]
+\large\textit{Rigid body mechanics} \\[2em]
 \large\textit{Problem Set IV} \\[0.5em]
 \end{center}
 
 \vspace{1cm}
-
-% ----------- COURSE QUESTIONS -------------
-\section*{Course Questions*}
-
-1) Show that the angular momentum and the dynamic moment are two antisymmetric vector fields.
-
-2) Show that for any point A of the solid S of mass M and center of inertia G
-$$\vec{L}_A(S/R_o) = I_A(S)\vec{\Omega}(S/R_o) + M\overrightarrow{AG} \times \vec{V}(A/R_o)$$
-
-3) Show that $2E_c(S/R_o)$ equals the product (Comoment) of the kinematic torsor and the kinetic torsor.
-$$2E_C(S/R_o) = [T_V(S/R_o)]_A \otimes [T_C(S/R_o)]_A$$
-where A is a point of the solid S.
-
-\begin{correctionbox}
-
-\end{correctionbox}
-
 % ----------- EXERCISE 1 -------------
 \section{}
 
-A system ($\Sigma$) consists of a homogeneous rod OA of mass m and length L to which is articulated, at point A, a homogeneous disk of center $G \equiv A$, of mass M and radius R.
+A perfect rigid body having the shape of a square $ABCD$ is moved from position $A_1B_1C_1D_1$ to position $A_2B_2C_2D_2$.
 
-The rod OA rotates, in the plane $(O, \vec{x}_o, \vec{y}_o)$, around the axis $(O, \vec{z}_o)$. Its position is located by the angle $\psi$.
-
-The disk rotates, in the plane $(O, \vec{x}_o, \vec{y}_o)$, around the extremity A of the rod. Its position with respect to $R_o$ is located by the angle $\theta$.
-
-We denote by $R_o(O, \vec{x}_o, \vec{y}_o, \vec{z}_o)$ the laboratory reference frame, by $R_1(O, \vec{x}_1, \vec{y}_1, \vec{z}_1)$ the reference frame linked to the rod OA and $R_2(A, \vec{x}_2, \vec{y}_2, \vec{z}_2)$ a reference frame linked to the disk.
-
-Determine:
-
-1) The number of degrees of freedom of the system.
-
-2) The kinetic resultant of the system $\Sigma$.
-
-3) The angular momentum of the system $\Sigma$ at point O with respect to the reference frame $R_o(O, \vec{x}_o, \vec{y}_o, \vec{z}_o)$.
-
-4) The dynamic moment of the system $\Sigma$ at point O with respect to the reference frame $R_o(O, \vec{x}_o, \vec{y}_o, \vec{z}_o)$.
-
-5) The kinetic energy of the system $\Sigma$ with respect to the reference frame $R_o(O, \vec{x}_o, \vec{y}_o, \vec{z}_o)$.
+\begin{enumerate}
+    \item Show, using a figure, that the motion of this solid can be considered as the sum of a translation and a rotation about a suitably chosen fixed point.
+    \item Give the value of the angle of rotation.
+\end{enumerate}
 
 \begin{correctionbox}
 
@@ -96,19 +66,9 @@ Determine:
 % ----------- EXERCISE 2 -------------
 \section{}
 
-A perfect solid S consists of two glued parts: A disk $S_1$ of center O, of radius R and mass m, and a disk $S_2$ of center C (OC = a), of radius R/4 and same mass m. The solid S rotates at angular velocity $\omega$ around the axis $(O, \vec{z}_o)$ of the fixed reference frame $R_o(O, \vec{x}_o, \vec{y}_o, \vec{z}_o)$. The reference frame $R(O, \vec{x}, \vec{y}, \vec{z})$ is linked to the solid S.
+Let $R(O, X, Y, Z)$ be a reference frame assumed fixed. A homogeneous rod of length $L$ and mass $m$ rotates, in the vertical plane $(XOY)$, about the axis $OZ$. The position of the rod with respect to $R$ is indicated by the angle $\theta$ (See Figure below).
 
-1) Determine the position of the center of mass G of the solid S.
-
-2) Calculate the angular momentum at O of the solid S. Deduce its moment of inertia $I_{ZZ}$ with respect to the axis $(O, \vec{z}_o)$.
-
-3) Find $I_{ZZ}$ of the solid S by applying Huygens' theorem.
-
-4) Calculate the angular momentum at G of the solid S.
-
-5) Calculate the moment of inertia $I_{GZ}$ of the solid S with respect to the axis $(G, \vec{z}_o)$ applying Huygens' theorem.
-
-6) Calculate the kinetic energy $E_C(S/R_o)$ of the solid S.
+Determine the kinetic elements of the solid, at point $O$, with respect to frame $R$.
 
 \begin{correctionbox}
 
@@ -117,47 +77,47 @@ A perfect solid S consists of two glued parts: A disk $S_1$ of center O, of radi
 % ----------- EXERCISE 3 -------------
 \section{}
 
-A floor sanding machine is composed of an arm OAC of negligible mass such that $OA = L$, $AC = L/2$ and a disk of radius R and mass M. The arm is in rotational motion with respect to the fixed frame with a rotation speed $\dot{\psi} = \text{Cte}$. The disk rotates around the arm AC with a rotation speed $\dot{\theta} = \text{Cte}$. We will take the reference frame $R_1(O, \vec{x}_1, \vec{y}_1, \vec{z}_o = \vec{z}_1)$ as the projection reference frame.
+A homogeneous and non-deformable hoop of radius $R$, center $G$, and mass $m$, rolls without slipping on an inclined plane of angle $\alpha$.
 
-Determine:
+We denote by $x$ the abscissa of $G$ and by $\theta$ the angle that indicates the position of a point on the hoop. Initially, the geometric contact point coincides with point $O$ and $\theta = 0$.
 
-1) The instantaneous rotation velocity of the disk $\vec{\Omega}(D/R_o)$.
-
-2) The absolute velocity and acceleration of point C.
-
-3) The kinetic torsor of the disk at point O.
-
-4) The dynamic torsor of the disk at point O.
-
-5) The kinetic energy of the system with respect to $R_o$.
+\begin{enumerate}
+    \item What is the number of degrees of freedom of the hoop?
+    \item Determine the kinetic elements of the hoop at point $O$.
+\end{enumerate}
 
 \begin{correctionbox}
 
 \end{correctionbox}
 
 % ----------- EXERCISE 4 -------------
-\section{(Homework)}
+\section{}
 
-Let the solid S be a homogeneous disk, of negligible section, of mass m, of center G and radius a (figure 3). We propose to study the motion of the solid S with respect to the fixed reference frame $R_o(O, \vec{x}_o, \vec{y}_o, \vec{z}_o)$. The axis $(O, \vec{z}_o)$ is the upward vertical.
+A homogeneous solid cone $S$, of mass $m$, radius $R$, and height $h$ is in motion about its fixed apex $O$, relative to a reference frame $T_1(O, X_1, Y_1, Z_1)$. Let $T(O, X, Y, Z)$ be the frame attached to the solid such that the $OZ$ axis is the axis of revolution symmetry for the solid.
 
-We call $R(G, \vec{x}, \vec{y}, \vec{z})$ the direct orthonormal reference frame linked to the solid S.
+\begin{enumerate}
+    \item What is the number of degrees of freedom of the solid?
+    \item Express, in the Resal basis, the rotation vector of $S$ with respect to $T_1$.
+    \item Determine the kinetic elements of the solid at point $O$ with respect to $T_1$.
+\end{enumerate}
 
-A and C are its principal moments of inertia at G (C moment of inertia with respect to the axis $(G, \vec{z})$ axis of revolution symmetry of S). We assume throughout the problem that the solid S remains in contact with the horizontal plane $(O, x_o, y_o)$ at point I. The vector $\overrightarrow{IG}$ is carried by the axis $(G, \vec{w})$. The solid S is located by the usual Euler angles $\psi$, $\theta$ and $\phi$. It is in motion without slipping.
+\begin{correctionbox}
 
-Express all results in the basis $(\vec{u}, \vec{w}, \vec{z})$.
+\end{correctionbox}
 
-1) Determine the instantaneous rotation velocity $\vec{\Omega}(S/R_o)$.
+% ----------- EXERCISE 5 -------------
+\section{}
 
-2) Determine the reduction elements at G of the kinetic torsor.
+A homogeneous and non-deformable square plate $OABC$, of side $a$ and mass $m$, is in motion about point $O$, origin of a reference frame $T_1(O, X_1, Y_1, Z_1)$, such that one of its sides $OA$ remains in contact with the plane $OX_1Y_1$.
 
-3) Determine the reduction elements at G of the dynamic torsor.
-
-4) Calculate the kinetic energy of the solid with respect to $R_0$.
-
-\textbf{Indication:}
-
-The condition of rolling without slipping gives:
-$$\vec{V}_g(D/R_o) = \vec{V}(I \in D/R_o) = \vec{V}(G/R_o) + \vec{\Omega}(D/R_o) \times \overrightarrow{GI} = \vec{0}$$
+\begin{enumerate}
+    \item Represent, on a figure, the frame $T(O, X, Y, Z)$ attached to the solid and identify the Euler angles associated with this solid.
+    \item What is the number of degrees of freedom of the system?
+    \item Determine the inertia operator $J_O$ of the solid at point $O$.
+    \item Express, in the basis of $T$, the rotation vector of the solid with respect to $T_1$.
+    \item Express, in the basis of $T$, the kinetic torsor of the solid, at $O$, with respect to $T_1$.
+    \item Determine the kinetic energy of the solid with respect to $T_1$.
+\end{enumerate}
 
 \begin{correctionbox}
 
