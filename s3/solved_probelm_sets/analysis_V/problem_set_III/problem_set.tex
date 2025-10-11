@@ -64,7 +64,73 @@ Determine the values of $\alpha$ for which $f$ is:
 \end{itemize}
 
 \begin{correctionbox}
+\textbf{Answer (no polar coordinates).} The function \(f\) is
+\begin{itemize}
+  \item continuous at \((0,0)\) exactly when \(\alpha>1\),
+  \item differentiable at \((0,0)\) exactly when \(\alpha>\tfrac{3}{2}\).
+\end{itemize}
 
+\medskip
+
+\textbf{Proof.} Using the elementary inequality \(2|xy|\le x^2+y^2\) (which follows from \((|x|-|y|)^2\ge0\)), we obtain for \((x,y)\neq(0,0)\)
+\[
+|xy|^\alpha \le \Big(\tfrac{x^2+y^2}{2}\Big)^\alpha.
+\]
+Thus
+\[
+|f(x,y)|=\frac{|xy|^\alpha}{x^2+y^2}
+\le 2^{-\alpha}(x^2+y^2)^{\alpha-1}.
+\]
+Write \(r^2:=x^2+y^2\). The right-hand side equals \(2^{-\alpha}r^{2\alpha-2}\).  
+
+\textbf{Continuity.} If \(\alpha>1\), then \(2\alpha-2>0\), so \(r^{2\alpha-2}\to0\) as \(r\to0\), and hence \(f(x,y)\to0\). Therefore \(f\) is continuous at \((0,0)\) for \(\alpha>1\).
+
+To show this condition is sharp, restrict to the line \(y=x\). For \(x\neq0\),
+\[
+f(x,x)=\frac{|x\cdot x|^\alpha}{x^2+x^2}
+=\frac{|x|^{2\alpha}}{2x^2}=\tfrac{1}{2}|x|^{2\alpha-2}.
+\]
+If \(\alpha=1\) this equals the constant \(1/2\) (so the limit does not go to 0), and if \(\alpha<1\) the expression blows up as \(x\to0\). Thus continuity at the origin holds iff \(\alpha>1\).
+
+\textbf{Partial derivatives at the origin.} For any \(h\),
+\[
+f(h,0)=f(0,h)=0,
+\]
+so
+\[
+\frac{\partial f}{\partial x}(0,0)=\lim_{h\to0}\frac{f(h,0)-0}{h}=0,\qquad
+\frac{\partial f}{\partial y}(0,0)=0.
+\]
+Hence the only possible differential at the origin is the zero linear map \(L\equiv0\).
+
+\textbf{Differentiability.} \(f\) is differentiable at the origin iff
+\[
+\frac{f(x,y)-L(x,y)}{\sqrt{x^2+y^2}}=\frac{f(x,y)}{\sqrt{x^2+y^2}}\xrightarrow[(x,y)\to(0,0)]{}\ 0.
+\]
+From the inequality above,
+\[
+\left|\frac{f(x,y)}{\sqrt{x^2+y^2}}\right|
+\le 2^{-\alpha} (x^2+y^2)^{\alpha-\tfrac{3}{2}}
+=2^{-\alpha} r^{2\alpha-3}.
+\]
+Hence a sufficient condition for this quotient to tend to \(0\) is \(2\alpha-3>0\), i.e. \(\alpha>\tfrac{3}{2}\).
+
+To see necessity, again use the line \(y=x\). For \(x\neq0\) we computed
+\[
+f(x,x)=\tfrac{1}{2}|x|^{2\alpha-2},\qquad \sqrt{x^2+x^2}=\sqrt{2}\,|x|,
+\]
+so
+\[
+\frac{f(x,x)}{\sqrt{x^2+x^2}}=\frac{\tfrac{1}{2}|x|^{2\alpha-2}}{\sqrt{2}\,|x|}
+=\frac{1}{2\sqrt{2}}\,|x|^{2\alpha-3}.
+\]
+If \(\alpha=\tfrac{3}{2}\) this ratio tends to the nonzero constant \(\dfrac{1}{2\sqrt{2}}\); if \(\alpha<\tfrac{3}{2}\) it blows up. Therefore differentiability at \((0,0)\) fails unless \(\alpha>\tfrac{3}{2}\).
+
+Combining the sufficiency and necessity shows \(f\) is differentiable at \((0,0)\) exactly when \(\alpha>\tfrac{3}{2}\).
+
+\medskip
+
+\textbf{Remark.} For \((x,y)\neq(0,0)\) the formula defines a smooth function, so all issues are concentrated at the origin.
 \end{correctionbox}
 
 % ----------- EXERCISE 2 -------------
@@ -96,7 +162,161 @@ Study the existence and continuity of the first partial derivatives and the diff
 \]
 
 \begin{correctionbox}
+\textbf{(1) } $\displaystyle f(x,y)=
+\begin{cases}
+\dfrac{x|y|}{\sqrt{x^2+y^2}} & \text{if }(x,y)\ne(0,0),\\[0.4em]
+0 & \text{if }(x,y)=(0,0).
+\end{cases}$
 
+\medskip
+\underline{Continuity at $(0,0)$:}
+\[
+|f(x,y)|=\frac{|x||y|}{\sqrt{x^2+y^2}}
+\le \frac{\tfrac{1}{2}(x^2+y^2)}{\sqrt{x^2+y^2}}
+=\frac{1}{2}\sqrt{x^2+y^2}\xrightarrow[(x,y)\to(0,0)]{}0.
+\]
+Hence \(f\) is continuous at the origin.
+
+\medskip
+\underline{Partial derivatives at $(0,0)$:}
+\[
+f(h,0)=0,\qquad f(0,h)=0,
+\]
+so
+\[
+\frac{\partial f}{\partial x}(0,0)=0,\qquad \frac{\partial f}{\partial y}(0,0)=0.
+\]
+
+\medskip
+\underline{Continuity of partials:}
+Away from the origin the function is smooth except for the absolute value. Compute for \(y\ne0\),
+\[
+\frac{\partial f}{\partial x}=\frac{|y|}{\sqrt{x^2+y^2}}-\frac{x^2|y|}{(x^2+y^2)^{3/2}},\qquad
+\frac{\partial f}{\partial y}=\frac{x\,\mathrm{sign}(y)}{\sqrt{x^2+y^2}}-\frac{x|y|y}{(x^2+y^2)^{3/2}}.
+\]
+The terms contain $\frac{|y|}{\sqrt{x^2+y^2}}$, which does not approach a single value as $(x,y)\to(0,0)$ along different paths.  
+For instance, along \(y=x\) one gets \(|y|/\sqrt{x^2+y^2}=1/\sqrt{2}\), while along \(y=0\) it is \(0\). Hence neither partial derivative is continuous at the origin.
+
+\medskip
+\underline{Differentiability:}
+For differentiability we need
+\[
+\frac{|f(x,y)|}{\sqrt{x^2+y^2}}
+=\frac{|x||y|}{x^2+y^2}\xrightarrow[(x,y)\to(0,0)]{}0.
+\]
+But along \(y=x\), this equals \(\tfrac{1}{2}\), a nonzero constant. Therefore \(f\) is \emph{not differentiable} at the origin.
+
+\bigskip
+
+\textbf{(2) } $\displaystyle f(x,y)=
+\begin{cases}
+\dfrac{xy}{|x|-y}, & y\ne|x|,\\[0.4em]
+0, & y=|x|.
+\end{cases}$
+
+\medskip
+\underline{Continuity:}
+Along \(y=0\), \(f(x,0)=0\).  
+Along \(y=\tfrac{|x|}{2}\), \(f(x,y)=\dfrac{x(\tfrac{|x|}{2})}{|x|-\tfrac{|x|}{2}}=\dfrac{|x|}{2}\).  
+This tends to \(0\) as \(x\to0\). However, if we approach along \(y=|x|-x^2\),
+\[
+f(x,|x|-x^2)=\frac{x(|x|-x^2)}{|x|-(|x|-x^2)}=\frac{x(|x|-x^2)}{x^2}=|x|/x - |x|.
+\]
+For $x>0$ this equals $1-x$, for $x<0$ it equals $-1-|x|$. The limit depends on the direction and thus does not exist.  
+Therefore \(f\) is \emph{not continuous at the origin}. Hence no differentiability is possible there.
+
+\bigskip
+
+\textbf{(3) } $\displaystyle f(x,y)=
+\begin{cases}
+\dfrac{x^3-y^3}{x^2+y^2}, & (x,y)\ne(0,0),\\[0.4em]
+0, & (x,y)=(0,0).
+\end{cases}$
+
+\medskip
+\underline{Continuity:}
+We can factor:
+\[
+f(x,y)=\frac{(x-y)(x^2+xy+y^2)}{x^2+y^2}.
+\]
+Then
+\[
+|f(x,y)|\le |x-y|\frac{x^2+|xy|+y^2}{x^2+y^2}
+\le 3|x-y|,
+\]
+since \(x^2+|xy|+y^2\le3(x^2+y^2)/2\). Thus as $(x,y)\to(0,0)$, $|f(x,y)|\le 3|x-y|\to0$.  
+Hence \(f\) is continuous at the origin.
+
+\medskip
+\underline{Partial derivatives at $(0,0)$:}
+For \(h\ne0\),
+\[
+f(h,0)=\frac{h^3}{h^2}=h,\qquad f(0,h)=-h,
+\]
+so
+\[
+\frac{\partial f}{\partial x}(0,0)=\lim_{h\to0}\frac{f(h,0)}{h}=1,\qquad
+\frac{\partial f}{\partial y}(0,0)=\lim_{h\to0}\frac{f(0,h)}{h}=-1.
+\]
+
+\medskip
+\underline{Differentiability:}
+Check whether
+\[
+f(x,y)-x+y = o(\sqrt{x^2+y^2}).
+\]
+We compute
+\[
+f(x,y)-(x-y)=\frac{x^3-y^3-(x-y)(x^2+y^2)}{x^2+y^2}
+=\frac{-xy(x-y)}{x^2+y^2}.
+\]
+Hence
+\[
+|f(x,y)-(x-y)|\le \frac{|x||y||x-y|}{x^2+y^2}
+\le \frac{1}{2}|x-y|.
+\]
+Thus
+\[
+\frac{|f(x,y)-(x-y)|}{\sqrt{x^2+y^2}}\le\frac{1}{2}\frac{|x-y|}{\sqrt{x^2+y^2}}\le\frac{1}{\sqrt{2}}.
+\]
+Since this bound tends to \(0\) as $(x,y)\to(0,0)$, the differential exists and equals
+\[
+df_{(0,0)}(h,k)=h-k.
+\]
+Hence \(f\) is differentiable at the origin.
+
+\bigskip
+
+\textbf{(4) } $\displaystyle f(x,y)=
+\begin{cases}
+y^2\sin\!\left(\dfrac{x}{y}\right), & y\ne0,\\[0.4em]
+0, & y=0.
+\end{cases}$
+
+\medskip
+\underline{Continuity:}
+\[
+|f(x,y)|\le y^2\quad\Rightarrow\quad f(x,y)\to0\text{ as }(x,y)\to(0,0).
+\]
+So \(f\) is continuous.
+
+\medskip
+\underline{Partial derivatives at the origin:}
+\[
+f(h,0)=0\Rightarrow f_x(0,0)=0.
+\]
+For \(f_y\),
+\[
+\frac{f(0,h)-f(0,0)}{h}= \frac{h^2\sin(0)}{h}=0\Rightarrow f_y(0,0)=0.
+\]
+
+\medskip
+\underline{Differentiability:}
+We check
+\[
+\frac{|f(x,y)|}{\sqrt{x^2+y^2}}\le\frac{y^2}{\sqrt{x^2+y^2}}\le|y|\xrightarrow[(x,y)\to(0,0)]{}0,
+\]
+so \(f\) is differentiable at the origin with differential \(df_{(0,0)}=0\).
 \end{correctionbox}
 
 % ----------- EXERCISE 3 -------------
@@ -104,8 +324,59 @@ Study the existence and continuity of the first partial derivatives and the diff
 Calculate $d_{(1,2)}f(x, y)$ and $d_{(2,3,4)}g(x, y, z)$ where $f(x, y) = \dfrac{x}{y^2}$ and $g(x, y, z) = \dfrac{z}{\sqrt{x^2 + y^2}}$.
 
 \begin{correctionbox}
+\textbf{(a)} Let \(f(x,y)=\dfrac{x}{y^2}\). For \(y\neq 0\), the partial derivatives are
+\[
+\frac{\partial f}{\partial x}(x,y)=\frac{1}{y^2},\qquad
+\frac{\partial f}{\partial y}(x,y)=-\frac{2x}{y^3}.
+\]
+Hence the differential (total derivative) at a point \((x,y)\) is
+\[
+d_{(x,y)}f(h,k)=\frac{1}{y^2}\,h - \frac{2x}{y^3}\,k.
+\]
+At the specific point \((1,2)\):
+\[
+\frac{\partial f}{\partial x}(1,2)=\frac{1}{4},\qquad
+\frac{\partial f}{\partial y}(1,2)=-\frac{2}{8}=-\frac{1}{4},
+\]
+so
+\[
+\boxed{\,d_{(1,2)}f(h,k)=\frac{1}{4}h - \frac{1}{4}k\,.}
+\]
 
+\bigskip
+
+\textbf{(b)} Let \(g(x,y,z)=\dfrac{z}{\sqrt{x^2+y^2}}\). For \((x,y)\neq(0,0)\):
+\[
+\frac{\partial g}{\partial x}=-\frac{zx}{(x^2+y^2)^{3/2}},\quad
+\frac{\partial g}{\partial y}=-\frac{zy}{(x^2+y^2)^{3/2}},\quad
+\frac{\partial g}{\partial z}=\frac{1}{\sqrt{x^2+y^2}}.
+\]
+Thus
+\[
+d_{(x,y,z)}g(h,k,\ell)
+= -\frac{zx}{(x^2+y^2)^{3/2}}\,h
+- \frac{zy}{(x^2+y^2)^{3/2}}\,k
++ \frac{1}{\sqrt{x^2+y^2}}\,\ell.
+\]
+
+At the point \((2,3,4)\), we have \(x^2+y^2=13\), so
+\[
+\frac{\partial g}{\partial x}=-\frac{8}{13^{3/2}},\quad
+\frac{\partial g}{\partial y}=-\frac{12}{13^{3/2}},\quad
+\frac{\partial g}{\partial z}=\frac{1}{\sqrt{13}}.
+\]
+
+Hence
+\[
+\boxed{\,d_{(2,3,4)}g(h,k,\ell)
+= -\frac{8}{13^{3/2}}\,h
+- \frac{12}{13^{3/2}}\,k
++ \frac{1}{13^{1/2}}\,\ell\,.}
+\]
+
+Jacobian-row form: \([\, -\tfrac{8}{13^{3/2}}\;,\; -\tfrac{12}{13^{3/2}}\;,\; \tfrac{1}{13^{1/2}}\,]\).
 \end{correctionbox}
+
 
 % ----------- EXERCISE 4 -------------
 \section{}
@@ -119,7 +390,84 @@ $$f(x, y) = \sin(x^2 - y^2) \quad \text{and} \quad g(x, y) = (x + y, x - y).$$
 \end{enumerate}
 
 \begin{correctionbox}
+\textbf{(1) Gradient of \(f\) at \((x,y)\in\mathbb{R}^2\):}
 
+Compute the partial derivatives:
+\[
+\frac{\partial f}{\partial x}(x,y)=\cos(x^2-y^2)\cdot 2x = 2x\cos(x^2-y^2),
+\]
+\[
+\frac{\partial f}{\partial y}(x,y)=\cos(x^2-y^2)\cdot (-2y) = -2y\cos(x^2-y^2).
+\]
+
+Hence the gradient is
+\[
+\boxed{\nabla f(x,y) = \big(2x\cos(x^2-y^2),\, -2y\cos(x^2-y^2)\big)}.
+\]
+
+\medskip
+\textbf{(2) Jacobian matrix of \(g\) at \((x,y)\in\mathbb{R}^2\):}
+
+\[
+g(x,y) = \begin{pmatrix} x+y \\ x-y \end{pmatrix},\quad
+J_g(x,y) = 
+\begin{pmatrix}
+\frac{\partial (x+y)}{\partial x} & \frac{\partial (x+y)}{\partial y} \\
+\frac{\partial (x-y)}{\partial x} & \frac{\partial (x-y)}{\partial y} 
+\end{pmatrix}
+=
+\begin{pmatrix}
+1 & 1 \\
+1 & -1
+\end{pmatrix}.
+\]
+
+\medskip
+\textbf{(3) Jacobian matrix of \(f\circ g\) and differential \(D(f\circ g)(x,y)(h,k)\):}
+
+By the chain rule for functions \(\mathbb{R}^2\to\mathbb{R}\) and \(\mathbb{R}^2\to\mathbb{R}^2\):
+\[
+D(f\circ g)(x,y) = \nabla f(g(x,y)) \cdot J_g(x,y),
+\]
+where \(\nabla f(g(x,y))\) is a row vector and \(J_g\) is a \(2\times2\) matrix.
+
+\medskip
+Compute \(\nabla f(g(x,y))\):
+\[
+g(x,y)=(X,Y)=(x+y,x-y),\quad
+\nabla f(X,Y) = \big(2X \cos(X^2-Y^2),\, -2Y \cos(X^2-Y^2)\big)
+\]
+
+Then
+\[
+J_{f\circ g}(x,y) = \nabla f(g(x,y)) \cdot J_g(x,y)
+= \big(2(X)\cos(X^2-Y^2), -2(Y)\cos(X^2-Y^2)\big)
+\begin{pmatrix}1 & 1 \\ 1 & -1\end{pmatrix}
+\]
+
+Compute the product:
+\[
+\begin{aligned}
+\text{$1^{st}$ component} &= 2X\cos(X^2-Y^2) + (-2Y)\cos(X^2-Y^2) = 2(X-Y)\cos(X^2-Y^2)\\
+\text{$2^{nd}$ component} &= 2X\cos(X^2-Y^2) + 2Y\cos(X^2-Y^2) = 2(X+Y)\cos(X^2-Y^2)
+\end{aligned}
+\]
+
+Substitute back \(X=x+y,\,Y=x-y\):
+\[
+X-Y=(x+y)-(x-y)=2y,\quad X+Y=(x+y)+(x-y)=2x.
+\]
+
+Hence
+\[
+\boxed{J_{f\circ g}(x,y) = \big(4y \cos(4xy),\, 4x \cos(4xy)\big)}.
+\]
+
+\medskip
+Finally, for \((h,k)\in\mathbb{R}^2\):
+\[
+\boxed{D(f\circ g)(x,y)(h,k) = 4y \cos(4xy)\,h + 4x \cos(4xy)\,k}.
+\]
 \end{correctionbox}
 
 % ----------- EXERCISE 5 -------------
@@ -134,7 +482,49 @@ where $x = (x_1, \ldots, x_n)$ and $\|x\|^2 = \displaystyle\sum_{i=1}^{n} x_i^2$
 Show that $f$ is of class $C^1$ on $\mathbb{R}^n$ and give the expression of its differential.
 
 \begin{correctionbox}
+\textbf{Step 1: Smoothness inside the ball \(\|x\|<1\).}  
 
+Inside the unit ball, the function is a composition of smooth functions: \(x\mapsto \|x\|^2\) and \(t\mapsto 1/(t-1)\), then exponentiated. All derivatives exist and are smooth. Therefore \(f\in C^\infty(\{x:\|x\|<1\})\).
+
+\medskip
+\textbf{Step 2: Partial derivatives at \(\|x\|=1\).}  
+
+For each \(i=1,\dots,n\), the partial derivative for \(\|x\|<1\) is
+\[
+\frac{\partial f}{\partial x_i}(x)
+= \exp\!\Big(\frac{1}{\|x\|^2-1}\Big)\cdot \frac{\partial}{\partial x_i}\Big(\frac{1}{\|x\|^2-1}\Big)
+= \exp\Big(\frac{1}{\|x\|^2-1}\Big)\cdot \frac{-2x_i}{(\|x\|^2-1)^2}.
+\]
+
+\medskip
+\textbf{Step 3: Continuity at \(\|x\|=1\).}  
+
+As \(\|x\|\to 1^-\), the term \(\frac{-2x_i}{(\|x\|^2-1)^2}\) blows up, but the exponential term
+\[
+\exp\Big(\frac{1}{\|x\|^2-1}\Big) \to 0 \quad \text{faster than any polynomial blow-up.}
+\]
+Hence
+\[
+\lim_{\|x\|\to 1^-} \frac{\partial f}{\partial x_i}(x) = 0.
+\]
+
+For \(\|x\|>1\), \(f\equiv 0\) and all partial derivatives are 0. Thus the partial derivatives are continuous across \(\|x\|=1\).
+
+\medskip
+\textbf{Step 4: Differential and class \(C^1\).}  
+
+The differential at any \(x\in\mathbb{R}^n\) is
+\[
+\boxed{
+df_x(h) = \sum_{i=1}^{n} \frac{\partial f}{\partial x_i}(x)\, h_i 
+= \begin{cases}
+\displaystyle \exp\Big(\frac{1}{\|x\|^2-1}\Big) \sum_{i=1}^{n} \frac{-2x_i}{(\|x\|^2-1)^2} \, h_i, & \|x\|<1,\\[0.5em]
+0, & \|x\|\ge 1.
+\end{cases}
+}
+\]
+
+Since the partial derivatives are continuous everywhere, \(f\in C^1(\mathbb{R}^n)\).
 \end{correctionbox}
 
 % ----------- EXERCISE 6 -------------
@@ -148,7 +538,61 @@ xy\dfrac{x^2 - y^2}{x^2 + y^2} & \text{if } (x, y) \neq (0, 0) \\[0.5em]
 Calculate the partial derivatives at the points $(x, 0)$ and $(0, y)$ with $x, y \in \mathbb{R}$. Calculate the second-order partial derivatives at $(0, 0)$.
 
 \begin{correctionbox}
+\textbf{Step 1: Partial derivatives at \((x,0)\) and \((0,y)\).}
 
+\underline{(a) Along \(y=0\):} \(f(x,0)=0\). Then
+\[
+\frac{\partial f}{\partial x}(x,0) = \lim_{h\to0} \frac{f(x+h,0)-f(x,0)}{h} = 0,
+\]
+\[
+\frac{\partial f}{\partial y}(x,0) = \lim_{k\to0} \frac{f(x,k)-f(x,0)}{k} = \lim_{k\to0} \frac{xk(x^2-k^2)/(x^2+k^2)}{k} = \lim_{k\to0} \frac{x(x^2-k^2)}{x^2+k^2} = x.
+\]
+
+\underline{(b) Along \(x=0\):} \(f(0,y)=0\). Then
+\[
+\frac{\partial f}{\partial x}(0,y) = \lim_{h\to0} \frac{f(h,y)-f(0,y)}{h} = \lim_{h\to0} \frac{hy(h^2-y^2)/(h^2+y^2)}{h} = -y,
+\]
+\[
+\frac{\partial f}{\partial y}(0,y) = \lim_{k\to0} \frac{f(0,y+k)-f(0,y)}{k} = 0.
+\]
+
+\medskip
+\textbf{Step 2: Second-order partial derivatives at \((0,0)\).}
+
+\underline{(a) Mixed partial \(\partial^2 f/\partial x \partial y\) at \((0,0)\):}
+\[
+\frac{\partial f}{\partial x}(0,0) = \lim_{h\to0} \frac{f(h,0)-f(0,0)}{h} = 0.
+\]
+Then
+\[
+\frac{\partial^2 f}{\partial y \partial x}(0,0) = \lim_{k\to0} \frac{\frac{\partial f}{\partial x}(0,k)-\frac{\partial f}{\partial x}(0,0)}{k} = \lim_{k\to0} \frac{-k-0}{k} = -1.
+\]
+
+\underline{(b) Mixed partial \(\partial^2 f/\partial y \partial x\) at \((0,0)\):}
+\[
+\frac{\partial f}{\partial y}(0,0) = 0,\quad 
+\frac{\partial^2 f}{\partial x \partial y}(0,0) = \lim_{h\to0} \frac{\frac{\partial f}{\partial y}(h,0)-\frac{\partial f}{\partial y}(0,0)}{h} = \lim_{h\to0} \frac{h-0}{h} = 1.
+\]
+
+\medskip
+\underline{(c) Pure second-order partials at \((0,0)\):}
+\[
+\frac{\partial^2 f}{\partial x^2}(0,0) = \frac{\partial^2 f}{\partial y^2}(0,0) = 0.
+\]
+
+\medskip
+\textbf{Step 3: Summary of partial derivatives.}
+
+\[
+\begin{aligned}
+&f_x(x,0)=0,\quad f_y(x,0)=x,\\
+&f_x(0,y)=-y,\quad f_y(0,y)=0,\\
+&f_{xx}(0,0)=0,\quad f_{yy}(0,0)=0,\quad f_{xy}(0,0)=1,\quad f_{yx}(0,0)=-1.
+\end{aligned}
+\]
+
+\medskip
+\textbf{Remark:} The mixed partials at the origin are not equal, which shows that \(f\) is not \(C^2\) at \((0,0)\).
 \end{correctionbox}
 
 % ----------- EXERCISE 7 -------------
@@ -156,6 +600,40 @@ Calculate the partial derivatives at the points $(x, 0)$ and $(0, y)$ with $x, y
 Let $f$ be the function defined by $f(x) = \|x\|$, $\forall x \in \mathbb{R}^n$. Study the differentiability of $f$ on $\mathbb{R}^n$.
 
 \begin{correctionbox}
+\textbf{Step 1: Differentiability for \(x\neq 0\).}  
+
+For \(x\neq 0\), the norm function can be written as 
+\[
+f(x) = \sqrt{x_1^2 + x_2^2 + \dots + x_n^2}.
+\]  
+The partial derivatives are
+\[
+\frac{\partial f}{\partial x_i}(x) = \frac{x_i}{\|x\|}, \quad i=1,\dots,n.
+\]  
+Hence the differential at \(x\neq 0\) is
+\[
+\boxed{df_x(h) = \sum_{i=1}^{n} \frac{x_i}{\|x\|} h_i = \frac{x\cdot h}{\|x\|}}.
+\]  
+This shows \(f\) is differentiable at every point \(x\neq 0\).
+
+\medskip
+\textbf{Step 2: Differentiability at \(x=0\).}  
+
+Assume \(f\) is differentiable at \(0\). Then there exists a linear map \(L:\mathbb{R}^n\to\mathbb{R}\) such that
+\[
+\lim_{h\to 0} \frac{\|h\| - L(h)}{\|h\|} = 0.
+\]  
+But \(\|h\|\) is positively homogeneous: along \(h\) with \(\|h\|=1\),
+\[
+\frac{\|h\| - L(h)}{\|h\|} = 1 - L(h),
+\]  
+which must tend to 0 as \(h\to 0\). This is impossible because \(L\) is linear, so \(L(h)\) cannot equal 1 in all directions.  
+
+\medskip
+\textbf{Conclusion:}  
+\[
+f(x) = \|x\| \text{ is differentiable on } \mathbb{R}^n\setminus\{0\}, \text{ but not differentiable at } 0.
+\]
 
 \end{correctionbox}
 
