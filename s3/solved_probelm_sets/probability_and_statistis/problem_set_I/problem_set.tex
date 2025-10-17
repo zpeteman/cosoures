@@ -1,0 +1,804 @@
+\documentclass[12pt]{article}                                                                                                           
+\usepackage[utf8]{inputenc}                                                                                                             
+\usepackage[T1]{fontenc}                                                                                                                
+\usepackage{amsmath, amssymb}                                                                                                           
+\usepackage{geometry}                                                                                                                   
+\usepackage{xcolor}                                                                                                                     
+\usepackage{lipsum}                                                                                                                     
+\usepackage{titlesec}                                                                                                                   
+\usepackage{fancyhdr}                                                                                                                   
+\usepackage[most]{tcolorbox}                                                                                                                  
+\usepackage{graphicx}                                                                                                                   
+\usepackage{float}                                                                                      
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+\usetikzlibrary{arrows.meta, decorations.markings}                                                                                      
+                                                                                                                                        
+\geometry{a4paper, margin=2.5cm}                                                                                                        
+\pagestyle{fancy}                                                                                                                       
+\fancyhf{}                                                                                                                              
+\rhead{Problem Set 1}                                                                                                                   
+\lhead{Probability and Statistics}                                                                                                                     
+\cfoot{\thepage}                                                                                                                        
+                                                                                                                                        
+% Fancy titles                                                                                                                          
+\titleformat{\section}{\normalfont\Large\bfseries}{Exercise \thesection:}{1em}{}                                                        
+\titleformat{\subsection}{\normalfont\bfseries}{Correction:}{1em}{}                                                                     
+                                                                                                                                        
+% Custom box for correction with breakable option
+\newtcolorbox{correctionbox}{                                                                                                           
+  colback=gray!5,                                                                                                                       
+  colframe=black,                                                                                                                       
+  fonttitle=\bfseries,                                                                                                                  
+  title=Correction,                                                                                                                     
+  before skip=10pt,                                                                                                                     
+  after skip=10pt,
+  breakable,
+  enhanced
+}                                                                                                                                       
+                                                                                                                                        
+% Fix headheight warning
+\setlength{\headheight}{14.49998pt}
+
+\begin{document}
+
+\begin{center}
+\Large\textbf{Ibn Tofail University} \\[1em]
+\large\textit{Probability and Statistics} \\[2em]
+\large\textit{Problem Set 1} \\[0.5em]
+\end{center}
+
+\vspace{1cm}
+
+% ----------- EXERCISE 1 -------------
+\section{}
+An urn contains five red balls numbered: 0, 0, 0, 1, 1, three green balls numbered 0, 1, 2, and two black balls numbered 0, 2. 
+
+\textbf{I)} In a successive draw without replacement of three balls, in how many ways can we draw:
+
+\begin{enumerate}
+    \item $\Omega$ = (Three balls).
+    \item $A$ = (Three balls of the same color).
+    \item $B$ = (Three balls of different colors pairwise).
+    \item $C$ = (Exactly two red balls).
+    \item $D$ = (At least one green ball).
+    \item $E$ = (At most two red balls).
+    \item $F$ = (Three balls bearing the same number).
+    \item $G$ = (Three balls of the same color and bearing the same number).
+    \item $H$ = (Three balls of different colors pairwise and bearing the same number).
+    \item $I$ = (Exactly two balls of the same color bearing odd numbers).
+    \item $J$ = (Three balls bearing numbers whose product is zero).
+\end{enumerate}
+
+\textbf{II)} Redo the same calculations for a successive draw with replacement.
+
+\begin{correctionbox}
+\textbf{Total balls:} red (0,0,0,1,1) + green (0,1,2) + black (0,2) = 10 balls
+\begin{enumerate}
+    \item $\Omega$ = $C_{10}^3 = 120$
+    
+    \item $A$ = 
+    \begin{itemize}
+        \item All red: $C_5^3 = 10$
+        \item All green: $C_3^3 = 1$
+        \item All black: $C_2^3 = 0$ 
+    \end{itemize}
+    $P(A) = 10 + 1 = 11$
+
+    \item $B$ = (One of each color) $C_5^1 \times C_3^1 \times C_2^1 = 5 \times 3 \times 2 = 30$; $P(B) = 30$
+
+    \item $C$ = $C_5^2 \times C_5^1 = 10$; $P(C) = 10 \times 5 = 50$
+    
+    \item $D$ = (At least one green ball):
+    \begin{itemize}
+        \item Total ways: $C_{10}^3 = 120$
+        \item No green: $C_7^3 = 35$
+    \end{itemize}
+    $P(D) = 120 - 35 = 85$
+    
+    \item $E$ = (At most two red balls):
+    \begin{itemize}
+        \item Total: 120
+        \item Three red: $C_5^3 = 10$
+    \end{itemize}
+    $P(E) = 120 - 10 = 110$
+    
+    \item $F$ = (Three balls bearing the same number):
+    \begin{itemize}
+        \item All 0's: $C_6^3 = 20$
+        \item All 1's: $C_2^3 = 0$ 
+        \item All 2's: $C_2^3 = 0$ 
+    \end{itemize}
+    $P(F) = 20$
+    
+    \item $G$ = (Three balls of the same color and bearing the same number):
+    \begin{itemize}
+        \item Red-0: $C_3^3 = 1$
+        \item Others: 0 (not enough balls)
+    \end{itemize}
+    $P(G) = 1$
+    
+    \item $H$ = (Three balls of different colors pairwise and bearing the same number):
+    \begin{itemize}
+        \item All 0's: $C_3^1 \times C_1^1 \times C_2^1 = 3 \times 1 \times 2 = 6$ (red-0, green-0, black-0)
+        \item Other numbers: not possible
+    \end{itemize}
+    $P(H) = 6$
+    
+    \item $I$ = (Exactly two balls of the same color bearing odd numbers):
+    \begin{itemize}
+        \item Odd numbers available: only 1 (red-1, green-1)
+        \item Choose color with 2 odd balls: only red works (has two 1's)
+        \item Choose 2 red-1: $C_2^2 = 1$
+        \item Choose 1 other ball (not red-1): $C_8^1 = 8$
+    \end{itemize}
+    $P(I) = 1 \times 8 = 8$
+    
+    \item $J$ = (Three balls bearing numbers whose product is zero):
+    \begin{itemize}
+        \item Total: 120
+        \item Product non-zero: all balls must have non-zero numbers
+        \item Non-zero numbers: red-1 (2 balls), green-1,2 (2 balls), black-2 (1 ball) = 5 balls
+        \item Ways with product non-zero: $C_5^3 = 10$
+    \end{itemize}
+    $P(J) = 120 - 10 = 110$
+\end{enumerate}
+
+\textbf{II) Successive draw with replacement}
+
+\begin{enumerate}
+    \item $\Omega$: $10^3 = 1000$
+    
+    \item $A$ = (Three balls of the same color):
+    \begin{itemize}
+        \item All red: $5^3 = 125$
+        \item All green: $3^3 = 27$
+        \item All black: $2^3 = 8$
+    \end{itemize}
+    $P(A) = 125 + 27 + 8 = 160$
+    
+    \item $B$ = (Three balls of different colors pairwise):
+    \begin{itemize}
+        \item Permutations of colors: $3! = 6$
+        \item Red, green, black: $5 \times 3 \times 2 = 30$
+    \end{itemize}
+    $P(B) = 6 \times 30 = 180$
+    
+    \item $C$ = (Exactly two red balls):
+    \begin{itemize}
+        \item Choose positions for red: $C_3^2 = 3$
+        \item Two red: $5^2 = 25$
+        \item One non-red: $5^1 = 5$
+    \end{itemize}
+    $P(C) = 3 \times 25 \times 5 = 375$
+    
+    \item $D$ = (At least one green ball):
+    \begin{itemize}
+        \item Total: 1000
+        \item No green: $7^3 = 343$
+    \end{itemize}
+    $P(D) = 1000 - 343 = 657$
+    
+    \item $E$ = (At most two red balls):
+    \begin{itemize}
+        \item Total: 1000
+        \item Three red: $5^3 = 125$
+    \end{itemize}
+    $P(E) = 1000 - 125 = 875$
+    
+    \item $F$ = (Three balls bearing the same number):
+    \begin{itemize}
+        \item Number 0: $6^3 = 216$
+        \item Number 1: $3^3 = 27$
+        \item Number 2: $3^3 = 27$
+    \end{itemize}
+    $P(F) = 216 + 27 + 27 = 270$
+    
+    \item $G$ = (Three balls of the same color and bearing the same number):
+    \begin{itemize}
+        \item Red-0: $3^3 = 27$
+        \item Red-1: $2^3 = 8$
+        \item Green-0: $1^3 = 1$, Green-1: $1^3 = 1$, Green-2: $1^3 = 1$
+        \item Black-0: $1^3 = 1$, Black-2: $1^3 = 1$
+    \end{itemize}
+    $P(G) = 27 + 8 + 1 + 1 + 1 + 1 + 1 = 40$
+    
+    \item $H$ = (Three balls of different colors pairwise and bearing the same number):
+    \begin{itemize}
+        \item Only possible with number 0
+        \item Permutations: $3! = 6$
+        \item Red-0, green-0, black-0: $3 \times 1 \times 1 = 3$
+    \end{itemize}
+    $P(H) = 6 \times 3 = 18$
+    
+    \item $I$ = (Exactly two balls of the same color bearing odd numbers):
+    \begin{itemize}
+        \item Only odd number is 1
+        \item Choose color with 2 odd balls: only red works
+        \item Choose positions for red-1: $C_3^2 = 3$
+        \item Two red-1: $2^2 = 4$
+        \item One other ball (not red-1): $8^1 = 8$
+    \end{itemize}
+    $P(I) = 3 \times 4 \times 8 = 96$
+    
+    \item $J$ = (Three balls bearing numbers whose product is zero):
+    \begin{itemize}
+        \item Total: 1000
+        \item Product non-zero: all balls must have non-zero numbers
+        \item Non-zero numbers: 5 balls (red-1:2, green-1,2:2, black-2:1)
+        \item Ways with product non-zero: $5^3 = 125$
+    \end{itemize}
+    $P(J) = 1000 - 125 = 875$
+\end{enumerate}
+\end{correctionbox}
+
+% ----------- EXERCISE 2 -------------
+\section{}
+An urn (A) contains five black balls, two green balls, and one red ball. Another urn (B) contains two black balls and one green ball. We simultaneously draw two balls from urn (A) and one ball from urn (B).
+
+In how many ways can we draw:
+
+\begin{enumerate}
+    \item $\Omega$: (Three balls).
+    \item $C$: (Three green balls).
+    \item $D$: (Exactly two green balls).
+    \item $E$: (At least one green ball).
+    \item $F$: (At most one green ball).
+\end{enumerate}
+
+\begin{correctionbox}
+\textbf{Given:}
+\begin{itemize}
+    \item Urn A: 5 black (B), 2 green (G), 1 red (R) → Total: 8 balls
+    \item Urn B: 2 black (B), 1 green (G) → Total: 3 balls
+    \item Draw: 2 balls from A + 1 ball from B simultaneously
+\end{itemize}
+
+\begin{enumerate}
+    \item $\Omega$ = (Three balls): $C_8^2 \times C_3^1 = 28 \times 3 = 84$
+    
+    \item $C$ = (Three green balls):
+    \begin{itemize}
+        \item From A: need 2 green from 2 available: $C_2^2 = 1$
+        \item From B: need 1 green from 1 available: $C_1^1 = 1$
+    \end{itemize}
+    $P(C) = 1 \times 1 = 1$
+    
+    \item $D$ = (Exactly two green balls):
+    
+    \textbf{Case 1:} Both greens from A, non-green from B
+    \begin{itemize}
+        \item A: 2 green from 2: $C_2^2 = 1$
+        \item B: 1 non-green from 2 (black only): $C_2^1 = 2$
+    \end{itemize}
+    Ways: $1 \times 2 = 2$
+    
+    \textbf{Case 2:} One green from A, one green from B, one non-green from A
+    \begin{itemize}
+        \item A: 1 green from 2 + 1 non-green from 6: $C_2^1 \times C_6^1 = 2 \times 6 = 12$
+        \item B: 1 green from 1: $C_1^1 = 1$
+    \end{itemize}
+    Ways: $12 \times 1 = 12$
+    
+    Total $P(D) = 2 + 12 = 14$
+    
+    \item $E$ = (At least one green ball):
+    \begin{itemize}
+        \item Total: 84
+        \item No green: All balls non-green
+        \item From A: 2 non-green from 6 (5 black + 1 red): $C_6^2 = 15$
+        \item From B: 1 non-green from 2 (black only): $C_2^1 = 2$
+    \end{itemize}
+    No green ways: $15 \times 2 = 30$
+    
+    $P(E) = 84 - 30 = 54$
+    
+    \item $F$ = (At most one green ball):
+    
+    \textbf{Case 1:} No green balls (calculated above): 30
+    
+    \textbf{Case 2:} Exactly one green ball:
+    
+    \textbf{Subcase 2a:} Green from A only
+    \begin{itemize}
+        \item A: 1 green from 2 + 1 non-green from 6: $C_2^1 \times C_6^1 = 12$
+        \item B: 1 non-green from 2: $C_2^1 = 2$
+    \end{itemize}
+    Ways: $12 \times 2 = 24$
+    
+    \textbf{Subcase 2b:} Green from B only
+    \begin{itemize}
+        \item A: 2 non-green from 6: $C_6^2 = 15$
+        \item B: 1 green from 1: $C_1^1 = 1$
+    \end{itemize}
+    Ways: $15 \times 1 = 15$
+    
+    Exactly one green: $24 + 15 = 39$
+    
+    Total $P(F) = 30 + 39 = 69$
+\end{enumerate}
+\end{correctionbox}
+
+% ----------- EXERCISE 3 -------------
+\section{}
+1) Calculate:
+\begin{align*}
+S_0 &= \sum_{k=0}^{n} C_n^k, \quad S_1 = \sum_{k=0}^{n} kC_n^k, \\
+S_2 &= \sum_{k=0}^{n} k(k-1)C_n^k, \quad S'_2 = \sum_{k=0}^{n} k^2C_n^k
+\end{align*}
+
+2) Verify:
+\begin{align*}
+\sum_{y=0}^{k} C_a^y C_b^{k-y} &= C_{a+b}^k, \\
+\sum_{y=0}^{n} (C_n^y)^2 &= C_{2n}^n, \\
+C_n^p &= C_n^{n-p}, \\
+C_{n-1}^{p-1} &= \frac{p}{n}C_n^p
+\end{align*}
+
+\begin{correctionbox}
+\textbf{1) Calculate the sums:}
+
+We use the binomial theorem: $(1 + x)^n = \sum_{k=0}^{n} C_n^k x^k$
+
+\textbf{(a) $S_0 = \sum_{k=0}^{n} C_n^k$}
+\[
+\text{Take } x = 1: \quad (1 + 1)^n = \sum_{k=0}^{n} C_n^k (1)^k
+\]
+\[
+S_0 = 2^n
+\]
+
+\textbf{(b) $S_1 = \sum_{k=0}^{n} k C_n^k$}
+
+Differentiate the binomial expansion:
+\[
+\frac{d}{dx}(1 + x)^n = \frac{d}{dx}\left(\sum_{k=0}^{n} C_n^k x^k\right)
+\]
+\[
+n(1 + x)^{n-1} = \sum_{k=0}^{n} k C_n^k x^{k-1}
+\]
+Multiply both sides by $x$:
+\[
+nx(1 + x)^{n-1} = \sum_{k=0}^{n} k C_n^k x^k
+\]
+Take $x = 1$:
+\[
+n \cdot 1 \cdot (1 + 1)^{n-1} = \sum_{k=0}^{n} k C_n^k
+\]
+\[
+S_1 = n \cdot 2^{n-1}
+\]
+
+\textbf{(c) $S_2 = \sum_{k=0}^{n} k(k-1) C_n^k$}
+
+Differentiate twice:
+\[
+\frac{d^2}{dx^2}(1 + x)^n = \frac{d^2}{dx^2}\left(\sum_{k=0}^{n} C_n^k x^k\right)
+\]
+\[
+n(n-1)(1 + x)^{n-2} = \sum_{k=0}^{n} k(k-1) C_n^k x^{k-2}
+\]
+Multiply both sides by $x^2$:
+\[
+n(n-1)x^2(1 + x)^{n-2} = \sum_{k=0}^{n} k(k-1) C_n^k x^k
+\]
+Take $x = 1$:
+\[
+n(n-1) \cdot 1^2 \cdot (1 + 1)^{n-2} = \sum_{k=0}^{n} k(k-1) C_n^k
+\]
+\[
+S_2 = n(n-1) \cdot 2^{n-2}
+\]
+
+\textbf{(d) $S'_2 = \sum_{k=0}^{n} k^2 C_n^k$}
+
+We have: $k^2 = k(k-1) + k$
+\[
+S'_2 = \sum_{k=0}^{n} k^2 C_n^k = \sum_{k=0}^{n} [k(k-1) + k] C_n^k
+\]
+\[
+S'_2 = \sum_{k=0}^{n} k(k-1) C_n^k + \sum_{k=0}^{n} k C_n^k
+\]
+\[
+S'_2 = S_2 + S_1 = n(n-1)2^{n-2} + n2^{n-1}
+\]
+\[
+S'_2 = n2^{n-2}[(n-1) + 2] = n(n+1)2^{n-2}
+\]
+
+\textbf{2) Verify the identities:}
+
+\textbf{(a) $\sum_{y=0}^{k} C_a^y C_b^{k-y} = C_{a+b}^k$}
+
+This is Vandermonde's identity.
+
+\textbf{(b) $\sum_{y=0}^{n} (C_n^y)^2 = C_{2n}^n$}
+
+Special case of Vandermonde with $a = b = n$ and $k = n$:
+\[
+\sum_{y=0}^{n} C_n^y C_n^{n-y} = C_{2n}^n
+\]
+But $C_n^{n-y} = C_n^y$, so:
+\[
+\sum_{y=0}^{n} (C_n^y)^2 = C_{2n}^n
+\]
+
+\textbf{(c) $C_n^p = C_n^{n-p}$}
+
+Algebraic proof:
+\[
+C_n^{n-p} = \frac{n!}{(n-p)!(n-(n-p))!} = \frac{n!}{(n-p)!p!} = C_n^p
+\]
+
+\textbf{(d) $C_{n-1}^{p-1} = \frac{p}{n}C_n^p$}
+
+Algebraic proof:
+\[
+C_{n-1}^{p-1} = \frac{(n-1)!}{(p-1)!(n-p)!}
+\]
+\[
+C_n^p = \frac{n!}{p!(n-p)!} = \frac{n}{p} \cdot \frac{(n-1)!}{(p-1)!(n-p)!}
+\]
+Therefore:
+\[
+C_{n-1}^{p-1} = \frac{p}{n}C_n^p
+\]
+\end{correctionbox}
+
+% ----------- EXERCISE 4 -------------
+\section{}
+An elevator serving $N$ floors contains $S$ people.
+
+\begin{enumerate}
+    \item In how many ways can the $S$ people stop at these floors?
+    \item Suppose the $S$ people stop as follows: there are $n_i$ floors such that at each of them $a_i$ people stop $(1 \leq i \leq k)$ with $n_1 + \ldots + n_k = N$. In how many ways is this possible?
+\end{enumerate}
+
+\begin{correctionbox}
+\textbf{1) In how many ways can the $S$ people stop at these floors?}
+
+\[
+\text{Number of ways} = N^S
+\]
+
+\textbf{2) Suppose the $S$ people stop as follows: there are $n_i$ floors such that at each of them $a_i$ people stop $(1 \leq i \leq k)$ with $n_1 + \ldots + n_k = N$. In how many ways is this possible?}
+
+\textbf{Step 1: Choose which floors get which number of people}
+The number of ways to assign the floor types is:
+\[
+\frac{N!}{n_1! n_2! \cdots n_k!}
+\]
+
+\textbf{Step 2: Distribute people among the chosen floors}
+The number of ways to partition the people is:
+\[
+\frac{S!}{(n_1a_1)! (n_2a_2)! \cdots (n_ka_k)!}
+\]
+
+\textbf{Step 3: Distribute people within each floor type}
+The number of ways to do this for type $i$ is:
+\[
+\frac{(n_ia_i)!}{(a_i!)^{n_i}}
+\]
+
+\textbf{Final Answer:}
+Multiplying all these factors together:
+
+\[
+\text{Number of ways} = \frac{N!}{n_1! n_2! \cdots n_k!} \times \frac{S!}{(n_1a_1)! (n_2a_2)! \cdots (n_ka_k)!} \times \prod_{i=1}^k \frac{(n_ia_i)!}{(a_i!)^{n_i}}
+\]
+
+Simplifying:
+\[
+\text{Number of ways} = S! \times \frac{N!}{\prod_{i=1}^k n_i! (a_i!)^{n_i}}
+\]
+
+\end{correctionbox}
+
+
+% ----------- EXERCISE 5 -------------
+\section{}
+Let $(\Omega, \mathcal{A}, P)$ be a probability space, $A, B, C$ elements of $\mathcal{A}$.
+
+\begin{enumerate}
+    \item Show that $P(A \cap B) \geq P(A) - P(\overline{B})$.
+    \item Deduce that $P(A \cap B \cap C) \geq 1 - P(A) - P(B) - P(C)$.
+    \item Generalize to $n$ events $A_1, \ldots, A_n$.
+\end{enumerate}
+
+\begin{correctionbox}
+\textbf{1) Show that $P(A \cap B) \geq P(A) - P(\overline{B})$}
+
+We start with the basic probability identity:
+\[
+P(A) = P(A \cap B) + P(A \cap \overline{B})
+\]
+Since $P(A \cap \overline{B}) \leq P(\overline{B})$ (because $A \cap \overline{B} \subseteq \overline{B}$), we have:
+\[
+P(A \cap B) \geq P(A) - P(\overline{B})
+\]
+
+\textbf{2) Deduce that $P(A \cap B \cap C) \geq 1 - P(\overline{A}) - P(\overline{B}) - P(\overline{C})$}
+
+We apply the result from part 1 multiple times. First, apply it to events $A$ and $B \cap C$:
+\[
+P(A \cap (B \cap C)) \geq P(A) - P(\overline{B \cap C})
+\]
+But $\overline{B \cap C} = \overline{B} \cup \overline{C}$, so:
+\[
+P(\overline{B \cap C}) = P(\overline{B} \cup \overline{C}) \leq P(\overline{B}) + P(\overline{C})
+\]
+Therefore:
+\[
+P(A \cap B \cap C) \geq P(A) - [P(\overline{B}) + P(\overline{C})]
+\]
+\[
+P(A \cap B \cap C) \geq 1 - P(\overline{A}) - P(\overline{B}) - P(\overline{C})
+\]
+
+\textbf{3) Generalize to $n$ events $A_1, \ldots, A_n$}
+
+For $n$ events $A_1, A_2, \ldots, A_n$, we have:
+\[
+P\left(\bigcap_{i=1}^n A_i\right) \geq 1 - \sum_{i=1}^n P(\overline{A_i})
+\]
+
+Using De Morgan's law and the union bound:
+\[
+P\left(\bigcap_{i=1}^n A_i\right) = 1 - P\left(\overline{\bigcap_{i=1}^n A_i}\right) = 1 - P\left(\bigcup_{i=1}^n \overline{A_i}\right)
+\]
+By the union bound (Boole's inequality):
+\[
+P\left(\bigcup_{i=1}^n \overline{A_i}\right) \leq \sum_{i=1}^n P(\overline{A_i})
+\]
+Therefore:
+\[
+P\left(\bigcap_{i=1}^n A_i\right) \geq 1 - \sum_{i=1}^n P(\overline{A_i})
+\]
+
+This inequality is known as the \textbf{Bonferroni inequality} and is useful in probability theory and statistics, particularly in multiple testing problems.
+\end{correctionbox}
+
+% ----------- EXERCISE 6 -------------
+\section{}
+Show that:
+
+The specification of a probability $P$ on $(\Omega = \{e_1, \ldots, e_n, \ldots\}, \mathcal{P}(\Omega))$ is equivalent to the specification of:
+
+$(p_n)_n \subset \mathbb{R}^+$ such that $\sum_n p_n = 1$
+
+\begin{correctionbox}
+Let $\Omega = \{e_1, e_2, \ldots, e_n, \ldots\}$ be a countable sample space, and $\mathcal{P}(\Omega)$ be the power set (the set of all subsets of $\Omega$).
+
+\textbf{Direction 1: From probability measure to sequence $(p_n)$}
+
+Given a probability measure $P$ on $(\Omega, \mathcal{P}(\Omega))$, define for each $n$:
+\[
+p_n = P(\{e_n\})
+\]
+Since $P$ is a probability measure, it satisfies:
+\begin{enumerate}
+    \item $P(\{e_n\}) \geq 0$ for all $n$ (non-negativity)
+    \item $P(\Omega) = 1$
+\end{enumerate}
+
+Now, since $\Omega = \bigcup_{n=1}^\infty \{e_n\}$ is a countable union of disjoint sets, by countable additivity:
+\[
+P(\Omega) = \sum_{n=1}^\infty P(\{e_n\}) = \sum_{n=1}^\infty p_n = 1
+\]
+Thus, $(p_n)$ is a sequence of non-negative real numbers with $\sum_{n=1}^\infty p_n = 1$.
+
+\textbf{Direction 2: From sequence $(p_n)$ to probability measure}
+
+Given a sequence $(p_n) \subset \mathbb{R}^+$ such that $\sum_{n=1}^\infty p_n = 1$, define a function $P: \mathcal{P}(\Omega) \to [0,1]$ by:
+\[
+P(A) = \sum_{e_n \in A} p_n \quad \text{for any } A \subseteq \Omega
+\]
+We need to verify that $P$ defined this way is indeed a probability measure.
+
+\textbf{Verification of probability axioms:}
+
+\begin{enumerate}
+    \item \textbf{Non-negativity:} For any $A \subseteq \Omega$,
+    \[
+    P(A) = \sum_{e_n \in A} p_n \geq 0 \quad \text{since } p_n \geq 0 \text{ for all } n
+    \]
+    
+    \item \textbf{Probability of sample space:}
+    \[
+    P(\Omega) = \sum_{e_n \in \Omega} p_n = \sum_{n=1}^\infty p_n = 1
+    \]
+    
+    \item \textbf{Countable additivity:} Let $A_1, A_2, \ldots$ be pairwise disjoint subsets of $\Omega$. Then:
+    \[
+    P\left(\bigcup_{i=1}^\infty A_i\right) = \sum_{e_n \in \bigcup_{i=1}^\infty A_i} p_n
+    \]
+    Since the $A_i$ are disjoint, each elementary outcome $e_n$ belongs to exactly one $A_i$, so we can rearrange the sum:
+    \[
+    \sum_{e_n \in \bigcup_{i=1}^\infty A_i} p_n = \sum_{i=1}^\infty \sum_{e_n \in A_i} p_n = \sum_{i=1}^\infty P(A_i)
+    \]
+    The rearrangement is justified because all terms are non-negative.
+\end{enumerate}
+
+Thus, $P$ defined by $P(A) = \sum_{e_n \in A} p_n$ satisfies all the axioms of a probability measure.
+\end{correctionbox}
+
+% ----------- EXERCISE 7 -------------
+\section{}
+Study the drawing of $N$ elements from among $M$ distinct elements.
+
+\begin{correctionbox}
+We consider four cases based on:
+\begin{itemize}
+    \item Ordered/Unordered selection
+    \item With/without replacement
+\end{itemize}
+
+\begin{enumerate}
+    \item \textbf{Ordered, with replacement:}
+    \[
+    \text{Number of ways} = M^N
+    \]
+    Each of the $N$ draws has $M$ choices.
+    
+    \item \textbf{Ordered, without replacement:}
+    \[
+    \text{Number of ways} = \frac{M!}{(M-N)!} = A_M^N
+    \]
+    Choose and arrange $N$ distinct elements from $M$.
+    
+    \item \textbf{Unordered, without replacement:}
+    \[
+    \text{Number of ways} = \binom{M}{N} = C_M^N = \frac{M!}{N!(M-N)!}
+    \]
+    Choose $N$ elements from $M$ without regard to order.
+    
+    \item \textbf{Unordered, with replacement:}
+    \[
+    \text{Number of ways} = \binom{M+N-1}{N}
+    \]
+    Stars and bars method: number of non-negative integer solutions to $x_1 + \cdots + x_M = N$.
+\end{enumerate}
+\textbf{Constraints:} For without replacement cases, we require $N \leq M$.
+\end{correctionbox}
+
+% ----------- EXERCISE 8 -------------
+\section{}
+We study over time the operation of a device obeying the following rules:
+
+\begin{itemize}
+    \item If the device is working at time $n-1$, $(n \in \mathbb{N}^*)$, it has a probability of $\frac{1}{6}$ of being broken at time $n$.
+    \item If the device is broken at time $n-1$, it has a probability of $\frac{2}{3}$ of being broken at time $n$.
+\end{itemize}
+
+Let $p_n$ denote the probability that the device is in working order at time $n$.
+
+\begin{enumerate}
+    \item Establish for all $n \in \mathbb{N}^*$ a relation between $p_n$ and $p_{n-1}$.
+    \item Express $p_n$ as a function of $p_0$.
+    \item Study the convergence of the sequence $(p_n)$.
+\end{enumerate}
+
+\begin{correctionbox}
+Let $p_n$ be the probability that the device is working at time $n$.
+
+\textbf{1) Relation between $p_n$ and $p_{n-1}$}
+
+Using total probability:
+\[
+p_n = P(n \mid n-1) \cdot p_{n-1} + P(n \mid n-1) \cdot (1 - p_{n-1})
+\]
+
+Given:
+\begin{itemize}
+    \item If working at $n-1$: probability $\frac{1}{6}$ of being broken at $n \implies$ probability $\frac{5}{6}$ of working at $n$
+    \item If broken at $n-1$: probability $\frac{2}{3}$ of being broken at $n \implies$ probability $\frac{1}{3}$ of working at $n$
+\end{itemize}
+So:
+\[
+p_n = \frac{1}{3} + \frac{1}{2}p_{n-1}
+\]
+
+\textbf{2) Express $p_n$ as a function of $p_0$}
+
+This is a linear recurrence: $p_n = \frac{1}{2}p_{n-1} + \frac{1}{3}$
+
+Let $L$ be the fixed point: $L = \frac{1}{2}L + \frac{1}{3} \implies L = \frac{2}{3}$
+
+Then $p_n - \frac{2}{3} = \frac{1}{2}(p_{n-1} - \frac{2}{3})$
+
+So:
+\[
+p_n - \frac{2}{3} = \left(\frac{1}{2}\right)^n (p_0 - \frac{2}{3})
+\]
+\[
+p_n = \frac{2}{3} + \left(\frac{1}{2}\right)^n (p_0 - \frac{2}{3})
+\]
+
+\textbf{3) Convergence of $(p_n)$}
+
+Since $\left|\frac{1}{2}\right| < 1$, we have:
+\[
+\lim_{n \to \infty} p_n = \frac{2}{3}
+\]
+The sequence converges to $\frac{2}{3}$ regardless of the initial state $p_0$.
+\end{correctionbox}
+
+% ----------- EXERCISE 9 -------------
+\section{}
+A box contains two balls: one black and one red. We draw $n$ times a ball from this box, replacing it after noting its color. Let $A_n$ be the event "we obtain balls of both colors during the $n$ draws" and $B_n$ be the event "we obtain at most one black ball".
+
+\begin{enumerate}
+    \item Calculate $P(A_n)$ and $P(B_n)$.
+    \item Are $A_n$ and $B_n$ independent if $n = 2$?
+    \item Same question if $n = 3$.
+\end{enumerate}
+
+\begin{correctionbox}
+\textbf{1) Calculate $P(A_n)$ and $P(B_n)$}
+
+$A_n$ = "obtain balls of both colors during $n$ draws"
+
+Complement: all same color:
+\[
+P(A_n) = 1 - P(\text{all black}) - P(\text{all red}) = 1 - \left(\frac{1}{2}\right)^n - \left(\frac{1}{2}\right)^n
+\]
+\[
+P(A_n) = 1 - 2\left(\frac{1}{2}\right)^n = 1 - \left(\frac{1}{2}\right)^{n-1}
+\]
+
+$B_n$ = "obtain at most one black ball"
+
+Cases: 0 black or 1 black:
+\[
+P(B_n) = P(\text{0 black}) + P(\text{1 black}) = \left(\frac{1}{2}\right)^n + n\left(\frac{1}{2}\right)^n
+\]
+\[
+P(B_n) = (n + 1)\left(\frac{1}{2}\right)^n
+\]
+
+\textbf{2) Independence for $n = 2$}
+
+For $n = 2$:
+\[
+P(A_2) = 1 - \left(\frac{1}{2}\right)^{1} = \frac{1}{2}
+\]
+\[
+P(B_2) = (2 + 1)\left(\frac{1}{2}\right)^2 = \frac{3}{4}
+\]
+
+Sample space for 2 draws: {BB, BR, RB, RR}
+
+$A_2$ = {BR, RB}  $\implies P(A_2) = \frac{1}{2}$
+$B_2$ = {BR, RB, RR}  $\implies P(B_2) = \frac{3}{4}$
+$A_2 \cap B_2$ = {BR, RB}  $\implies P(A_2 \cap B_2) = \frac{1}{2}$
+
+Check independence:
+\[
+P(A_2 \cap B_2) = \frac{1}{2} \quad \text{vs} \quad P(A_2)P(B_2) = \frac{1}{2} \times \frac{3}{4} = \frac{3}{8}
+\]
+Not equal $\implies$ NOT independent.
+
+\textbf{3) Independence for $n = 3$}
+
+For $n = 3$:
+\[
+P(A_3) = 1 - \left(\frac{1}{2}\right)^{2} = \frac{3}{4}
+\]
+\[
+P(B_3) = (3 + 1)\left(\frac{1}{2}\right)^3 = \frac{1}{2}
+\]
+
+Sample space: 8 equally likely outcomes
+$A_3$ = all except BBB and RRR  $\implies 6$ outcomes $\implies P(A_3) = \frac{3}{4}$
+$B_3$ = {RRR, BRR, RBR, RRB}  $\implies 4$ outcomes $\implies P(B_3) = \frac{1}{2}$
+$A_3 \cap B_3$ = {BRR, RBR, RRB}  $\implies 3$ outcomes $\implies P(A_3 \cap B_3) = \frac{3}{8}$
+
+Check:
+\[
+P(A_3)P(B_3) = \frac{3}{4} \times \frac{1}{2} = \frac{3}{8} = P(A_3 \cap B_3)
+\]
+Equal $\implies$ YES, independent for $n = 3$.
+\end{correctionbox}
+
+\end{document}
