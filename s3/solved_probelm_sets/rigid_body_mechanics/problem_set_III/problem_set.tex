@@ -1,42 +1,42 @@
-\documentclass[12pt]{article}                                                                                                           
-\usepackage[utf8]{inputenc}                                                                                                             
-\usepackage[T1]{fontenc}                                                                                                                
-\usepackage{amsmath, amssymb}                                                                                                           
-\usepackage{geometry}                                                                                                                   
-\usepackage{xcolor}                                                                                                                     
-\usepackage{lipsum}                                                                                                                     
-\usepackage{titlesec}                                                                                                                   
-\usepackage{fancyhdr}                                                                                                                   
-\usepackage[most]{tcolorbox}                                                                                                                  
-\usepackage{graphicx}                                                                                                                   
-\usepackage{float}                                                                                                      
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{lipsum}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage[most]{tcolorbox}
+\usepackage{graphicx}
+\usepackage{float}
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric, arrows.meta}
-\usetikzlibrary{arrows.meta, decorations.markings}                                                                                      
-                                                                                                                                        
-\geometry{a4paper, margin=2.5cm}                                                                                                        
-\pagestyle{fancy}                                                                                                                       
-\fancyhf{}                                                                                                                              
-\rhead{Problem Set III}                                                                                                                   
-\lhead{Rigid body mechanics}                                                                                                                     
-\cfoot{\thepage}                                                                                                                        
-                                                                                                                                        
-% Fancy titles                                                                                                                          
-\titleformat{\section}{\normalfont\Large\bfseries}{Exercise \thesection:}{1em}{}                                                        
-\titleformat{\subsection}{\normalfont\bfseries}{Correction:}{1em}{}                                                                     
-                                                                                                                                        
+\usetikzlibrary{arrows.meta, decorations.markings}
+
+\geometry{a4paper, margin=2.5cm}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Problem Set III}
+\lhead{Rigid body mechanics}
+\cfoot{\thepage}
+
+% Fancy titles
+\titleformat{\section}{\normalfont\Large\bfseries}{Exercise \thesection:}{1em}{}
+\titleformat{\subsection}{\normalfont\bfseries}{Correction:}{1em}{}
+
 % Custom box for correction with breakable option
-\newtcolorbox{correctionbox}{                                                                                                           
-  colback=gray!5,                                                                                                                       
-  colframe=black,                                                                                                                       
-  fonttitle=\bfseries,                                                                                                                  
-  title=Correction,                                                                                                                     
-  before skip=10pt,                                                                                                                     
+\newtcolorbox{correctionbox}{
+  colback=gray!5,
+  colframe=black,
+  fonttitle=\bfseries,
+  title=Correction,
+  before skip=10pt,
   after skip=10pt,
   breakable,
   enhanced
-}                                                                                                                                       
-                                                                                                                                        
+}
+
 % Fix headheight warning
 \setlength{\headheight}{14.49998pt}
 
@@ -49,7 +49,7 @@
 \end{center}
 
 \vspace{1cm}
-% ----------- EXERCISE 1 -------------
+% ----------- EXERCISE 1 -----------------
 \section{}
 
 Determine in two different ways (directly and using Guldin's theorems) the center of mass of the following solids:
@@ -61,10 +61,41 @@ Determine in two different ways (directly and using Guldin's theorems) the cente
 \end{enumerate}
 
 \begin{correctionbox}
+Let $\lambda$ be the linear density (for the semicircle) and $\sigma$ be the surface density (for the disks).
+\begin{enumerate}
+    \item \textbf{Homogeneous Semicircle (Arc):}
+        The semicircle is a line ($L=\pi R$). By symmetry about the $Y$-axis (vertical axis of the arc), $x_G=0$.
+        \begin{itemize}
+            \item \textbf{Direct Integration:} Using polar coordinates on the $XY$ plane: $dl=R d\theta$, $y=R\sin\theta$.
+            $$y_G = \frac{\int y dm}{\int dm} = \frac{\int_0^\pi R\sin\theta (\lambda R d\theta)}{\lambda \pi R} = \frac{R}{\pi} [-\cos\theta]_0^\pi = \frac{R}{\pi} (1+1) = \frac{2R}{\pi}$$
+            $$G = \left(0, \frac{2R}{\pi}\right)$$
+            \item \textbf{Guldin's Second Theorem (Surface Area):} Revolving the arc ($L=\pi R$) around its diameter (X-axis) generates a sphere surface ($A=4\pi R^2$). Let $r_G = y_G$ be the distance from the axis.
+            $$A = 2\pi r_G L \implies 4\pi R^2 = 2\pi y_G (\pi R) \implies y_G = \frac{4\pi R^2}{2\pi^2 R} = \frac{2R}{\pi}$$
+        \end{itemize}
+    \item \textbf{Homogeneous Quarter Disk (Surface):}
+        Let the quarter disk lie in the first quadrant. By symmetry (for a quarter of a circle, the center of mass lies on the $y=x$ line), $x_G=y_G$. The mass is $m=\sigma A = \sigma \frac{\pi R^2}{4}$.
+        \begin{itemize}
+            \item \textbf{Direct Integration:} Using polar coordinates: $dA = r dr d\theta$, $x=r\cos\theta$.
+            $$x_G = \frac{\int x dm}{\int dm} = \frac{\int_0^{\pi/2}\int_0^R (r\cos\theta) (\sigma r dr d\theta)}{\sigma \pi R^2/4} = \frac{\sigma \int_0^{\pi/2}\cos\theta d\theta \int_0^R r^2 dr}{\sigma \pi R^2/4}$$
+            $$x_G = \frac{[\sin\theta]_0^{\pi/2} [r^3/3]_0^R}{\pi R^2/4} = \frac{(1) (R^3/3)}{\pi R^2/4} = \frac{4R^3/3}{\pi R^2} = \frac{4R}{3\pi}$$
+            $$G = \left(\frac{4R}{3\pi}, \frac{4R}{3\pi}\right)$$
+            \item \textbf{Guldin's First Theorem (Volume):} Revolving the quarter disk ($A=\pi R^2/4$) around the X-axis generates a hemisphere volume ($V=\frac{2}{3}\pi R^3$). Let $r_G=y_G$.
+            $$V = 2\pi r_G A \implies \frac{2}{3}\pi R^3 = 2\pi y_G \left(\frac{\pi R^2}{4}\right) \implies y_G = \frac{2\pi R^3/3}{2\pi^2 R^2/4} = \frac{4R}{3\pi}$$
+        \end{itemize}
+    \item \textbf{Homogeneous Half-Disk (Surface):}
+        The half-disk is a surface ($A=\pi R^2/2$). By symmetry about the $Y$-axis, $x_G=0$. The mass is $m=\sigma A = \sigma \frac{\pi R^2}{2}$.
+        \begin{itemize}
+            \item \textbf{Direct Integration:} Due to symmetry, $y_G$ is twice the $y_G$ of the quarter disk:
+            $$y_G = \frac{\int y dm}{\int dm} = \frac{2 \int_0^{\pi/2}\int_0^R (r\sin\theta) (\sigma r dr d\theta)}{\sigma \pi R^2/2} = \frac{4R}{3\pi}$$
+            $$G = \left(0, \frac{4R}{3\pi}\right)$$
+            \item \textbf{Guldin's First Theorem (Volume):} Revolving the half-disk ($A=\pi R^2/2$) around its diameter (X-axis) generates a sphere volume ($V=\frac{4}{3}\pi R^3$). Let $r_G=y_G$.
+            $$V = 2\pi r_G A \implies \frac{4}{3}\pi R^3 = 2\pi y_G \left(\frac{\pi R^2}{2}\right) \implies y_G = \frac{4\pi R^3/3}{\pi^2 R^2} = \frac{4R}{3\pi}$$
+        \end{itemize}
+\end{enumerate}
 
 \end{correctionbox}
 
-% ----------- EXERCISE 2 -------------
+% ----------- EXERCISE 2 -----------------
 \section{}
 
 \begin{enumerate}
@@ -74,10 +105,37 @@ Determine in two different ways (directly and using Guldin's theorems) the cente
 \end{enumerate}
 
 \begin{correctionbox}
+Let the $Z$-axis be the axis of symmetry, with the origin $O$ at the center of the base. By symmetry, $x_G=y_G=0$.
+
+\begin{enumerate}
+    \item \textbf{Homogeneous Hemisphere (Solid):}
+        Let the center of the base be $C=O$. The center of mass is on the $Z$-axis.
+        The total mass is $m = \rho V = \rho \left(\frac{1}{2} \cdot \frac{4}{3}\pi R^3\right) = \frac{2}{3}\pi \rho R^3$.
+        Using spherical coordinates: $dV = r^2 \sin\phi \, dr \, d\phi \, d\theta$. The hemisphere occupies $0 \le r \le R$, $0 \le \phi \le \pi/2$, $0 \le \theta \le 2\pi$.
+        The $z$-coordinate is $z=r\cos\phi$.
+        $$z_G = \frac{\int_V z \, dm}{m} = \frac{\rho \int_0^{2\pi} d\theta \int_0^{\pi/2} \cos\phi \sin\phi \, d\phi \int_0^R r^3 dr}{m}$$
+        $$z_G = \frac{\rho (2\pi) \left[\frac{1}{2}\sin^2\phi\right]_0^{\pi/2} \left[\frac{r^4}{4}\right]_0^R}{m} = \frac{2\pi\rho \left(\frac{1}{2}\right) \left(\frac{R^4}{4}\right)}{\frac{2}{3}\pi \rho R^3} = \frac{\frac{1}{4}\pi\rho R^4}{\frac{2}{3}\pi \rho R^3} = \frac{3R}{8}$$
+        The center of mass is $G_1 = \left(0, 0, \frac{3R}{8}\right)$.
+    \item \textbf{Homogeneous Hollow Cone (Surface):}
+        The mass is $M = \sigma A = \sigma (\pi R L)$, where $L=\sqrt{R^2+h^2}$ is the slant height. Let $O$ be the cone's vertex. The center of mass $G_2$ is on the $Z$-axis.
+        Consider a differential mass element $dm$. The distance from the base is $z' = h-z$. For a cone surface, the distance of the center of mass from the \textbf{vertex} is $\frac{2}{3}h$.
+        Thus, $z_G = \frac{2}{3}h$.
+        The center of mass is $G_2 = \left(0, 0, \frac{2h}{3}\right)$.
+    \item \textbf{Composite Solid:}
+        The cone (mass $M$) is topped by the hemisphere (mass $m$). Let the origin $O$ be the center of the cylinder's base (which is the cone's base).
+        \begin{itemize}
+            \item \textbf{Hemisphere ($S_1$):} Mass $m$. Center $C_1$ at the center of the common base, which is the cone's base. The center of mass is $G_1$ relative to its base: $z_{G_1} = h + \frac{3R}{8}$.
+            \item \textbf{Hollow Cone ($S_2$):} Mass $M$. The center of mass is $G_2$ relative to the cone's base (distance from the vertex $h$): $z_{G_2} = h - \frac{2h}{3} = \frac{h}{3}$.
+            \item \textbf{Combined Center of Mass ($S=S_1 \cup S_2$):} Total mass is $m_{\text{tot}}=M+m$.
+            The composite center of mass $G$ is given by:
+            $$z_G = \frac{m z_{G_1} + M z_{G_2}}{m+M} = \frac{m\left(h+\frac{3R}{8}\right) + M\left(\frac{h}{3}\right)}{m+M}$$
+            $$G = \left(0, 0, \frac{m\left(h+\frac{3R}{8}\right) + \frac{Mh}{3}}{m+M}\right)$$
+    \end{itemize}
+\end{enumerate}
 
 \end{correctionbox}
 
-% ----------- EXERCISE 3 -------------
+% ----------- EXERCISE 3 -----------------
 \section{}
 
 \begin{enumerate}
@@ -90,10 +148,29 @@ Determine in two different ways (directly and using Guldin's theorems) the cente
 \end{enumerate}
 
 \begin{correctionbox}
+Let the rod lie on the $Y$-axis, centered at the origin $O$. The length is $2l$. The mass is $m$. The linear density is $\lambda = m/2l$.
+
+\begin{enumerate}
+    \item \textbf{Moment of Inertia $J_G$ at the Center of Mass (G=O):}
+        The axis $\Delta_G$ is perpendicular to the rod, passing through $G$. If the rod is on the $Y$-axis, $\Delta_G$ is the $Z$-axis (or $X$-axis). The distance from $dm$ to the axis is $y$.
+        $$J_G = \int_{-l}^{l} y^2 dm = \int_{-l}^{l} y^2 (\lambda dy) = \lambda \left[\frac{y^3}{3}\right]_{-l}^{l} = \frac{m}{2l} \left(\frac{l^3}{3} - \frac{(-l)^3}{3}\right) = \frac{m}{2l} \frac{2l^3}{3}$$
+        $$J_G = \frac{ml^2}{3}$$
+        (Note: The document provides $J_{zz} = m \frac{l^2}{3}$ for a rod of length $2l$ on $OY$ at the center $O$.)
+    \item \textbf{Moment of Inertia using Huygens' Theorem:}
+        The Theorem states $J_{\Delta_O}=J_{\Delta_G}+md^2$, where $d$ is the distance between the two parallel axes.
+        \begin{itemize}
+            \item \textbf{Axis $\Delta_E$ through one end ($E$):}
+                The end is at $y=l$ (or $y=-l$). The distance between $\Delta_E$ and $\Delta_G$ is $d=l$.
+                $$J_E = J_G + ml^2 = \frac{ml^2}{3} + ml^2 = \frac{4ml^2}{3}$$
+            \item \textbf{Axis $\Delta_P$ through a point $P$ distant $l/2$ from one end:}
+                The distance from the center $G$ to the point $P$ is $d = l - l/2 = l/2$.
+                $$J_P = J_G + m d^2 = \frac{ml^2}{3} + m \left(\frac{l}{2}\right)^2 = \frac{ml^2}{3} + \frac{ml^2}{4} = \frac{4ml^2+3ml^2}{12} = \frac{7ml^2}{12}$$
+        \end{itemize}
+\end{enumerate}
 
 \end{correctionbox}
 
-% ----------- EXERCISE 4 -------------
+% ----------- EXERCISE 4 -----------------
 \section{}
 
 Consider a homogeneous disk of radius $R$ and mass $M$.
@@ -104,10 +181,29 @@ Consider a homogeneous disk of radius $R$ and mass $M$.
 \end{enumerate}
 
 \begin{correctionbox}
+Let the disk lie in the $XY$ plane, centered at $O$. The mass is $M=\sigma A = \sigma \pi R^2$. The surface density is $\sigma = M/\pi R^2$.
+
+\begin{enumerate}
+    \item \textbf{Moment of Inertia with respect to its Center (Axis $OZ$):}
+        The axis passing through the center $O$ and perpendicular to the disk is the $Z$-axis, which is an axis of revolution. The moment of inertia is $J_{zz}=C$.
+        The distance from a mass element $dm$ to the $Z$-axis is $r$ in polar coordinates. $dm = \sigma dA = \sigma r dr d\theta$.
+        $$C = J_{zz} = \int_{S}(x^2+y^2)dm = \int_0^{2\pi}\int_0^R r^2 (\sigma r dr d\theta) = \sigma \left(\int_0^{2\pi} d\theta\right) \left(\int_0^R r^3 dr\right)$$
+        $$C = \sigma (2\pi) \left[\frac{r^4}{4}\right]_0^R = \frac{2\pi \sigma R^4}{4} = \frac{1}{2} (\pi R^2 \sigma) R^2 = \frac{1}{2} M R^2$$
+        $$J_{Oz} = \frac{1}{2} M R^2$$
+        (Note: This result is confirmed in the document.)
+    \item \textbf{Moment of Inertia with respect to a Diameter:}
+        A diameter is an axis lying in the plane of the disk (e.g., $OX$ or $OY$). Due to the circular symmetry of the disk, the moments of inertia about any diameter are equal:
+        $$A = J_{xx} = J_{yy} = B$$
+        The sum of the moments of inertia about two perpendicular axes in the plane equals the moment of inertia about the axis perpendicular to the plane (Perpendicular Axis Theorem, generalized from $J_{zz}=J_{xx}+J_{yy}$):
+        $$J_{Oz} = J_{Ox} + J_{Oy} \implies C = A + B = 2A$$
+        $$J_{\text{diameter}} = A = \frac{C}{2} = \frac{1}{2} \left(\frac{1}{2} M R^2\right) = \frac{1}{4} M R^2$$
+        $$J_{\text{diameter}} = \frac{1}{4} M R^2$$
+        (Note: This result is confirmed in the document.)
+\end{enumerate}
 
 \end{correctionbox}
 
-% ----------- EXERCISE 5 -------------
+% ----------- EXERCISE 5 -----------------
 \section{}
 
 A small disk of radius $a$ and center $I$ is removed from a large homogeneous disk of radius $R$ $(R > a)$, of center $O$. The solid obtained is an eccentric circular annulus of mass $M$. We denote by $d$ the distance between the two centers $(OI = d)$.
@@ -119,10 +215,53 @@ A small disk of radius $a$ and center $I$ is removed from a large homogeneous di
 \end{enumerate}
 
 \begin{correctionbox}
+The solid $S$ (annulus) is the large disk $S_L$ (radius $R$, center $O$) minus the small disk $S_S$ (radius $a$, center $I$). We treat the removed disk $S_S$ as a system with a negative mass $m_S$.
+
+\begin{itemize}
+    \item \textbf{Large Disk ($S_L$):} Area $A_L = \pi R^2$. Mass $m_L = \sigma A_L = \sigma \pi R^2$. Center $G_L=O$.
+    \item \textbf{Small Disk ($S_S$):} Area $A_S = \pi a^2$. Mass $m_S = \sigma A_S = \sigma \pi a^2$. Center $G_S=I$.
+    \item \textbf{Annulus ($S$):} Mass $M = m_L - m_S = \sigma \pi (R^2 - a^2)$.
+\end{itemize}
+
+\begin{enumerate}
+    \item \textbf{Position of the Center of Mass ($G$):}
+        We use the generalized center of mass formula for composite solids:
+        $$M \cdot \vec{OG} = m_L \cdot \vec{OG_L} + m_S \cdot \vec{OG_S}$$
+        Since $\vec{OG_L} = \vec{OO} = \vec{0}$, and $m_S = m_L - M$, we get:
+        $$M \cdot \vec{OG} = m_L \cdot \vec{0} - m_S \cdot \vec{OI} = - m_S \cdot \vec{OI}$$
+        Since $\vec{OI}$ points from $O$ to $I$, $\vec{OI}$ has magnitude $d$.
+        $$\vec{OG} = -\frac{m_S}{M} \vec{OI}$$
+        Substituting the masses:
+        $$\vec{OG} = -\frac{\sigma \pi a^2}{\sigma \pi (R^2-a^2)} \vec{OI} = -\frac{a^2}{R^2-a^2} \vec{OI}$$
+        The center of mass $G$ is on the segment $OI$ (or its extension), on the side opposite to $I$ from $O$. The distance $OG$ is:
+        $$OG = \frac{a^2 d}{R^2-a^2}$$
+
+    \item \textbf{Result if $a = R/2$:}
+        Substitute $a=R/2$ into the expression for $OG$:
+        $$OG = \frac{(R/2)^2 d}{R^2 - (R/2)^2} = \frac{R^2/4 \cdot d}{R^2 - R^2/4} = \frac{R^2/4 \cdot d}{3R^2/4} = \frac{d}{3}$$
+        $$\vec{OG} = -\frac{d}{3}\frac{\vec{OI}}{d} = -\frac{1}{3} \vec{OI}$$
+
+    \item \textbf{Moment of Inertia ($J_{\Delta}$) with respect to the line $\Delta = (O, I)$:}
+        The line $\Delta$ passes through $O$ and $I$. The moments of inertia are subtracted:
+        $$J_{\Delta}(S) = J_{\Delta}(S_L) - J_{\Delta}(S_S)$$
+        Both $S_L$ and $S_S$ are disks. Since the axis $\Delta$ passes through the center $O$ of $S_L$, $J_{\Delta}(S_L)$ is the moment of inertia about a diameter:
+        $$J_{\Delta}(S_L) = \frac{1}{4} m_L R^2 = \frac{1}{4} (\sigma \pi R^2) R^2 = \frac{1}{4} \sigma \pi R^4$$
+        The axis $\Delta$ passes through $I$, which is the center of $S_S$. So $J_{\Delta}(S_S)$ is the moment of inertia about a diameter:
+        $$J_{\Delta}(S_S) = \frac{1}{4} m_S a^2 = \frac{1}{4} (\sigma \pi a^2) a^2 = \frac{1}{4} \sigma \pi a^4$$
+        The moment of inertia of the annulus is:
+        $$J_{\Delta}(S) = \frac{1}{4} \sigma \pi R^4 - \frac{1}{4} \sigma \pi a^4 = \frac{1}{4} \sigma \pi (R^4 - a^4)$$
+        Expressing this in terms of the total mass $M=\sigma \pi (R^2-a^2)$:
+        $$J_{\Delta}(S) = \frac{1}{4} \sigma \pi (R^2 - a^2)(R^2 + a^2) = \frac{1}{4} M (R^2 + a^2)$$
+
+    \textbf{Result if $a = R/2$:}
+        Substitute $a=R/2$:
+        $$J_{\Delta}(S) = \frac{1}{4} M \left(R^2 + \left(\frac{R}{2}\right)^2\right) = \frac{1}{4} M \left(R^2 + \frac{R^2}{4}\right) = \frac{1}{4} M \left(\frac{5R^2}{4}\right)$$
+        $$J_{\Delta}(S) = \frac{5}{16} M R^2$$
+\end{enumerate}
 
 \end{correctionbox}
 
-% ----------- EXERCISE 6 -------------
+% ----------- EXERCISE 6 -----------------
 \section{}
 
 A homogeneous solid $S$ consists of a hollow cylinder, of mass $M$, radius $R$, and height $h$, topped by a solid hemisphere of the same radius $R$ and mass $m$.
@@ -134,6 +273,52 @@ A homogeneous solid $S$ consists of a hollow cylinder, of mass $M$, radius $R$, 
 \end{enumerate}
 
 \begin{correctionbox}
+Let the origin $O$ be the center of the lower base of the cylinder. The $Z$-axis is the axis of symmetry.
+
+\begin{enumerate}
+    \item \textbf{Position of the Center of Mass ($G$):}
+        By symmetry, $x_G=y_G=0$. The hemisphere is on top of the cylinder.
+        \begin{itemize}
+            \item \textbf{Hollow Cylinder ($S_1$):} Mass $M$. The center of mass $G_1$ is at the geometric center (half the height). $z_{G_1} = h/2$.
+            \item \textbf{Solid Hemisphere ($S_2$):} Mass $m$. The hemisphere's base is at $z=h$. Its internal center of mass is $\frac{3R}{8}$ above its own base. $z_{G_2} = h + \frac{3R}{8}$.
+        \end{itemize}
+        The combined center of mass $G$ is:
+        $$z_G = \frac{M z_{G_1} + m z_{G_2}}{M+m} = \frac{M(h/2) + m(h+3R/8)}{M+m}$$
+        $$G = \left(0, 0, \frac{Mh/2 + m(h+3R/8)}{M+m}\right)$$
+
+    \item \textbf{Central Inertia Matrix $J(G_i, S_i)$ for Each Part:}
+        Since the $Z$-axis is an axis of revolution for both components, the central inertia matrix is diagonal in the $(X, Y, Z)$ frame, with $A=B$. The components of the matrix are denoted $J_i = \text{diag}(A_i, A_i, C_i)$ in the $(G_i, X, Y, Z)$ frame.
+        \begin{itemize}
+            \item \textbf{Hollow Cylinder ($S_1$):} Mass $M$, radius $R$, height $h$. $G_1$ is the center of mass.
+                For a thin cylindrical shell (hollow cylinder), mass is concentrated on the surface.
+                Moment about the $Z$-axis ($C_1$): $C_1 = M R^2$.
+                Moment about axes in the base plane ($A_1=B_1$): $A_1 = \frac{M}{12}(6R^2+h^2)$.
+                $$J(G_1, S_1) = \begin{pmatrix} \frac{M}{12}(6R^2+h^2) & 0 & 0 \\ 0 & \frac{M}{12}(6R^2+h^2) & 0 \\ 0 & 0 & M R^2 \end{pmatrix}$$
+            \item \textbf{Solid Hemisphere ($S_2$):} Mass $m$, radius $R$. $G_2$ is the center of mass.
+                Moment about $Z$-axis ($C_2$): $C_2 = \frac{2}{5} m R^2$ (from full sphere $J_O=\frac{2}{5}m_{\text{sphere}}R^2$, and $J_G$ for the hemisphere is about the axis perpendicular to the base).
+                Moment about axes in the base plane ($A_2=B_2$): $A_2 = \frac{1}{5} m R^2 + \frac{2}{5} m R^2 - m \left(\frac{3R}{8}\right)^2 = \frac{83}{320} m R^2$.
+                $$J(G_2, S_2) = \begin{pmatrix} \frac{83}{320} m R^2 & 0 & 0 \\ 0 & \frac{83}{320} m R^2 & 0 \\ 0 & 0 & \frac{2}{5} m R^2 \end{pmatrix}$$
+        \end{itemize}
+
+    \item \textbf{Principal Inertia Matrix $J(O, S)$ at $O$:}
+        Since the overall solid $S$ has a $Z$-axis of revolution, the final inertia matrix will be diagonal, $J(O, S) = \text{diag}(A_O, A_O, C_O)$.
+        We use Koenig's Theorem: $J(O, S) = \sum_i J(O, S_i)$.
+        $J(O, S_i) = J(G_i, S_i) + J(O, \{G_i\})$, where $J(O, \{G_i\})$ is the inertia matrix of a particle of mass $m_i$ at $G_i$.
+        The particle matrix $J(O, \{G_i\})$ has diagonal elements $m_i (y^2+z^2), m_i (x^2+z^2), m_i (x^2+y^2)$. Since $x=y=0$ for $G_i$, the off-diagonal terms are zero.
+        $J(O, \{G_i\}) = \text{diag}(m_i z_{G_i}^2, m_i z_{G_i}^2, 0)$
+        \begin{itemize}
+            \item \textbf{C-component (Z-axis):} $C_O = C_1 + C_2$. No shift term because $x_{G_i}=y_{G_i}=0$.
+                $C_O = M R^2 + \left[\frac{2}{5} m R^2 + 0\right] = \left(M + \frac{2}{5} m\right) R^2$
+            \item \textbf{A-component (X/Y-axis):} $A_O = A_1 + A_2$. Shift term $m_i z_{G_i}^2$.
+                $A_O = \left[\frac{M}{12}(6R^2+h^2) + M z_{G_1}^2\right] + \left[\frac{83}{320} m R^2 + m z_{G_2}^2\right]$
+                $A_O = \frac{M}{12}(6R^2+h^2) + M\left(\frac{h}{2}\right)^2 + \frac{83}{320} m R^2 + m\left(h+\frac{3R}{8}\right)^2$
+                $A_O = M\left(\frac{R^2}{2} + \frac{h^2}{12} + \frac{h^2}{4}\right) + \frac{83}{320} m R^2 + m\left(h+\frac{3R}{8}\right)^2$
+                $A_O = M\left(\frac{R^2}{2} + \frac{h^2}{3}\right) + \frac{83}{320} m R^2 + m\left(h+\frac{3R}{8}\right)^2$
+        \end{itemize}
+        $J(O, S) = \begin{pmatrix} A_O & 0 & 0 \\ 0 & A_O & 0 \\ 0 & 0 & C_O \end{pmatrix}$
+        where $C_O = \left(M + \frac{2}{5} m\right) R^2$ and $A_O = M\left(\frac{R^2}{2} + \frac{h^2}{3}\right) + \frac{83}{320} m R^2 + m\left(h+\frac{3R}{8}\right)^2$.
+
+\end{enumerate}
 
 \end{correctionbox}
 

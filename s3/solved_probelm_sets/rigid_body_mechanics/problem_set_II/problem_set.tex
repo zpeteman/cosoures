@@ -67,8 +67,58 @@ Determine the number of degrees of freedom of the following systems:
 \end{enumerate}
 
 \begin{correctionbox}
+The number of degrees of freedom (DOF) is calculated as: DOF = Total parameters - Constraints.
 
+\begin{enumerate}
+    \item \textbf{Two points on a plane with constant distance:}
+    
+    Each point has 2 DOF in the plane (4 total). The constraint of constant distance removes 1 DOF.
+    $$\text{DOF} = 4 - 1 = 3$$
+    
+    \item \textbf{Sphere free in space:}
+    
+    Position of center: 3 DOF. Rotation about center (any axis): Since a sphere is spherically symmetric, only 2 independent rotations are distinguishable (like latitude and longitude of a marked point). However, for a general rigid body sphere: 3 DOF.
+    $$\text{DOF} = 3 + 3 = 6$$
+    But if the sphere is perfectly homogeneous with no markings, rotations are indistinguishable: DOF = 3.
+    
+    \item \textbf{Sphere on a plane:}
+    
+    Position on plane: 2 DOF. Height fixed by contact: 0 additional DOF. Rotations: 3 DOF (roll, pitch, yaw). Constraint: contact with plane removes 1 DOF (vertical position).
+    $$\text{DOF} = 2 + 3 = 5$$
+    
+    \item \textbf{Sphere on a line:}
+    
+    Position along line: 1 DOF. Rotations: 3 DOF.
+    $$\text{DOF} = 1 + 3 = 4$$
+    
+    \item \textbf{Rod on a plane:}
+    
+    Position of center: 2 DOF. Orientation in plane: 1 DOF (angle).
+    $$\text{DOF} = 2 + 1 = 3$$
+    
+    \item \textbf{Rod with fixed end on a plane:}
+    
+    One end is fixed: 0 DOF for position. Orientation in plane: 1 DOF (angle of rotation about fixed point).
+    $$\text{DOF} = 1$$
+    
+    \item \textbf{Two articulated rods with one fixed end:}
+    
+    First rod: 1 DOF (angle from fixed point). Second rod: 1 DOF (angle relative to first rod at joint).
+    $$\text{DOF} = 2$$
+    
+    \item \textbf{Hoop on a plane:}
+    
+    Position of center: 2 DOF. Orientation (rotation about perpendicular axis): 1 DOF. Rotation about its own axis: 1 DOF.
+    $$\text{DOF} = 2 + 2 = 4$$
+    
+    \item \textbf{Hoop on a line:}
+    
+    Position along line: 1 DOF. Orientation (tilt): 2 DOF. Rotation about its axis: 1 DOF.
+    $$\text{DOF} = 1 + 3 = 4$$
+\end{enumerate}
 \end{correctionbox}
+
+\newpage
 
 % ----------- EXERCISE 2 -------------
 \section{}
@@ -78,9 +128,24 @@ Let $S$ be a perfect rigid body in motion with respect to a fixed reference fram
 Show that at a given instant, the projection of the velocities of the points of the solid on the axis $\vec{\Omega}$ is constant.
 
 \begin{correctionbox}
+Consider two arbitrary points $A$ and $B$ of the rigid body $S$. The velocity relationship for a rigid body is:
+$$\vec{V}(B/T) = \vec{V}(A/T) + \vec{\Omega} \times \overrightarrow{AB}$$
 
+Taking the projection on the axis of $\vec{\Omega}$ (scalar product with $\vec{\Omega}$):
+$$\vec{V}(B/T) \cdot \vec{\Omega} = \vec{V}(A/T) \cdot \vec{\Omega} + (\vec{\Omega} \times \overrightarrow{AB}) \cdot \vec{\Omega}$$
+
+The triple scalar product $(\vec{\Omega} \times \overrightarrow{AB}) \cdot \vec{\Omega}$ is zero because $\vec{\Omega} \times \overrightarrow{AB}$ is perpendicular to $\vec{\Omega}$:
+$$(\vec{\Omega} \times \overrightarrow{AB}) \cdot \vec{\Omega} = 0$$
+
+Therefore:
+$$\vec{V}(B/T) \cdot \vec{\Omega} = \vec{V}(A/T) \cdot \vec{\Omega}$$
+
+This shows that the projection of the velocity of any point $B$ on the axis $\vec{\Omega}$ equals the projection of the velocity of point $A$ on the same axis. Since $A$ and $B$ are arbitrary, this projection is constant for all points of the solid at a given instant.
+
+\textbf{Physical interpretation:} All points of the solid have the same velocity component along the instantaneous rotation axis.
 \end{correctionbox}
 
+\newpage
 % ----------- EXERCISE 3 -------------
 \section{}
 
@@ -92,9 +157,32 @@ A rectangular plate $ABCD$ moves with respect to a direct orthonormal frame $R(O
 \end{enumerate}
 
 \begin{correctionbox}
-
+\begin{enumerate}
+    \item \textbf{Number of degrees of freedom:}
+    
+    A rigid body in 3D space normally has 6 DOF (3 translations + 3 rotations).
+    
+    Constraints:
+    \begin{itemize}
+        \item Point $A$ is fixed at $O$: removes 3 DOF (translation blocked)
+        \item Side $AB$ remains in plane $XOY$: This constrains the orientation. The plate can only rotate about point $A$ such that $AB$ stays in $XOY$. This removes 2 rotational DOF (no rotation about axes in the $XOY$ plane that would lift $AB$ out).
+    \end{itemize}
+    
+    The plate can only rotate about an axis perpendicular to the $XOY$ plane, i.e., about the $Z$ axis.
+    $$\text{DOF} = 6 - 3 - 2 = 1$$
+    
+    \item \textbf{Rotation vector:}
+    
+    Since the plate can only rotate about the $Z$ axis passing through $O$ (with $A$ at $O$ and $AB$ in $XOY$), the instantaneous rotation vector is:
+    $$\vec{\Omega} = \dot{\theta} \vec{k}$$
+    where $\theta$ is the angle of rotation about the $Z$ axis and $\vec{k}$ is the unit vector along $Z$.
+    
+    Alternatively, if we denote the angular velocity as $\omega$:
+    $$\vec{\Omega} = \omega \vec{k}$$
+\end{enumerate}
 \end{correctionbox}
 
+\newpage
 % ----------- EXERCISE 4 -------------
 \section{}
 
@@ -112,9 +200,91 @@ Let $M$ be a point of the solid $S$. We set $(\vec{i}_1, \overrightarrow{CM}) = 
 \end{enumerate}
 
 \begin{correctionbox}
-
+\begin{enumerate}
+    \item \textbf{Degrees of freedom:}
+    
+    The hoop moves in plane $OX_1Y_1$ and remains in contact with axis $OX_1$. 
+    \begin{itemize}
+        \item Position of center $C$: $x$ (along $X_1$) and fixed at $y_C = r$ (above $X_1$), so 1 DOF
+        \item Rotation in plane: angle $\theta$, so 1 DOF
+    \end{itemize}
+    Also, frame $R_1$ moves relative to $T_1$: position $y$ of $O$ relative to $O_1$, so 1 DOF.
+    $$\text{Total DOF} = 3 \text{ (positions: } x, y, \theta)$$
+    
+    \item \textbf{Rotation vector of hoop with respect to $T_1$:}
+    
+    Using the composition of angular velocities:
+    $$\vec{\Omega}(S/T_1) = \vec{\Omega}(S/R_1) + \vec{\Omega}(R_1/T_1)$$
+    
+    Since the hoop rotates in the $X_1Y_1$ plane:
+    $$\vec{\Omega}(S/R_1) = \dot{\theta} \vec{k}_1$$
+    
+    Frame $R_1$ only translates relative to $T_1$ (no rotation):
+    $$\vec{\Omega}(R_1/T_1) = \vec{0}$$
+    
+    Therefore:
+    $$\vec{\Omega}(S/T_1) = \dot{\theta} \vec{k}_1$$
+    
+    \item \textbf{Pivoting with respect to $R_1$:}
+    
+    Pivoting means rotation about an axis normal to the plane of motion. Since the hoop remains in plane $OX_1Y_1$ and $\vec{\Omega}(S/R_1) = \dot{\theta} \vec{k}_1$ is perpendicular to this plane, there is pivoting about the $Z_1$ axis.
+    
+    \textbf{Yes, there is pivoting.}
+    
+    \item \textbf{Sliding velocity with respect to axis $OX_1$:}
+    
+    The sliding velocity is the velocity of the contact point $I$ along the axis $OX_1$ in frame $R_1$:
+    $$v_{\text{slide}} = \dot{x}$$
+    
+    Since $\overrightarrow{OI} = x\vec{i}_1$ and $O$ is fixed in $R_1$:
+    $$\vec{V}(I/R_1) = \dot{x} \vec{i}_1 + \vec{\Omega}(S/R_1) \times \overrightarrow{CI}$$
+    
+    With $\overrightarrow{CI} = -r\vec{j}_1$ (from center to contact point):
+    $$\vec{\Omega}(S/R_1) \times \overrightarrow{CI} = \dot{\theta}\vec{k}_1 \times (-r\vec{j}_1) = r\dot{\theta}\vec{i}_1$$
+    
+    For rolling without slipping: $\vec{V}(I/R_1) = \vec{0}$, giving $\dot{x} + r\dot{\theta} = 0$, so $\dot{x} = -r\dot{\theta}$.
+    
+    The sliding velocity is:
+    $$v_{\text{slide}} = \dot{x}$$
+    
+    \item \textbf{Velocities $\vec{V}(I/R_1)$ and $\vec{V}(I/S)$:}
+    
+    Point $I$ as part of the solid $S$:
+    $$\vec{V}(I/S) = \vec{0}$$ (by definition, $I$ is at rest in $S$)
+    
+    Actually, $I$ is the instantaneous contact point, so:
+    $$\vec{V}(I/S) = \vec{V}(C/R_1) + \vec{\Omega}(S/R_1) \times \overrightarrow{CI}$$
+    
+    With $\vec{V}(C/R_1) = \dot{x}\vec{i}_1$ and $\overrightarrow{CI} = -r\vec{j}_1$:
+    $$\vec{V}(I/S) = \dot{x}\vec{i}_1 + \dot{\theta}\vec{k}_1 \times (-r\vec{j}_1) = \dot{x}\vec{i}_1 + r\dot{\theta}\vec{i}_1 = (\dot{x} + r\dot{\theta})\vec{i}_1$$
+    
+    The sliding velocity is the component of $\vec{V}(I/R_1)$ along $\vec{i}_1$:
+    $$v_{\text{slide}} = \dot{x} + r\dot{\theta}$$
+    
+    \item \textbf{Acceleration $\vec{\gamma}(M/T_1)$:}
+    
+    Using the general formula:
+    $$\vec{\gamma}(M/T_1) = \vec{\gamma}(C/T_1) + \frac{d\vec{\Omega}}{dt}(S/T_1) \times \overrightarrow{CM} + \vec{\Omega}(S/T_1) \times (\vec{\Omega}(S/T_1) \times \overrightarrow{CM})$$
+    
+    With $\vec{\gamma}(C/T_1) = \ddot{x}\vec{i}_1 + \ddot{y}\vec{j}_1$, $\vec{\Omega}(S/T_1) = \dot{\theta}\vec{k}_1$, and $\overrightarrow{CM} = r\vec{i}$ (where $\vec{i}$ is the radial direction to $M$):
+    
+    In the $R_1$ basis: $\overrightarrow{CM} = r\cos\theta\vec{i}_1 + r\sin\theta\vec{j}_1$
+    
+    The centripetal acceleration term:
+    $$\vec{\Omega} \times (\vec{\Omega} \times \overrightarrow{CM}) = -\dot{\theta}^2 r(\cos\theta\vec{i}_1 + \sin\theta\vec{j}_1)$$
+    
+    Therefore:
+    $$\vec{\gamma}(M/T_1) = (\ddot{x} - r\dot{\theta}^2\cos\theta)\vec{i}_1 + (\ddot{y} - r\dot{\theta}^2\sin\theta)\vec{j}_1 + r\ddot{\theta}(-\sin\theta\vec{i}_1 + \cos\theta\vec{j}_1)$$
+    
+    For point $I$ (at $\theta = -\pi/2$, i.e., bottom of hoop):
+    $$\vec{\gamma}_S(I/T_1) = (\ddot{x} + r\ddot{\theta})\vec{i}_1 + (\ddot{y} + r\dot{\theta}^2)\vec{j}_1$$
+    
+    For point $J$ (at $\theta = \pi/2$, top of hoop):
+    $$\vec{\gamma}_S(J/T_1) = (\ddot{x} - r\ddot{\theta})\vec{i}_1 + (\ddot{y} - r\dot{\theta}^2)\vec{j}_1$$
+\end{enumerate}
 \end{correctionbox}
 
+\newpage
 % ----------- EXERCISE 5 -------------
 \section{}
 
@@ -136,9 +306,91 @@ Consider a homogeneous sphere $S(G, a)$, of center $G$, mass $m$, and radius $a$
 \end{enumerate}
 
 \begin{correctionbox}
+\textbf{1. Euler angles}
 
+\begin{enumerate}
+    \item[a)] \textbf{Euler frames:}
+    
+    The Euler angles $(\psi, \theta, \varphi)$ define the orientation:
+    \begin{itemize}
+        \item $R_1$: obtained from $R_0$ by rotation $\psi$ about $Z_0$ (precession)
+        \item $R_2$: obtained from $R_1$ by rotation $\theta$ about the line of nodes (nutation)
+        \item $R_S$: obtained from $R_2$ by rotation $\varphi$ about $Z$ (spin)
+    \end{itemize}
+    
+    Angular variables: $\psi$ (precession), $\theta$ (nutation), $\varphi$ (spin)
+    
+    \item[b)] \textbf{Parameterization:}
+    
+    The sphere requires 6 parameters:
+    \begin{itemize}
+        \item Position of center $G$: $(x, y, z)$ in $R_0$
+        \item Orientation: Euler angles $(\psi, \theta, \varphi)$
+    \end{itemize}
+    
+    Since the sphere rolls on plane $(O, X_0, Y_0)$: $z = a$ (constant).
+    
+    Parameters: $(x, y, \psi, \theta, \varphi)$ with constraint $z = a$.
+    
+    \item[c)] \textbf{Instantaneous rotation vector:}
+    
+    Using Euler angles:
+    $$\vec{\Omega}(S/R_0) = \dot{\psi}\vec{k}_0 + \dot{\theta}\vec{u} + \dot{\varphi}\vec{k}$$
+    where $\vec{u}$ is the line of nodes and $\vec{k}$ is the axis of $R_S$.
+    
+    In the $R_0$ frame:
+    $$\vec{\Omega}(S/R_0) = \dot{\psi}\vec{k}_0 + \dot{\theta}\vec{u} + \dot{\varphi}\vec{k}$$
+\end{enumerate}
+
+\textbf{2. Kinematics of contact point}
+
+\begin{enumerate}
+    \item[a)] \textbf{Non-pivoting condition:}
+    
+    Non-pivoting means no rotation about the vertical axis at the contact point. The vertical component of angular velocity must be zero:
+    $$\vec{\Omega}(S/R_0) \cdot \vec{k}_0 = 0$$
+    
+    This gives: $\dot{\psi} + \dot{\varphi}\cos\theta = 0$
+    
+    \item[b)] \textbf{Non-rolling condition on $(O, X_0)$:}
+    
+    Rolling on axis $X_0$ means the sphere moves along $X_0$ without slipping perpendicular to it. The velocity of contact point $I$ must be along $X_0$:
+    $$\vec{V}(I/R_0) \cdot \vec{j}_0 = 0$$
+    
+    With $\vec{V}(I/R_0) = \vec{V}(G/R_0) + \vec{\Omega}(S/R_0) \times \overrightarrow{GI}$:
+    $$\dot{y} + [\vec{\Omega}(S/R_0) \times (-a\vec{k}_0)]_y = 0$$
+    
+    This yields: $\dot{y} - a\omega_x = 0$ where $\omega_x$ is the $X_0$ component of $\vec{\Omega}$.
+    
+    One equation is \textbf{semi-holonomic} if it involves velocities but cannot be integrated to give a position constraint (e.g., $\dot{y} = a\dot{\varphi}\sin\psi$).
+    
+    \item[c)] \textbf{Velocities:}
+    
+    \begin{itemize}
+        \item Point $I \in S$ (material point of sphere):
+        $$\vec{V}(I \in S/R_0) = \vec{V}(G/R_0) + \vec{\Omega}(S/R_0) \times \overrightarrow{GI}$$
+        $$= \dot{x}\vec{i}_0 + \dot{y}\vec{j}_0 + \vec{\Omega} \times (-a\vec{k}_0)$$
+        
+        \item Point $I \in$ plane (material point of fixed plane):
+        $$\vec{V}(I \in \text{plane}/R_0) = \vec{0}$$
+        
+        \item Geometric point $I \in E$ (space point):
+        $$\vec{V}(I \in E/R_0) = \vec{V}(G/R_0) = \dot{x}\vec{i}_0 + \dot{y}\vec{j}_0$$
+    \end{itemize}
+    
+    \item[d)] \textbf{No-slip condition and DOF:}
+    
+    No-slip means $\vec{V}(I \in S/R_0) = \vec{V}(I \in \text{plane}/R_0) = \vec{0}$:
+    $$\dot{x}\vec{i}_0 + \dot{y}\vec{j}_0 + \vec{\Omega}(S/R_0) \times (-a\vec{k}_0) = \vec{0}$$
+    
+    This gives 2 constraints (in $X_0$ and $Y_0$ directions). Combined with rolling on $X_0$ (1 additional constraint):
+    
+    Total parameters: 5 (since $z = a$). Constraints: 2 (no-slip).
+    $$\text{DOF} = 5 - 2 = 3$$
+\end{enumerate}
 \end{correctionbox}
 
+\newpage
 % ----------- EXERCISE 6 -------------
 \section{}
 
@@ -151,7 +403,80 @@ A horizontal disk $S_2$, of center $O_1$ and radius $R$, is rotated about the ax
 \end{enumerate}
 
 \begin{correctionbox}
-
+\begin{enumerate}
+    \item \textbf{Rotation velocity vectors:}
+    
+    \begin{itemize}
+        \item $\vec{\Omega}(S_1/AC)$: Disk $S_1$ rotates about rod $AC$ with angular velocity $\Omega$. If $\vec{u}_{AC}$ is the unit vector along $AC$:
+        $$\vec{\Omega}(S_1/AC) = \Omega \vec{u}_{AC}$$
+        
+        \item $\vec{\Omega}(AC/S_2)$: Rod $AC$ rotates about axis $AZ_1$ with angular velocity $\omega_0$ relative to $S_2$:
+        $$\vec{\Omega}(AC/S_2) = \omega_0 \vec{k}_1$$
+        
+        \item $\vec{\Omega}(S_2/T_1)$: Disk $S_2$ rotates about $O_1Z_1$ with angular velocity $\omega$:
+        $$\vec{\Omega}(S_2/T_1) = \omega \vec{k}_1$$
+    \end{itemize}
+    
+    \item \textbf{Relation between angular velocities:}
+    
+    Using composition of angular velocities:
+    $\vec{\Omega}(S_1/T_1) = \vec{\Omega}(S_1/AC) + \vec{\Omega}(AC/S_2) + \vec{\Omega}(S_2/T_1)$
+    $= \Omega \vec{u}_{AC} + \omega_0 \vec{k}_1 + \omega \vec{k}_1 = \Omega \vec{u}_{AC} + (\omega_0 + \omega) \vec{k}_1$
+    
+    At the contact point $I$ between $S_1$ and $S_2$, the rolling without slipping condition requires:
+    $\vec{V}(I \in S_1/T_1) = \vec{V}(I \in S_2/T_1)$
+    
+    For disk $S_2$, point $I$ is at radius $R$ from $O_1$:
+    $\vec{V}(I \in S_2/T_1) = \vec{\Omega}(S_2/T_1) \times \overrightarrow{O_1I} = \omega \vec{k}_1 \times R\vec{u}_r$
+    where $\vec{u}_r$ is the radial direction from $O_1$ to $I$.
+    
+    For disk $S_1$, point $I$ is at the contact (on the rim):
+    $\vec{V}(I \in S_1/T_1) = \vec{V}(C/T_1) + \vec{\Omega}(S_1/T_1) \times \overrightarrow{CI}$
+    
+    The center $C$ of $S_1$ moves in a circle of radius $R$ around $O_1$:
+    $\vec{V}(C/T_1) = (\omega_0 + \omega) \vec{k}_1 \times R\vec{u}_r$
+    
+    At the contact point, $\overrightarrow{CI}$ is perpendicular to $AC$ with magnitude $r$. The no-slip condition gives:
+    $\vec{V}(I \in S_1/T_1) = \vec{V}(I \in S_2/T_1)$
+    
+    Expanding and comparing tangential components:
+    $(\omega_0 + \omega)R - \Omega r = \omega R$
+    
+    Simplifying:
+    $\omega_0 R = \Omega r$
+    
+    Therefore:
+    $\boxed{\Omega = \frac{\omega_0 R}{r}}$
+    
+    Or including the motion of $S_2$:
+    $\boxed{\Omega = \frac{(\omega_0 + \omega)R - \omega R}{r} = \frac{\omega_0 R}{r}}$
+    
+    \item \textbf{Velocity of point $J$:}
+    
+    Point $J$ is diametrically opposite to $I$ on disk $S_1$. Thus $\overrightarrow{CJ} = -\overrightarrow{CI}$.
+    
+    The velocity of $J$ is:
+    $\vec{V}(J/T_1) = \vec{V}(C/T_1) + \vec{\Omega}(S_1/T_1) \times \overrightarrow{CJ}$
+    $= (\omega_0 + \omega) \vec{k}_1 \times R\vec{u}_r + [\Omega \vec{u}_{AC} + (\omega_0 + \omega) \vec{k}_1] \times (-\overrightarrow{CI})$
+    
+    Since $\vec{\Omega}(S_1/T_1) \times \overrightarrow{CI}$ gives the velocity contribution at $I$, and we have:
+    $\vec{\Omega}(S_1/T_1) \times \overrightarrow{CJ} = -\vec{\Omega}(S_1/T_1) \times \overrightarrow{CI}$
+    
+    From the contact point analysis:
+    $\vec{V}(I/T_1) = \vec{V}(C/T_1) + \vec{\Omega}(S_1/T_1) \times \overrightarrow{CI} = \omega R \vec{u}_{\theta}$
+    
+    Therefore:
+    $\vec{V}(J/T_1) = \vec{V}(C/T_1) - [\vec{V}(I/T_1) - \vec{V}(C/T_1)]$
+    $= 2\vec{V}(C/T_1) - \vec{V}(I/T_1)$
+    $= 2(\omega_0 + \omega)R\vec{u}_{\theta} - \omega R\vec{u}_{\theta}$
+    $= [(2\omega_0 + 2\omega - \omega)R]\vec{u}_{\theta}$
+    $\boxed{\vec{V}(J/T_1) = (2\omega_0 + \omega)R\vec{u}_{\theta}}$
+    
+    \textbf{If disk $S_2$ is stationary} ($\omega = 0$):
+    $\boxed{\vec{V}(J/T_1) = 2\omega_0 R\vec{u}_{\theta}}$
+    
+    The point $J$ moves with twice the velocity of the center $C$, which is characteristic of rolling motion.
+\end{enumerate}
 \end{correctionbox}
 
 \end{document}
