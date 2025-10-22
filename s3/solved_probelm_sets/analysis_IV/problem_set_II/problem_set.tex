@@ -1,0 +1,156 @@
+\documentclass[12pt]{article}                                                                                                           
+\usepackage[utf8]{inputenc}                                                                                                             
+\usepackage[T1]{fontenc}                                                                                                                
+\usepackage{amsmath, amssymb}                                                                                                           
+\usepackage{geometry}                                                                                                                   
+\usepackage{xcolor}                                                                                                                     
+\usepackage{lipsum}                                                                                                                     
+\usepackage{titlesec}                                                                                                                   
+\usepackage{fancyhdr}                                                                                                                   
+\usepackage[most]{tcolorbox}                                                                                                                  
+\usepackage{graphicx}                                                                                                                   
+\usepackage{float}                                                                                      
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+\usetikzlibrary{arrows.meta, decorations.markings}                                                                                      
+                                                                                                                                        
+\geometry{a4paper, margin=2.5cm}                                                                                                        
+\pagestyle{fancy}                                                                                                                       
+\fancyhf{}                                                                                                                              
+\rhead{Problem Set II}                                                                                                                   
+\lhead{Analysis IV}                                                                                                                     
+\cfoot{\thepage}                                                                                                                        
+                                                                                                                                        
+% Fancy titles                                                                                                                          
+\titleformat{\section}{\normalfont\Large\bfseries}{Exercise \thesection:}{1em}{}                                                        
+\titleformat{\subsection}{\normalfont\bfseries}{Correction:}{1em}{}                                                                     
+                                                                                                                                        
+% Custom box for correction with breakable option
+\newtcolorbox{correctionbox}{                                                                                                           
+  colback=gray!5,                                                                                                                       
+  colframe=black,                                                                                                                       
+  fonttitle=\bfseries,                                                                                                                  
+  title=Correction,                                                                                                                     
+  before skip=10pt,                                                                                                                     
+  after skip=10pt,
+  breakable,
+  enhanced
+}                                                                                                                                       
+                                                                                                                                        
+% Fix headheight warning
+\setlength{\headheight}{14.49998pt}
+
+\begin{document}
+
+\begin{center}
+\Large\textbf{Ibn Tofail University} \\[1em]
+\large\textit{Analysis IV} \\[2em]
+\large\textit{Problem Set 2} \\[0.5em]
+\large\textit{2025-2026}
+\end{center}
+
+\vspace{1cm}
+
+% ----------- EXERCISE 1 -------------
+\section{}
+Study the nature of convergence of each of the following sequences of functions:
+
+\begin{enumerate}
+    \item $f_n(x) = \frac{1}{1+n(nx-1)^2}$, for $x \in I = [0, 1]$.
+    
+    \item $f_n(x) = \begin{cases}
+        (n-1)x & \text{if } x \in \left[0, \frac{1}{n}\right], \\
+        1-x & \text{if } x \in \left[\frac{1}{n}, 1\right].
+    \end{cases}$
+    
+    \item $f_n(x) = e^{-nx}\cos x^2$, for $x > 0$.
+\end{enumerate}
+
+\begin{correctionbox}
+
+\end{correctionbox}
+
+% ----------- EXERCISE 2 -------------
+\section{}
+Consider the sequence of functions $f_n : [-1, 1] \to \mathbb{R}$, defined by
+$$x \mapsto f_n(x) = e^{-nx^2}\sin nx + \sqrt{1-x^2}, \quad n \in \mathbb{N}.$$
+
+\begin{enumerate}
+    \item Show that the sequence of functions $(f_n)$ converges pointwise on $I = [-1, 1]$ to a function $f$, which you will determine.
+    
+    \item Show that $(f_n)$ converges uniformly to $f$ on $[\omega, 1]$, where $\omega$ is a positive constant.
+    
+    \item Show that $(f_n)$ does not converge uniformly to $f$ on $[0, 1]$.
+\end{enumerate}
+
+\begin{correctionbox}
+
+\end{correctionbox}
+
+% ----------- EXERCISE 3 -------------
+\section{}
+Determine the domain of convergence $D$ of each series:
+
+\begin{enumerate}
+    \item $\sum_{n>0} \frac{\cos nx}{n!}$.
+    
+    \item $\sum_{n>1} \frac{1}{(z-n)^2}$.
+    
+    \item $\sum_{n>1} \left|\sin\frac{x}{2^n} - \tan\frac{x}{2^n}\right|^{\frac{1}{2}}$.
+    
+    \item $\sum_{n>1} \frac{n!(x-3)^{2n}}{n^{n+1}}$.
+\end{enumerate}
+
+\begin{correctionbox}
+
+\end{correctionbox}
+
+% ----------- EXERCISE 4 -------------
+\section{}
+Consider the following series of functions: 
+$$g_n(x) = \frac{\sin x}{x^2+1} + \frac{\sin 2x}{x^2+2^2} + \ldots + \frac{\sin nx}{x^2+n^2} + \ldots$$
+
+\begin{enumerate}
+    \item Determine the domain of convergence $D$.
+    
+    \item Study the uniform convergence on $D$.
+\end{enumerate}
+
+\begin{correctionbox}
+
+\end{correctionbox}
+
+% ----------- EXERCISE 5 -------------
+\section{}
+Consider the series of functions with general term: 
+$$f_n(x) = \frac{nx}{1+n^2x^2} - \frac{nx+x}{1+n^2x^2+2n^2x+x^2}$$
+
+\begin{enumerate}
+    \item Determine the domain of convergence $D$.
+    
+    \item Calculate the sum of the series.
+    
+    \item What is the nature of convergence of this series on $D$?
+    
+    \item Determine the nature of convergence of this series on $I = ]0, +\infty[$ and $I = [a, +\infty[$ with $a > 0$.
+\end{enumerate}
+
+\begin{correctionbox}
+
+\end{correctionbox}
+
+% ----------- EXERCISE 6 -------------
+\section{}
+Consider the series of functions with general term: $f_n(x) = (\sin x)^\alpha (\cos x)^n$.
+
+\begin{enumerate}
+    \item Determine the sum and domain of convergence of this series.
+    
+    \item Show that we have uniform convergence on any compact $[a, b]$ included in $\left]0, \frac{\pi}{2}\right[$.
+\end{enumerate}
+
+\begin{correctionbox}
+
+\end{correctionbox}
+
+\end{document}
