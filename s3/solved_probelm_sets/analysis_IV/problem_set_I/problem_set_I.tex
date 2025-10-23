@@ -108,9 +108,13 @@ Study the convergence of the following series:
 
     \item \textbf{Serie VI:} We study the convergence of the series $\sum_{n=0}^{\infty} \ln\left(1 + e^{-n}\right)$.
     \begin{enumerate}
-        \item the general term tends to 2 as $n \to \infty$. 
+        \item the general term tends to 0 as $n \to \infty$.
+        \item For large $n$, we approximate:
+    \[\ln\left(1 + e^{-n}\right) \approx e^{-n}\]
+        \item We compare with the geometric series $\sum e^{-n}$, which converges since its ratio $|r| = |e^{-1}| < 1$.
+    \[L = \lim_{\infty} \frac{\ln\left(1 + e^{-n}\right)}{e^{-n}} = 1 \neq 0, \infty \]
     \end{enumerate}
-    \[\boxed{\text{The series diverges.}}\]
+    \[\boxed{\text{The series converge.}}\]
 
     \item \textbf{Serie VII:} We study the convergence of the series $\sum_{n=1}^{\infty} \left( \frac{n}{n + 1} \right)^{n^2}$.
     \begin{enumerate}
