@@ -1,42 +1,43 @@
-\documentclass[12pt]{article}                                                                                                           
-\usepackage[utf8]{inputenc}                                                                                                             
-\usepackage[T1]{fontenc}                                                                                                                
-\usepackage{amsmath, amssymb}                                                                                                           
-\usepackage{geometry}                                                                                                                   
-\usepackage{xcolor}                                                                                                                     
-\usepackage{lipsum}                                                                                                                     
-\usepackage{titlesec}                                                                                                                   
-\usepackage{fancyhdr}                                                                                                                   
-\usepackage[most]{tcolorbox}                                                                                                                  
-\usepackage{graphicx}                                                                                                                   
-\usepackage{float}                                                                                      
+\documentclass[12pt]{article}                                                                                                    
+\usepackage[utf8]{inputenc}                                                                                             
+\usepackage[T1]{fontenc}                                                                                    
+\usepackage{amsmath, amssymb}                                                                       
+\usepackage{geometry}                                                                
+\usepackage{xcolor}                                                 
+\usepackage{lipsum}                                
+\usepackage{titlesec}               
+\usepackage{fancyhdr}                                                                                                    
+\usepackage[most]{tcolorbox}                                                                                     
+\usepackage{graphicx}                                                                       
+\usepackage{float}                                                        
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric, arrows.meta}
-\usetikzlibrary{arrows.meta, decorations.markings}                                                                                      
-                                                                                                                                        
-\geometry{a4paper, margin=2.5cm}                                                                                                        
-\pagestyle{fancy}                                                                                                                       
-\fancyhf{}                                                                                                                              
-\rhead{Problem Set II}                                                                                                                   
-\lhead{Analysis IV}                                                                                                                     
-\cfoot{\thepage}                                                                                                                        
-                                                                                                                                        
-% Fancy titles                                                                                                                          
+\usetikzlibrary{arrows.meta, decorations.markings}                                                                    
+                                                        
+\geometry{a4paper, margin=2.5cm}                                             
+\pagestyle{fancy}                                         
+                                                                                
+\fancyhf{}                      
+\rhead{Problem Set II}                                                                                              
+\lhead{Analysis IV}                                                                              
+\cfoot{\thepage}                                                             
+% Fancy titles   
+                    
 \titleformat{\section}{\normalfont\Large\bfseries}{Exercise \thesection:}{1em}{}                                                        
-\titleformat{\subsection}{\normalfont\bfseries}{Correction:}{1em}{}                                                                     
-                                                                                                                                        
+\titleformat{\subsection}{\normalfont\bfseries}{Correction:}{1em}{}                        
 % Custom box for correction with breakable option
-\newtcolorbox{correctionbox}{                                                                                                           
-  colback=gray!5,                                                                                                                       
-  colframe=black,                                                                                                                       
-  fonttitle=\bfseries,                                                                                                                  
-  title=Correction,                                                                                                                     
-  before skip=10pt,                                                                                                                     
+\newtcolorbox{correctionbox}{            
+  colback=gray!5,   
+  colframe=black,                                                                                  
+  fonttitle=\bfseries,                                                             
+  title=Correction,                                             
+  before skip=10pt,                         
   after skip=10pt,
   breakable,
   enhanced
-}                                                                                                                                       
-                                                                                                                                        
+} 
+                                    
+                                                                        
 % Fix headheight warning
 \setlength{\headheight}{14.49998pt}
 
@@ -56,17 +57,74 @@ Study the nature of convergence of each of the following sequences of functions:
 
 \begin{enumerate}
     \item $f_n(x) = \frac{1}{1+n(nx-1)^2}$, for $x \in I = [0, 1]$.
-    
     \item $f_n(x) = \begin{cases}
-        (n-1)x & \text{if } x \in \left[0, \frac{1}{n}\right], \\
-        1-x & \text{if } x \in \left[\frac{1}{n}, 1\right].
-    \end{cases}$
-    
+            (n-1)x & \text{if } x \in \left[0, \frac{1}{n}\right], \\
+            1-x & \text{if } x \in \left[\frac{1}{n}, 1\right].
+        \end{cases}$
     \item $f_n(x) = e^{-nx}\cos x^2$, for $x > 0$.
 \end{enumerate}
 
 \begin{correctionbox}
+\begin{enumerate}
+    \item \textbf{Pointwise Convergence on $I=[0, 1]$}:
+    \begin{itemize}
+        \item For $x=0$, $f_n(0) = \frac{1}{1+n(n\cdot 0-1)^2} = \frac{1}{1+n}$. Thus, $\lim_{n \to +\infty} f_n(0) = 0$.
+        \item For $x > 0$ (and $x \in [0, 1]$), the term $n(nx-1)^2$ tends to $+\infty$ as $n \to +\infty$.
+        \begin{itemize}
+            \item If $x \neq \frac{1}{n}$, then $f_n(x) = \frac{1}{1+n(nx-1)^2} \to 0$ as $n \to +\infty$.
+            \item If $x = \frac{1}{n}$ (for large $n$), $f_n(\frac{1}{n}) = \frac{1}{1+n(\frac{n}{n}-1)^2} = 1$. This specific point $\frac{1}{n}$ approaches $0$, but the limit $x$ is fixed, so $f_n(x) \to 0$ for a fixed $x>0$.
+        \end{itemize}
+        The sequence $(f_n)$ converges pointwise to the function $f(x) = 0$ on $I=[0, 1]$.
+    \end{itemize}
+    \textbf{Uniform Convergence on $I=[0, 1]$}:
+    We consider the norm $|f_n - f| = \sup_{x \in [0, 1]} |f_n(x) - 0| = \sup_{x \in [0, 1]} \frac{1}{1+n(nx-1)^2}$.
+    The maximum value of $f_n(x)$ occurs when the denominator is minimized, i.e., when $(nx-1)^2 = 0$, or $x = \frac{1}{n}$.
+    Since $n \geq 1$, $\frac{1}{n} \in [0, 1]$, so $x = \frac{1}{n}$ is in the interval.
+    $$ \sup_{x \in [0, 1]} f_n(x) = f_n\left(\frac{1}{n}\right) = \frac{1}{1+n(n\frac{1}{n}-1)^2} = \frac{1}{1+0} = 1.$$
+    Since $\lim_{n \to +\infty} \sup_{x \in [0, 1]} |f_n(x) - f(x)| = \lim_{n \to +\infty} 1 = 1 \neq 0$, the convergence is \textbf{not uniform} on $I=[0, 1]$.
+    
+    ---
+    
+    \item \textbf{Pointwise Convergence on $I=[0, 1]$}:
+    We determine the limit function $f(x) = \lim_{n \to +\infty} f_n(x)$.
+    \begin{itemize}
+        \item For $x=0$, $f_n(0) = (n-1)\cdot 0 = 0$. Thus, $\lim_{n \to +\infty} f_n(0) = 0$.
+        \item For $x \in (0, 1]$, for $n$ large enough such that $\frac{1}{n} < x$ (i.e., $n > \frac{1}{x}$), $f_n(x) = 1-x$.
+        Thus, $\lim_{n \to +\infty} f_n(x) = 1-x$.
+    \end{itemize}
+    The sequence $(f_n)$ converges pointwise to $f(x) = 1-x$ on $I=[0, 1]$.
+    \textbf{Uniform Convergence on $I=[0, 1]$}:
+    The functions $f_n(x)$ are all continuous on $I=[0, 1]$.
+    However, the limit function is $f(x) = 1-x$, which is continuous on $I=[0, 1]$. The Continuity Criterion does not help determine the convergence type in this case.
+    The difference $|f_n(x) - f(x)|$ is:
+    $$ |f_n(x) - f(x)| = \begin{cases}
+        |(n-1)x - (1-x)| = |nx - 1| & \text{if } x \in \left[0, \frac{1}{n}\right], \\
+        |1-x - (1-x)| = 0 & \text{if } x \in \left[\frac{1}{n}, 1\right].
+    \end{cases} $$
+    We compute the norm: $|f_n - f| = \sup_{x \in [0, 1]} |f_n(x) - f(x)| = \sup_{x \in [0, \frac{1}{n}]} |nx - 1|$.
+    The function $g_n(x) = |nx - 1|$ is $\begin{cases} 1-nx & \text{if } x \in [0, 1/n] \end{cases}$.
+    Since $g_n(x)$ is decreasing on $[0, 1/n]$, the maximum occurs at $x=0$:
+    $$ \sup_{x \in [0, 1]} |f_n(x) - f(x)| = g_n(0) = |n\cdot 0 - 1| = 1. $$
+    Since $\lim_{n \to +\infty} \sup_{x \in [0, 1]} |f_n(x) - f(x)| = \lim_{n \to +\infty} 1 = 1 \neq 0$, the convergence is \textbf{not uniform} on $I=[0, 1]$.
 
+    ---
+    
+    \item \textbf{Pointwise Convergence on $I=(0, +\infty)$}:
+    For any fixed $x > 0$, we consider the limit $f(x) = \lim_{n \to +\infty} f_n(x) = \lim_{n \to +\infty} e^{-nx}\cos x^2$.
+    Since $x > 0$, $\lim_{n \to +\infty} e^{-nx} = 0$. Since $\cos x^2$ is bounded ($|\cos x^2| \leq 1$), the product converges to $0$.
+    $$ \lim_{n \to +\infty} f_n(x) = 0 \cdot \cos x^2 = 0.$$
+    The sequence $(f_n)$ converges pointwise to the function $f(x) = 0$ on $I=(0, +\infty)$.
+    \textbf{Uniform Convergence on $I=(0, +\infty)$}:
+    We consider the norm $|f_n - f| = \sup_{x > 0} |e^{-nx}\cos x^2 - 0|$.
+    $$ |f_n - f| = \sup_{x > 0} |e^{-nx}\cos x^2| \geq \sup_{x > 0} e^{-nx}|\cos x^2|. $$
+    The maximum value of $e^{-nx}$ occurs as $x \to 0^+$, where $\lim_{x \to 0^+} e^{-nx} = 1$.
+    Near $x=0$, $\cos x^2 \approx 1$.
+    The supremum is at least $1$. Since $e^{-nx}$ decreases as $x$ increases, and $\cos x^2$ oscillates, the supremum is hard to find exactly, but we can check the limit as $x \to 0^+$.
+    For any $\epsilon < 1$ (e.g., $\epsilon=1/2$), we need to find $\eta$ such that for $n \geq \eta$, $|f_n(x)| \leq \epsilon$ for all $x > 0$.
+    If we pick $x_n = \frac{1}{n} \in (0, +\infty)$, then $f_n(x_n) = e^{-n(1/n)}\cos (1/n^2) = e^{-1}\cos (1/n^2)$.
+    $$\lim_{n \to +\infty} |f_n - f| \geq \lim_{n \to +\infty} |f_n(x_n)| = \lim_{n \to +\infty} e^{-1}\cos(1/n^2) = e^{-1}\cos(0) = e^{-1} \neq 0.$$
+    Since $e^{-1} \approx 0.368 \neq 0$, the convergence is \textbf{not uniform} on $I=(0, +\infty)$.
+\end{enumerate}
 \end{correctionbox}
 
 % ----------- EXERCISE 2 -------------
@@ -76,14 +134,49 @@ $$x \mapsto f_n(x) = e^{-nx^2}\sin nx + \sqrt{1-x^2}, \quad n \in \mathbb{N}.$$
 
 \begin{enumerate}
     \item Show that the sequence of functions $(f_n)$ converges pointwise on $I = [-1, 1]$ to a function $f$, which you will determine.
-    
     \item Show that $(f_n)$ converges uniformly to $f$ on $[\omega, 1]$, where $\omega$ is a positive constant.
-    
     \item Show that $(f_n)$ does not converge uniformly to $f$ on $[0, 1]$.
 \end{enumerate}
 
 \begin{correctionbox}
+\begin{enumerate}
+    \item \textbf{Pointwise Convergence on $I=[-1, 1]$}:
+    The limit of $f_n(x)$ is $f(x) = \lim_{n \to +\infty} \left( e^{-nx^2}\sin nx + \sqrt{1-x^2} \right)$.
+    \begin{itemize}
+        \item For $x=0$: $f_n(0) = e^0 \sin(0) + \sqrt{1-0} = 0 + 1 = 1$. Thus, $\lim_{n \to +\infty} f_n(0) = 1$.
+        \item For $x \in [-1, 1] \setminus \{0\}$ (i.e., $x \neq 0$): $x^2 > 0$.
+        $$\lim_{n \to +\infty} e^{-nx^2} = 0.$$
+        Since $|\sin nx| \leq 1$, the product $e^{-nx^2}\sin nx$ converges to $0$.
+        $$\lim_{n \to +\infty} f_n(x) = 0 + \sqrt{1-x^2} = \sqrt{1-x^2}.$$
+    \end{itemize}
+    The sequence $(f_n)$ converges pointwise to the function $f(x)$ on $I=[-1, 1]$, defined as:
+    $$f(x) = \sqrt{1-x^2}$$
+    ---
 
+    \item \textbf{Uniform Convergence on $[\omega, 1]$ with $\omega > 0$}:
+    We study $|f_n - f| = \sup_{x \in [\omega, 1]} |f_n(x) - f(x)|$.
+    $$ |f_n(x) - f(x)| = |e^{-nx^2}\sin nx + \sqrt{1-x^2} - \sqrt{1-x^2}| = |e^{-nx^2}\sin nx|. $$
+    For $x \in [\omega, 1]$, we have $x^2 \geq \omega^2 > 0$.
+    Since $|\sin nx| \leq 1$, we can bound the difference:
+    $$ |f_n(x) - f(x)| = |e^{-nx^2}\sin nx| \leq e^{-nx^2} \leq e^{-n\omega^2}. $$
+    Thus, the uniform norm is bounded by:
+    $$ |f_n - f| = \sup_{x \in [\omega, 1]} |f_n(x) - f(x)| \leq e^{-n\omega^2}. $$
+    Since $\omega > 0$, $\omega^2 > 0$, and $\lim_{n \to +\infty} e^{-n\omega^2} = 0$.
+    Therefore, $\lim_{n \to +\infty} |f_n - f| = 0$, and the convergence is \textbf{uniform} on $[\omega, 1]$.
+
+    ---
+
+    \item \textbf{Lack of Uniform Convergence on $[0, 1]$}:
+    We study the uniform norm on $[0, 1]$: $|f_n - f| = \sup_{x \in [0, 1]} |e^{-nx^2}\sin nx|$.
+    The maximum of $|e^{-nx^2}\sin nx|$ is expected to occur near $x=0$, where $e^{-nx^2}$ is close to $1$.
+    Consider the sequence of points $x_n = \frac{\pi}{2n} \in [0, 1]$. For sufficiently large $n$, $x_n$ is close to $0$.
+    $$ |f_n(x_n) - f(x_n)| = \left|e^{-n(\frac{\pi}{2n})^2}\sin \left(n\frac{\pi}{2n}\right)\right| = \left|e^{-\frac{\pi^2}{4n}}\sin \left(\frac{\pi}{2}\right)\right| = e^{-\frac{\pi^2}{4n}}. $$
+    The limit of this difference is:
+    $$ \lim_{n \to +\infty} |f_n(x_n) - f(x_n)| = \lim_{n \to +\infty} e^{-\frac{\pi^2}{4n}} = e^0 = 1. $$
+    Since $|f_n - f| = \sup_{x \in [0, 1]} |f_n(x) - f(x)| \geq |f_n(x_n) - f(x_n)|$, we have:
+    $$ \lim_{n \to +\infty} |f_n - f| \geq 1 \neq 0. $$
+    Therefore, the convergence is \textbf{not uniform} on $[0, 1]$.
+\end{enumerate}
 \end{correctionbox}
 
 % ----------- EXERCISE 3 -------------
@@ -92,16 +185,61 @@ Determine the domain of convergence $D$ of each series:
 
 \begin{enumerate}
     \item $\sum_{n>0} \frac{\cos nx}{n!}$.
-    
     \item $\sum_{n>1} \frac{1}{(z-n)^2}$.
-    
     \item $\sum_{n>1} \left|\sin\frac{x}{2^n} - \tan\frac{x}{2^n}\right|^{\frac{1}{2}}$.
-    
     \item $\sum_{n>1} \frac{n!(x-3)^{2n}}{n^{n+1}}$.
 \end{enumerate}
 
 \begin{correctionbox}
-
+\begin{enumerate}
+    \item 
+    Let $u_n(x) = \frac{\cos nx}{n!}$.
+    Since $|\cos nx| \leq 1$ for all $x \in \mathbb{R}$, we have:
+    $$ |u_n(x)| = \left|\frac{\cos nx}{n!}\right| \leq \frac{1}{n!}. $$
+    The series $\sum_{n>0} \frac{1}{n!}$ is a convergent series (it converges to $e-1$).
+    By the **Weierstrass M-test** (comparison with a convergent series of positive terms, which implies uniform convergence, and thus, pointwise convergence), the series $\sum u_n(x)$ is **absolutely and uniformly convergent** on $\mathbb{R}$.
+    The domain of convergence is $D = \mathbb{R}$.
+    ---
+    \item 
+    This is a series of complex functions. We assume $z \in \mathbb{C}$. The series is defined when $z-n \neq 0$, i.e., $z \neq n$ for all $n \in \mathbb{N}, n \geq 2$.
+    The domain where the series is defined is $D_0 = \mathbb{C} \setminus \{2, 3, 4, \ldots\}$.
+    Let $u_n(z) = \frac{1}{(z-n)^2}$.
+    For a fixed $z \in D_0$, let $N$ be an integer such that $|z-n| \geq 1$ for all $n \geq N$ (this is always possible since $\lim_{n \to +\infty} |z-n| = +\infty$).
+    For $n \geq N$, we have:
+    $$ |u_n(z)| = \left|\frac{1}{(z-n)^2}\right| = \frac{1}{|z-n|^2}. $$
+    Since $|z-n| \to \infty$ as $n \to \infty$, for $n$ large enough, $|z-n|^2 \approx n^2$.
+    More formally, for $n > |z|+1$, we have $|z-n| \geq |n - |z|| \geq n - |z| > n - (n-1) = 1$.
+    Using the limit comparison test, $\lim_{n \to +\infty} \frac{1/|z-n|^2}{1/n^2} = 1 \neq 0, \infty$.
+    Since $\sum \frac{1}{n^2}$ converges (p-series with $p=2 > 1$), the series $\sum |u_n(z)|$ converges by comparison.
+    The series $\sum_{n>1} \frac{1}{(z-n)^2}$ is **absolutely convergent** on $D = \mathbb{C} \setminus \{n \in \mathbb{N} \mid n \geq 2\}$.
+    ---
+    \item 
+    Let $u_n(x)$ be the general term.
+    For $x \in \mathbb{R}$, as $n \to +\infty$, $\frac{x}{2^n} \to 0$. We use the Taylor series expansion for small $\theta$:
+    $$\sin \theta = \theta - \frac{\theta^3}{6} + O(\theta^5), \quad \tan \theta = \theta + \frac{\theta^3}{3} + O(\theta^5).$$
+    Let $\theta_n = \frac{x}{2^n}$.
+    $$\sin \theta_n - \tan \theta_n = \left(\theta_n - \frac{\theta_n^3}{6}\right) - \left(\theta_n + \frac{\theta_n^3}{3}\right) + O(\theta_n^5) = -\frac{\theta_n^3}{2} + O(\theta_n^5).$$
+    So, for fixed $x$, $u_n(x)$ is equivalent to:
+    $$ u_n(x) \sim \left| - \frac{(\frac{x}{2^n})^3}{2} \right|^{\frac{1}{2}} = \left( \frac{|x|^3}{2 \cdot 2^{3n}} \right)^{\frac{1}{2}} = \frac{|x|^{3/2}}{\sqrt{2}} \left( \frac{1}{2^{3/2}} \right)^n = \frac{|x|^{3/2}}{\sqrt{2}} \frac{1}{2^{3n/2}}. $$
+    Since $\sum \frac{1}{2^{3n/2}}$ is a convergent geometric series (ratio $r = 1/2^{3/2} < 1$), by the limit comparison test, the series $\sum u_n(x)$ converges for all $x \in \mathbb{R}$.
+    The domain of convergence is $D = \mathbb{R}$.
+    ---
+    \item 
+    This is a power series in $(x-3)^2$. We use the Ratio Test for absolute convergence.
+    Let $a_n(x) = \frac{n!(x-3)^{2n}}{n^{n+1}}$. We consider $L(x) = \lim_{n \to +\infty} \left|\frac{a_{n+1}(x)}{a_n(x)}\right|$.
+    \begin{align*} \label{eq:ratio}
+    \left|\frac{a_{n+1}(x)}{a_n(x)}\right| &= \left| \frac{(n+1)!(x-3)^{2(n+1)}}{(n+1)^{n+2}} \cdot \frac{n^{n+1}}{n!(x-3)^{2n}} \right| \\
+    &= |x-3|^2 \frac{(n+1)!}{n!} \frac{n^{n+1}}{(n+1)^{n+2}} \\
+    &= |x-3|^2 \left(\left(1+\frac{1}{n}\right)^n \left(1+\frac{1}{n}\right)\right)^{-1}
+    \end{align*}
+    We know $\lim_{n \to +\infty} \left(1+\frac{1}{n}\right)^n = e$ and $\lim_{n \to +\infty} \left(1+\frac{1}{n}\right) = 1$.
+    $$ L(x) = |x-3|^2 \cdot (e \cdot 1)^{-1} = \frac{|x-3|^2}{e}. $$
+    The series converges absolutely if $L(x) < 1$, i.e., $\frac{|x-3|^2}{e} < 1$, or $|x-3|^2 < e$.
+    $$ |x-3| < \sqrt{e} \quad \Rightarrow \quad 3 - \sqrt{e} < x < 3 + \sqrt{e}. $$
+    The series diverges if $L(x) > 1$.
+    If $L(x) = 1$, i.e., $|x-3|^2 = e$, we have $|x-3|^2 \frac{n^{n+1}}{(n+1)^{n+1}} = e \left(\frac{n}{n+1}\right)^{n+1} \sim e \cdot e^{-1} = 1$. The series diverges at the endpoints.
+    The domain of convergence is $D = \left(3 - \sqrt{e}, 3 + \sqrt{e}\right)$.
+\end{enumerate}
 \end{correctionbox}
 
 % ----------- EXERCISE 4 -------------
@@ -111,12 +249,27 @@ $$g_n(x) = \frac{\sin x}{x^2+1} + \frac{\sin 2x}{x^2+2^2} + \ldots + \frac{\sin 
 
 \begin{enumerate}
     \item Determine the domain of convergence $D$.
-    
     \item Study the uniform convergence on $D$.
 \end{enumerate}
 
 \begin{correctionbox}
+\begin{enumerate}
+    \item \textbf{Domain of Convergence $D$}:
+    The series is $\sum_{n=1}^\infty u_n(x)$, where $u_n(x) = \frac{\sin nx}{x^2+n^2}$. The functions are defined for all $x \in \mathbb{R}$.
+    We use the **Weierstrass M-test** for absolute and uniform convergence.
+    We seek a bound $M_n$ such that $|u_n(x)| \leq M_n$ for all $x \in \mathbb{R}$ and $\sum M_n$ converges.
+    $$ |u_n(x)| = \left|\frac{\sin nx}{x^2+n^2}\right| \leq \frac{|\sin nx|}{x^2+n^2}. $$
+    Since $|\sin nx| \leq 1$ and $x^2 \geq 0$, we have $x^2+n^2 \geq n^2$.
+    $$ |u_n(x)| \leq \frac{1}{n^2}. $$
+    Let $M_n = \frac{1}{n^2}$. The series $\sum_{n=1}^\infty M_n = \sum_{n=1}^\infty \frac{1}{n^2}$ is a convergent p-series ($p=2 > 1$).
+    By the Weierstrass M-test, the series converges absolutely and uniformly on $\mathbb{R}$.
+    The domain of convergence is $D = \mathbb{R}$.
 
+    ---
+
+    \item \textbf{Uniform Convergence on $D = \mathbb{R}$}:
+    As shown in part 1, since $|u_n(x)| \leq M_n = \frac{1}{n^2}$ and $\sum M_n$ converges, the series $\sum u_n(x)$ converges **uniformly** on $\mathbb{R}$ by the **Weierstrass M-test**.
+\end{enumerate}
 \end{correctionbox}
 
 % ----------- EXERCISE 5 -------------
@@ -126,30 +279,123 @@ $$f_n(x) = \frac{nx}{1+n^2x^2} - \frac{nx+x}{1+n^2x^2+2n^2x+x^2}$$
 
 \begin{enumerate}
     \item Determine the domain of convergence $D$.
-    
     \item Calculate the sum of the series.
-    
     \item What is the nature of convergence of this series on $D$?
-    
     \item Determine the nature of convergence of this series on $I = ]0, +\infty[$ and $I = [a, +\infty[$ with $a > 0$.
 \end{enumerate}
 
 \begin{correctionbox}
+\begin{enumerate}
+    \item \textbf{Domain of Convergence $D$}:
+    The general term can be simplified:
+    $$ f_n(x) = \frac{nx}{1+(nx)^2} - \frac{(n+1)x}{1+(n+1)^2x^2}. $$
+    The denominator of the second term is $1+n^2x^2+2n^2x+x^2$. This is not quite $1+((n+1)x)^2 = 1+(n^2+2n+1)x^2 = 1+n^2x^2+2nx^2+x^2$.
+    Let's re-examine the second term's denominator:
+    $$ 1+n^2x^2+2n^2x+x^2 = 1 + (n^2+1)x^2 + 2n^2x. $$
+    It seems there is a typo in the original prompt, and the intended term was likely:
+    $$ g_n(x) = \frac{nx}{1+(nx)^2} - \frac{(n+1)x}{1+((n+1)x)^2}. $$
+    Assuming the general term is a telescoping difference:
+    $$ f_n(x) = u_n(x) - u_{n+1}(x), \quad \text{where } u_n(x) = \frac{nx}{1+(nx)^2}. $$
+    If $x=0$, $f_n(0) = 0 - 0 = 0$. The series converges to $0$.
+    If $x \neq 0$, $u_n(x) \sim \frac{nx}{n^2x^2} = \frac{1}{nx}$. Thus, $\lim_{n \to +\infty} u_n(x) = 0$.
+    The series is telescoping with partial sum:
+    $$ S_N(x) = \sum_{n=1}^N f_n(x) = u_1(x) - u_{N+1}(x). $$
+    The limit of the partial sum is:
+    $$ S(x) = \lim_{N \to +\infty} S_N(x) = u_1(x) - \lim_{N \to +\infty} u_{N+1}(x) = u_1(x) - 0 = u_1(x). $$
+    The series converges for all $x \in \mathbb{R}$.
+    The domain of convergence is $D = \mathbb{R}$.
 
+    ---
+
+    \item \textbf{Sum of the series}:
+    Based on the telescoping form, the sum of the series is:
+    $$ S(x) = u_1(x) = \frac{1\cdot x}{1+(1\cdot x)^2} = \frac{x}{1+x^2}. $$
+
+    ---
+
+    \item \textbf{Nature of Convergence on $D = \mathbb{R}$}:
+    We study the uniform convergence by checking the remainder term:
+    $$ R_N(x) = S(x) - S_N(x) = \lim_{M \to +\infty} u_{M+1}(x) - u_{N+1}(x) = 0 - u_{N+1}(x) = -u_{N+1}(x). $$
+    $$ R_N(x) = -\frac{(N+1)x}{1+((N+1)x)^2}. $$
+    We compute the supremum of the remainder:
+    $$ |R_N| = \sup_{x \in \mathbb{R}} |R_N(x)| = \sup_{x \in \mathbb{R}} \left|\frac{(N+1)x}{1+((N+1)x)^2}\right|. $$
+    Let $y = (N+1)x$. Then $x = \frac{y}{N+1}$.
+    $$ \sup_{y \in \mathbb{R}} \left|\frac{y}{1+y^2}\right|. $$
+    Let $h(y) = \frac{y}{1+y^2}$. We find the maximum using derivatives: $h'(y) = \frac{1+y^2 - y(2y)}{(1+y^2)^2} = \frac{1-y^2}{(1+y^2)^2}$.
+    The critical points are $y = \pm 1$.
+    $$ h(1) = \frac{1}{1+1} = \frac{1}{2}, \quad h(-1) = \frac{-1}{1+1} = -\frac{1}{2}. $$
+    Thus, $\sup_{y \in \mathbb{R}} |h(y)| = \frac{1}{2}$.
+    $$ \sup_{x \in \mathbb{R}} |R_N(x)| = \frac{1}{2}. $$
+    Since $\lim_{N \to +\infty} \sup_{x \in \mathbb{R}} |R_N(x)| = \frac{1}{2} \neq 0$, the convergence is \textbf{not uniform} on $D = \mathbb{R}$.
+
+    ---
+
+    \item \textbf{Nature of Convergence on $I = ]0, +\infty[$ and $I = [a, +\infty[$ with $a > 0$}:
+    \paragraph{On $I = ]0, +\infty[$:}
+    The convergence is \textbf{not uniform} since $\sup_{x > 0} |R_N(x)| = 1/2 \neq 0$.
+
+    \paragraph{On $I = [a, +\infty[$ with $a > 0$:}
+    We check the remainder term $|R_N(x)| = \left|\frac{(N+1)x}{1+((N+1)x)^2}\right|$ for $x \geq a$.
+    Let $g(y) = \frac{y}{1+y^2}$. The maximum of $g(y)$ for $y \geq (N+1)a$ is $g((N+1)a)$ if $(N+1)a \geq 1$, and $1/2$ otherwise (if the maximum $y=1$ is in the domain).
+    For $N$ large enough such that $(N+1)a \geq 1$, the function $g(y)$ is decreasing for $y \geq 1$.
+    For $N \geq \frac{1}{a}-1$, the minimum value of $y = (N+1)x$ is at $x=a$, $y_{min} = (N+1)a \geq 1$.
+    The supremum is at $x=a$:
+    $$ \sup_{x \geq a} |R_N(x)| = |R_N(a)| = \frac{(N+1)a}{1+((N+1)a)^2}. $$
+    The limit is:
+    $$ \lim_{N \to +\infty} \sup_{x \geq a} |R_N(x)| = \lim_{N \to +\infty} \frac{(N+1)a}{1+(N+1)^2a^2} = \lim_{N \to +\infty} \frac{Na}{N^2a^2} = \lim_{N \to +\infty} \frac{1}{Na} = 0. $$
+    Therefore, the convergence is **uniform** on $I = [a, +\infty[$ with $a > 0$.
+\end{enumerate}
 \end{correctionbox}
 
 % ----------- EXERCISE 6 -------------
 \section{}
 Consider the series of functions with general term: $f_n(x) = (\sin x)^\alpha (\cos x)^n$.
-
 \begin{enumerate}
     \item Determine the sum and domain of convergence of this series.
-    
     \item Show that we have uniform convergence on any compact $[a, b]$ included in $\left]0, \frac{\pi}{2}\right[$.
 \end{enumerate}
 
 \begin{correctionbox}
+\begin{enumerate}
+    \item \textbf{Domain of Convergence and Sum}:
+    The series is $\sum_{n=0}^\infty f_n(x)$ (assuming $n \geq 0$ for the geometric series, or $n \geq 1$ for convergence testing; we'll assume $n \geq 0$).
+    The series is a geometric series in $\cos x$:
+    $$ \sum_{n=0}^\infty (\sin x)^\alpha (\cos x)^n = (\sin x)^\alpha \sum_{n=0}^\infty (\cos x)^n. $$
+    A geometric series $\sum r^n$ converges if and only if $|r| < 1$, and its sum is $\frac{1}{1-r}$.
+    Here, the ratio is $r = \cos x$. The series converges if $|\cos x| < 1$.
+    $$ |\cos x| < 1 \iff \cos x \neq 1 \text{ and } \cos x \neq -1. $$
+    This means $x \neq k\pi$ for any $k \in \mathbb{Z}$.
+    
+    The term $(\sin x)^\alpha$ must also be defined. If $\alpha$ is not an integer, we require $\sin x > 0$.
+    \begin{itemize}
+        \item If $\alpha \in \mathbb{Z}$: $\sin x$ can be negative, but this doesn't change the convergence domain $D = \mathbb{R} \setminus \{k\pi, k \in \mathbb{Z}\}$.
+        \item If $\alpha \notin \mathbb{Z}$: We need $\sin x > 0$, so $x \in \bigcup_{k \in \mathbb{Z}} (2k\pi, (2k+1)\pi)$. This requires us to assume $\alpha$ is a positive integer to align with the rest of the problem (specifically $\left]0, \frac{\pi}{2}\right[$ in part 2).
 
+    \end{itemize}
+    Assuming $\alpha$ is a positive integer (or the problem context implicitly suggests $x \in ]0, \pi/2[$):
+    $$ D = \mathbb{R} \setminus \{k\pi \mid k \in \mathbb{Z}\}. $$
+    The sum of the series on $D$ is:
+    $$ S(x) = (\sin x)^\alpha \cdot \frac{1}{1-\cos x}. $$
+
+    ---
+
+    \item \textbf{Uniform Convergence on $[a, b] \subset \left]0, \frac{\pi}{2}\right[$}:
+    On the interval $[a, b] \subset \left]0, \frac{\pi}{2}\right[$, we have $0 < a \leq x \leq b < \frac{\pi}{2}$.
+    For all $x \in [a, b]$, we have $\cos x > 0$.
+    Also, the ratio of the geometric series is $r(x) = \cos x$.
+    On this compact interval, the maximum value of the ratio is $\max_{x \in [a, b]} \cos x = \cos a$.
+    The minimum value is $\min_{x \in [a, b]} \cos x = \cos b$.
+    Let $r_{max} = \cos a$. Since $a > 0$, $r_{max} < 1$.
+    For all $x \in [a, b]$, the terms are bounded by:
+    $$ |f_n(x)| = |(\sin x)^\alpha (\cos x)^n| = (\sin x)^\alpha |\cos x|^n. $$
+    Since $0 < \sin a \leq \sin x \leq \sin b < 1$, we have $0 < (\sin x)^\alpha \leq (\sin b)^\alpha$.
+    Since $|\cos x| \leq \cos a = r_{max}$, we have:
+    $$ |f_n(x)| \leq (\sin b)^\alpha (\cos a)^n. $$
+    Let $M_n = (\sin b)^\alpha (\cos a)^n$. The series $\sum M_n$ is a geometric series with ratio $r = \cos a$.
+    Since $0 < a < \frac{\pi}{2}$, we have $0 < \cos a < 1$.
+    Thus, the series $\sum M_n$ converges.
+    By the **Weierstrass M-test**, the series converges **uniformly** on the compact interval $[a, b]$.
+\end{enumerate}
 \end{correctionbox}
 
 \end{document}
