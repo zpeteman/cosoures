@@ -1,42 +1,42 @@
-\documentclass[12pt]{article}                                                                                                           
-\usepackage[utf8]{inputenc}                                                                                                             
-\usepackage[T1]{fontenc}                                                                                                                
-\usepackage{amsmath, amssymb}                                                                                                           
-\usepackage{geometry}                                                                                                                   
-\usepackage{xcolor}                                                                                                                     
-\usepackage{lipsum}                                                                                                                     
-\usepackage{titlesec}                                                                                                                   
-\usepackage{fancyhdr}                                                                                                                   
-\usepackage[most]{tcolorbox}                                                                                                                  
-\usepackage{graphicx}                                                                                                                   
-\usepackage{float}                                                                                                      
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{lipsum}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage[most]{tcolorbox}
+\usepackage{graphicx}
+\usepackage{float}
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric, arrows.meta}
-\usetikzlibrary{arrows.meta, decorations.markings}                                                                                      
-                                                                                                                                        
-\geometry{a4paper, margin=2.5cm}                                                                                                        
-\pagestyle{fancy}                                                                                                                       
-\fancyhf{}                                                                                                                              
-\rhead{Problem Set VII}                                                                                                                   
-\lhead{Rigid body mechanics}                                                                                                                     
-\cfoot{\thepage}                                                                                                                        
-                                                                                                                                        
-% Fancy titles                                                                                                                          
-\titleformat{\section}{\normalfont\Large\bfseries}{Exercise \thesection:}{1em}{}                                                        
-\titleformat{\subsection}{\normalfont\bfseries}{Correction:}{1em}{}                                                                     
-                                                                                                                                        
+\usetikzlibrary{arrows.meta, decorations.markings}
+
+\geometry{a4paper, margin=2.5cm}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Problem Set VII}
+\lhead{Rigid body mechanics}
+\cfoot{\thepage}
+
+% Fancy titles
+\titleformat{\section}{\normalfont\Large\bfseries}{Exercise \thesection:}{1em}{}
+\titleformat{\subsection}{\normalfont\bfseries}{Correction:}{1em}{}
+
 % Custom box for correction with breakable option
-\newtcolorbox{correctionbox}{                                                                                                           
-  colback=gray!5,                                                                                                                       
-  colframe=black,                                                                                                                       
-  fonttitle=\bfseries,                                                                                                                  
-  title=Correction,                                                                                                                     
-  before skip=10pt,                                                                                                                     
+\newtcolorbox{correctionbox}{
+  colback=gray!5,
+  colframe=black,
+  fonttitle=\bfseries,
+  title=Correction,
+  before skip=10pt,
   after skip=10pt,
   breakable,
   enhanced
-}                                                                                                                                       
-                                                                                                                                        
+}
+
 % Fix headheight warning
 \setlength{\headheight}{14.49998pt}
 
@@ -49,6 +49,7 @@
 \end{center}
 
 \vspace{1cm}
+
 % ----------- EXERCISE 1 -------------
 \section{}
 
@@ -76,7 +77,204 @@ Let $r$ and $\varphi$ be the polar coordinates of $G$, defined in the plane $XOY
 \end{enumerate}
 
 \begin{correctionbox}
+\textbf{1. Rolling without slipping relation and velocity/acceleration of G:}
 
+The rolling without slipping condition means the velocity of the contact point $I$ relative to the plane is zero:
+$$\vec{V}_I(S/R) = \vec{0}$$
+
+Using the velocity distribution formula:
+$$\vec{V}_I(S/R) = \vec{V}_G(S/R) + \vec{\Omega} \times \vec{GI}$$
+
+Since $\vec{GI} = -a\vec{k}$ (assuming the sphere is above the plane), we have:
+$$\vec{V}_G(S/R) + \vec{\Omega} \times (-a\vec{k}) = \vec{0}$$
+$$\vec{V}_G(S/R) = a\vec{\Omega} \times \vec{k}$$
+
+This is the rolling without slipping relation.
+
+Now, differentiating with respect to time to get acceleration:
+$$\vec{\gamma}_G(S/R) = \frac{d\vec{V}_G}{dt} = a\frac{d\vec{\Omega}}{dt} \times \vec{k} + a\vec{\Omega} \times \frac{d\vec{k}}{dt}$$
+
+Since $\vec{k}$ is fixed in the Galilean frame $R$, $\frac{d\vec{k}}{dt} = \vec{0}$, so:
+$$\vec{\gamma}_G(S/R) = a\dot{\vec{\Omega}} \times \vec{k}$$
+
+\textbf{2. Equation of motion of G and nature of motion:}
+
+Apply the momentum theorem:
+$$m\vec{\gamma}_G = m\vec{g} + \vec{R}$$
+
+Where $\vec{R}$ is the reaction at the contact point.
+
+The angular momentum theorem about point $G$:
+$$\frac{d\vec{\sigma}_G}{dt} = \vec{M}_G(\vec{R})$$
+
+For a sphere: $\vec{\sigma}_G = I_G\vec{\Omega} = \frac{2}{5}ma^2\vec{\Omega}$
+
+And $\vec{M}_G(\vec{R}) = \vec{GI} \times \vec{R} = (-a\vec{k}) \times \vec{R}$
+
+So:
+$$\frac{2}{5}ma^2\dot{\vec{\Omega}} = -a\vec{k} \times \vec{R}$$
+$$\dot{\vec{\Omega}} = -\frac{5}{2ma}\vec{k} \times \vec{R}$$
+
+Now substitute into the acceleration expression:
+$$\vec{\gamma}_G = a\left(-\frac{5}{2ma}\vec{k} \times \vec{R}\right) \times \vec{k} = -\frac{5}{2m}(\vec{k} \times \vec{R}) \times \vec{k}$$
+
+Using the vector triple product identity: $(\vec{A} \times \vec{B}) \times \vec{C} = (\vec{A} \cdot \vec{C})\vec{B} - (\vec{B} \cdot \vec{C})\vec{A}$
+
+So: $(\vec{k} \times \vec{R}) \times \vec{k} = (\vec{k} \cdot \vec{k})\vec{R} - (\vec{R} \cdot \vec{k})\vec{k} = \vec{R} - R_z\vec{k}$
+
+Therefore:
+$$\vec{\gamma}_G = -\frac{5}{2m}(\vec{R} - R_z\vec{k})$$
+
+From the momentum theorem: $m\vec{\gamma}_G = m\vec{g} + \vec{R}$
+
+Substitute:
+$$m\left[-\frac{5}{2m}(\vec{R} - R_z\vec{k})\right] = m\vec{g} + \vec{R}$$
+$$-\frac{5}{2}(\vec{R} - R_z\vec{k}) = m\vec{g} + \vec{R}$$
+$$-\frac{5}{2}\vec{R} + \frac{5}{2}R_z\vec{k} = m\vec{g} + \vec{R}$$
+$$-\frac{7}{2}\vec{R} + \frac{5}{2}R_z\vec{k} = m\vec{g}$$
+
+Separate into horizontal and vertical components:
+
+Vertical: $-\frac{7}{2}R_z + \frac{5}{2}R_z = -mg \Rightarrow -R_z = -mg \Rightarrow R_z = mg$
+
+Horizontal: $-\frac{7}{2}\vec{R}_h = \vec{0} \Rightarrow \vec{R}_h = \vec{0}$
+
+So the reaction is purely vertical: $\vec{R} = mg\vec{k}$
+
+Then from the momentum theorem: $m\vec{\gamma}_G = m\vec{g} + mg\vec{k} = \vec{0}$
+
+So $\vec{\gamma}_G = \vec{0}$, meaning the center of mass moves with constant velocity.
+
+The equation of motion is: $\overrightarrow{HG}(t) = \overrightarrow{HG}(0) + \vec{v}_0 t$
+
+The motion of $G$ is uniform rectilinear motion.
+
+\textbf{3. Velocity of G with rotating plane:}
+
+When the plane rotates with angular velocity $\vec{\omega} = \omega\vec{k}$, the rolling without slipping condition becomes that the velocity of the contact point relative to the rotating plane is zero.
+
+Let $R'$ be the frame rotating with the plane. The condition is:
+$$\vec{V}_I(S/R') = \vec{0}$$
+
+Using the composition of velocities:
+$$\vec{V}_I(S/R) = \vec{V}_I(S/R') + \vec{V}_I(R'/R)$$
+
+But $\vec{V}_I(R'/R) = \vec{\omega} \times \overrightarrow{HI}$
+
+And $\overrightarrow{HI} = \overrightarrow{HG} + \overrightarrow{GI} = \vec{r} - a\vec{k}$, where $\vec{r} = \overrightarrow{HG}$
+
+So: $\vec{V}_I(R'/R) = \vec{\omega} \times (\vec{r} - a\vec{k}) = \omega\vec{k} \times \vec{r}$ (since $\vec{k} \times \vec{k} = \vec{0}$)
+
+The rolling condition $\vec{V}_I(S/R') = \vec{0}$ gives:
+$$\vec{V}_I(S/R) = \omega\vec{k} \times \vec{r}$$
+
+But also: $\vec{V}_I(S/R) = \vec{V}_G(S/R) + \vec{\Omega} \times \vec{GI} = \vec{V}_G + \vec{\Omega} \times (-a\vec{k})$
+
+So: $\vec{V}_G + \vec{\Omega} \times (-a\vec{k}) = \omega\vec{k} \times \vec{r}$
+
+Therefore: $\vec{V}_G = a\vec{\Omega} \times \vec{k} + \omega\vec{k} \times \vec{r}$
+
+\textbf{4. Acceleration of G and first integral:}
+
+Differentiate the velocity expression:
+$$\vec{\gamma}_G = \frac{d\vec{V}_G}{dt} = a\dot{\vec{\Omega}} \times \vec{k} + a\vec{\Omega} \times \frac{d\vec{k}}{dt} + \dot{\omega}\vec{k} \times \vec{r} + \omega\vec{k} \times \vec{V}_G$$
+
+Since $\vec{k}$ is fixed and assuming constant $\omega$:
+$$\vec{\gamma}_G = a\dot{\vec{\Omega}} \times \vec{k} + \omega\vec{k} \times \vec{V}_G$$
+
+Now apply the momentum theorem:
+$$m\vec{\gamma}_G = m\vec{g} + \vec{R}$$
+
+And the angular momentum theorem about $G$:
+$$\frac{d\vec{\sigma}_G}{dt} = \vec{M}_G(\vec{R}) = \vec{GI} \times \vec{R} = (-a\vec{k}) \times \vec{R}$$
+
+With $\vec{\sigma}_G = I_G\vec{\Omega} = \frac{2}{5}ma^2\vec{\Omega}$, so:
+$$\frac{2}{5}ma^2\dot{\vec{\Omega}} = -a\vec{k} \times \vec{R}$$
+$$\dot{\vec{\Omega}} = -\frac{5}{2ma}\vec{k} \times \vec{R}$$
+
+Substitute into the acceleration:
+$$\vec{\gamma}_G = a\left(-\frac{5}{2ma}\vec{k} \times \vec{R}\right) \times \vec{k} + \omega\vec{k} \times \vec{V}_G$$
+$$= -\frac{5}{2m}(\vec{k} \times \vec{R}) \times \vec{k} + \omega\vec{k} \times \vec{V}_G$$
+
+Using the vector identity again: $(\vec{k} \times \vec{R}) \times \vec{k} = \vec{R} - R_z\vec{k}$
+
+So:
+$$\vec{\gamma}_G = -\frac{5}{2m}(\vec{R} - R_z\vec{k}) + \omega\vec{k} \times \vec{V}_G$$
+
+From momentum theorem: $m\vec{\gamma}_G = m\vec{g} + \vec{R}$
+
+So:
+$$m\left[-\frac{5}{2m}(\vec{R} - R_z\vec{k}) + \omega\vec{k} \times \vec{V}_G\right] = m\vec{g} + \vec{R}$$
+$$-\frac{5}{2}(\vec{R} - R_z\vec{k}) + m\omega\vec{k} \times \vec{V}_G = m\vec{g} + \vec{R}$$
+$$-\frac{7}{2}\vec{R} + \frac{5}{2}R_z\vec{k} + m\omega\vec{k} \times \vec{V}_G = m\vec{g}$$
+
+Separate components:
+
+Vertical: $-\frac{7}{2}R_z + \frac{5}{2}R_z = -mg \Rightarrow -R_z = -mg \Rightarrow R_z = mg$
+
+Horizontal: $-\frac{7}{2}\vec{R}_h + m\omega\vec{k} \times \vec{V}_G = \vec{0}$
+
+So: $\vec{R}_h = \frac{2}{7}m\omega\vec{k} \times \vec{V}_G$
+
+Now the momentum theorem gives:
+$$m\vec{\gamma}_G = m\vec{g} + mg\vec{k} + \frac{2}{7}m\omega\vec{k} \times \vec{V}_G$$
+$$\vec{\gamma}_G = \frac{2}{7}\omega\vec{k} \times \vec{V}_G$$
+
+This is the equation of motion. To find a first integral, take the dot product with $\vec{V}_G$:
+$$\vec{\gamma}_G \cdot \vec{V}_G = \frac{2}{7}\omega(\vec{k} \times \vec{V}_G) \cdot \vec{V}_G = 0$$
+
+Since $(\vec{k} \times \vec{V}_G) \cdot \vec{V}_G = 0$ (perpendicular vectors).
+
+So $\frac{d}{dt}(\frac{1}{2}V_G^2) = 0$, meaning the speed is constant: $V_G = \text{constant}$
+
+This is the first integral.
+
+\textbf{5. Equations of motion in polar coordinates:}
+
+In polar coordinates: $\vec{r} = r\vec{u}_r$, $\vec{V}_G = \dot{r}\vec{u}_r + r\dot{\varphi}\vec{u}_\varphi$
+
+The acceleration is:
+$$\vec{\gamma}_G = (\ddot{r} - r\dot{\varphi}^2)\vec{u}_r + (r\ddot{\varphi} + 2\dot{r}\dot{\varphi})\vec{u}_\varphi$$
+
+From the equation of motion: $\vec{\gamma}_G = \frac{2}{7}\omega\vec{k} \times \vec{V}_G$
+
+Now $\vec{k} \times \vec{V}_G = \vec{k} \times (\dot{r}\vec{u}_r + r\dot{\varphi}\vec{u}_\varphi) = \dot{r}\vec{u}_\varphi - r\dot{\varphi}\vec{u}_r$
+
+So:
+$$\vec{\gamma}_G = \frac{2}{7}\omega(\dot{r}\vec{u}_\varphi - r\dot{\varphi}\vec{u}_r) = -\frac{2}{7}\omega r\dot{\varphi}\vec{u}_r + \frac{2}{7}\omega\dot{r}\vec{u}_\varphi$$
+
+Equate components:
+
+Radial: $\ddot{r} - r\dot{\varphi}^2 = -\frac{2}{7}\omega r\dot{\varphi}$
+
+Angular: $r\ddot{\varphi} + 2\dot{r}\dot{\varphi} = \frac{2}{7}\omega\dot{r}$
+
+These are the equations of motion.
+
+From the first integral, we know $V_G^2 = \dot{r}^2 + r^2\dot{\varphi}^2 = \text{constant}$
+
+The position vector is: $\overrightarrow{HG}(t) = r(t)\vec{u}_r(\varphi(t))$
+
+\textbf{6. Reaction $\vec{R}$ and moment $\vec{M}_I$, condition on $\mu$:}
+
+We already found:
+$$\vec{R} = \vec{R}_h + R_z\vec{k} = \frac{2}{7}m\omega\vec{k} \times \vec{V}_G + mg\vec{k}$$
+
+For rolling without slipping to persist, the friction force must satisfy the Coulomb condition:
+$$\|\vec{R}_h\| \leq \mu R_z = \mu mg$$
+
+So:
+$$\left\|\frac{2}{7}m\omega\vec{k} \times \vec{V}_G\right\| \leq \mu mg$$
+$$\frac{2}{7}\omega V_G \leq \mu g$$
+$$\mu \geq \frac{2\omega V_G}{7g}$$
+
+This is the condition on $\mu$.
+
+The moment at point $I$ is zero for a perfect rolling without slipping contact (no friction moment for a sphere on a plane).
+
+Therefore, the torsor of contact actions at $I$ is:
+$$\tau(I) = [\vec{R}, \vec{0}]$$
+with $\vec{R} = \frac{2}{7}m\omega\vec{k} \times \vec{V}_G + mg\vec{k}$
 \end{correctionbox}
 
 \end{document}
