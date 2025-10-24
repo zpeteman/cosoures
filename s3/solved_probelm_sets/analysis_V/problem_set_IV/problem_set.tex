@@ -1,42 +1,42 @@
-\documentclass[12pt]{article}                                                                                                           
-\usepackage[utf8]{inputenc}                                                                                                             
-\usepackage[T1]{fontenc}                                                                                                                
-\usepackage{amsmath, amssymb}                                                                                                           
-\usepackage{geometry}                                                                                                                   
-\usepackage{xcolor}                                                                                                                     
-\usepackage{lipsum}                                                                                                                     
-\usepackage{titlesec}                                                                                                                   
-\usepackage{fancyhdr}                                                                                                                   
-\usepackage[most]{tcolorbox}                                                                                                                  
-\usepackage{graphicx}                                                                                                                   
-\usepackage{float}                                                                                      
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{lipsum}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage[most]{tcolorbox}
+\usepackage{graphicx}
+\usepackage{float}
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric, arrows.meta}
-\usetikzlibrary{arrows.meta, decorations.markings}                                                                                      
-                                                                                                                                        
-\geometry{a4paper, margin=2.5cm}                                                                                                        
-\pagestyle{fancy}                                                                                                                       
-\fancyhf{}                                                                                                                              
-\rhead{Problem Set IV}                                                                                                                   
-\lhead{Analysis V}                                                                                                                     
-\cfoot{\thepage}                                                                                                                        
-                                                                                                                                        
-% Fancy titles                                                                                                                          
-\titleformat{\section}{\normalfont\Large\bfseries}{Exercise \thesection:}{1em}{}                                                        
-\titleformat{\subsection}{\normalfont\bfseries}{Correction:}{1em}{}                                                                     
-                                                                                                                                        
+\usetikzlibrary{arrows.meta, decorations.markings}
+
+\geometry{a4paper, margin=2.5cm}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Problem Set IV}
+\lhead{Analysis V}
+\cfoot{\thepage}
+
+% Fancy titles
+\titleformat{\section}{\normalfont\Large\bfseries}{Exercise \thesection:}{1em}{}
+\titleformat{\subsection}{\normalfont\bfseries}{Correction:}{1em}{}
+
 % Custom box for correction with breakable option
-\newtcolorbox{correctionbox}{                                                                                                           
-  colback=gray!5,                                                                                                                       
-  colframe=black,                                                                                                                       
-  fonttitle=\bfseries,                                                                                                                  
-  title=Correction,                                                                                                                     
-  before skip=10pt,                                                                                                                     
+\newtcolorbox{correctionbox}{
+  colback=gray!5,
+  colframe=black,
+  fonttitle=\bfseries,
+  title=Correction,
+  before skip=10pt,
   after skip=10pt,
   breakable,
   enhanced
-}                                                                                                                                       
-                                                                                                                                        
+}
+
 % Fix headheight warning
 \setlength{\headheight}{14.49998pt}
 
@@ -49,6 +49,7 @@
 \end{center}
 
 \vspace{1cm}
+
 % ----------- EXERCISE 1 -------------
 \section{}
 For $(x, y) \in \mathbb{R}^2$, we define
@@ -64,7 +65,52 @@ xy \sin\left(\dfrac{\pi}{2} \cdot \dfrac{x^2 - y^2}{x^2 + y^2}\right) & \text{if
 \end{enumerate}
 
 \begin{correctionbox}
+\textbf{1. Continuity:}
 
+Let's examine the limit as $(x,y) \to (0,0)$. Using polar coordinates $x = r\cos\theta$, $y = r\sin\theta$:
+
+$$f(r\cos\theta, r\sin\theta) = r^2\cos\theta\sin\theta \sin\left(\frac{\pi}{2} \cdot \frac{r^2\cos^2\theta - r^2\sin^2\theta}{r^2}\right)$$
+$$= \frac{r^2}{2}\sin(2\theta) \sin\left(\frac{\pi}{2}(\cos^2\theta - \sin^2\theta)\right)$$
+
+Since $|\sin(\cdot)| \leq 1$ and $|\sin(2\theta)| \leq 1$, we have:
+$$|f(r\cos\theta, r\sin\theta)| \leq \frac{r^2}{2} \to 0 \quad \text{as } r \to 0$$
+
+Therefore, $\lim_{(x,y)\to(0,0)} f(x,y) = 0 = f(0,0)$, so $f$ is continuous at $(0,0)$.
+
+\textbf{2. Differentiability and class $C^1$:}
+
+Let's compute partial derivatives at $(0,0)$:
+
+$$\frac{\partial f}{\partial x}(0,0) = \lim_{h\to 0} \frac{f(h,0) - f(0,0)}{h} = \lim_{h\to 0} \frac{0 - 0}{h} = 0$$
+$$\frac{\partial f}{\partial y}(0,0) = \lim_{k\to 0} \frac{f(0,k) - f(0,0)}{k} = \lim_{k\to 0} \frac{0 - 0}{k} = 0$$
+
+Now let's check if $f$ is differentiable at $(0,0)$:
+
+$$\lim_{(h,k)\to(0,0)} \frac{f(h,k) - f(0,0) - 0\cdot h - 0\cdot k}{\sqrt{h^2 + k^2}} = \lim_{(h,k)\to(0,0)} \frac{hk \sin\left(\frac{\pi}{2} \cdot \frac{h^2 - k^2}{h^2 + k^2}\right)}{\sqrt{h^2 + k^2}}$$
+
+In polar coordinates:
+$$= \lim_{r\to 0} \frac{r^2\cos\theta\sin\theta \sin\left(\frac{\pi}{2}(\cos^2\theta - \sin^2\theta)\right)}{r} = \lim_{r\to 0} r\cos\theta\sin\theta \sin\left(\frac{\pi}{2}(\cos^2\theta - \sin^2\theta)\right) = 0$$
+
+So $f$ is differentiable at $(0,0)$.
+
+For $(x,y) \neq (0,0)$, the partial derivatives exist and are continuous. Therefore $f$ is of class $C^1$ on $\mathbb{R}^2$.
+
+\textbf{3. Second-order partial derivatives and class $C^2$:}
+
+Let's compute second partial derivatives at $(0,0)$:
+
+$$\frac{\partial^2 f}{\partial x^2}(0,0) = \lim_{h\to 0} \frac{\frac{\partial f}{\partial x}(h,0) - \frac{\partial f}{\partial x}(0,0)}{h}$$
+
+For $(x,y) \neq (0,0)$:
+$$\frac{\partial f}{\partial x}(x,y) = y\sin\left(\frac{\pi}{2} \cdot \frac{x^2 - y^2}{x^2 + y^2}\right) + xy\cos\left(\frac{\pi}{2} \cdot \frac{x^2 - y^2}{x^2 + y^2}\right) \cdot \frac{\pi}{2} \cdot \frac{2x(x^2 + y^2) - 2x(x^2 - y^2)}{(x^2 + y^2)^2}$$
+
+This expression is complicated near $(0,0)$. Let's check along different paths:
+
+Along $y=0$: $\frac{\partial f}{\partial x}(x,0) = 0$, so $\frac{\partial^2 f}{\partial x^2}(0,0) = 0$
+
+Along $x=y$: $\frac{\partial f}{\partial x}(x,x) = x\sin(0) + x^2\cos(0) \cdot \frac{\pi}{2} \cdot \frac{2x(2x^2) - 2x(0)}{4x^4} = x^2 \cdot \frac{\pi}{2} \cdot \frac{4x^3}{4x^4} = \frac{\pi}{2}$
+
+The second partial derivative depends on the path, so it doesn't exist at $(0,0)$. Therefore, $f$ is not of class $C^2$.
 \end{correctionbox}
 
 % ----------- EXERCISE 2 -------------
@@ -82,7 +128,47 @@ $$f(x, y) = \frac{x^2y^2}{x^2 + y^2} \text{ if } (x, y) \neq (0, 0) \text{ and }
 \end{enumerate}
 
 \begin{correctionbox}
+\textbf{1. Continuity at $(0,0)$:}
 
+Using polar coordinates $x = r\cos\theta$, $y = r\sin\theta$:
+$$f(r\cos\theta, r\sin\theta) = \frac{r^4\cos^2\theta\sin^2\theta}{r^2} = r^2\cos^2\theta\sin^2\theta$$
+
+Since $|\cos^2\theta\sin^2\theta| \leq 1$, we have:
+$$|f(r\cos\theta, r\sin\theta)| \leq r^2 \to 0 \quad \text{as } r \to 0$$
+
+Therefore, $f$ is continuous at $(0,0)$.
+
+\textbf{2. Partial derivatives at $(0,0)$:}
+
+$$\frac{\partial f}{\partial x}(0,0) = \lim_{h\to 0} \frac{f(h,0) - f(0,0)}{h} = \lim_{h\to 0} \frac{0 - 0}{h} = 0$$
+$$\frac{\partial f}{\partial y}(0,0) = \lim_{k\to 0} \frac{f(0,k) - f(0,0)}{k} = \lim_{k\to 0} \frac{0 - 0}{k} = 0$$
+
+\textbf{3. Differentiability at $(0,0)$:}
+
+Check the limit:
+$$\lim_{(h,k)\to(0,0)} \frac{f(h,k) - f(0,0) - 0\cdot h - 0\cdot k}{\sqrt{h^2 + k^2}} = \lim_{(h,k)\to(0,0)} \frac{\frac{h^2k^2}{h^2 + k^2}}{\sqrt{h^2 + k^2}}$$
+
+In polar coordinates:
+$$= \lim_{r\to 0} \frac{r^4\cos^2\theta\sin^2\theta}{r^2 \cdot r} = \lim_{r\to 0} r\cos^2\theta\sin^2\theta = 0$$
+
+Therefore, $f$ is differentiable at $(0,0)$.
+
+\textbf{4. Partial derivatives for $(x,y) \neq (0,0)$:}
+
+$$\frac{\partial f}{\partial x}(x,y) = \frac{2xy^2(x^2 + y^2) - x^2y^2(2x)}{(x^2 + y^2)^2} = \frac{2xy^4}{(x^2 + y^2)^2}$$
+$$\frac{\partial f}{\partial y}(x,y) = \frac{2x^2y(x^2 + y^2) - x^2y^2(2y)}{(x^2 + y^2)^2} = \frac{2x^4y}{(x^2 + y^2)^2}$$
+
+\textbf{5. Class $C^1$:}
+
+We need to check if the partial derivatives are continuous at $(0,0)$. In polar coordinates:
+$$\left|\frac{\partial f}{\partial x}(r\cos\theta, r\sin\theta)\right| = \left|\frac{2r\cos\theta \cdot r^4\sin^4\theta}{r^4}\right| = 2r|\cos\theta\sin^4\theta| \to 0$$
+Similarly for $\frac{\partial f}{\partial y}$.
+
+Therefore, the partial derivatives are continuous at $(0,0)$, so $f$ is of class $C^1$.
+
+\textbf{6. Deduction:}
+
+Since $f$ is of class $C^1$, it is automatically differentiable at $(0,0)$, which confirms our result from part (3).
 \end{correctionbox}
 
 % ----------- EXERCISE 3 -------------
@@ -93,7 +179,22 @@ Show that for such a function, the following Euler identity holds:
 $$\forall x = (x_1, \ldots, x_n) \in \mathbb{R}^n, \quad \sum_{i=1}^{n} x_i \frac{\partial f}{\partial x_i}(x) = rf(x).$$
 
 \begin{correctionbox}
+Let $x \in \mathbb{R}^n$ be fixed. Define $\varphi(\lambda) = f(\lambda x)$ for $\lambda > 0$.
 
+By the chain rule:
+$$\varphi'(\lambda) = \sum_{i=1}^n \frac{\partial f}{\partial x_i}(\lambda x) \cdot x_i$$
+
+On the other hand, since $f$ is homogeneous of degree $r$:
+$$\varphi(\lambda) = f(\lambda x) = \lambda^r f(x)$$
+$$\varphi'(\lambda) = r\lambda^{r-1} f(x)$$
+
+Equating both expressions for $\varphi'(\lambda)$:
+$$\sum_{i=1}^n \frac{\partial f}{\partial x_i}(\lambda x) \cdot x_i = r\lambda^{r-1} f(x)$$
+
+Setting $\lambda = 1$:
+$$\sum_{i=1}^n \frac{\partial f}{\partial x_i}(x) \cdot x_i = r f(x)$$
+
+This is the Euler identity.
 \end{correctionbox}
 
 % ----------- EXERCISE 4 -------------
@@ -116,7 +217,65 @@ Let $f(x, y) = \exp(x \ln(x^2 + y^2))$ for $(x, y) \neq (0, 0)$. Give the equati
 Determine the Taylor expansion of $f$ to order 3 at $(0,1)$ using the uniqueness of a Taylor expansion and certain restrictions of $f$.
 
 \begin{correctionbox}
+\textbf{1. Tangent plane equation:}
 
+The tangent plane to $S$ at $(a, b, f(a, b))$ has equation:
+$$z = f(a, b) + \frac{\partial f}{\partial x}(a, b)(x - a) + \frac{\partial f}{\partial y}(a, b)(y - b)$$
+
+\textbf{2. Direction vectors and normal vector:}
+
+Two direction vectors of the tangent plane are:
+$$\mathbf{u} = \left(1, 0, \frac{\partial f}{\partial x}(a, b)\right), \quad \mathbf{v} = \left(0, 1, \frac{\partial f}{\partial y}(a, b)\right)$$
+
+The normal vector is:
+$$\mathbf{n} = \mathbf{u} \times \mathbf{v} = \left(-\frac{\partial f}{\partial x}(a, b), -\frac{\partial f}{\partial y}(a, b), 1\right)$$
+
+\textbf{Application:}
+
+First, compute $f(1, 0)$:
+$$f(1, 0) = \exp(1 \cdot \ln(1^2 + 0^2)) = \exp(\ln 1) = 1$$
+
+Now compute partial derivatives at $(1, 0)$:
+
+Let $u(x, y) = x \ln(x^2 + y^2)$, then $f(x, y) = \exp(u(x, y))$
+
+$$\frac{\partial u}{\partial x} = \ln(x^2 + y^2) + x \cdot \frac{2x}{x^2 + y^2} = \ln(x^2 + y^2) + \frac{2x^2}{x^2 + y^2}$$
+$$\frac{\partial u}{\partial y} = x \cdot \frac{2y}{x^2 + y^2} = \frac{2xy}{x^2 + y^2}$$
+
+At $(1, 0)$:
+$$\frac{\partial u}{\partial x}(1, 0) = \ln 1 + \frac{2}{1} = 2, \quad \frac{\partial u}{\partial y}(1, 0) = 0$$
+
+Therefore:
+$$\frac{\partial f}{\partial x}(1, 0) = f(1, 0) \cdot \frac{\partial u}{\partial x}(1, 0) = 1 \cdot 2 = 2$$
+$$\frac{\partial f}{\partial y}(1, 0) = f(1, 0) \cdot \frac{\partial u}{\partial y}(1, 0) = 1 \cdot 0 = 0$$
+
+The tangent plane equation is:
+$$z = 1 + 2(x - 1) + 0(y - 0) = 2x - 1$$
+
+\textbf{Additional question:}
+
+Let's find the Taylor expansion of $f(x, y) = \exp(x \ln(x^2 + y^2))$ at $(0,1)$.
+
+First, simplify $f(x, y)$:
+$$f(x, y) = \exp(x \ln(x^2 + y^2)) = (x^2 + y^2)^x$$
+
+Now consider the restriction along $x = 0$:
+$$f(0, y) = (0 + y^2)^0 = 1 \quad \text{(by convention $a^0 = 1$ for $a \neq 0$)}$$
+
+Consider the restriction along $y = 1$:
+$$f(x, 1) = (x^2 + 1)^x = \exp(x \ln(x^2 + 1))$$
+
+Let's expand $g(x) = x \ln(x^2 + 1)$ around $x = 0$:
+$$\ln(x^2 + 1) = x^2 - \frac{x^4}{2} + O(x^6)$$
+$$g(x) = x \cdot \left(x^2 - \frac{x^4}{2} + O(x^6)\right) = x^3 - \frac{x^5}{2} + O(x^7)$$
+
+Therefore:
+$$f(x, 1) = \exp\left(x^3 - \frac{x^5}{2} + O(x^7)\right) = 1 + x^3 - \frac{x^5}{2} + O(x^7)$$
+
+Since the Taylor expansion is unique and we need order 3, and from $f(0, y) = 1$, we deduce that the Taylor expansion at $(0,1)$ to order 3 is:
+$$f(x, y) = 1 + x^3 + O(\|(x, y - 1)\|^4)$$
+
+More precisely, the Taylor expansion to order 3 is simply $1$, since the first non-zero term appears at order 3.
 \end{correctionbox}
 
 % ----------- EXERCISE 5 -------------
@@ -129,7 +288,70 @@ Find the extrema of the following functions:
 \end{enumerate}
 
 \begin{correctionbox}
+\textbf{1. For $f(x, y) = x^3 + 3x^2y - 15x - 12y$:}
 
+Find critical points:
+$$\frac{\partial f}{\partial x} = 3x^2 + 6xy - 15 = 0 \quad (1)$$
+$$\frac{\partial f}{\partial y} = 3x^2 - 12 = 0 \quad (2)$$
+
+From (2): $3x^2 - 12 = 0 \Rightarrow x^2 = 4 \Rightarrow x = \pm 2$
+
+Case 1: $x = 2$
+Substitute in (1): $3(4) + 6(2)y - 15 = 12 + 12y - 15 = 12y - 3 = 0 \Rightarrow y = \frac{1}{4}$
+
+Case 2: $x = -2$
+Substitute in (1): $3(4) + 6(-2)y - 15 = 12 - 12y - 15 = -12y - 3 = 0 \Rightarrow y = -\frac{1}{4}$
+
+Critical points: $(2, \frac{1}{4})$ and $(-2, -\frac{1}{4})$
+
+Now compute second derivatives:
+$$\frac{\partial^2 f}{\partial x^2} = 6x + 6y, \quad \frac{\partial^2 f}{\partial y^2} = 0, \quad \frac{\partial^2 f}{\partial x \partial y} = 6x$$
+
+Hessian matrix: $H = \begin{pmatrix} 6x + 6y & 6x \\ 6x & 0 \end{pmatrix}$
+
+At $(2, \frac{1}{4})$: $H = \begin{pmatrix} 12 + 1.5 & 12 \\ 12 & 0 \end{pmatrix} = \begin{pmatrix} 13.5 & 12 \\ 12 & 0 \end{pmatrix}$
+Determinant: $\det(H) = 13.5 \cdot 0 - 12 \cdot 12 = -144 < 0$, so saddle point.
+
+At $(-2, -\frac{1}{4})$: $H = \begin{pmatrix} -12 - 1.5 & -12 \\ -12 & 0 \end{pmatrix} = \begin{pmatrix} -13.5 & -12 \\ -12 & 0 \end{pmatrix}$
+Determinant: $\det(H) = (-13.5) \cdot 0 - (-12) \cdot (-12) = -144 < 0$, so saddle point.
+
+Both critical points are saddle points.
+
+\textbf{2. For $f(x, y) = -2(x - y)^2 + x^4 + y^4$:}
+
+Find critical points:
+$$\frac{\partial f}{\partial x} = -4(x - y) + 4x^3 = 0 \quad (1)$$
+$$\frac{\partial f}{\partial y} = 4(x - y) + 4y^3 = 0 \quad (2)$$
+
+Add (1) and (2): $4x^3 + 4y^3 = 0 \Rightarrow x^3 + y^3 = 0 \Rightarrow (x + y)(x^2 - xy + y^2) = 0$
+
+Since $x^2 - xy + y^2 > 0$ for $(x,y) \neq (0,0)$, we have $x + y = 0 \Rightarrow y = -x$
+
+Substitute in (1): $-4(x - (-x)) + 4x^3 = -8x + 4x^3 = 0 \Rightarrow 4x(x^2 - 2) = 0$
+
+So $x = 0$ or $x = \pm \sqrt{2}$
+
+Critical points: $(0, 0)$, $(\sqrt{2}, -\sqrt{2})$, $(-\sqrt{2}, \sqrt{2})$
+
+Second derivatives:
+$$\frac{\partial^2 f}{\partial x^2} = -4 + 12x^2, \quad \frac{\partial^2 f}{\partial y^2} = -4 + 12y^2, \quad \frac{\partial^2 f}{\partial x \partial y} = 4$$
+
+At $(0, 0)$: $H = \begin{pmatrix} -4 & 4 \\ 4 & -4 \end{pmatrix}$
+Determinant: $\det(H) = 16 - 16 = 0$, so test fails.
+
+Let's analyze $f(x, y)$ near $(0,0)$:
+Along $y = x$: $f(x, x) = -2(0)^2 + x^4 + x^4 = 2x^4 \geq 0$
+Along $y = -x$: $f(x, -x) = -2(2x)^2 + x^4 + x^4 = -8x^2 + 2x^4$
+
+For small $x$, $-8x^2 + 2x^4 < 0$, so $(0,0)$ is a saddle point.
+
+At $(\sqrt{2}, -\sqrt{2})$: $H = \begin{pmatrix} -4 + 12(2) & 4 \\ 4 & -4 + 12(2) \end{pmatrix} = \begin{pmatrix} 20 & 4 \\ 4 & 20 \end{pmatrix}$
+Determinant: $\det(H) = 400 - 16 = 384 > 0$ and $\frac{\partial^2 f}{\partial x^2} = 20 > 0$, so local minimum.
+
+At $(-\sqrt{2}, \sqrt{2})$: $H = \begin{pmatrix} -4 + 12(2) & 4 \\ 4 & -4 + 12(2) \end{pmatrix} = \begin{pmatrix} 20 & 4 \\ 4 & 20 \end{pmatrix}$
+Same as above, so local minimum.
+
+Value at minima: $f(\pm\sqrt{2}, \mp\sqrt{2}) = -2(2\sqrt{2})^2 + 4 + 4 = -16 + 8 = -8$
 \end{correctionbox}
 
 % ----------- EXERCISE 6 -------------
@@ -137,7 +359,23 @@ Find the extrema of the following functions:
 Find the minimum of $f(x, y) = \sqrt{x^2 + (y - a)^2} + \sqrt{(x - a)^2 + y^2}$, where $a$ is a given real number.
 
 \begin{correctionbox}
+This function represents the sum of distances from point $(x,y)$ to points $(0,a)$ and $(a,0)$.
 
+By the triangle inequality, the shortest path between two points is a straight line. The minimum occurs when $(x,y)$ lies on the line segment connecting $(0,a)$ and $(a,0)$.
+
+The line through $(0,a)$ and $(a,0)$ has equation $x + y = a$.
+
+On this line, the distance is simply the distance between $(0,a)$ and $(a,0)$, which is:
+$$\sqrt{(a-0)^2 + (0-a)^2} = \sqrt{a^2 + a^2} = a\sqrt{2}$$
+
+So the minimum value is $a\sqrt{2}$, achieved for any point $(x,y)$ on the line segment $x + y = a$ with $0 \leq x \leq a$.
+
+To verify analytically, we can use symmetry. The function is symmetric in $x$ and $y$. Try $y = a - x$:
+$$f(x, a-x) =   \sqrt{2x^2} + \sqrt{2(x-a)^2} = \sqrt{2}(|x| + |x-a|)$$
+
+For $0 \leq x \leq a$, this becomes $\sqrt{2}(x + a - x) = a\sqrt{2}$, which is constant.
+
+Therefore, the minimum value is $a\sqrt{2}$.
 \end{correctionbox}
 
 % ----------- EXERCISE 7 -------------
@@ -153,7 +391,90 @@ Solve the following partial differential equations:
 \end{enumerate}
 
 \begin{correctionbox}
+\textbf{1. $2\frac{\partial f}{\partial x} - \frac{\partial f}{\partial y} = 0$ with $u = x + y$, $v = x + 2y$:}
 
+Compute the Jacobian:
+$$\frac{\partial (u,v)}{\partial (x,y)} = \begin{vmatrix} 1 & 1 \\ 1 & 2 \end{vmatrix} = 2 - 1 = 1$$
+
+Now express partial derivatives in new coordinates:
+$$\frac{\partial f}{\partial x} = \frac{\partial f}{\partial u}\frac{\partial u}{\partial x} + \frac{\partial f}{\partial v}\frac{\partial v}{\partial x} = \frac{\partial f}{\partial u} + \frac{\partial f}{\partial v}$$
+$$\frac{\partial f}{\partial y} = \frac{\partial f}{\partial u}\frac{\partial u}{\partial y} + \frac{\partial f}{\partial v}\frac{\partial v}{\partial y} = \frac{\partial f}{\partial u} + 2\frac{\partial f}{\partial v}$$
+
+Substitute in the PDE:
+$$2\left(\frac{\partial f}{\partial u} + \frac{\partial f}{\partial v}\right) - \left(\frac{\partial f}{\partial u} + 2\frac{\partial f}{\partial v}\right) = 2\frac{\partial f}{\partial u} + 2\frac{\partial f}{\partial v} - \frac{\partial f}{\partial u} - 2\frac{\partial f}{\partial v} = \frac{\partial f}{\partial u} = 0$$
+
+So $\frac{\partial f}{\partial u} = 0$, which means $f$ depends only on $v$:
+$$f(x,y) = g(v) = g(x + 2y)$$
+where $g$ is an arbitrary differentiable function.
+
+\textbf{2. $x\frac{\partial f}{\partial y} - y\frac{\partial f}{\partial x} = 0$ using polar coordinates:}
+
+Let $x = r\cos\theta$, $y = r\sin\theta$
+
+Compute partial derivatives:
+$$\frac{\partial f}{\partial x} = \frac{\partial f}{\partial r}\frac{\partial r}{\partial x} + \frac{\partial f}{\partial \theta}\frac{\partial \theta}{\partial x} = \frac{\partial f}{\partial r}\cos\theta - \frac{\partial f}{\partial \theta}\frac{\sin\theta}{r}$$
+$$\frac{\partial f}{\partial y} = \frac{\partial f}{\partial r}\frac{\partial r}{\partial y} + \frac{\partial f}{\partial \theta}\frac{\partial \theta}{\partial y} = \frac{\partial f}{\partial r}\sin\theta + \frac{\partial f}{\partial \theta}\frac{\cos\theta}{r}$$
+
+Substitute in the PDE:
+$$x\left(\frac{\partial f}{\partial r}\sin\theta + \frac{\partial f}{\partial \theta}\frac{\cos\theta}{r}\right) - y\left(\frac{\partial f}{\partial r}\cos\theta - \frac{\partial f}{\partial \theta}\frac{\sin\theta}{r}\right) = 0$$
+
+Substitute $x = r\cos\theta$, $y = r\sin\theta$:
+$$r\cos\theta\left(\frac{\partial f}{\partial r}\sin\theta + \frac{\partial f}{\partial \theta}\frac{\cos\theta}{r}\right) - r\sin\theta\left(\frac{\partial f}{\partial r}\cos\theta - \frac{\partial f}{\partial \theta}\frac{\sin\theta}{r}\right) = 0$$
+
+Simplify:
+$$r\frac{\partial f}{\partial r}(\cos\theta\sin\theta - \sin\theta\cos\theta) + \frac{\partial f}{\partial \theta}(\cos^2\theta + \sin^2\theta) = \frac{\partial f}{\partial \theta} = 0$$
+
+So $\frac{\partial f}{\partial \theta} = 0$, which means $f$ depends only on $r$:
+$$f(x,y) = g(r) = g(\sqrt{x^2 + y^2})$$
+where $g$ is an arbitrary differentiable function.
+
+\textbf{3. $x^2 \frac{\partial^2 f}{\partial x^2} + 2xy \frac{\partial^2 f}{\partial x \partial y} + y^2 \frac{\partial^2 f}{\partial y^2} = 0$ with $x = u$, $y = uv$:}
+
+Compute partial derivatives:
+$$\frac{\partial f}{\partial x} = \frac{\partial f}{\partial u}\frac{\partial u}{\partial x} + \frac{\partial f}{\partial v}\frac{\partial v}{\partial x} = \frac{\partial f}{\partial u} - \frac{y}{x^2}\frac{\partial f}{\partial v} = \frac{\partial f}{\partial u} - \frac{v}{u}\frac{\partial f}{\partial v}$$
+$$\frac{\partial f}{\partial y} = \frac{\partial f}{\partial u}\frac{\partial u}{\partial y} + \frac{\partial f}{\partial v}\frac{\partial v}{\partial y} = 0 + \frac{1}{x}\frac{\partial f}{\partial v} = \frac{1}{u}\frac{\partial f}{\partial v}$$
+
+Now compute second derivatives:
+$$\frac{\partial^2 f}{\partial x^2} = \frac{\partial}{\partial u}\left(\frac{\partial f}{\partial u} - \frac{v}{u}\frac{\partial f}{\partial v}\right) - \frac{v}{u}\frac{\partial}{\partial v}\left(\frac{\partial f}{\partial u} - \frac{v}{u}\frac{\partial f}{\partial v}\right)$$
+$$= \frac{\partial^2 f}{\partial u^2} - \frac{v}{u}\frac{\partial^2 f}{\partial u \partial v} + \frac{v}{u^2}\frac{\partial f}{\partial v} - \frac{v}{u^2}\frac{\partial f}{\partial v} - \frac{v}{u}\left(\frac{\partial^2 f}{\partial u \partial v} - \frac{v}{u}\frac{\partial^2 f}{\partial v^2}\right)$$
+$$= \frac{\partial^2 f}{\partial u^2} - \frac{2v}{u}\frac{\partial^2 f}{\partial u \partial v} + \frac{v^2}{u^2}\frac{\partial^2 f}{\partial v^2}$$
+
+$$\frac{\partial^2 f}{\partial y^2} = \frac{\partial}{\partial v}\left(\frac{1}{u}\frac{\partial f}{\partial v}\right)\frac{\partial v}{\partial y} = \frac{1}{u^2}\frac{\partial^2 f}{\partial v^2}$$
+
+$$\frac{\partial^2 f}{\partial x \partial y} = \frac{\partial}{\partial u}\left(\frac{1}{u}\frac{\partial f}{\partial v}\right) - \frac{v}{u}\frac{\partial}{\partial v}\left(\frac{1}{u}\frac{\partial f}{\partial v}\right) = -\frac{1}{u^2}\frac{\partial f}{\partial v} + \frac{1}{u}\frac{\partial^2 f}{\partial u \partial v} - \frac{v}{u^2}\frac{\partial^2 f}{\partial v^2}$$
+
+Now substitute in the PDE:
+$$x^2\frac{\partial^2 f}{\partial x^2} + 2xy\frac{\partial^2 f}{\partial x \partial y} + y^2\frac{\partial^2 f}{\partial y^2}$$
+$$= u^2\left(\frac{\partial^2 f}{\partial u^2} - \frac{2v}{u}\frac{\partial^2 f}{\partial u \partial v} + \frac{v^2}{u^2}\frac{\partial^2 f}{\partial v^2}\right) + 2u(uv)\left(-\frac{1}{u^2}\frac{\partial f}{\partial v} + \frac{1}{u}\frac{\partial^2 f}{\partial u \partial v} - \frac{v}{u^2}\frac{\partial^2 f}{\partial v^2}\right) + (uv)^2\left(\frac{1}{u^2}\frac{\partial^2 f}{\partial v^2}\right)$$
+
+Simplify:
+$$= u^2\frac{\partial^2 f}{\partial u^2} - 2uv\frac{\partial^2 f}{\partial u \partial v} + v^2\frac{\partial^2 f}{\partial v^2} - 2v\frac{\partial f}{\partial v} + 2uv\frac{\partial^2 f}{\partial u \partial v} - 2v^2\frac{\partial^2 f}{\partial v^2} + v^2\frac{\partial^2 f}{\partial v^2}$$
+$$= u^2\frac{\partial^2 f}{\partial u^2} - 2v\frac{\partial f}{\partial v} = 0$$
+
+So we get:
+$$u^2\frac{\partial^2 f}{\partial u^2} - 2v\frac{\partial f}{\partial v} = 0$$
+
+This is a separable PDE. Let's solve it:
+
+The equation is: $u^2\frac{\partial^2 f}{\partial u^2} = 2v\frac{\partial f}{\partial v}$
+
+Assume separation of variables: $f(u,v) = U(u)V(v)$
+
+Then: $u^2U''(u)V(v) = 2vU(u)V'(v)$
+
+Divide by $U(u)V(v)$: $\frac{u^2U''(u)}{U(u)} = \frac{2vV'(v)}{V(v)} = \lambda$ (constant)
+
+So we have two ODEs:
+$$u^2U''(u) - \lambda U(u) = 0$$
+$$2vV'(v) - \lambda V(v) = 0$$
+
+The general solution is a linear combination of separated solutions.
+
+Alternatively, we can see that the PDE in $(u,v)$ coordinates suggests that $f$ depends on $u$ and $v$ in a specific way. The equation $u^2\frac{\partial^2 f}{\partial u^2} = 2v\frac{\partial f}{\partial v}$ is an Euler-type equation.
+
+The general solution is:
+$$f(x,y) = A\left(\frac{y}{x}\right) + xB\left(\frac{y}{x}\right)$$
+where $A$ and $B$ are arbitrary twice differentiable functions.
 \end{correctionbox}
 
 % ----------- EXERCISE 8 -------------
@@ -176,7 +497,85 @@ Let $f$ be a real-valued function of a real variable defined in a neighborhood o
 \end{enumerate}
 
 \begin{correctionbox}
+\textbf{1. Proof of the inequality:}
 
+Since $f''(a)$ exists, we have:
+$$\lim_{t\to a} \frac{f'(t) - f'(a)}{t - a} = f''(a)$$
+
+This means that for any $\varepsilon > 0$, there exists $\delta > 0$ such that for all $t$ with $0 < |t - a| < \delta$, we have:
+$$\left|\frac{f'(t) - f'(a)}{t - a} - f''(a)\right| < \varepsilon$$
+
+Multiplying both sides by $|t - a|$:
+$$|f'(t) - f'(a) - (t - a)f''(a)| < \varepsilon|t - a|$$
+
+\textbf{2. Bound for $H(y) - H(x)$:}
+
+We have:
+$$H(x) = f(x) - (x - a)f'(a) - \frac{(x - a)^2}{2}f''(a)$$
+
+Differentiate:
+$$H'(x) = f'(x) - f'(a) - (x - a)f''(a)$$
+
+From part (1), for $x$ sufficiently close to $a$, we have:
+$$|H'(x)| < \varepsilon|x - a|$$
+
+Now, for $x$ and $y$ sufficiently close to $a$, by the Mean Value Theorem, there exists $c$ between $x$ and $y$ such that:
+$$H(y) - H(x) = H'(c)(y - x)$$
+
+Therefore:
+$$|H(y) - H(x)| = |H'(c)||y - x| < \varepsilon|c - a||y - x|$$
+
+Since $c$ is between $x$ and $y$, and $x,y$ are close to $a$, we have $|c - a| \leq \max(|x - a|, |y - a|)$. So:
+$$|H(y) - H(x)| < \varepsilon \max(|x - a|, |y - a|) |y - x|$$
+
+\textbf{3. Differentiability of $F$ at $(a,a)$:}
+
+We need to show that:
+$$\lim_{(x,y)\to(a,a)} \frac{F(x,y) - F(a,a) - \frac{1}{2}f''(a)((x-a) + (y-a))}{\sqrt{(x-a)^2 + (y-a)^2}} = 0$$
+
+Note that $F(a,a) = f'(a)$.
+
+Consider the numerator:
+$$F(x,y) - F(a,a) - \frac{1}{2}f''(a)((x-a) + (y-a)) = \frac{f(y) - f(x)}{y - x} - f'(a) - \frac{1}{2}f''(a)((x-a) + (y-a))$$
+
+Using the definition of $H$:
+$$f(x) = H(x) + (x - a)f'(a) + \frac{(x - a)^2}{2}f''(a)$$
+$$f(y) = H(y) + (y - a)f'(a) + \frac{(y - a)^2}{2}f''(a)$$
+
+So:
+$$f(y) - f(x) = H(y) - H(x) + (y - x)f'(a) + \frac{1}{2}f''(a)[(y - a)^2 - (x - a)^2]$$
+
+Divide by $y - x$:
+$$\frac{f(y) - f(x)}{y - x} = \frac{H(y) - H(x)}{y - x} + f'(a) + \frac{1}{2}f''(a)\frac{(y - a)^2 - (x - a)^2}{y - x}$$
+
+Note that:
+$$\frac{(y - a)^2 - (x - a)^2}{y - x} = \frac{(y - a - (x - a))(y - a + (x - a))}{y - x} = \frac{(y - x)(y + x - 2a)}{y - x} = y + x - 2a$$
+
+So:
+$$\frac{f(y) - f(x)}{y - x} = \frac{H(y) - H(x)}{y - x} + f'(a) + \frac{1}{2}f''(a)(y + x - 2a)$$
+
+Therefore:
+$$F(x,y) - F(a,a) - \frac{1}{2}f''(a)((x-a) + (y-a)) = \frac{H(y) - H(x)}{y - x} + \frac{1}{2}f''(a)(y + x - 2a - (x-a) - (y-a))$$
+$$= \frac{H(y) - H(x)}{y - x} + \frac{1}{2}f''(a)(y + x - 2a - x + a - y + a) = \frac{H(y) - H(x)}{y - x}$$
+
+So we need to show:
+$$\lim_{(x,y)\to(a,a)} \frac{\frac{H(y) - H(x)}{y - x}}{\sqrt{(x-a)^2 + (y-a)^2}} = 0$$
+
+From part (2), we have:
+$$|H(y) - H(x)| < \varepsilon \max(|x - a|, |y - a|) |y - x|$$
+
+So:
+$$\left|\frac{H(y) - H(x)}{y - x}\right| < \varepsilon \max(|x - a|, |y - a|)$$
+
+Therefore:
+$$\left|\frac{\frac{H(y) - H(x)}{y - x}}{\sqrt{(x-a)^2 + (y-a)^2}}\right| < \varepsilon \frac{\max(|x - a|, |y - a|)}{\sqrt{(x-a)^2 + (y-a)^2}} \leq \varepsilon$$
+
+Since $\varepsilon$ is arbitrary, the limit is 0.
+
+This proves that $F$ is differentiable at $(a,a)$ and:
+$$dF_{(a,a)}(h,k) = \frac{1}{2}f''(a)(h + k)$$
+or in differential form:
+$$dF_{(a,a)} = \frac{1}{2}f''(a)(dx + dy)$$
 \end{correctionbox}
 
 \end{document}
