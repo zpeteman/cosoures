@@ -1,42 +1,42 @@
-\documentclass[12pt]{article}                                                                                                           
-\usepackage[utf8]{inputenc}                                                                                                             
-\usepackage[T1]{fontenc}                                                                                                                
-\usepackage{amsmath, amssymb}                                                                                                           
-\usepackage{geometry}                                                                                                                   
-\usepackage{xcolor}                                                                                                                     
-\usepackage{lipsum}                                                                                                                     
-\usepackage{titlesec}                                                                                                                   
-\usepackage{fancyhdr}                                                                                                                   
-\usepackage[most]{tcolorbox}                                                                                                                  
-\usepackage{graphicx}                                                                                                                   
-\usepackage{float}                                                                                                      
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{lipsum}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage[most]{tcolorbox}
+\usepackage{graphicx}
+\usepackage{float}
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric, arrows.meta}
-\usetikzlibrary{arrows.meta, decorations.markings}                                                                                      
-                                                                                                                                        
-\geometry{a4paper, margin=2.5cm}                                                                                                        
-\pagestyle{fancy}                                                                                                                       
-\fancyhf{}                                                                                                                              
-\rhead{Problem Set IV}                                                                                                                   
-\lhead{Rigid body mechanics}                                                                                                                     
-\cfoot{\thepage}                                                                                                                        
-                                                                                                                                        
-% Fancy titles                                                                                                                          
-\titleformat{\section}{\normalfont\Large\bfseries}{Exercise \thesection:}{1em}{}                                                        
-\titleformat{\subsection}{\normalfont\bfseries}{Correction:}{1em}{}                                                                     
-                                                                                                                                        
+\usetikzlibrary{arrows.meta, decorations.markings}
+
+\geometry{a4paper, margin=2.5cm}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Problem Set IV}
+\lhead{Rigid body mechanics}
+\cfoot{\thepage}
+
+% Fancy titles
+\titleformat{\section}{\normalfont\Large\bfseries}{Exercise \thesection:}{1em}{}
+\titleformat{\subsection}{\normalfont\bfseries}{Correction:}{1em}{}
+
 % Custom box for correction with breakable option
-\newtcolorbox{correctionbox}{                                                                                                           
-  colback=gray!5,                                                                                                                       
-  colframe=black,                                                                                                                       
-  fonttitle=\bfseries,                                                                                                                  
-  title=Correction,                                                                                                                     
-  before skip=10pt,                                                                                                                     
+\newtcolorbox{correctionbox}{
+  colback=gray!5,
+  colframe=black,
+  fonttitle=\bfseries,
+  title=Correction,
+  before skip=10pt,
   after skip=10pt,
   breakable,
   enhanced
-}                                                                                                                                       
-                                                                                                                                        
+}
+
 % Fix headheight warning
 \setlength{\headheight}{14.49998pt}
 
@@ -49,6 +49,7 @@
 \end{center}
 
 \vspace{1cm}
+
 % ----------- EXERCISE 1 -------------
 \section{}
 
@@ -60,7 +61,53 @@ A perfect rigid body having the shape of a square $ABCD$ is moved from position 
 \end{enumerate}
 
 \begin{correctionbox}
+\textbf{1. Motion as Translation + Rotation:}
 
+Any motion of a rigid body can be described as:
+\begin{itemize}
+    \item A \textbf{translation} of the center of mass (or any point)
+    \item A \textbf{rotation} about an axis passing through that point
+\end{itemize}
+
+For the square, we can choose point $A$ (or the center $O$ of the square) and show that:
+\begin{itemize}
+    \item Translate point $A$ from $A_1$ to $A_2$
+    \item Rotate the square about $A$ by angle $\theta$
+\end{itemize}
+
+\begin{center}
+\begin{tikzpicture}
+    % Initial square
+    \draw[blue] (0,0) rectangle (2,2);
+    \node[blue] at (0,0) [below left] {$A_1$};
+    \node[blue] at (2,0) [below right] {$B_1$};
+    \node[blue] at (2,2) [above right] {$C_1$};
+    \node[blue] at (0,2) [above left] {$D_1$};
+    
+    % Final square (translated and rotated)
+    \draw[red, rotate around={30:(3,1)}] (3,0) rectangle (5,2);
+    \node[red] at (3,0) [below left] {$A_2$};
+    \node[red] at (5,0) [below right] {$B_2$};
+    \node[red] at (5,2) [above right] {$C_2$};
+    \node[red] at (3,2) [above left] {$D_2$};
+    
+    % Translation arrow
+    \draw[->, thick] (0,0) -- (3,0) node[midway, below] {Translation};
+    
+    % Rotation arrow
+    \draw[->, thick] (3.5,1) arc (0:30:0.5) node[midway, right] {$\theta$};
+\end{tikzpicture}
+\end{center}
+
+\textbf{2. Angle of Rotation:}
+
+The angle of rotation $\theta$ depends on the specific positions. For example:
+\begin{itemize}
+    \item If the square rotates about its center by a quarter turn: $\theta = 90^\circ = \frac{\pi}{2}$ rad
+    \item If it rotates about a vertex, $\theta$ is the angle between the initial and final positions of a side
+\end{itemize}
+
+In general: $\theta$ is the angle between any line fixed in the body in its initial and final positions.
 \end{correctionbox}
 
 % ----------- EXERCISE 2 -------------
@@ -71,7 +118,41 @@ Let $R(O, X, Y, Z)$ be a reference frame assumed fixed. A homogeneous rod of len
 Determine the kinetic elements of the solid, at point $O$, with respect to frame $R$.
 
 \begin{correctionbox}
+\textbf{Given:}
+\begin{itemize}
+    \item Rotation about $OZ$: $\vec{\omega} = \dot{\theta} \vec{Z}$
+    \item Homogeneous rod: length $L$, mass $m$
+    \item Center of mass $G$ at midpoint
+\end{itemize}
 
+\textbf{1. Momentum $\vec{P}(S/R)$:}
+\[
+\vec{P}(S/R) = m \vec{V}(G/R)
+\]
+Distance from $O$ to $G$: $OG = \frac{L}{2}$\\
+Velocity of $G$: $V(G/R) = \frac{L}{2} \dot{\theta}$ (tangential direction)\\
+Thus:
+\[
+\vec{P}(S/R) = m \cdot \frac{L}{2} \dot{\theta} \ \vec{e}_{\theta}
+\]
+
+\textbf{2. Angular Momentum at $O$, $\vec{\sigma}(O; S/R)$:}
+\[
+\vec{\sigma}(O; S/R) = J(O, S) \cdot \vec{\omega}
+\]
+For a thin rod rotating about one end (axis perpendicular to rod):
+\[
+J(O, S) = \frac{1}{3} m L^2
+\]
+Thus:
+\[
+\vec{\sigma}(O; S/R) = \frac{1}{3} m L^2 \dot{\theta} \ \vec{Z}
+\]
+
+\textbf{Kinetic Torsor at $O$:}
+\[
+\tau_C(S/R) = \left[ \vec{P} = m \frac{L}{2} \dot{\theta} \ \vec{e}_{\theta},\quad \vec{\sigma}(O) = \frac{1}{3} m L^2 \dot{\theta} \ \vec{Z} \right]
+\]
 \end{correctionbox}
 
 % ----------- EXERCISE 3 -------------
@@ -87,7 +168,57 @@ We denote by $x$ the abscissa of $G$ and by $\theta$ the angle that indicates th
 \end{enumerate}
 
 \begin{correctionbox}
+\textbf{1. Degrees of Freedom:}
 
+Rolling without slipping condition:
+\[
+x = R \theta
+\]
+This constraint reduces the independent coordinates from 2 ($x$ and $\theta$) to 1.
+
+Therefore: \textbf{1 degree of freedom}
+
+\textbf{2. Kinetic Elements at $O$:}
+
+\begin{itemize}
+    \item \textbf{Angular velocity:} $\vec{\omega} = \dot{\theta} \vec{Z}$
+    \item \textbf{Velocity of $G$:} $V(G/R) = R \dot{\theta}$ (from rolling condition)
+    \item \textbf{Momentum:}
+    \[
+    \vec{P}(S/R) = m \vec{V}(G/R) = m R \dot{\theta} \ \vec{X}
+    \]
+\end{itemize}
+
+\textbf{Angular Momentum at $O$:}
+
+Using Koenig's theorem II:
+\[
+\vec{\sigma}(O; S/R) = J(G, S) \cdot \vec{\omega} + m \cdot \vec{OG} \wedge \vec{V}(G/R)
+\]
+
+For a hoop about its center:
+\[
+J(G, S) = m R^2
+\]
+\[
+\vec{OG} = R \vec{Y} \quad \text{(assuming contact point $O$ is directly below $G$)}
+\]
+\[
+\vec{V}(G/R) = R \dot{\theta} \vec{X}
+\]
+\[
+\vec{OG} \wedge \vec{V}(G/R) = (R \vec{Y}) \wedge (R \dot{\theta} \vec{X}) = R^2 \dot{\theta} (\vec{Y} \wedge \vec{X}) = -R^2 \dot{\theta} \vec{Z}
+\]
+
+Thus:
+\[
+\vec{\sigma}(O; S/R) = m R^2 \dot{\theta} \vec{Z} + m (-R^2 \dot{\theta} \vec{Z}) = 0
+\]
+
+\textbf{Kinetic Torsor at $O$:}
+\[
+\tau_C(S/R) = \left[ \vec{P} = m R \dot{\theta} \ \vec{X},\quad \vec{\sigma}(O) = \vec{0} \right]
+\]
 \end{correctionbox}
 
 % ----------- EXERCISE 4 -------------
@@ -102,7 +233,62 @@ A homogeneous solid cone $S$, of mass $m$, radius $R$, and height $h$ is in moti
 \end{enumerate}
 
 \begin{correctionbox}
+\textbf{1. Degrees of Freedom:}
 
+A cone rotating about its fixed apex $O$ has:
+\begin{itemize}
+    \item 3 rotational degrees of freedom (Euler angles)
+\end{itemize}
+Therefore: \textbf{3 degrees of freedom}
+
+\textbf{2. Rotation Vector in Resal Basis:}
+
+In the Resal basis $(\vec{X}, \vec{Y}, \vec{Z})$ attached to the solid:
+\[
+\vec{\omega}_{S/T_1} = \omega_X \vec{X} + \omega_Y \vec{Y} + \omega_Z \vec{Z}
+\]
+where $\omega_X, \omega_Y, \omega_Z$ are the components of the angular velocity in the body-fixed frame.
+
+\textbf{3. Kinetic Elements at $O$:}
+
+Since $O$ is fixed:
+\begin{itemize}
+    \item \textbf{Velocity of $O$:} $\vec{V}(O/T_1) = \vec{0}$
+    \item \textbf{Momentum:}
+    \[
+    \vec{P}(S/T_1) = m \vec{V}(G/T_1)
+    \]
+    But $\vec{V}(G/T_1) = \vec{\omega} \wedge \vec{OG}$, and $OG = \frac{3}{4}h$ along $OZ$ for a cone.
+    
+    \item \textbf{Angular Momentum at $O$:}
+    \[
+    \vec{\sigma}(O; S/T_1) = J(O, S) \cdot \vec{\omega}_{S/T_1}
+    \]
+\end{itemize}
+
+For a cone about its apex, the inertia matrix is diagonal in the body-fixed frame:
+\[
+J(O, S) = 
+\begin{pmatrix}
+A & 0 & 0 \\
+0 & A & 0 \\
+0 & 0 & C
+\end{pmatrix}
+\]
+where for a homogeneous cone:
+\[
+A = \frac{3}{20} m (R^2 + 4h^2), \quad C = \frac{3}{10} m R^2
+\]
+
+Thus:
+\[
+\vec{\sigma}(O; S/T_1) = A \omega_X \vec{X} + A \omega_Y \vec{Y} + C \omega_Z \vec{Z}
+\]
+
+\textbf{Kinetic Torsor at $O$:}
+\[
+\tau_C(S/T_1) = \left[ \vec{P} = m \vec{\omega} \wedge \vec{OG},\quad \vec{\sigma}(O) = A \omega_X \vec{X} + A \omega_Y \vec{Y} + C \omega_Z \vec{Z} \right]
+\]
 \end{correctionbox}
 
 % ----------- EXERCISE 5 -------------
@@ -120,7 +306,99 @@ A homogeneous and non-deformable square plate $OABC$, of side $a$ and mass $m$, 
 \end{enumerate}
 
 \begin{correctionbox}
+\textbf{1. Frame and Euler Angles:}
 
+\begin{center}
+\begin{tikzpicture}
+    % Fixed frame T1
+    \draw[->] (0,0,0) -- (2,0,0) node[right] {$X_1$};
+    \draw[->] (0,0,0) -- (0,2,0) node[above] {$Y_1$};
+    \draw[->] (0,0,0) -- (0,0,2) node[below left] {$Z_1$};
+    
+    % Body frame T
+    \draw[->, red] (0,0,0) -- (1.5,0.5,0) node[right] {$X$};
+    \draw[->, red] (0,0,0) -- (-0.5,1.5,0) node[above] {$Y$};
+    \draw[->, red] (0,0,0) -- (0,0,1.5) node[below left] {$Z$};
+    
+    % Square plate
+    \draw[blue, fill=blue!20, opacity=0.7] (0,0,0) -- (1,0,0) -- (1,1,0) -- (0,1,0) -- cycle;
+    \node at (0.5,0.5,0) {Plate};
+\end{tikzpicture}
+\end{center}
+
+Euler angles:
+\begin{itemize}
+    \item $\psi$: Precession angle (rotation about $Z_1$)
+    \item $\theta$: Nutation angle (tilt of the plate)
+    \item $\phi$: Proper rotation (rotation about body $Z$-axis)
+\end{itemize}
+
+\textbf{2. Degrees of Freedom:}
+
+Constraint: Side $OA$ remains in contact with plane $OX_1Y_1$\\
+This imposes 1 constraint, so from 3 rotational DOF we get: \textbf{2 degrees of freedom}
+
+\textbf{3. Inertia Operator $J_O$:}
+
+For a square plate of side $a$ and mass $m$ about one corner:
+\[
+J_O = 
+\begin{pmatrix}
+\frac{1}{3}ma^2 & 0 & 0 \\
+0 & \frac{1}{3}ma^2 & 0 \\
+0 & 0 & \frac{2}{3}ma^2
+\end{pmatrix}
+\]
+
+\textbf{4. Rotation Vector in Body Frame:}
+\[
+\vec{\omega}_{S/T_1} = \omega_X \vec{X} + \omega_Y \vec{Y} + \omega_Z \vec{Z}
+\]
+In terms of Euler angles:
+\[
+\omega_X = \dot{\phi} \sin\theta \sin\psi + \dot{\theta} \cos\psi
+\]
+\[
+\omega_Y = \dot{\phi} \sin\theta \cos\psi - \dot{\theta} \sin\psi
+\]
+\[
+\omega_Z = \dot{\phi} \cos\theta + \dot{\psi}
+\]
+
+\textbf{5. Kinetic Torsor at $O$:}
+
+Since $O$ is fixed:
+\begin{itemize}
+    \item $\vec{V}(O/T_1) = \vec{0}$
+    \item $\vec{P}(S/T_1) = m \vec{V}(G/T_1) = m (\vec{\omega} \wedge \vec{OG})$
+    \item $\vec{\sigma}(O; S/T_1) = J_O \cdot \vec{\omega}_{S/T_1}$
+\end{itemize}
+
+Thus:
+\[
+\tau_C(S/T_1) = \left[ \vec{P} = m (\vec{\omega} \wedge \vec{OG}),\quad \vec{\sigma}(O) = \frac{1}{3}ma^2(\omega_X \vec{X} + \omega_Y \vec{Y}) + \frac{2}{3}ma^2 \omega_Z \vec{Z} \right]
+\]
+
+\textbf{6. Kinetic Energy:}
+
+Using the formula for kinetic energy with fixed point $O$:
+\[
+E_C(S/T_1) = \frac{1}{2} \vec{\omega}_{S/T_1} \cdot \vec{\sigma}(O; S/T_1)
+\]
+\[
+E_C(S/T_1) = \frac{1}{2} \left( \omega_X \quad \omega_Y \quad \omega_Z \right)
+\begin{pmatrix}
+\frac{1}{3}ma^2 & 0 & 0 \\
+0 & \frac{1}{3}ma^2 & 0 \\
+0 & 0 & \frac{2}{3}ma^2
+\end{pmatrix}
+\begin{pmatrix}
+\omega_X \\ \omega_Y \\ \omega_Z
+\end{pmatrix}
+\]
+\[
+E_C(S/T_1) = \frac{1}{6}ma^2 (\omega_X^2 + \omega_Y^2 + 2\omega_Z^2)
+\]
 \end{correctionbox}
 
 \end{document}
