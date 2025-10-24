@@ -1,42 +1,42 @@
-\documentclass[12pt]{article}                                                                                                           
-\usepackage[utf8]{inputenc}                                                                                                             
-\usepackage[T1]{fontenc}                                                                                                                
-\usepackage{amsmath, amssymb}                                                                                                           
-\usepackage{geometry}                                                                                                                   
-\usepackage{xcolor}                                                                                                                     
-\usepackage{lipsum}                                                                                                                     
-\usepackage{titlesec}                                                                                                                   
-\usepackage{fancyhdr}                                                                                                                   
-\usepackage[most]{tcolorbox}                                                                                                                  
-\usepackage{graphicx}                                                                                                                   
-\usepackage{float}                                                                                                      
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{lipsum}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage[most]{tcolorbox}
+\usepackage{graphicx}
+\usepackage{float}
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric, arrows.meta}
-\usetikzlibrary{arrows.meta, decorations.markings}                                                                                      
-                                                                                                                                        
-\geometry{a4paper, margin=2.5cm}                                                                                                        
-\pagestyle{fancy}                                                                                                                       
-\fancyhf{}                                                                                                                              
-\rhead{Problem Set V}                                                                                                                   
-\lhead{Rigid body mechanics}                                                                                                                     
-\cfoot{\thepage}                                                                                                                        
-                                                                                                                                        
-% Fancy titles                                                                                                                          
-\titleformat{\section}{\normalfont\Large\bfseries}{Exercise \thesection:}{1em}{}                                                        
-\titleformat{\subsection}{\normalfont\bfseries}{Correction:}{1em}{}                                                                     
-                                                                                                                                        
+\usetikzlibrary{arrows.meta, decorations.markings}
+
+\geometry{a4paper, margin=2.5cm}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Problem Set V}
+\lhead{Rigid body mechanics}
+\cfoot{\thepage}
+
+% Fancy titles
+\titleformat{\section}{\normalfont\Large\bfseries}{Exercise \thesection:}{1em}{}
+\titleformat{\subsection}{\normalfont\bfseries}{Correction:}{1em}{}
+
 % Custom box for correction with breakable option
-\newtcolorbox{correctionbox}{                                                                                                           
-  colback=gray!5,                                                                                                                       
-  colframe=black,                                                                                                                       
-  fonttitle=\bfseries,                                                                                                                  
-  title=Correction,                                                                                                                     
-  before skip=10pt,                                                                                                                     
+\newtcolorbox{correctionbox}{
+  colback=gray!5,
+  colframe=black,
+  fonttitle=\bfseries,
+  title=Correction,
+  before skip=10pt,
   after skip=10pt,
   breakable,
   enhanced
-}                                                                                                                                       
-                                                                                                                                        
+}
+
 % Fix headheight warning
 \setlength{\headheight}{14.49998pt}
 
@@ -49,6 +49,7 @@
 \end{center}
 
 \vspace{1cm}
+
 % ----------- EXERCISE 1 -------------
 \section{}
 
@@ -58,7 +59,50 @@
 \end{enumerate}
 
 \begin{correctionbox}
+\textbf{1. Statement of Koenig's theorem:}
 
+For a rigid body $S$ with center of mass $G$, the angular momentum about any point $O$ is given by:
+$$\vec{\sigma}_O(S/T_1) = \vec{\sigma}_G(S/T_1) + m\vec{OG} \times \vec{V}_G(S/T_1)$$
+
+Where:
+- $\vec{\sigma}_O(S/T_1)$ is the angular momentum of $S$ about point $O$ relative to frame $T_1$
+- $\vec{\sigma}_G(S/T_1)$ is the angular momentum of $S$ about its center of mass $G$ relative to frame $T_1$
+- $m$ is the total mass of the rigid body
+- $\vec{V}_G(S/T_1)$ is the velocity of the center of mass relative to frame $T_1$
+
+\textbf{2. Proof:}
+
+Let $P$ be an arbitrary point of the rigid body $S$ with mass $dm$. The angular momentum about $O$ is:
+$$\vec{\sigma}_O(S/T_1) = \int_{P \in S} \vec{OP} \times \vec{V}_P(S/T_1)  dm$$
+
+We can write $\vec{OP} = \vec{OG} + \vec{GP}$, so:
+$$\vec{\sigma}_O(S/T_1) = \int_{P \in S} (\vec{OG} + \vec{GP}) \times \vec{V}_P(S/T_1)  dm$$
+$$= \vec{OG} \times \int_{P \in S} \vec{V}_P(S/T_1)  dm + \int_{P \in S} \vec{GP} \times \vec{V}_P(S/T_1)  dm$$
+
+For a rigid body, we have the velocity distribution formula:
+$$\vec{V}_P(S/T_1) = \vec{V}_G(S/T_1) + \vec{\omega}_{S/T_1} \times \vec{GP}$$
+
+Substituting this into the first integral:
+$$\int_{P \in S} \vec{V}_P(S/T_1)  dm = \int_{P \in S} [\vec{V}_G(S/T_1) + \vec{\omega}_{S/T_1} \times \vec{GP}]  dm$$
+$$= m\vec{V}_G(S/T_1) + \vec{\omega}_{S/T_1} \times \int_{P \in S} \vec{GP}  dm$$
+
+But $\int_{P \in S} \vec{GP}  dm = 0$ by definition of the center of mass, so:
+$$\int_{P \in S} \vec{V}_P(S/T_1)  dm = m\vec{V}_G(S/T_1)$$
+
+Now for the second integral:
+$$\int_{P \in S} \vec{GP} \times \vec{V}_P(S/T_1)  dm = \int_{P \in S} \vec{GP} \times [\vec{V}_G(S/T_1) + \vec{\omega}_{S/T_1} \times \vec{GP}]  dm$$
+$$= \int_{P \in S} \vec{GP} \times \vec{V}_G(S/T_1)  dm + \int_{P \in S} \vec{GP} \times (\vec{\omega}_{S/T_1} \times \vec{GP})  dm$$
+
+The first term is:
+$$\int_{P \in S} \vec{GP} \times \vec{V}_G(S/T_1)  dm = \left(\int_{P \in S} \vec{GP}  dm\right) \times \vec{V}_G(S/T_1) = 0$$
+
+The second term is exactly the definition of the angular momentum about $G$:
+$$\int_{P \in S} \vec{GP} \times (\vec{\omega}_{S/T_1} \times \vec{GP})  dm = \vec{\sigma}_G(S/T_1)$$
+
+Therefore:
+$$\vec{\sigma}_O(S/T_1) = \vec{OG} \times m\vec{V}_G(S/T_1) + \vec{\sigma}_G(S/T_1)$$
+
+This completes the proof of Koenig's theorem.
 \end{correctionbox}
 
 % ----------- EXERCISE 2 -------------
@@ -72,7 +116,78 @@ A system $S$ consists of a homogeneous rod $S_1$ of mass $m_1$ and length $l$, i
 \end{enumerate}
 
 \begin{correctionbox}
+\textbf{1. Position of the center of mass $G$:}
 
+Let's place the coordinate system such that $O_1$ is at the origin. The rod extends from $O_1$ to a point at distance $l$ along the rod's axis.
+
+For the homogeneous rod $S_1$, its center of mass is at its midpoint:
+$$G_1: \vec{O_1G_1} = \frac{l}{2}\vec{i}$$
+
+For the disk $S_2$, its center $C$ is at the end of the rod:
+$$\vec{O_1C} = l\vec{i}$$
+
+The center of mass $G$ of the entire system is given by:
+$$\vec{O_1G} = \frac{m_1\vec{O_1G_1} + m_2\vec{O_1C}}{m_1 + m_2} = \frac{m_1 \cdot \frac{l}{2}\vec{i} + m_2 \cdot l\vec{i}}{m_1 + m_2} = \frac{l(m_1/2 + m_2)}{m_1 + m_2}\vec{i}$$
+
+\textbf{2. Kinetic elements at point $O_1$:}
+
+The kinetic torsor has two elements: the momentum (resultant) and the angular momentum (moment).
+
+\textbf{a) Momentum:}
+$$\vec{P}(S/T_1) = (m_1 + m_2)\vec{V}_G(S/T_1)$$
+
+We need $\vec{V}_G(S/T_1)$. From the position:
+$$\vec{O_1G} = \frac{l(m_1/2 + m_2)}{m_1 + m_2}\vec{i}$$
+
+Differentiating with respect to time in frame $T_1$:
+$$\vec{V}_G(S/T_1) = \frac{d}{dt}(\vec{O_1G})_{T_1} = \frac{l(m_1/2 + m_2)}{m_1 + m_2} \frac{d\vec{i}}{dt}$$
+
+Since $\vec{i}$ is fixed in the rod frame which rotates with angular velocity $\dot{\theta}\vec{k}_1$ relative to $T_1$:
+$$\frac{d\vec{i}}{dt} = \vec{\omega}_{T/T_1} \times \vec{i} = \dot{\theta}\vec{k}_1 \times \vec{i} = \dot{\theta}\vec{j}$$
+
+Therefore:
+$$\vec{V}_G(S/T_1) = \frac{l(m_1/2 + m_2)}{m_1 + m_2} \dot{\theta}\vec{j}$$
+
+And the momentum is:
+$$\vec{P}(S/T_1) = (m_1 + m_2)\vec{V}_G(S/T_1) = l(m_1/2 + m_2)\dot{\theta}\vec{j}$$
+
+\textbf{b) Angular momentum at $O_1$:}
+
+We use the additive property for composite systems:
+$$\vec{\sigma}_{O_1}(S/T_1) = \vec{\sigma}_{O_1}(S_1/T_1) + \vec{\sigma}_{O_1}(S_2/T_1)$$
+
+For the rod $S_1$ rotating about $O_1Z$:
+$$\vec{\sigma}_{O_1}(S_1/T_1) = I_{O_1Z}(S_1)\dot{\theta}\vec{k}_1$$
+
+Where $I_{O_1Z}(S_1)$ is the moment of inertia of the rod about axis $O_1Z$. For a thin rod of length $l$ and mass $m_1$ rotating about one end:
+$$I_{O_1Z}(S_1) = \frac{1}{3}m_1l^2$$
+
+So:
+$$\vec{\sigma}_{O_1}(S_1/T_1) = \frac{1}{3}m_1l^2\dot{\theta}\vec{k}_1$$
+
+For the disk $S_2$, we use Koenig's theorem:
+$$\vec{\sigma}_{O_1}(S_2/T_1) = \vec{\sigma}_C(S_2/T_1) + m_2\vec{O_1C} \times \vec{V}_C(S_2/T_1)$$
+
+The disk rotates about $CZ_1$ with angular velocity $\dot{\varphi}\vec{k}_1$, so:
+$$\vec{\sigma}_C(S_2/T_1) = I_{CZ}(S_2)\dot{\varphi}\vec{k}_1$$
+
+For a disk about its central axis perpendicular to its plane:
+$$I_{CZ}(S_2) = \frac{1}{2}m_2R^2$$
+
+Now, $\vec{O_1C} = l\vec{i}$ and $\vec{V}_C(S_2/T_1) = \frac{d}{dt}(l\vec{i})_{T_1} = l\dot{\theta}\vec{j}$
+
+So:
+$$m_2\vec{O_1C} \times \vec{V}_C(S_2/T_1) = m_2(l\vec{i}) \times (l\dot{\theta}\vec{j}) = m_2l^2\dot{\theta}(\vec{i} \times \vec{j}) = m_2l^2\dot{\theta}\vec{k}_1$$
+
+Therefore:
+$$\vec{\sigma}_{O_1}(S_2/T_1) = \frac{1}{2}m_2R^2\dot{\varphi}\vec{k}_1 + m_2l^2\dot{\theta}\vec{k}_1$$
+
+The total angular momentum is:
+$$\vec{\sigma}_{O_1}(S/T_1) = \left(\frac{1}{3}m_1l^2\dot{\theta} + m_2l^2\dot{\theta} + \frac{1}{2}m_2R^2\dot{\varphi}\right)\vec{k}_1$$
+$$= \left(l^2\left(\frac{m_1}{3} + m_2\right)\dot{\theta} + \frac{1}{2}m_2R^2\dot{\varphi}\right)\vec{k}_1$$
+
+The kinetic torsor at $O_1$ is therefore:
+$$\tau(S/T_1) = \left[l(m_1/2 + m_2)\dot{\theta}\vec{j}, \left(l^2\left(\frac{m_1}{3} + m_2\right)\dot{\theta} + \frac{1}{2}m_2R^2\dot{\varphi}\right)\vec{k}_1\right]$$
 \end{correctionbox}
 
 % ----------- EXERCISE 3 -------------
@@ -86,7 +201,88 @@ A homogeneous rod of length $l$ and mass $m$, rotates, in the vertical plane $XO
 \end{enumerate}
 
 \begin{correctionbox}
+\textbf{1. First integral of motion using angular momentum theorem:}
 
+The angular momentum theorem at point $O$ states:
+$$\frac{d\vec{\sigma}_O}{dt} = \vec{M}_O(\text{external forces})$$
+
+The external forces are:
+- Weight: $mg$ acting at the center of mass $G$
+- Reaction at $O$: $\vec{R}$
+
+The moment of the reaction at $O$ about $O$ is zero. The moment of the weight about $O$ is:
+$$\vec{M}_O(\text{weight}) = \vec{OG} \times m\vec{g}$$
+
+The center of mass $G$ is at distance $l/2$ from $O$ along the rod. In the rotating frame attached to the rod:
+$$\vec{OG} = \frac{l}{2}\vec{i}$$
+
+Where $\vec{i}$ is the unit vector along the rod. The gravitational acceleration is:
+$$\vec{g} = -g\vec{j}$$
+
+The angular momentum of the rod about $O$ is:
+$$\vec{\sigma}_O = I_O\dot{\theta}\vec{k}$$
+
+Where $I_O$ is the moment of inertia of the rod about $O$. For a thin rod of length $l$ and mass $m$ rotating about one end:
+$$I_O = \frac{1}{3}ml^2$$
+
+So:
+$$\vec{\sigma}_O = \frac{1}{3}ml^2\dot{\theta}\vec{k}$$
+
+Now, the angular momentum theorem gives:
+$$\frac{d}{dt}\left(\frac{1}{3}ml^2\dot{\theta}\vec{k}\right) = \vec{OG} \times m\vec{g}$$
+
+The left side is:
+$$\frac{1}{3}ml^2\ddot{\theta}\vec{k}$$
+
+The right side is:
+$$\vec{OG} \times m\vec{g} = \left(\frac{l}{2}\vec{i}\right) \times (-mg\vec{j}) = -\frac{mgl}{2}(\vec{i} \times \vec{j}) = -\frac{mgl}{2}\vec{k}$$
+
+So we have:
+$$\frac{1}{3}ml^2\ddot{\theta} = -\frac{mgl}{2}$$
+
+Simplifying:
+$$\ddot{\theta} = -\frac{3g}{2l}$$
+
+This is a differential equation we can integrate. Multiply both sides by $2\dot{\theta}$:
+$$2\dot{\theta}\ddot{\theta} = -\frac{3g}{l}\dot{\theta}$$
+
+Integrate with respect to time:
+$$\dot{\theta}^2 = -\frac{3g}{l}\theta + C$$
+
+Using the initial condition $\dot{\theta} = \omega_0$ when $\theta = 0$:
+$$\omega_0^2 = C$$
+
+So the first integral is:
+$$\dot{\theta}^2 = \omega_0^2 - \frac{3g}{l}\theta$$
+
+\textbf{2. Reaction using momentum theorem:}
+
+The momentum theorem states:
+$$m\vec{a}_G = \vec{R} + m\vec{g}$$
+
+We need the acceleration of the center of mass $G$. The position of $G$ is:
+$$\vec{OG} = \frac{l}{2}\vec{i}$$
+
+Differentiating twice with respect to time:
+$$\vec{V}_G = \frac{l}{2}\dot{\theta}\vec{j}$$
+$$\vec{a}_G = \frac{l}{2}\ddot{\theta}\vec{j} - \frac{l}{2}\dot{\theta}^2\vec{i}$$
+
+We already have $\ddot{\theta} = -\frac{3g}{2l}$ and $\dot{\theta}^2 = \omega_0^2 - \frac{3g}{l}\theta$
+
+So:
+$$\vec{a}_G = \frac{l}{2}\left(-\frac{3g}{2l}\right)\vec{j} - \frac{l}{2}\left(\omega_0^2 - \frac{3g}{l}\theta\right)\vec{i}$$
+$$= -\frac{3g}{4}\vec{j} - \frac{l}{2}\left(\omega_0^2 - \frac{3g}{l}\theta\right)\vec{i}$$
+
+Now from the momentum theorem:
+$$\vec{R} = m\vec{a}_G - m\vec{g} = m\vec{a}_G + mg\vec{j}$$
+
+Substituting $\vec{a}_G$:
+$$\vec{R} = m\left[-\frac{l}{2}\left(\omega_0^2 - \frac{3g}{l}\theta\right)\vec{i} - \frac{3g}{4}\vec{j}\right] + mg\vec{j}$$
+$$= -\frac{ml}{2}\left(\omega_0^2 - \frac{3g}{l}\theta\right)\vec{i} + \left(mg - \frac{3mg}{4}\right)\vec{j}$$
+$$= -\frac{ml}{2}\left(\omega_0^2 - \frac{3g}{l}\theta\right)\vec{i} + \frac{mg}{4}\vec{j}$$
+
+So the reaction at $O$ is:
+$$\vec{R} = -\frac{ml}{2}\left(\omega_0^2 - \frac{3g}{l}\theta\right)\vec{i} + \frac{mg}{4}\vec{j}$$
 \end{correctionbox}
 
 % ----------- EXERCISE 4 -------------
@@ -101,7 +297,104 @@ A homogeneous bar $AB$, of length $2l$ and mass $m$, rests on a point $E$ locate
 \end{enumerate}
 
 \begin{correctionbox}
+\textbf{1. Expressing $\dot{\theta}$ and $\ddot{\theta}$:}
 
+From the geometry, point $A$ has coordinates $(x_A, 0)$ and point $E$ has coordinates $(0, h)$. The bar has length $2l$.
+
+The distance between $A$ and $E$ is:
+$$AE = \sqrt{x_A^2 + h^2}$$
+
+But also from the bar's geometry, the vertical projection gives:
+$$h = 2l\sin\theta$$
+
+And the horizontal distance from $A$ to the vertical through $E$ is:
+$$x_A = 2l\cos\theta - OH$$
+
+Since $OH$ is constant and $v_A = \dot{x}_A$ is constant, we have:
+$$x_A = 2l\cos\theta - OH$$
+$$\dot{x}_A = -2l\dot{\theta}\sin\theta = v_A$$
+
+Therefore:
+$$\dot{\theta} = -\frac{v_A}{2l\sin\theta}$$
+
+Differentiating again:
+$$\ddot{\theta} = \frac{v_A}{2l}\cdot\frac{\dot{\theta}\cos\theta}{\sin^2\theta} = \frac{v_A}{2l}\cdot\left(-\frac{v_A}{2l\sin\theta}\right)\frac{\cos\theta}{\sin^2\theta} = -\frac{v_A^2\cos\theta}{4l^2\sin^3\theta}$$
+
+\textbf{2. Momentum and angular momentum at point $A$:}
+
+The center of mass $G$ is at the midpoint of the bar. Its position relative to $A$ is:
+$$\vec{AG} = l(\cos\theta\vec{i} + \sin\theta\vec{j})$$
+
+The velocity of $G$ is:
+$$\vec{V}_G = \vec{V}_A + \vec{\omega} \times \vec{AG}$$
+
+Since $\vec{V}_A = v_A\vec{i}$ and $\vec{\omega} = \dot{\theta}\vec{k}$:
+$$\vec{V}_G = v_A\vec{i} + \dot{\theta}\vec{k} \times l(\cos\theta\vec{i} + \sin\theta\vec{j})$$
+$$= v_A\vec{i} + l\dot{\theta}(-\sin\theta\vec{i} + \cos\theta\vec{j})$$
+$$= (v_A - l\dot{\theta}\sin\theta)\vec{i} + l\dot{\theta}\cos\theta\vec{j}$$
+
+The momentum is:
+$$\vec{P} = m\vec{V}_G = m(v_A - l\dot{\theta}\sin\theta)\vec{i} + ml\dot{\theta}\cos\theta\vec{j}$$
+
+The angular momentum at point $A$ is:
+$$\vec{\sigma}_A = I_A\dot{\theta}\vec{k}$$
+
+Where $I_A$ is the moment of inertia of the bar about point $A$. For a thin bar of length $2l$ and mass $m$ about one end:
+$$I_A = \frac{1}{3}m(2l)^2 = \frac{4}{3}ml^2$$
+
+So:
+$$\vec{\sigma}_A = \frac{4}{3}ml^2\dot{\theta}\vec{k}$$
+
+\textbf{3. Reaction $\vec{R}_E$ using angular momentum theorem at $A$:}
+
+The angular momentum theorem at point $A$ states:
+$$\frac{d\vec{\sigma}_A}{dt} = \vec{M}_A(\text{external forces})$$
+
+The external forces are:
+- Weight: $mg$ acting at $G$
+- Reaction at $E$: $\vec{R}_E = R_{Ex}\vec{i} + R_{Ey}\vec{j}$
+- Force at $A$: $\vec{F}_A$ (but its moment about $A$ is zero)
+
+The moment of the weight about $A$ is:
+$$\vec{M}_A(\text{weight}) = \vec{AG} \times m\vec{g} = l(\cos\theta\vec{i} + \sin\theta\vec{j}) \times (-mg\vec{j}) = -mgl\cos\theta(\vec{i} \times \vec{j}) = -mgl\cos\theta\vec{k}$$
+
+The moment of the reaction at $E$ about $A$ is:
+$$\vec{M}_A(\vec{R}_E) = \vec{AE} \times \vec{R}_E$$
+
+We have $\vec{AE} = -x_A\vec{i} + h\vec{j} = (-2l\cos\theta + OH)\vec{i} + 2l\sin\theta\vec{j}$
+
+So:
+$$\vec{AE} \times \vec{R}_E = 
+\begin{vmatrix}
+\vec{i} & \vec{j} & \vec{k} \\
+-2l\cos\theta + OH & 2l\sin\theta & 0 \\
+R_{Ex} & R_{Ey} & 0
+\end{vmatrix}
+= [(-2l\cos\theta + OH)R_{Ey} - (2l\sin\theta)R_{Ex}]\vec{k}$$
+
+The left side of the angular momentum theorem is:
+$$\frac{d\vec{\sigma}_A}{dt} = \frac{4}{3}ml^2\ddot{\theta}\vec{k}$$
+
+So the angular momentum theorem gives:
+$$\frac{4}{3}ml^2\ddot{\theta} = -mgl\cos\theta + [(-2l\cos\theta + OH)R_{Ey} - (2l\sin\theta)R_{Ex}]$$
+
+We need another equation to find both components of $\vec{R}_E$. Let's use the momentum theorem:
+$$m\vec{a}_G = \vec{F}_A + \vec{R}_E + m\vec{g}$$
+
+The acceleration of $G$ is:
+$$\vec{a}_G = \frac{d\vec{V}_G}{dt} = \frac{d}{dt}[(v_A - l\dot{\theta}\sin\theta)\vec{i} + l\dot{\theta}\cos\theta\vec{j}]$$
+$$= [-l\ddot{\theta}\sin\theta - l\dot{\theta}^2\cos\theta]\vec{i} + [l\ddot{\theta}\cos\theta - l\dot{\theta}^2\sin\theta]\vec{j}$$
+
+So the momentum theorem gives:
+$$m[-l\ddot{\theta}\sin\theta - l\dot{\theta}^2\cos\theta] = F_{Ax} + R_{Ex}$$
+$$m[l\ddot{\theta}\cos\theta - l\dot{\theta}^2\sin\theta] = R_{Ey} - mg$$
+
+We can solve these equations to find $R_{Ex}$ and $R_{Ey}$, but the expression will be quite complex in terms of $\theta$, $v_A$, $l$, and $OH$.
+
+The final expression for $\vec{R}_E$ is:
+$$\vec{R}_E = \left(-m[-l\ddot{\theta}\sin\theta - l\dot{\theta}^2\cos\theta] - F_{Ax}\right)\vec{i} + \left(m[l\ddot{\theta}\cos\theta - l\dot{\theta}^2\sin\theta] + mg\right)\vec{j}$$
+
+Where $\dot{\theta}$ and $\ddot{\theta}$ are given in part 1.
 \end{correctionbox}
 
 % ----------- EXERCISE 5 -------------
@@ -118,7 +411,111 @@ A material point $A$ of mass $m$ is fixed on the perimeter of a hoop $D$, of cen
 \end{enumerate}
 
 \begin{correctionbox}
+\textbf{1. Number of degrees of freedom:}
 
+The system consists of a hoop with a fixed point on its perimeter. The hoop rolls without slipping on a fixed line. This imposes one constraint. The system has one degree of freedom, which can be described by the angle $\theta$.
+
+\textbf{2. Velocities of points $I$, $C$, and $A$:}
+
+Let $\phi$ be the rotation angle of the hoop about its center $C$. Due to rolling without slipping, when the hoop rotates by an angle $\phi$, its center moves by $R\phi$ along OX.
+
+So the position of center $C$ is:
+$$\vec{OC} = R\phi\vec{i} + R\vec{j}$$
+
+The velocity of $C$ is:
+$$\vec{V}_C = R\dot{\phi}\vec{i}$$
+
+Point $I$ is the contact point. Its position is:
+$$\vec{OI} = R\phi\vec{i}$$
+
+Since the hoop rolls without slipping, point $I$ has zero velocity relative to the ground:
+$$\vec{V}_I = \vec{0}$$
+
+Point $A$ is fixed on the hoop at angular position $\theta$ from the vertical. Its position relative to $C$ is:
+$$\vec{CA} = R\sin\theta\vec{i} - R\cos\theta\vec{j}$$
+
+So the position of $A$ is:
+$$\vec{OA} = \vec{OC} + \vec{CA} = (R\phi + R\sin\theta)\vec{i} + (R - R\cos\theta)\vec{j}$$
+
+The velocity of $A$ is:
+$$\vec{V}_A = \frac{d\vec{OA}}{dt} = R\dot{\phi}\vec{i} + R\dot{\theta}\cos\theta\vec{i} + R\dot{\theta}\sin\theta\vec{j}$$
+$$= R(\dot{\phi} + \dot{\theta}\cos\theta)\vec{i} + R\dot{\theta}\sin\theta\vec{j}$$
+
+\textbf{3. Momentum of $S$:}
+
+The system $S$ consists of the hoop $D$ (mass $M$) and the point mass $A$ (mass $m$).
+
+The momentum is:
+$$\vec{P}(S/R) = M\vec{V}_C + m\vec{V}_A$$
+$$= MR\dot{\phi}\vec{i} + m[R(\dot{\phi} + \dot{\theta}\cos\theta)\vec{i} + R\dot{\theta}\sin\theta\vec{j}]$$
+$$= R[(M + m)\dot{\phi} + m\dot{\theta}\cos\theta]\vec{i} + mR\dot{\theta}\sin\theta\vec{j}$$
+
+\textbf{4. Differential equation of motion using angular momentum theorem at $I$:}
+
+The angular momentum theorem at point $I$ states:
+$$\frac{d\vec{\sigma}_I}{dt} = \vec{M}_I(\text{external forces})$$
+
+The external forces are:
+- Weight of hoop: $Mg$ acting at $C$
+- Weight of point mass: $mg$ acting at $A$
+- Normal reaction at $I$ (but its moment about $I$ is zero)
+- Friction at $I$ (but its moment about $I$ is zero)
+
+The angular momentum about $I$ has contributions from both the hoop and the point mass.
+
+For the hoop, we use Koenig's theorem:
+$$\vec{\sigma}_I(D/R) = \vec{\sigma}_C(D/R) + M\vec{IC} \times \vec{V}_C$$
+
+We have $\vec{IC} = R\vec{j}$ and $\vec{V}_C = R\dot{\phi}\vec{i}$, so:
+$$M\vec{IC} \times \vec{V}_C = M(R\vec{j}) \times (R\dot{\phi}\vec{i}) = MR^2\dot{\phi}(\vec{j} \times \vec{i}) = -MR^2\dot{\phi}\vec{k}$$
+
+The hoop rotates about its center with angular velocity $\dot{\phi}$, so:
+$$\vec{\sigma}_C(D/R) = I_C\dot{\phi}\vec{k}$$
+
+For a hoop about its center:
+$$I_C = MR^2$$
+
+So:
+$$\vec{\sigma}_C(D/R) = MR^2\dot{\phi}\vec{k}$$
+
+Therefore:
+$$\vec{\sigma}_I(D/R) = MR^2\dot{\phi}\vec{k} - MR^2\dot{\phi}\vec{k} = 0$$
+
+This is interesting: the angular momentum of a rolling hoop about the contact point is zero.
+
+For the point mass $A$:
+$$\vec{\sigma}_I(A/R) = \vec{IA} \times m\vec{V}_A$$
+
+We have $\vec{IA} = \vec{OA} - \vec{OI} = (R\phi + R\sin\theta - R\phi)\vec{i} + (R - R\cos\theta)\vec{j} = R\sin\theta\vec{i} + R(1 - \cos\theta)\vec{j}$
+
+And $\vec{V}_A = R(\dot{\phi} + \dot{\theta}\cos\theta)\vec{i} + R\dot{\theta}\sin\theta\vec{j}$
+
+So:
+$$\vec{\sigma}_I(A/R) = m
+\begin{vmatrix}
+\vec{i} & \vec{j} & \vec{k} \\
+R\sin\theta & R(1 - \cos\theta) & 0 \\
+R(\dot{\phi} + \dot{\theta}\cos\theta) & R\dot{\theta}\sin\theta & 0
+\end{vmatrix}
+= mR^2[\sin\theta \cdot \dot{\theta}\sin\theta - (1 - \cos\theta)(\dot{\phi} + \dot{\theta}\cos\theta)]\vec{k}$$
+$$= mR^2[\dot{\theta}\sin^2\theta - (1 - \cos\theta)\dot{\phi} - (1 - \cos\theta)\dot{\theta}\cos\theta]\vec{k}$$
+
+The total angular momentum is:
+$$\vec{\sigma}_I(S/R) = mR^2[\dot{\theta}\sin^2\theta - (1 - \cos\theta)\dot{\phi} - (1 - \cos\theta)\dot{\theta}\cos\theta]\vec{k}$$
+
+Now, the moment of external forces about $I$:
+$$\vec{M}_I = \vec{IC} \times M\vec{g} + \vec{IA} \times m\vec{g}$$
+$$= (R\vec{j}) \times (-Mg\vec{j}) + [R\sin\theta\vec{i} + R(1 - \cos\theta)\vec{j}] \times (-mg\vec{j})$$
+$$= 0 + (-mgR\sin\theta)(\vec{i} \times \vec{j}) = -mgR\sin\theta\vec{k}$$
+
+The angular momentum theorem gives:
+$$\frac{d}{dt}\left\{mR^2[\dot{\theta}\sin^2\theta - (1 - \cos\theta)\dot{\phi} - (1 - \cos\theta)\dot{\theta}\cos\theta]\right\} = -mgR\sin\theta$$
+
+This is the differential equation of motion. It can be simplified using trigonometric identities.
+
+\textbf{5. Nature of the motion:}
+
+The motion is oscillatory about a stable equilibrium position. The system behaves like a pendulum, with the point mass $A$ oscillating about the vertical position.
 \end{correctionbox}
 
 \end{document}
