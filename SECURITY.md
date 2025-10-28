@@ -1,18 +1,6 @@
 # Security Policy
 
-## Supported Versions
-
-The following versions of our project are currently being supported with security updates:
-
-| Version | Supported          |
-| ------- | ------------------ |
-| 1.x     | :white_check_mark: |
-
 ## Reporting a Vulnerability
-
-### Contact Information
-- **Security Team Email**: security@cosoures.com
-- **PGP Key**: We recommend using our PGP key for encrypted communication
 
 ### Vulnerability Disclosure Process
 
@@ -22,7 +10,9 @@ The following versions of our project are currently being supported with securit
 4. **Resolution**: We aim to resolve critical vulnerabilities within 30 days of disclosure.
 
 ### Required Information
+
 When reporting a vulnerability, please include:
+
 - A clear description of the vulnerability
 - Steps to reproduce the issue
 - The affected component(s)
@@ -30,6 +20,7 @@ When reporting a vulnerability, please include:
 - Your contact information (optional)
 
 ### Responsible Disclosure
+
 - Please do not disclose the vulnerability publicly until we have had a chance to address it
 - We will coordinate with you regarding the timing of any public disclosure
 - We will credit you in our security advisories if you wish to be acknowledged
@@ -43,6 +34,7 @@ When reporting a vulnerability, please include:
 ## Security Advisories
 
 We will publish security advisories for all confirmed vulnerabilities. These advisories will include:
+
 - A description of the vulnerability
 - The affected versions
 - The severity rating
@@ -53,8 +45,4 @@ We will publish security advisories for all confirmed vulnerabilities. These adv
 
 We currently do not have a formal bug bounty program, but we welcome responsible disclosure of security vulnerabilities. We may consider establishing a bug bounty program in the future based on the volume and severity of reported vulnerabilities.
 
-## Security Audit
-
-We recommend regular security audits of our codebase. If you are interested in performing a security audit, please contact us at security@cosoures.com to discuss the scope and terms.
-
-Last updated: May 14, 2025
+Last updated: Oct 28, 2025
