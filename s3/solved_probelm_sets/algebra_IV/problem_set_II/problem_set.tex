@@ -1,0 +1,176 @@
+\documentclass[12pt]{article}                                                                                                           
+\usepackage[utf8]{inputenc}                                                                                                             
+\usepackage[T1]{fontenc}                                                                                                                
+\usepackage{amsmath, amssymb}                                                                                                           
+\usepackage{geometry}                                                                                                                   
+\usepackage{xcolor}                                                                                                                     
+\usepackage{lipsum}                                                                                                                     
+\usepackage{titlesec}                                                                                                                   
+\usepackage{fancyhdr}                                                                                                                   
+\usepackage[most]{tcolorbox}                                                                                                                  
+\usepackage{graphicx}                                                                                                                   
+\usepackage{float}                                                                                      
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+\usetikzlibrary{arrows.meta, decorations.markings}                                                                                      
+                                                                                                                                        
+\geometry{a4paper, margin=2.5cm}                                                                                                        
+\pagestyle{fancy}                                                                                                                       
+\fancyhf{}                                                                                                                              
+\rhead{Problem Set II}                                                                                                                   
+\lhead{Algebra IV}                                                                                                                     
+\cfoot{\thepage}                                                                                                                        
+                                                                                                                                        
+% Fancy titles                                                                                                                          
+\titleformat{\section}{\normalfont\Large\bfseries}{Exercise \thesection:}{1em}{}                                                        
+\titleformat{\subsection}{\normalfont\bfseries}{Correction:}{1em}{}                                                                     
+                                                                                                                                        
+% Custom box for correction with breakable option
+\newtcolorbox{correctionbox}{                                                                                                           
+  colback=gray!5,                                                                                                                       
+  colframe=black,                                                                                                                       
+  fonttitle=\bfseries,                                                                                                                  
+  title=Correction,                                                                                                                     
+  before skip=10pt,                                                                                                                     
+  after skip=10pt,
+  breakable,
+  enhanced
+}                                                                                                                                       
+                                                                                                                                        
+% Fix headheight warning
+\setlength{\headheight}{14.49998pt}
+
+\begin{document}
+
+\begin{center}
+\Large\textbf{Ibn Tofail University} \\[1em]
+\large\textit{Algebra IV (S3)} \\[2em]
+\large\textit{Problem Set II} \\[0.5em]
+\end{center}
+
+\vspace{1cm}
+
+% ----------- EXERCISE 1 -------------
+\section{}
+Triangularize the following matrices in $M_{3}(\mathbb{R})$ when possible.
+$$A=\begin{pmatrix}2&0&4\\ 3&-4&12\\ 1&-2&5\end{pmatrix} \quad B=\begin{pmatrix}-2&2&-1\\ -1&1&-1\\ -1&2&-2\end{pmatrix} \quad C=\begin{pmatrix}2&0&1\\ 1&1&0\\ -1&1&3\end{pmatrix}$$
+
+\begin{correctionbox}
+
+\end{correctionbox}
+
+% ----------- EXERCISE 2 -------------
+\section{}
+Determine the minimal polynomial of the following matrices:
+$$A=\begin{pmatrix}1&1\\ 0&1\end{pmatrix} \quad B=\begin{pmatrix}1&1&1\\ 1&1&1\\ 1&1&1\end{pmatrix} \quad C=\begin{pmatrix}1&2&-2\\ 2&1&-2\\ 2&2&-3\end{pmatrix} \quad D=\begin{pmatrix}3&0&8\\ 3&-1&6\\ -2&0&-5\end{pmatrix}$$
+
+\begin{correctionbox}
+
+\end{correctionbox}
+
+% ----------- EXERCISE 3 -------------
+\section{}
+Let $A$ be the matrix:
+$$A = \begin{pmatrix}
+1 & 1-b & b & 0 \\
+-a & a & -a & 1+b \\
+-a & a-1 & 1-a & 0 \\
+1 & -b & 1 & a
+\end{pmatrix}$$
+where $a, b \in \mathbb{R}$.
+
+\begin{enumerate}
+    \item Give a necessary and sufficient condition for $A$ to be diagonalizable.
+    \item Using the spectrum of $A$ (the set of eigenvalues of $A$), show that $A+I_{4}$ is invertible.
+    \item Calculate $(A+I_{4})^{-1}$ when $A$ is diagonalizable.
+\end{enumerate}
+
+\begin{correctionbox}
+
+\end{correctionbox}
+
+% ----------- EXERCISE 4 -------------
+\section{}
+Let $A \in M_{n}(\mathbb{R})$.
+\begin{enumerate}
+    \item If $A$ is invertible, show that $A$ is diagonalizable if and only if $A^2$ is diagonalizable.
+    \item Does the result still hold if $A$ is not invertible?
+\end{enumerate}
+
+\begin{correctionbox}
+
+\end{correctionbox}
+
+% ----------- EXERCISE 5 -------------
+\section{}
+Let $E$ be a finite-dimensional $\mathbb{R}$-vector space and $f$ an endomorphism of $E$ such that:
+$$(f-id_{E})^{3}\circ(f+2id_{E})=0$$
+$$(f-id_{E})^{2}\circ(f+2id_{E})\ne0$$
+Is $f$ diagonalizable?
+
+\begin{correctionbox}
+
+\end{correctionbox}
+
+% ----------- EXERCISE 6 -------------
+\section{}
+Let $n \in \mathbb{N}^{*}$ and $A \in M_{n}(\mathbb{R})$ such that $A^{4}=7A^{3}-12A^{2}$. Show that $A$ is triangularizable in $M_{n}(\mathbb{R})$, that $\text{tr}(A) \in \mathbb{N}$ and that $\text{tr}(A) \le 4n$.
+
+\begin{correctionbox}
+
+\end{correctionbox}
+
+
+% ----------- EXERCISE 7 -------------
+\section{}
+Let $n \in \mathbb{N}\setminus\{0,1\}$ and $A=(a_{ij}) \in M_{n}(\mathbb{R})$ with $a_{1j}=a_{j1}=1$ for $j>1$ and $a_{11}=a_{ij}=0$ for $i, j > 1$.
+\begin{enumerate}
+    \item Calculate $A^3$ and deduce a simple relation between $A^3$ and $A$.
+    \item Deduce that $A$ is diagonalizable and give its eigenvalues.
+    \item Diagonalize $A$.
+\end{enumerate}
+
+\begin{correctionbox}
+
+\end{correctionbox}
+
+% ----------- EXERCISE 8 -------------
+\section{}
+Let $A \in M_{3}(\mathbb{R})$ such that $A^{3}+A=0$ and $A\ne0$.
+\begin{enumerate}
+    \item Determine $\text{spect}(A)$ (the spectrum of $A$).
+    \item Is $A$ diagonalizable in $M_{3}(\mathbb{R})$?
+    \item Is $A$ diagonalizable in $M_{3}(\mathbb{C})$?
+    \item Show that $A$ is similar to: $\begin{pmatrix}0&0&0\\ 0&0&1\\ 0&-1&0\end{pmatrix}$ in $M_{3}(\mathbb{R})$.
+\end{enumerate}
+
+\begin{correctionbox}
+
+\end{correctionbox}
+
+% ----------- EXERCISE 9 -------------
+\section{}
+Let $A=\begin{pmatrix}0&I_{n}\\ -I_{n}&0\end{pmatrix}$ where $n \in \mathbb{N}^{*}$.
+\begin{enumerate}
+    \item Calculate $A^2$.
+    \item Is $A$ diagonalizable:
+    \begin{enumerate}
+        \item In $M_{2n}(\mathbb{R})$?
+        \item In $M_{2n}(\mathbb{C})$?
+    \end{enumerate}
+    If yes, perform the diagonalization.
+\end{enumerate}
+
+\begin{correctionbox}
+
+\end{correctionbox}
+
+% ----------- EXERCISE 10 -------------
+\section{}
+Let $E$ be a finite-dimensional $\mathbb{R}$-vector space and $f$ an endomorphism of $E$ such that $f^{2}=f$ and $f \ne0$. How should $t$ be chosen so that $(id_{E}+tf)$ is invertible? Calculate $(id_{E}+tf)^{-1}$.
+
+\begin{correctionbox}
+
+\end{correctionbox}
+
+\end{document}
