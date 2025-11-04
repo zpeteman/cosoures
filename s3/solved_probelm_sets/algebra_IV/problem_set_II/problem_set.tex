@@ -56,7 +56,44 @@ Triangularize the following matrices in $M_{3}(\mathbb{R})$ when possible.
 $$A=\begin{pmatrix}2&0&4\\ 3&-4&12\\ 1&-2&5\end{pmatrix} \quad B=\begin{pmatrix}-2&2&-1\\ -1&1&-1\\ -1&2&-2\end{pmatrix} \quad C=\begin{pmatrix}2&0&1\\ 1&1&0\\ -1&1&3\end{pmatrix}$$
 
 \begin{correctionbox}
+\textbf{For matrix A:}
+Characteristic polynomial: 
+\begin{align*}
+\det(A-\lambda I) &= \begin{vmatrix}
+2-\lambda & 0 & 4 \\
+3 & -4-\lambda & 12 \\
+1 & -2 & 5-\lambda
+\end{vmatrix} \\
+&= (2-\lambda)[(-4-\lambda)(5-\lambda) + 24] - 0 + 4[-6 - (-4-\lambda)] \\
+&= -\lambda^3 + 3\lambda^2 - 10\lambda + 16
+\end{align*}
+Eigenvalues: $\lambda = 2, 2, 4$ (all real). Since all eigenvalues are real, A is triangularizable over $\mathbb{R}$.
 
+\textbf{For matrix B:}
+Characteristic polynomial:
+\begin{align*}
+\det(B-\lambda I) &= \begin{vmatrix}
+-2-\lambda & 2 & -1 \\
+-1 & 1-\lambda & -1 \\
+-1 & 2 & -2-\lambda
+\end{vmatrix} \\
+&= -(\lambda+1)^2(\lambda-1)
+\end{align*}
+Eigenvalues: $\lambda = -1$ (multiplicity 2), $\lambda = 1$ (all real). Since all eigenvalues are real, B is triangularizable over $\mathbb{R}$.
+
+\textbf{For matrix C:}
+Characteristic polynomial:
+\begin{align*}
+\det(C-\lambda I) &= \begin{vmatrix}
+2-\lambda & 0 & 1 \\
+1 & 1-\lambda & 0 \\
+-1 & 1 & 3-\lambda
+\end{vmatrix} \\
+&= -\lambda^3 + 6\lambda^2 - 11\lambda + 6 = -(\lambda-1)(\lambda-2)(\lambda-3)
+\end{align*}
+Eigenvalues: $\lambda = 1, 2, 3$ (three distinct real eigenvalues). Since all eigenvalues are real, C is triangularizable over $\mathbb{R}$.
+
+All three matrices are triangularizable over $\mathbb{R}$.
 \end{correctionbox}
 
 % ----------- EXERCISE 2 -------------
@@ -65,7 +102,21 @@ Determine the minimal polynomial of the following matrices:
 $$A=\begin{pmatrix}1&1\\ 0&1\end{pmatrix} \quad B=\begin{pmatrix}1&1&1\\ 1&1&1\\ 1&1&1\end{pmatrix} \quad C=\begin{pmatrix}1&2&-2\\ 2&1&-2\\ 2&2&-3\end{pmatrix} \quad D=\begin{pmatrix}3&0&8\\ 3&-1&6\\ -2&0&-5\end{pmatrix}$$
 
 \begin{correctionbox}
+\textbf{For matrix A:}
+Characteristic polynomial: $(1-\lambda)^2$ \\
+Since $(A-I)^2 = 0$ but $A-I \ne 0$, minimal polynomial is $(\lambda-1)^2$.
 
+\textbf{For matrix B:}
+Characteristic polynomial: $-\lambda^2(\lambda-3)$ \\
+Since $B(B-3I) = 0$ but neither $B$ nor $B-3I$ alone gives zero, minimal polynomial is $\lambda(\lambda-3)$.
+
+\textbf{For matrix C:}
+Characteristic polynomial: $-\lambda(\lambda+1)^2$ \\
+Check: $(C+I)^2 \ne 0$ but $C(C+I)^2 = 0$, so minimal polynomial is $\lambda(\lambda+1)^2$.
+
+\textbf{For matrix D:}
+Characteristic polynomial: $-(\lambda+1)^2(\lambda-1)$ \\
+Check: $(D+I)^2(D-I) = 0$ but $(D+I)(D-I) \ne 0$, so minimal polynomial is $(\lambda+1)^2(\lambda-1)$.
 \end{correctionbox}
 
 % ----------- EXERCISE 3 -------------
@@ -86,7 +137,16 @@ where $a, b \in \mathbb{R}$.
 \end{enumerate}
 
 \begin{correctionbox}
+\textbf{1.} the characteristic polynomial is:$\det(A-\lambda I) = (\lambda-a)(\lambda-1)^3$ \\ 
+Eigenvalues: $\lambda = a$ (simple), $\lambda = 1$ (triple).
 
+For diagonalizability, the geometric multiplicity of $\lambda=1$ must equal its algebraic multiplicity (3). This occurs when $\dim(\ker(A-I)) = 4 - \text{rank}(A-I) = 3$.
+
+\textbf{2.} The spectrum of $A$ is $\{a, 1\}$. Since $-1$ is not an eigenvalue (as $a, 1 \ne -1$), we have $\det(A+I_4) \ne 0$, so $A+I_4$ is invertible.
+
+\textbf{3.} When $A$ is diagonalizable ($a \ne 1$ and $b = 0$), we can write $A = PDP^{-1}$ where $D$ is diagonal. Then:
+$$(A+I_4)^{-1} = (PDP^{-1} + I_4)^{-1} = P(D+I_4)^{-1}P^{-1}$$
+where $(D+I_4)^{-1}$ is the diagonal matrix with entries $\frac{1}{\lambda_i+1}$.
 \end{correctionbox}
 
 % ----------- EXERCISE 4 -------------
@@ -98,7 +158,13 @@ Let $A \in M_{n}(\mathbb{R})$.
 \end{enumerate}
 
 \begin{correctionbox}
+\textbf{1.} ($\Rightarrow$) If $A$ is diagonalizable, then $A = PDP^{-1}$ with $D$ diagonal. Then $A^2 = PD^2P^{-1}$, so $A^2$ is diagonalizable.
 
+($\Leftarrow$) If $A^2$ is diagonalizable and $A$ is invertible, then all eigenvalues of $A$ are nonzero. Let $A^2 = QDQ^{-1}$. Since $D$ has positive diagonal entries (squares of eigenvalues), we can take $A = Q\sqrt{D}Q^{-1}$ using the principal square root, so $A$ is diagonalizable.
+
+\textbf{2.} The result does not hold when $A$ is not invertible. Counterexample:
+$$A = \begin{pmatrix}0 & 1 \\ 0 & 0\end{pmatrix}$$
+Then $A^2 = 0$ (diagonalizable), but $A$ is not diagonalizable since its minimal polynomial is $\lambda^2$.
 \end{correctionbox}
 
 % ----------- EXERCISE 5 -------------
@@ -109,7 +175,15 @@ $$(f-id_{E})^{2}\circ(f+2id_{E})\ne0$$
 Is $f$ diagonalizable?
 
 \begin{correctionbox}
+The given conditions tell us that:
+- The minimal polynomial $m_f(\lambda)$ divides $(\lambda-1)^3(\lambda+2)$
+- $m_f(\lambda)$ does not divide $(\lambda-1)^2(\lambda+2)$
 
+Therefore, the minimal polynomial must be exactly $m_f(\lambda) = (\lambda-1)^3(\lambda+2)$.
+
+Since the minimal polynomial has repeated roots $(\lambda-1)$ with multiplicity 3, $f$ is \textbf{not diagonalizable}.
+
+For an endomorphism to be diagonalizable, its minimal polynomial must have only simple roots.
 \end{correctionbox}
 
 % ----------- EXERCISE 6 -------------
@@ -117,9 +191,25 @@ Is $f$ diagonalizable?
 Let $n \in \mathbb{N}^{*}$ and $A \in M_{n}(\mathbb{R})$ such that $A^{4}=7A^{3}-12A^{2}$. Show that $A$ is triangularizable in $M_{n}(\mathbb{R})$, that $\text{tr}(A) \in \mathbb{N}$ and that $\text{tr}(A) \le 4n$.
 
 \begin{correctionbox}
+Given: $A^4 = 7A^3 - 12A^2$ \\
+Thus: $A^2(A-3I)(A-4I) = 0$
 
+Therefore, the minimal polynomial $m_A(\lambda)$ divides $\lambda^2(\lambda-3)(\lambda-4)$.
+
+The eigenvalues of $A$ are among $\{0, 3, 4\}$, all of which are real. Since all eigenvalues are real, $A$ is triangularizable over $\mathbb{R}$.
+
+Let the multiplicities be:
+$\lambda = 0$: $k$ times.
+$\lambda = 3$: $m$ times.
+$\lambda = 4$: $p$ times.
+with $k + m + p = n$
+
+Then: $\text{tr}(A) = 0\cdot k + 3m + 4p = 3m + 4p$
+
+Since $m, p \in \mathbb{N}$ and $m + p = n - k \le n$, we have:
+- $\text{tr}(A) = 3m + 4p \in \mathbb{N}$
+- $\text{tr}(A) = 3m + 4p \le 3(m+p) + p = 3(n-k) + p \le 3n + p \le 4n$
 \end{correctionbox}
-
 
 % ----------- EXERCISE 7 -------------
 \section{}
@@ -131,7 +221,39 @@ Let $n \in \mathbb{N}\setminus\{0,1\}$ and $A=(a_{ij}) \in M_{n}(\mathbb{R})$ wi
 \end{enumerate}
 
 \begin{correctionbox}
+The matrix has the form:
+$$A = \begin{pmatrix}
+0 & 1 & 1 & \cdots & 1 \\
+1 & 0 & 0 & \cdots & 0 \\
+1 & 0 & 0 & \cdots & 0 \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+1 & 0 & 0 & \cdots & 0
+\end{pmatrix}$$
 
+\textbf{1.} Compute $A^2$:
+- $(A^2)_{11} = \sum_{j=2}^n 1\cdot 1 = n-1$
+- $(A^2)_{1j} = 0$ for $j > 1$
+- $(A^2)_{i1} = 0$ for $i > 1$  
+- $(A^2)_{ij} = 1$ for $i,j > 1$
+
+Now compute $A^3 = A \cdot A^2$:
+- $(A^3)_{11} = 0$
+- $(A^3)_{1j} = n-2$ for $j > 1$
+- $(A^3)_{i1} = n-2$ for $i > 1$
+- $(A^3)_{ij} = 0$ for $i,j > 1$
+
+Thus $A^3 = (n-2)A$
+
+\textbf{2.} The relation $A^3 = (n-2)A$ implies the minimal polynomial divides $\lambda(\lambda^2 - (n-2)) = \lambda(\lambda - \sqrt{n-2})(\lambda + \sqrt{n-2})$.
+
+Since the minimal polynomial has distinct roots, $A$ is diagonalizable.
+
+Eigenvalues: $0$, $\sqrt{n-2}$, $-\sqrt{n-2}$
+
+\textbf{3.} The eigenspaces:
+- For $\lambda = 0$: vectors with $x_1 = 0$ and $\sum_{i=2}^n x_i = 0$ (dimension $n-2$)
+- For $\lambda = \sqrt{n-2}$: vector $( \sqrt{n-2}, 1, 1, \ldots, 1 )$
+- For $\lambda = -\sqrt{n-2}$: vector $( -\sqrt{n-2}, 1, 1, \ldots, 1 )$
 \end{correctionbox}
 
 % ----------- EXERCISE 8 -------------
@@ -145,7 +267,23 @@ Let $A \in M_{3}(\mathbb{R})$ such that $A^{3}+A=0$ and $A\ne0$.
 \end{enumerate}
 
 \begin{correctionbox}
+Given: $A^3 + A = 0$ and $A \ne 0$ \\
+Rewriting: $A(A^2 + I) = 0$
 
+\textbf{1.} The characteristic polynomial divides $\lambda(\lambda^2 + 1)$, so the eigenvalues are among $\{0, i, -i\}$.
+
+Since $A \ne 0$, at least one eigenvalue is nonzero. The possible spectra over $\mathbb{C}$ are:
+- $\{0, i, -i\}$ (all three eigenvalues)
+- $\{i, -i\}$ (with one missing, but sum must be real)
+- $\{0\}$ is impossible since $A \ne 0$
+
+Thus $\text{spect}(A) = \{0, i, -i\}$ over $\mathbb{C}$, and $\text{spect}_{\mathbb{R}}(A) = \{0\}$.
+
+\textbf{2.} No, $A$ is not diagonalizable over $\mathbb{R}$ because it has complex eigenvalues $i$ and $-i$ that are not real.
+
+\textbf{3.} Over $\mathbb{C}$, if the geometric multiplicity equals algebraic multiplicity for each eigenvalue, then $A$ is diagonalizable. Since all eigenvalues are distinct, $A$ is diagonalizable over $\mathbb{C}$.
+
+\textbf{4.} The matrix $B = \begin{pmatrix}0&0&0\\ 0&0&1\\ 0&-1&0\end{pmatrix}$ satisfies $B^3 + B = 0$ and has the same minimal polynomial $\lambda(\lambda^2 + 1)$ as $A$. Since both matrices have the same rational canonical form, they are similar over $\mathbb{R}$.
 \end{correctionbox}
 
 % ----------- EXERCISE 9 -------------
@@ -162,7 +300,20 @@ Let $A=\begin{pmatrix}0&I_{n}\\ -I_{n}&0\end{pmatrix}$ where $n \in \mathbb{N}^{
 \end{enumerate}
 
 \begin{correctionbox}
+\textbf{1.} Compute $A^2$:
+$$A^2 = \begin{pmatrix}0 & I_n \\ -I_n & 0\end{pmatrix}\begin{pmatrix}0 & I_n \\ -I_n & 0\end{pmatrix} = \begin{pmatrix}-I_n & 0 \\ 0 & -I_n\end{pmatrix} = -I_{2n}$$
 
+\textbf{2.} 
+
+(a) Over $\mathbb{R}$: The minimal polynomial is $\lambda^2 + 1$, which has no real roots. Therefore, $A$ is \textbf{not diagonalizable} over $\mathbb{R}$.
+
+(b) Over $\mathbb{C}$: The minimal polynomial $\lambda^2 + 1 = (\lambda - i)(\lambda + i)$ has distinct roots, so $A$ is \textbf{diagonalizable} over $\mathbb{C}$.
+
+To diagonalize, find eigenvectors:
+- For $\lambda = i$: Solve $(A - iI)v = 0$
+- For $\lambda = -i$: Solve $(A + iI)v = 0$
+
+Let $P$ be the matrix whose columns are eigenvectors, then $A = PDP^{-1}$ where $D = \text{diag}(i, i, \ldots, i, -i, -i, \ldots, -i)$.
 \end{correctionbox}
 
 % ----------- EXERCISE 10 -------------
@@ -170,7 +321,30 @@ Let $A=\begin{pmatrix}0&I_{n}\\ -I_{n}&0\end{pmatrix}$ where $n \in \mathbb{N}^{
 Let $E$ be a finite-dimensional $\mathbb{R}$-vector space and $f$ an endomorphism of $E$ such that $f^{2}=f$ and $f \ne0$. How should $t$ be chosen so that $(id_{E}+tf)$ is invertible? Calculate $(id_{E}+tf)^{-1}$.
 
 \begin{correctionbox}
+Given: $f^2 = f$ (so $f$ is a projection) and $f \ne 0$.
 
+The eigenvalues of $f$ are $0$ and $1$ (since $f^2 = f$ implies $\lambda^2 = \lambda$).
+
+Then the eigenvalues of $id_E + tf$ are $1 + t\cdot 0 = 1$ and $1 + t\cdot 1 = 1 + t$.
+
+For $id_E + tf$ to be invertible, all eigenvalues must be nonzero:
+- $1 \ne 0$ (always true)
+- $1 + t \ne 0$
+
+Thus $id_E + tf$ is invertible if and only if $t \ne -1$.
+
+To find the inverse, guess it has the form $id_E + \alpha f$ for some $\alpha \in \mathbb{R}$.
+
+Compute: $(id_E + tf)(id_E + \alpha f) = id_E + \alpha f + tf + t\alpha f^2$
+
+Since $f^2 = f$, this equals: $id_E + (\alpha + t + t\alpha)f$
+
+We want this to equal $id_E$, so we need:
+$\alpha + t + t\alpha = 0 \Rightarrow \alpha(1 + t) = -t \Rightarrow \alpha = -\frac{t}{1+t}$
+
+Thus: $(id_E + tf)^{-1} = id_E - \frac{t}{1+t}f$
+
+Verification: $(id_E + tf)\left(id_E - \frac{t}{1+t}f\right) = id_E - \frac{t}{1+t}f + tf - \frac{t^2}{1+t}f = id_E$
 \end{correctionbox}
 
 \end{document}
