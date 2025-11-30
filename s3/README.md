@@ -41,6 +41,15 @@ solved_exams/
 └── README.md     # documentation
 ```
 
+The structure of the ``summaries` follows this structure:
+
+```
+summaries/
+|-- [course_name]/
+|   |- {files related to that course.}
+|--- README.md # documentation
+```
+
 ## Available Courses
 
 - `algebra_IV/`: Advanced Linear Algebra.
