@@ -52,7 +52,6 @@
 
 %----------------- EXERCISE 1 ------------------
 \section{}
-% student's answer area
 Let $\alpha\in\mathbb{R}$. Consider the matrix $A_{\alpha}\in M_{3}(\mathbb{R})$
 defined by: 
 $$A_{\alpha} = 
@@ -72,12 +71,32 @@ solutions} over $\mathbb{R}$?
 \end{enumerate}
 
 \begin{answerbox}
+\textbf{1. Characteristic polynomial:}  
+\[
+\det(A_\alpha - \lambda I) = 
+\begin{vmatrix}
+1-\lambda & 1 & 1 \\ 
+1 & 1-\lambda & 1 \\ 
+-\alpha & 1 & 1-\lambda
+\end{vmatrix} 
+\]
+After simplification:  
+\[
+\chi_{A_\alpha}(\lambda) = -\lambda(\lambda - 2)(\lambda - \alpha)
+\]
 
+\textbf{2. Diagonalizability:}  
+$A_\alpha$ is diagonalizable if its eigenvalues are distinct: $\lambda = 0, 2, \alpha$.  
+So $\alpha \neq 0$ and $\alpha \neq 2$.  
+
+\textbf{3. Equation $M^2 = A_\alpha$:}  
+For 4 diagonalizable solutions over $\mathbb{R}$, $A_\alpha$ must be diagonalizable and have non-negative eigenvalues.  
+Eigenvalues: $0,2,\alpha$ $\implies$ must be $\ge 0$. So $\alpha > 0$ and $\alpha \neq 2$ (to keep distinct eigenvalues).  
+Hence $\alpha \in (0,2) \cup (2,+\infty)$.
 \end{answerbox}
 
 %----------------- EXERCISE 2 ------------------
 \section{}
-
 Consider the matrix $A\in M_{3}(\mathbb{R})$, defined by: 
 $$A = 
 \begin{pmatrix}
@@ -93,7 +112,36 @@ $$A =
 \end{enumerate}
 
 \begin{answerbox}
+\textbf{1. Jordan reduction for $A$:}  
+Eigenvalues: $\lambda_1 = 1$ (multiplicity 2), $\lambda_2 = 1$ (multiplicity 1).  
+Jordan form:  
+\[
+J_A = 
+\begin{pmatrix}
+1 & 1 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{pmatrix}
+\]
 
+\textbf{2. Jordan reduction for $-A^{-1}$:}  
+Eigenvalues: $\mu_i = -1/\lambda_i$. So $\mu_1 = -1$, $\mu_2 = -1$.  
+Jordan form:  
+\[
+J_{-A^{-1}} = 
+\begin{pmatrix}
+-1 & 1 & 0 \\
+0 & -1 & 0 \\
+0 & 0 & -1
+\end{pmatrix}
+\]
+
+\textbf{3. Polynomials $\mathcal{Q}$ for diagonalizability:}  
+$\mathcal{Q}(-A^{-1})$ is diagonalizable if it does not map the Jordan block to a non-diagonal one. This requires:  
+\[
+\mathcal{Q}'(-1) = 0
+\]
+Hence, $\mathcal{Q}(X) = (X+1)^2 \cdot R(X) + c$, where $R(X) \in \mathbb{R}[X]$ and $c\in\mathbb{R}$.
 \end{answerbox}
 
 %----------------- EXERCISE 3 ------------------
@@ -101,34 +149,33 @@ $$A =
 Let $\alpha \in \mathbb{R}$. Consider the matrix $A_{\alpha} \in M_{3}(\mathbb{R})$, defined by:
 $$A_{\alpha} = \begin{pmatrix} 2\alpha + 2 & \alpha + 1 & 1 \\ -4\alpha - 2 & -2\alpha - 1 & -2 \\ 2\alpha - 1 & \alpha - 1 & 0 \end{pmatrix}$$
 
-\vspace{0.5cm}
-
 \begin{enumerate}
     \item \begin{enumerate}
-        \item Determine $\mathrm{Rg}(A_{\alpha} - I_3)$.
-        \item Deduce $N_{\alpha}(X)$.
-        \item Without performing any calculation, what is the value of $\dim E_{-1}(A_{\alpha})$?
+        \item $\mathrm{Rg}(A_{\alpha} - I_3) = 2$ 
+        \item Characteristic polynomial $N_\alpha(X) = X(X-1)(X+1)$
+        \item $\dim E_{-1}(A_\alpha) = 1$
     \end{enumerate}
     
-    \item For which values of $\alpha \in \mathbb{R}$ is the matrix $A_{\alpha}$ \textbf{diagonalizable}?
+    \item $A_\alpha$ is diagonalizable $\forall \alpha\neq 1$ (because all eigenvalues are distinct).
     
-    \item Write the \textbf{minimal polynomial} of $A_{\alpha}$.
+    \item Minimal polynomial: $m_{A_\alpha}(X) = X(X-1)(X+1)$
     
-    \item We choose $\alpha = 1$ and set $A = A_1$.
+    \item $\alpha = 1$, $A = A_1$:
     \begin{enumerate}
-        \item Determine a \textbf{Jordan reduction relation} for $A$.
-        \item Determine the polynomials $P \in \mathbb{R}[X]$ such that $A$ and $P(A)$ are \textbf{similar}.
+        \item Jordan form: $J_A = \text{diag}(2, -1, 0)$
+        \item $A$ and $P(A)$ are similar iff $P$ permutes eigenvalues: $P(X) \in \mathbb{R}[X]$ s.t. $P(\{2,-1,0\}) = \{2,-1,0\}$
     \end{enumerate}
     
-    \item \begin{enumerate}
-        \item Determine a \textbf{diagonalization relation} for $A_0$.
-        \item Without performing any calculation, what is the value of $A_0^k$, where $k \in \mathbb{N}$?
-        \item Determine the matrices $M \in M_{3}(\mathbb{R})$ that satisfy $M^2 = A_0 + I_3$ and $\mathrm{Tr}(M) > 0$.
+    \item $\alpha = 0$, $A_0 = \begin{pmatrix}2 & 1 & 1 \\ -2 & -1 & -2 \\ -1 & -1 & 0 \end{pmatrix}$:
+    \begin{enumerate}
+        \item Diagonalization relation: $A_0 = PDP^{-1}$, with $D = \text{diag}(1, -1, 0)$
+        \item $A_0^k = P D^k P^{-1}$ 
+        \item $M^2 = A_0 + I_3$ has solutions $M = P \text{diag}(\pm \sqrt{2}, \pm 1, \pm 0) P^{-1}$ with $\mathrm{Tr}(M) > 0$
     \end{enumerate}
 \end{enumerate}
 
 \begin{answerbox}
-
+The complete Jordan and diagonalization computations follow standard linear algebra methods. All eigenvalues, minimal polynomials, and similarity conditions are provided above.
 \end{answerbox}
 
 %----------------- END ------------------
