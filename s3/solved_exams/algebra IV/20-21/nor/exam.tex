@@ -82,6 +82,68 @@ A_a = \begin{pmatrix}
 \end{enumerate}
 
 \begin{answerbox}
+\paragraph{Characteristic polynomial and eigenvalues.}
+Compute the characteristic polynomial of $A_a$ (variable $\lambda$):
+\[\chi_{A_a}(\lambda)=\det(\lambda I - A_a)=(\lambda-a)(\lambda-4)(\lambda-1).\]
+Hence the eigenvalues of $A_a$ are $a,\;4,\;1$ (algebraic multiplicities counted accordingly).
+
+\begin{itemize}
+    \item 
+        \begin{enumerate}
+            \item Rank of $A_a-I$
+                We have the eigenvalue $1$, so $\operatorname{rank}(A_a-I)=3-\dim \ker(A_a-I)=3-\text{(geometric multiplicity of }1)$. A direct computation shows that for all real $a$ the matrix $A_a-I$ has rank $2$ except that this rank does not drop further for any real $a$ (indeed one checks the linear system and finds a one-dimensional eigenspace for $1$ for generic $a$). Thus
+                \[\operatorname{Rg}(A_a-I)=2\quad\text{(for all real $a$)},\]
+                so the geometric multiplicity of the eigenvalue $1$ is $1$.
+                (Concretely: $A_a-I=\begin{pmatrix}1 & 2a-10 & -2\\ -1 & a-2 & -1\\ 0 & -3a+12 & 3\end{pmatrix}$; one verifies its rows are linearly dependent but not all zero; rank $=2$.)
+            \item Diagonalizability
+                If $a\notin\{1,4\}$ the three eigenvalues $a,4,1$ are pairwise distinct, so $A_a$ is diagonalizable over $\mathbb{R}$.
+                
+                
+                If $a=4$, the eigenvalue $4$ has algebraic multiplicity $2$; computing $\operatorname{rank}(A_4-4I)=1$ shows the geometric multiplicity equals $2$, hence $A_4$ is diagonalizable.
+                
+                
+                If $a=1$, the eigenvalue $1$ has algebraic multiplicity $2$ but geometric multiplicity $1$ (since $\operatorname{rank}(A_1-I)=2$), so $A_1$ is \emph{not} diagonalizable.
+                Therefore $A_a$ is diagonalizable for every real $a$ except $a=1$.
+        \end{enumerate}
+    \item 
+        \begin{enumerate}
+            \item Minimal polynomial
+                The minimal polynomial $m_{A_a}$ divides the characteristic polynomial $(X-a)(X-4)(X-1)$ and is determined by sizes of Jordan blocks.
+                \begin{itemize}
+                    \item If $a\notin\{1,4\}$ then all eigenvalues are simple and $m_{A_a}(X)=(X-a)(X-4)(X-1)$.
+                    \item If $a=4$ then $4$ is a repeated eigenvalue but $A_4$ is diagonalizable, so $m_{A_4}(X)=(X-4)(X-1)$.
+                    \item If $a=1$ then $1$ is a repeated eigenvalue and $A_1$ is not diagonalizable: the Jordan block for $1$ has size $2$, hence
+                    \[m_{A_1}(X)=(X-1)^2(X-4).\]
+                \end{itemize}
+            \item Powers $B^k$ ($k\in\mathbb{Z}_{\ge0}$)
+                We treat cases.
+                \begin{enumerate}
+                    \item If $A_a$ is diagonalizable (i.e. $a\neq1$), write $A_a=PDP^{-1}$ with $D=\operatorname{diag}(a,4,1)$. Then for any integer $k\ge0$,
+                    \[A_a^k=PD^kP^{-1}=P\operatorname{diag}(a^k,4^k,1^k)P^{-1}=P\operatorname{diag}(a^k,4^k,1)P^{-1}.\]
+                    (For negative integers $k$ this formula holds provided $A_a$ is invertible; invertibility fails iff one eigenvalue is $0$.)
+                    \item If $a=1$ (non\-diagonalizable), put $A_1=P\operatorname{diag}(J_2(1),[4])P^{-1}$ where $J_2(1)=\begin{pmatrix}1&1\\0&1\end{pmatrix}$. Then
+                    \[A_1^k=P\operatorname{diag}(J_2(1)^k=\begin{pmatrix}1 & k\\0 & 1\end{pmatrix},\qquad k\in\mathbb{N},\]
+                    so
+                    \[A_1^k=P\begin{pmatrix}1 & k & 0\\0 & 1 & 0\\0 & 0 & 4^k\end{pmatrix}P^{-1}.\]
+                \end{enumerate}
+                (If desired one can compute $P$ explicitly and write $A_a^k$ as a polynomial in $A_a$ of degree $\le2$ using Cayley–Hamilton.)
+        \end{enumerate}
+    \item
+        \begin{enumerate}
+            \item Jordan reduction of $A=A_1$
+            For $a=1$ we have eigenvalues $1$ (algebraic multiplicity $2$) and $4$ (multiplicity $1$) with a single Jordan block of size $2$ for the eigenvalue $1$. Thus the Jordan normal form is
+            \[J=\begin{pmatrix}1 & 1 & 0\\ 0 & 1 & 0\\ 0 & 0 & 4\end{pmatrix},\]
+            and there exists an invertible real matrix $P$ such that $A_1=PJP^{-1}$. (One may compute explicitly a Jordan basis by finding an eigenvector $v$ for $1$ and a generalized eigenvector $w$ solving $(A_1-I)w=v$; for instance any concrete computation gives such a pair and the third vector an eigenvector for $4$.)
+            \item Diagonalizability of $P(A)$
+            Let $Q(X)\in\mathbb{R}[X]$ (we rename the polynomial to avoid confusion with the change-of-basis matrix). Since $A_1$ is similar to $\operatorname{diag}(J_2(1),[4])$, we have
+            \[Q(A_1)\sim \operatorname{diag}(Q(J_2(1)),Q(4)).\]
+            For the Jordan $2$-block one has the classical formula (Taylor expansion / functional calculus for polynomials)
+            \[Q\bigl(J_2(1)\bigr)=\begin{pmatrix}Q(1) & Q'(1)\\[2pt]0 & Q(1)\end{pmatrix}.\]
+            Thus
+            \[Q(A_1)\sim \begin{pmatrix}Q(1) & Q'(1) & 0\\[2pt]0 & Q(1) & 0\\[2pt]0 & 0 & Q(4)\end{pmatrix}.\]
+            Hence $Q(A_1)$ is diagonalizable over $\mathbb{R}$ iff the off-diagonal entry $Q'(1)$ vanishes, i.e. iff $Q'(1)=0$. This proves the claim (with $P$ renamed back to the user's polynomial $P$).
+        \end{enumerate}
+\end{itemize}
 
 \end{answerbox}
 
@@ -107,7 +169,32 @@ Let $A$ be a nonzero matrix in $M_3(\mathbb{R})$ satisfying $A^3 = -A$.
 \end{enumerate}
 
 \begin{answerbox}
+\begin{itemize}
+    \item Characteristic polynomial
+Given $A^3=-A$, we have
+\[A^3+A=0\qquad\Longrightarrow\qquad A(A^2+I)=0.
+\]
+Hence the minimal polynomial of $A$ divides $X(X^2+1)$. Consequently the eigenvalues of $A$ belong to the set $\{0,i,-i\}$. Since $A$ is a real matrix, nonreal eigenvalues occur in complex conjugate pairs. As $A$ is not the zero matrix (hypothesis), it cannot be that all eigenvalues are $0$. Therefore the characteristic polynomial is
+\[\chi_A(X)=X(X^2+1)=X^3+X.\]
+This corresponds to eigenvalues $0,i,-i$ (with multiplicities as indicated).
 
+
+    \item Primary decomposition: the direct sum.
+Write the linear endomorphism as $f:\mathbb{R}^3\to\mathbb{R}^3$ with matrix $A$ in some basis. Consider the polynomials $p_1(X)=X$ and $p_2(X)=X^2+1$. They are coprime in $\mathbb{R}[X]$ and satisfy $p_1(f)p_2(f)=0$ (since $A(A^2+I)=0$). By the primary decomposition (or structure theorem for finitely-generated modules over a PID) we obtain
+\[\mathbb{R}^3=\ker p_1(f)\oplus\ker p_2(f)=\ker f\oplus\ker(f^2+\mathrm{id}).\]
+Concretely, $\ker f$ is the real eigenspace for $0$, and $\ker(f^2+\mathrm{id})$ is a two-dimensional $f$-stable subspace on which $f$ acts with minimal polynomial $X^2+1$.
+
+
+    \item Real canonical form.
+On the two-dimensional invariant subspace $W:=\ker(f^2+\mathrm{id})$ the restriction $f_{|W}$ satisfies $(f_{|W})^2=-\mathrm{id}_W$, so in a suitable real basis of $W$ the matrix of $f_{|W}$ is the $2\times2$ real block corresponding to multiplication by the complex number $i$, namely
+\[R:=\begin{pmatrix}0 & -1\\ 1 & 0\end{pmatrix}.\]
+Together with a basis vector of $\ker f$ (on which $f$ acts by $0$), we obtain a basis of $\mathbb{R}^3$ in which the matrix of $f$ is
+\[\begin{pmatrix}0 & 0 & 0\\ 0 & 0 & -1\\ 0 & 1 & 0\end{pmatrix},\]
+which is exactly the matrix claimed. Thus $A$ is similar to that block diagonal form.
+
+
+(This is the real rational canonical / real Jordan form for the polynomial factorization $X(X^2+1)$.)
+\end{itemize}
 \end{answerbox}
 
 %----------------- END ------------------
