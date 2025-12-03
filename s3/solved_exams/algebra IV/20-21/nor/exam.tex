@@ -1,0 +1,114 @@
+\documentclass[12pt]{article}
+
+%----------------- Packages ------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage[breakable]{tcolorbox}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{float}
+\usetikzlibrary{arrows.meta, decorations.markings}
+
+%----------------- Page Setup -----------------
+\geometry{a4paper, margin=2.5cm}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Normal Exam — \textbf{2021}}
+\lhead{Algebra IV}
+\cfoot{\thepage}
+
+%----------------- Title Styling --------------
+\titleformat{\section}{\normalfont\Large\bfseries}{Exercise \thesection:}{1em}{}
+\titleformat{\subsection}{\normalfont\bfseries}{Answer:}{1em}{}
+
+%----------------- Custom Boxes ----------------
+\tcbuselibrary{listingsutf8}
+\newtcolorbox{answerbox}{
+  colback=gray!10,
+  colframe=black,
+  fonttitle=\bfseries,
+  title=Answer Area,
+  breakable,
+  before skip=10pt,
+  after skip=10pt
+}
+
+%----------------- Document Start --------------
+\begin{document}
+
+%----------------- Exam Info -------------------
+\begin{center}
+  \Large\textbf{Abdelmalek Essadi University} \\[1em]
+  \large\textit{Algebra IV — Normal Exam} \\[0.5em]
+  \large\textit{Year: 2021} \\[2em]
+\end{center}
+
+\vspace{0.5cm}
+
+%----------------- EXERCISE 1 ------------------
+\section{}
+Let $a \in \mathbb{R}$. Consider the matrix
+\[
+A_a = \begin{pmatrix}
+2 & 2a - 10 & -2 \\
+-1 & a - 1 & -1 \\
+0 & -3a + 12 & 4
+\end{pmatrix}.
+\]
+
+\begin{enumerate}
+    \item[1)] 
+    \begin{enumerate}
+        \item[1)] Determine $\operatorname{Rg}(A_a - I_n)$. Conclusion?
+        \item[2)] For which values of $a \in \mathbb{R}$ is the matrix $A_a$ diagonalizable?
+    \end{enumerate}
+
+    \item[2)]
+    \begin{enumerate}
+        \item[1)] Write the minimal polynomial of $A_a$.
+        \item[2)] Let $B = A_a$. Compute $B^k$ for $k \in \mathbb{Z}$.
+    \end{enumerate}
+
+    \item[3)] Choose $a = 1$ and set $A = A_1$.
+    \begin{enumerate}
+        \item[1)] Determine a Jordan reduction of the matrix $A$.
+        \item[2)] Let $P \in \mathbb{R}[X]$. Show that $P(A)$ is diagonalizable if and only if $P'(1) = 0$.
+    \end{enumerate}
+\end{enumerate}
+
+\begin{answerbox}
+
+\end{answerbox}
+
+%----------------- EXERCISE 2 ------------------
+\section{}
+
+Let $A$ be a nonzero matrix in $M_3(\mathbb{R})$ satisfying $A^3 = -A$.
+
+\begin{enumerate}
+    \item[1)] Determine the characteristic polynomial of $A$.
+    \item[2)] Let $A = M(f, B_3)$. Establish the relation
+    \[
+    \mathbb{R}^3 = \ker f \oplus \ker(f^2 + \mathrm{id}_{\mathbb{R}^3}).
+    \]
+    \item[3)]* Conclude that the matrix $A$ is similar to
+    \[
+    \begin{pmatrix}
+    0 & 0 & 0\\
+    0 & 0 & -1\\
+    0 & 1 & 0
+    \end{pmatrix}.
+    \]
+\end{enumerate}
+
+\begin{answerbox}
+
+\end{answerbox}
+
+%----------------- END ------------------
+\end{document}

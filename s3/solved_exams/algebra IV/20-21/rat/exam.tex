@@ -1,0 +1,111 @@
+\documentclass[12pt]{article}
+
+%----------------- Packages ------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage[breakable]{tcolorbox}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{float}
+\usetikzlibrary{arrows.meta, decorations.markings}
+
+%----------------- Page Setup -----------------
+\geometry{a4paper, margin=2.5cm}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{make-up Exam — \textbf{2021}}
+\lhead{Algebra IV}
+\cfoot{\thepage}
+
+%----------------- Title Styling --------------
+\titleformat{\section}{\normalfont\Large\bfseries}{Exercise \thesection:}{1em}{}
+\titleformat{\subsection}{\normalfont\bfseries}{Answer:}{1em}{}
+
+%----------------- Custom Boxes ----------------
+\tcbuselibrary{listingsutf8}
+\newtcolorbox{answerbox}{
+  colback=gray!10,
+  colframe=black,
+  fonttitle=\bfseries,
+  title=Answer Area,
+  breakable,
+  before skip=10pt,
+  after skip=10pt
+}
+
+%----------------- Document Start --------------
+\begin{document}
+
+%----------------- Exam Info -------------------
+\begin{center}
+  \Large\textbf{Abdelmalek Essadi University} \\[1em]
+  \large\textit{Algebra IV — Make-up Exam} \\[0.5em]
+  \large\textit{Year: 2021} \\[2em]
+\end{center}
+
+\vspace{0.5cm}
+
+%----------------- EXERCISE 1 ------------------
+\section{}
+Let $a \in \mathbb{R}$. Consider the matrix
+\[
+A_a = 
+\begin{pmatrix}
+0 & 1 & a \\
+1 & 0 & 1 \\
+1 & 1 & 0
+\end{pmatrix}
+\in M_3(\mathbb{R}).
+\]
+
+\begin{enumerate}
+    \item[1)] Determine the characteristic polynomial of the matrix $A_a + I_3$.
+    \item[2)] For which real values of $a$ is the matrix $A_a$ diagonalizable?
+    \item[3)] Write the minimal polynomial of $A_a$.
+    \item[4)] Choose $a = 1$ and set $A = A_1$.
+    \begin{enumerate}
+        \item[4-1)] Determine a diagonalization relation of $A$.
+        \item[4-2)] Let $n \in \mathbb{N}^*$. Consider the polynomial $P(X) \in \mathbb{R}[X]$ defined by $P(X) = (X + I)^n$. Determine the matrix $P(A)$.
+    \end{enumerate}
+\end{enumerate}
+
+\begin{answerbox}
+
+\end{answerbox}
+
+%----------------- EXERCISE 2 ------------------
+\section{}
+Consider the matrix $A \in M_3(\mathbb{R})$ defined by
+\[
+A =
+\begin{pmatrix}
+-1 & 2 & 2 \\
+-2 & 3 & 2 \\
+0 & 0 & 1
+\end{pmatrix}.
+\]
+
+Determine a Jordan reduction of the matrix $A$.
+
+\begin{answerbox}
+
+\end{answerbox}
+
+%----------------- EXERCISE 3 ------------------
+\section{}
+Let $A \in M_n(\mathbb{C})$ be invertible and with $n$ distinct eigenvalues.  
+A square root of the matrix $A$ is any matrix $M \in M_n(\mathbb{C})$ satisfying $M^2 = A$.
+
+Show that the matrix $A$ has $2^n$ square roots, all of which are polynomials in $A$.
+
+\begin{answerbox}
+
+\end{answerbox}
+
+%----------------- END ------------------
+\end{document}
