@@ -1,0 +1,256 @@
+\documentclass[12pt]{article}
+
+%----------------- Packages ------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage[breakable]{tcolorbox}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{float}
+\usetikzlibrary{arrows.meta, decorations.markings}
+
+%----------------- Page Setup -----------------
+\geometry{a4paper, margin=2.5cm}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Final Exam — \textbf{2025}}
+\lhead{COURSE NAME}
+\cfoot{\thepage}
+
+%----------------- Title Styling --------------
+\titleformat{\section}{\normalfont\Large\bfseries}{Exercise \thesection:}{1em}{}
+\titleformat{\subsection}{\normalfont\bfseries}{Answer:}{1em}{}
+
+%----------------- Custom Boxes ----------------
+\tcbuselibrary{listingsutf8}
+\newtcolorbox{answerbox}{
+  colback=gray!10,
+  colframe=black,
+  fonttitle=\bfseries,
+  title=Answer Area,
+  breakable,
+  before skip=10pt,
+  after skip=10pt
+}
+
+%----------------- Document Start --------------
+\begin{document}
+
+%----------------- Exam Info -------------------
+\begin{center}
+  \Large\textbf{UNIVERSITY NAME} \\[1em]
+  \large\textit{COURSE NAME — Final Exam} \\[0.5em]
+  \large\textit{Year: 2025} \\[2em]
+\end{center}
+
+\vspace{0.5cm}
+
+%----------------- EXERCISE 1 ------------------
+\section{}
+Let \( E = C^1([0,1], \mathbb{R}) \) be the space of continuously differentiable functions and \(\|\cdot\|_\infty\) the uniform convergence norm. Define  
+
+\[
+N(f) = |f(0)| + \|f'\|_\infty \quad \text{and} \quad N'(f) = \|f\|_\infty + \|f'\|_\infty.
+\]
+
+\begin{enumerate}
+    \item Show that \( N \) and \( N' \) are norms on \( E \).
+    \item Show that \( N \) and \( N' \) are equivalent.
+    \item Are the norms \( N \) and \( N' \) equivalent to the norm \(\|\cdot\|_\infty\)?
+\end{enumerate}
+
+\begin{answerbox}
+Let $E = C^1([0,1], \mathbb{R})$, $\|\cdot\|_\infty$ the sup norm.
+
+\subsection*{1. Show $N$ and $N'$ are norms}
+
+\textbf{For $N(f) = |f(0)| + \|f'\|_\infty$:}
+\begin{itemize}
+    \item $N(f) = 0 \Rightarrow |f(0)| = 0$ and $\|f'\|_\infty = 0 \Rightarrow f(0) = 0$ and $f' = 0 \Rightarrow f = 0$.
+    \item $N(\lambda f) = |\lambda f(0)| + \|\lambda f'\|_\infty = |\lambda|(|f(0)| + \|f'\|_\infty) = |\lambda| N(f)$.
+    \item $N(f+g) = |f(0)+g(0)| + \|f'+g'\|_\infty \leq |f(0)| + |g(0)| + \|f'\|_\infty + \|g'\|_\infty = N(f) + N(g)$.
+\end{itemize}
+So $N$ is a norm.
+
+\textbf{For $N'(f) = \|f\|_\infty + \|f'\|_\infty$:}
+\begin{itemize}
+    \item $N'(f) = 0 \Rightarrow \|f\|_\infty = 0$ and $\|f'\|_\infty = 0 \Rightarrow f = 0$.
+    \item $N'(\lambda f) = \|\lambda f\|_\infty + \|\lambda f'\|_\infty = |\lambda|(\|f\|_\infty + \|f'\|_\infty) = |\lambda| N'(f)$.
+    \item $N'(f+g) \leq \|f+g\|_\infty + \|f'+g'\|_\infty \leq \|f\|_\infty + \|g\|_\infty + \|f'\|_\infty + \|g'\|_\infty = N'(f) + N'(g)$.
+\end{itemize}
+So $N'$ is a norm.
+
+\subsection*{2. Show $N$ and $N'$ are equivalent}
+
+For $f \in E$, $x \in [0,1]$:
+\[
+|f(x)| = \left|f(0) + \int_0^x f'(t) dt\right| \leq |f(0)| + \|f'\|_\infty = N(f).
+\]
+Taking supremum: $\|f\|_\infty \leq N(f)$. Also $|f(0)| \leq \|f\|_\infty$.
+
+Thus:
+\[
+N(f) = |f(0)| + \|f'\|_\infty \leq \|f\|_\infty + \|f'\|_\infty = N'(f) \leq N(f) + \|f'\|_\infty.
+\]
+Actually better: $N(f) \leq N'(f)$ and $N'(f) = \|f\|_\infty + \|f'\|_\infty \leq N(f) + N(f) = 2N(f)$.
+
+So $N(f) \leq N'(f) \leq 2N(f)$. Hence $N$ and $N'$ are equivalent.
+
+\subsection*{3. Are $N$, $N'$ equivalent to $\|\cdot\|_\infty$?}
+
+No. Consider $f_n(x) = x^n$ on $[0,1]$.
+
+$\|f_n\|_\infty = 1$ for all $n$, but $N(f_n) = |f_n(0)| + \|f_n'\|_\infty = 0 + n = n \to \infty$.
+
+So $\frac{N(f_n)}{\|f_n\|_\infty} = n \to \infty$, thus $N$ and $\|\cdot\|_\infty$ are not equivalent.
+
+Since $N$ and $N'$ are equivalent, $N'$ is also not equivalent to $\|\cdot\|_\infty$.
+\end{answerbox}
+
+%----------------- EXERCISE 2 ------------------
+\section{}
+Let \((E, \|\cdot\|)\) be a normed vector space.
+
+\begin{enumerate}
+    \item Let \((x_n)_{n \in \mathbb{N}}\) be a sequence converging to \( x \) in \( E \) and let \( K \) be a non-empty subset of \( E \) defined by:
+    \[
+    K = \{x_n \mid n \in \mathbb{N}\} \cup \{x\}.
+    \]
+    \begin{enumerate}
+        \item Show that \( K \) is compact in \( E \) using the definition of compactness.
+        \item Show that \( K \) is compact in \( E \) using the Borel property.
+    \end{enumerate}
+    \item Let \((A_n)_{n \in \mathbb{N}}\) be a decreasing sequence of non-empty compact subsets of \( E \). Show that the intersection \( A = \bigcap_{n \in \mathbb{N}} A_n \) is a non-empty compact subset of \( E \).
+\end{enumerate}
+
+\begin{answerbox}
+\section*{1. $K = \{x_n : n \in \mathbb{N}\} \cup \{x\}$, $x_n \to x$}
+
+\textbf{a) Using definition:} We show every sequence in $K$ has a convergent subsequence in $K$.
+
+Let $(y_k)$ be a sequence in $K$. If $y_k = x$ infinitely often, we have constant subsequence. Otherwise, $(y_k)$ contains infinitely many $x_n$. Since $x_n \to x$, we can extract subsequence converging to $x \in K$.
+
+\textbf{b) Using Borel property:} Let $\{U_i\}_{i \in I}$ be an open cover of $K$. Since $x \in K$, $\exists i_0$ with $x \in U_{i_0}$. As $x_n \to x$, $\exists N$ such that $\forall n \ge N$, $x_n \in U_{i_0}$. The remaining finite set $\{x_1,\dots,x_{N-1}\}$ can be covered by finitely many $U_i$. Thus $K$ is covered by finitely many $U_i$.
+
+\section*{2. $A_n$ decreasing non-empty compact sets, $A = \bigcap_{n\in\mathbb{N}} A_n$}
+
+Choose $x_n \in A_n$. Since $A_n \subset A_0$ and $A_0$ compact, $(x_n)$ has convergent subsequence $x_{\varphi(n)} \to \ell$.
+
+For fixed $p$, for $n$ large, $\varphi(n) \ge p$, so $x_{\varphi(n)} \in A_{\varphi(n)} \subset A_p$. Since $A_p$ closed, $\ell \in A_p$. This holds $\forall p$, so $\ell \in \bigcap A_n = A$. Thus $A \neq \emptyset$.
+
+$A$ is closed (intersection of closed sets) and contained in compact $A_0$, so $A$ is compact.
+\end{answerbox}
+
+%----------------- EXERCISE 3 ------------------
+\section{}
+Define the function \( f : \mathbb{R}^2 \longrightarrow \mathbb{R} \) by:  
+
+\[
+f(x,y) = 
+\begin{cases} 
+\dfrac{x^2 y^3}{x^2 + y^2} & \text{if } (x,y) \neq (0,0) \\ 
+0 & \text{if } (x,y) = (0,0).
+\end{cases}
+\]
+
+\begin{enumerate}
+    \item Compute \(\lim_{(x,y) \to (0,0)} f(x,y)\).
+    \item Show that \( f \) is continuous on \( \mathbb{R}^2 \) (justify your answer).
+    \item 
+    \begin{enumerate}
+        \item Determine \( df_{(x,y)} \), the differential of \( f \) for \((x,y) \neq (0,0)\).
+        \item Compute \(\frac{\partial f}{\partial x}(0,0)\) and \(\frac{\partial f}{\partial y}(0,0)\).
+    \end{enumerate}
+    \item Show that \( f \) is of class \( C^1 \) on \( \mathbb{R}^2 \).
+    \item Let \( g \) be a function defined on \( \mathbb{R}^2 \) by:
+    \[
+    g(x,y) = f(x,y) - \frac{1}{2}.
+    \]
+    \begin{enumerate}
+        \item Show that there exists a neighborhood \( U \) of 1 and a \( C^1 \) function \( \mu \) on \( U \) such that:
+        \[
+        \mu(1) = 1 \quad \text{and} \quad \forall x \in U, \quad g(x,\mu(x)) = 0.
+        \]
+        \item Compute \( \mu'(1) \), the derivative of \( \mu \) at the point 1.
+    \end{enumerate}
+\end{enumerate}
+
+\begin{answerbox}
+\begin{enumerate}
+  \item Limit at $(0,0)$
+For $(x,y) \neq (0,0)$:
+\[
+|f(x,y)| = \frac{x^2 |y|^3}{x^2 + y^2} = x^2 |y| \cdot \frac{y^2}{x^2 + y^2} \le x^2 |y| \cdot 1 \le (x^2 + y^2)^{3/2}.
+\]
+As $(x,y) \to (0,0)$, $|f(x,y)| \to 0$. So $\lim_{(x,y)\to(0,0)} f(x,y) = 0 = f(0,0)$.
+
+  \item Continuity on $\mathbb{R}^2$
+
+$f$ is rational on $\mathbb{R}^2\setminus\{(0,0)\}$, so continuous there. From part 1, continuous at $(0,0)$. Thus continuous everywhere.
+
+  \item Differential
+  \begin{enumerate}
+    \item For $(x,y) \neq (0,0)$:
+\[
+\frac{\partial f}{\partial x} = \frac{2x y^3(x^2+y^2) - x^2 y^3 \cdot 2x}{(x^2+y^2)^2} = \frac{2x y^5}{(x^2+y^2)^2},
+\]
+\[
+\frac{\partial f}{\partial y} = \frac{3x^2 y^2(x^2+y^2) - x^2 y^3 \cdot 2y}{(x^2+y^2)^2} = \frac{3x^4 y^2 + x^2 y^4}{(x^2+y^2)^2}.
+\]
+Thus $df_{(x,y)}(h,k) = \frac{\partial f}{\partial x}h + \frac{\partial f}{\partial y}k$.
+
+    \item At $(0,0)$:
+\[
+\frac{\partial f}{\partial x}(0,0) = \lim_{t\to0} \frac{f(t,0)-f(0,0)}{t} = \lim_{t\to0} \frac{0}{t} = 0.
+\]
+\[
+\frac{\partial f}{\partial y}(0,0) = \lim_{t\to0} \frac{f(0,t)-f(0,0)}{t} = \lim_{t\to0} \frac{0}{t} = 0.
+\]
+  \end{enumerate}
+  \item $C^1$ on $\mathbb{R}^2$
+
+Need to show partial derivatives are continuous at $(0,0)$.
+
+For $\frac{\partial f}{\partial x}$:
+\[
+\left|\frac{2x y^5}{(x^2+y^2)^2}\right| \le 2|x||y| \cdot \frac{y^4}{(x^2+y^2)^2} \le 2|x||y| \to 0.
+\]
+So $\lim_{(x,y)\to(0,0)} \frac{\partial f}{\partial x}(x,y) = 0 = \frac{\partial f}{\partial x}(0,0)$.
+
+For $\frac{\partial f}{\partial y}$:
+\[
+\left|\frac{3x^4 y^2 + x^2 y^4}{(x^2+y^2)^2}\right| \le \frac{3x^4 y^2}{(x^2+y^2)^2} + \frac{x^2 y^4}{(x^2+y^2)^2} \le 3y^2 + x^2 \to 0.
+\]
+So $\lim_{(x,y)\to(0,0)} \frac{\partial f}{\partial y}(x,y) = 0 = \frac{\partial f}{\partial y}(0,0)$.
+
+Thus $f \in C^1(\mathbb{R}^2)$.
+
+  \item Implicit function
+  \begin{enumerate}
+    \item $g(x,y) = f(x,y) - \frac{1}{2}$
+
+At $(1,1)$: $f(1,1) = \frac{1^2 \cdot 1^3}{1^2+1^2} = \frac{1}{2}$, so $g(1,1) = 0.
+$$\frac{\partial g}{\partial y}(1,1) = \frac{\partial f}{\partial y}(1,1) = \frac{3\cdot1^4\cdot1^2 + 1^2\cdot1^4}{(1^2+1^2)^2} = \frac{3+1}{4} = 1 \neq 0$$
+$
+By implicit function theorem, $\exists U \ni 1$, $C^1$ function $\mu: U \to \mathbb{R}$ with $\mu(1)=1$ and $g(x,\mu(x))=0$ for $x\in U$.
+
+    \item Compute $\mu'(1)$
+
+From $g(x,\mu(x)) = 0$, differentiate:
+\[
+\frac{\partial f}{\partial x}(1,1) + \frac{\partial f}{\partial y}(1,1) \cdot \mu'(1) = 0.
+\]
+Now $\frac{\partial f}{\partial x}(1,1) = \frac{2\cdot1\cdot1^5}{(1^2+1^2)^2} = \frac{2}{4} = \frac{1}{2}$.
+
+So $\frac{1}{2} + 1 \cdot \mu'(1) = 0 \Rightarrow \mu'(1) = -\frac{1}{2}$.
+    \end{enumerate}
+\end{enumerate}
+\end{answerbox}
+
+%----------------- END ------------------
+\end{document}
