@@ -129,21 +129,28 @@ Let \((E, \|\cdot\|)\) be a normed vector space.
 \end{enumerate}
 
 \begin{answerbox}
-\section*{1. $K = \{x_n : n \in \mathbb{N}\} \cup \{x\}$, $x_n \to x$}
+  \begin{enumerate}
+    \item $K = \{x_n : n \in \mathbb{N}\} \cup \{x\}$, $x_n \to x$
+    \begin{enumerate}
+      \item Using definition 
+      
+      We show every sequence in $K$ has a convergent subsequence in $K$.
 
-\textbf{a) Using definition:} We show every sequence in $K$ has a convergent subsequence in $K$.
+      Let $(y_k)$ be a sequence in $K$. If $y_k = x$ infinitely often, we have constant subsequence. Otherwise, $(y_k)$ contains infinitely many $x_n$. Since $x_n \to x$, we can extract subsequence converging to $x \in K$.
 
-Let $(y_k)$ be a sequence in $K$. If $y_k = x$ infinitely often, we have constant subsequence. Otherwise, $(y_k)$ contains infinitely many $x_n$. Since $x_n \to x$, we can extract subsequence converging to $x \in K$.
+      \item Using Borel property 
+      
+      Let $\{U_i\}_{i \in I}$ be an open cover of $K$. Since $x \in K$, $\exists i_0$ with $x \in U_{i_0}$. As $x_n \to x$, $\exists N$ such that $\forall n \ge N$, $x_n \in U_{i_0}$. The remaining finite set $\{x_1,\dots,x_{N-1}\}$ can be covered by finitely many $U_i$. Thus $K$ is covered by finitely many $U_i$.
+      \end{enumerate}
+    \item $A_n$ decreasing non-empty compact sets, $A = \bigcap_{n\in\mathbb{N}} A_n$
 
-\textbf{b) Using Borel property:} Let $\{U_i\}_{i \in I}$ be an open cover of $K$. Since $x \in K$, $\exists i_0$ with $x \in U_{i_0}$. As $x_n \to x$, $\exists N$ such that $\forall n \ge N$, $x_n \in U_{i_0}$. The remaining finite set $\{x_1,\dots,x_{N-1}\}$ can be covered by finitely many $U_i$. Thus $K$ is covered by finitely many $U_i$.
+      Choose $x_n \in A_n$. Since $A_n \subset A_0$ and $A_0$ compact, $(x_n)$ has convergent subsequence $x_{\varphi(n)} \to \ell$.
 
-\section*{2. $A_n$ decreasing non-empty compact sets, $A = \bigcap_{n\in\mathbb{N}} A_n$}
+      For fixed $p$, for $n$ large, $\varphi(n) \ge p$, so $x_{\varphi(n)} \in A_{\varphi(n)} \subset A_p$. Since $A_p$ closed, $\ell \in A_p$. This holds $\forall p$, so $\ell \in \bigcap A_n = A$. Thus $A \neq \emptyset$.
 
-Choose $x_n \in A_n$. Since $A_n \subset A_0$ and $A_0$ compact, $(x_n)$ has convergent subsequence $x_{\varphi(n)} \to \ell$.
+      $A$ is closed (intersection of closed sets) and contained in compact $A_0$, so $A$ is compact.
 
-For fixed $p$, for $n$ large, $\varphi(n) \ge p$, so $x_{\varphi(n)} \in A_{\varphi(n)} \subset A_p$. Since $A_p$ closed, $\ell \in A_p$. This holds $\forall p$, so $\ell \in \bigcap A_n = A$. Thus $A \neq \emptyset$.
-
-$A$ is closed (intersection of closed sets) and contained in compact $A_0$, so $A$ is compact.
+  \end{enumerate}
 \end{answerbox}
 
 %----------------- EXERCISE 3 ------------------
