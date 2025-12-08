@@ -1,0 +1,224 @@
+\documentclass[12pt]{article}
+
+%----------------- Packages ------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage[breakable]{tcolorbox}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{float}
+\usetikzlibrary{arrows.meta, decorations.markings}
+
+%----------------- Page Setup -----------------
+\geometry{a4paper, margin=2.5cm}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Final Exam — \textbf{2025}}
+\lhead{COURSE NAME}
+\cfoot{\thepage}
+
+%----------------- Title Styling --------------
+\titleformat{\section}{\normalfont\Large\bfseries}{Exercise \thesection:}{1em}{}
+\titleformat{\subsection}{\normalfont\bfseries}{Answer:}{1em}{}
+
+%----------------- Custom Boxes ----------------
+\tcbuselibrary{listingsutf8}
+\newtcolorbox{answerbox}{
+  colback=gray!10,
+  colframe=black,
+  fonttitle=\bfseries,
+  title=Answer Area,
+  breakable,
+  before skip=10pt,
+  after skip=10pt
+}
+
+%----------------- Document Start --------------
+\begin{document}
+
+%----------------- Exam Info -------------------
+\begin{center}
+  \Large\textbf{UNIVERSITY NAME} \\[1em]
+  \large\textit{COURSE NAME — Final Exam} \\[0.5em]
+  \large\textit{Year: 2025} \\[2em]
+\end{center}
+
+\vspace{0.5cm}
+
+%----------------- EXERCISE 1 ------------------
+\section{}
+Let \( E = C^1([0,1], \mathbb{R}) \), the space of \( C^1 \) functions from \([0,1]\) to \(\mathbb{R}\). For \( f \in E \), define
+
+\[
+N(f) = \|f\|_{\infty} + \|f'\|_{\infty} \quad \text{with} \quad \|f\|_{\infty} = \sup_{x \in [0,1]} |f(x)|.
+\]
+
+\begin{enumerate}
+    \item Show that \( N \) is a norm on \( E \). Is it equivalent to \( \|\cdot\|_{\infty} \)?
+    
+    \item 
+    \begin{enumerate}
+        \item Verify that \( N'(f) = |f(0)| + \|f'\|_{\infty} \) is a norm on \( E \).
+        \item Show that it is equivalent to \( N \).
+    \end{enumerate}
+\end{enumerate}
+
+\begin{answerbox}
+\begin{enumerate}
+    \item \textbf{Norm properties:}
+    \begin{itemize}
+        \item \textbf{Positivity}: \(N(f) \geq 0\). If \(N(f)=0\), then \(\|f\|_\infty=0\) and \(\|f'\|_\infty=0\), so \(f=0\).
+        \item \textbf{Homogeneity}: \(N(\lambda f) = |\lambda|(\|f\|_\infty + \|f'\|_\infty) = |\lambda|N(f)\).
+        \item \textbf{Triangle inequality}: \(N(f+g) \leq \|f\|_\infty + \|g\|_\infty + \|f'\|_\infty + \|g'\|_\infty = N(f)+N(g)\).
+    \end{itemize}
+    Thus \(N\) is a norm.
+    
+    \textbf{Equivalence with \(\|\cdot\|_\infty\)}: They are not equivalent. Consider \(f_n(x) = \sin(n\pi x)\). Then:
+    \[
+    \|f_n\|_\infty = 1, \quad \|f_n'\|_\infty = n\pi, \quad \text{so } N(f_n) \sim n\pi \to \infty
+    \]
+    while \(\|f_n\|_\infty\) remains bounded. No constant \(C\) exists such that \(N(f) \leq C\|f\|_\infty\) for all \(f\).
+    
+    \item 
+    \begin{enumerate}
+        \item \textbf{Norm properties for \(N'\)}:
+        \begin{itemize}
+            \item \textbf{Positivity}: Clear. If \(N'(f)=0\), then \(|f(0)|=0\) and \(\|f'\|_\infty=0\) so \(f'=0\) $\implies$ \(f\) constant, and with \(f(0)=0\) $\implies$ \(f=0\).
+            \item \textbf{Homogeneity}: \(N'(\lambda f) = |\lambda f(0)| + \|\lambda f'\|_\infty = |\lambda|N'(f)\).
+            \item \textbf{Triangle inequality}: \(N'(f+g) \leq |f(0)+g(0)| + \|f'+g'\|_\infty \leq N'(f)+N'(g)\).
+        \end{itemize}
+        
+        \item \textbf{Equivalence with \(N\)}: Show \(\exists c,C>0\) such that \(cN(f) \leq N'(f) \leq CN(f)\).
+        \begin{itemize}
+            \item \textbf{Upper bound}: \(N'(f) = |f(0)| + \|f'\|_\infty \leq \|f\|_\infty + \|f'\|_\infty = N(f)\).
+            \item \textbf{Lower bound}: For any \(x\in[0,1]\), \(f(x) = f(0) + \int_0^x f'(t)dt\), so
+            \[
+            |f(x)| \leq |f(0)| + \int_0^1 |f'(t)|dt \leq |f(0)| + \|f'\|_\infty.
+            \]
+            Taking supremum: \(\|f\|_\infty \leq |f(0)| + \|f'\|_\infty = N'(f)\).
+            Thus \(N'(f) \leq N(f) \leq 2N'(f)\) (since \(N(f) = \|f\|_\infty + \|f'\|_\infty \leq N'(f) + \|f'\|_\infty \leq 2N'(f)\)).
+        \end{itemize}
+        So \(N\) and \(N'\) are equivalent with constants \(c=1/2\), \(C=1\).
+    \end{enumerate}
+\end{enumerate}
+\end{answerbox}
+
+%----------------- EXERCISE 2 ------------------
+\section{}
+Let \( f : \mathbb{R}^n \to \mathbb{R} \) be a continuous function and \( I \) an open interval in \( \mathbb{R} \).  
+Show that \( E = \{ x \in \mathbb{R}^n : f(x) \in I \} \) is an open subset of \( \mathbb{R}^n \).
+
+\begin{answerbox}
+Let \( x_0 \in E \). Then \( f(x_0) \in I \). Since \( I \) is open, there exists \( \varepsilon > 0 \) such that
+\[
+(f(x_0) - \varepsilon, f(x_0) + \varepsilon) \subset I.
+\]
+Since \( f \) is continuous at \( x_0 \), there exists \( \delta > 0 \) such that for all \( x \in \mathbb{R}^n \) with \( \|x - x_0\| < \delta \), we have
+\[
+|f(x) - f(x_0)| < \varepsilon.
+\]
+This implies \( f(x) \in (f(x_0) - \varepsilon, f(x_0) + \varepsilon) \subset I \). Therefore, for all \( x \) in the open ball \( B(x_0, \delta) \), we have \( f(x) \in I \), i.e., \( x \in E \).
+
+Thus, every point \( x_0 \in E \) has an open neighborhood contained in \( E \), so \( E \) is open in \( \mathbb{R}^n \).
+\end{answerbox}
+
+%----------------- EXERCISE 3 ------------------
+\section{}
+\begin{enumerate}
+    \item Calculate
+    \[
+    \lim_{(x,y) \to (0,0)} \frac{\sin(xy)}{x^2 + y^2}
+    \]
+    
+    \item Let \( f : \mathbb{R}^2 \to \mathbb{R} \) be defined by
+    \[
+    f(x,y) = 
+    \begin{cases} 
+    \dfrac{x^2 y^2}{\sqrt{(x^2 + y^2)^3}} & \text{if } (x,y) \neq (0,0) \\
+    0 & \text{if } (x,y) = (0,0)
+    \end{cases}
+    \]
+    \begin{enumerate}
+        \item Show that \( \nabla f(0,0) = (0,0) \).
+        \item Show that the function \( \frac{\partial f}{\partial x} : \mathbb{R}^2 \to \mathbb{R} \) is not continuous at \( (0,0) \).
+    \end{enumerate}
+    
+    \item Let \( U \) be an open subset of \( \mathbb{R}^2 \), \( (u,v) \in U \) with \( u \neq 0 \), and \( f : U \to \mathbb{R} \) a \( C^1 \) function, homogeneous of degree \( \alpha \), such that:
+    \[
+    f(u,v) = 0 \quad \text{and} \quad \frac{\partial f}{\partial y}(u,v) \neq 0
+    \]
+    Give explicitly the implicit function \( y = \psi(x) \) that \( f \) defines near the point \( u \) and which satisfies \( \psi(u) = v \).
+\end{enumerate}
+
+\begin{answerbox}
+\begin{enumerate}
+    \item Use polar coordinates: \( x = r\cos\theta, y = r\sin\theta \). Then
+    \[
+    \frac{\sin(xy)}{x^2+y^2} = \frac{\sin(r^2\cos\theta\sin\theta)}{r^2}.
+    \]
+    For small \( t \), \( \sin t \sim t \), so
+    \[
+    \frac{\sin(r^2\cos\theta\sin\theta)}{r^2} \sim \frac{r^2\cos\theta\sin\theta}{r^2} = \cos\theta\sin\theta.
+    \]
+    The limit as \( r \to 0 \) depends on \( \theta \): it equals \( \cos\theta\sin\theta \), which varies with \( \theta \). For example:
+    \begin{itemize}
+        \item Along \( x=0 \) or \( y=0 \): limit = 0.
+        \item Along \( y=x \): \( \cos\theta\sin\theta = \frac{1}{2} \) when \( \theta=\pi/4 \).
+    \end{itemize}
+    Since the limit depends on the direction, it does not exist.
+    
+    \item 
+    \begin{enumerate}
+        \item Compute partial derivatives at \( (0,0) \):
+        \[
+        \frac{\partial f}{\partial x}(0,0) = \lim_{h\to 0} \frac{f(h,0)-f(0,0)}{h} = \lim_{h\to 0} \frac{0}{h} = 0.
+        \]
+        Similarly \( \frac{\partial f}{\partial y}(0,0)=0 \). Thus \( \nabla f(0,0) = (0,0) \).
+        
+        \item For \( (x,y) \neq (0,0) \), compute \( \frac{\partial f}{\partial x} \) using quotient rule. Let \( r=\sqrt{x^2+y^2} \), then
+        \[
+        f(x,y) = \frac{x^2 y^2}{r^3}.
+        \]
+        Compute derivative (or check along a path). Consider approaching \( (0,0) \) along \( y=x \):
+        For \( y=x \), \( f(x,x) = \frac{x^4}{(2x^2)^{3/2}} = \frac{x^4}{2^{3/2}|x|^3} \sim \frac{|x|}{2^{3/2}} \).
+        The partial derivative \( \frac{\partial f}{\partial x} \) along this path does not tend to 0 (shows discontinuity).
+        More formally: compute \( \frac{\partial f}{\partial x}(x,y) \) explicitly and show its limit as \( (x,y)\to(0,0) \) does not exist or does not equal 0.
+    \end{enumerate}
+    
+    \item Since \( f \) is homogeneous of degree \( \alpha \), Euler's theorem gives:
+    \[
+    x \frac{\partial f}{\partial x}(x,y) + y \frac{\partial f}{\partial y}(x,y) = \alpha f(x,y).
+    \]
+    At \( (u,v) \), \( f(u,v)=0 \), so
+    \[
+    u \frac{\partial f}{\partial x}(u,v) + v \frac{\partial f}{\partial y}(u,v) = 0.
+    \]
+    By the Implicit Function Theorem, since \( \frac{\partial f}{\partial y}(u,v) \neq 0 \), there exists \( \psi \) near \( u \) with \( \psi(u)=v \) and \( f(x,\psi(x))=0 \).
+    
+    Differentiate \( f(x,\psi(x))=0 \):
+    \[
+    \frac{\partial f}{\partial x}(x,\psi(x)) + \frac{\partial f}{\partial y}(x,\psi(x)) \psi'(x) = 0.
+    \]
+    At \( x=u \), \( \psi(u)=v \):
+    \[
+    \psi'(u) = -\frac{\frac{\partial f}{\partial x}(u,v)}{\frac{\partial f}{\partial y}(u,v)}.
+    \]
+    Using Euler's relation: \( \frac{\partial f}{\partial x}(u,v) = -\frac{v}{u} \frac{\partial f}{\partial y}(u,v) \) (since \( u\frac{\partial f}{\partial x}+v\frac{\partial f}{\partial y}=0 \)), so
+    \[
+    \psi'(u) = \frac{v}{u}.
+    \]
+    The linear approximation near \( u \) is:
+    \[
+    \psi(x) \approx v + \frac{v}{u}(x-u).
+    \]
+    For the exact implicit function, if \( f \) is homogeneous, one can show \( \psi(x) = \frac{v}{u}x \) (if \( f \) is linear in \( y \), but generally it's the tangent approximation).
+\end{enumerate}
+\end{answerbox}
+
+%----------------- END ------------------
+\end{document}

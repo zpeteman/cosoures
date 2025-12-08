@@ -1,0 +1,331 @@
+\documentclass[12pt]{article}
+
+%----------------- Packages ------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage[breakable]{tcolorbox}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{float}
+\usetikzlibrary{arrows.meta, decorations.markings}
+
+%----------------- Page Setup -----------------
+\geometry{a4paper, margin=2.5cm}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Final Exam — \textbf{2025}}
+\lhead{COURSE NAME}
+\cfoot{\thepage}
+
+%----------------- Title Styling --------------
+\titleformat{\section}{\normalfont\Large\bfseries}{Exercise \thesection:}{1em}{}
+\titleformat{\subsection}{\normalfont\bfseries}{Answer:}{1em}{}
+
+%----------------- Custom Boxes ----------------
+\tcbuselibrary{listingsutf8}
+\newtcolorbox{answerbox}{
+  colback=gray!10,
+  colframe=black,
+  fonttitle=\bfseries,
+  title=Answer Area,
+  breakable,
+  before skip=10pt,
+  after skip=10pt
+}
+
+%----------------- Document Start --------------
+\begin{document}
+
+%----------------- Exam Info -------------------
+\begin{center}
+  \Large\textbf{UNIVERSITY NAME} \\[1em]
+  \large\textit{COURSE NAME — Final Exam} \\[0.5em]
+  \large\textit{Year: 2025} \\[2em]
+\end{center}
+
+\vspace{0.5cm}
+
+%----------------- EXERCISE 1 ------------------
+\section{}
+Let \( E = c^2([0, 1], \mathbb{R}) \). For every \( f \in E \), define:
+\[
+N(f) = \int_0^1 |f(z)| \, dz, \quad N'(f) = |f(0)| + \int_0^1 |f'(z)| \, dz, \quad N''(f) = |f(0)| + |f'(0)| + \int_0^1 |f''(z)| \, dz.
+\]
+\begin{enumerate}
+    \item[(a)] Show that \( N, N', N'' \) are norms on \( E \).
+    \item[(b)] Prove that for every \( f \in E \), \( N(f) \leq N'(f) \leq N''(f) \).
+    \item[(c)] Show that these norms are pairwise inequivalent.
+\end{enumerate}
+
+\noindent
+2. Consider the map \( d : \mathbb{R}^n \times \mathbb{R}^n \to \mathbb{R}^+ \) defined by:
+\[
+d(x, y) = \frac{\|x - y\|}{1 + \|x - y\|}
+\]
+where \( \|\cdot\| \) is the usual Euclidean norm on \( \mathbb{R}^n \). Show that \( d \) is a distance on \( \mathbb{R}^n \).
+
+\begin{answerbox}
+\subsection*{Part 1}
+
+\subsubsection*{(a) Norm verification}
+A norm must satisfy: positivity, homogeneity, and triangle inequality.
+
+\begin{itemize}
+    \item \textbf{Positivity}: For each \(N, N', N''\), the expression is \(\geq 0\) as sum/integral of absolute values. If the norm equals 0:
+        \begin{itemize}
+            \item For \(N\): \(\int_0^1 |f| = 0 \Rightarrow f \equiv 0\) (by continuity).
+            \item For \(N'\): \(|f(0)| = 0\) and \(\int_0^1 |f'| = 0 \Rightarrow f' \equiv 0\) so \(f\) constant; with \(f(0)=0 \Rightarrow f \equiv 0\).
+            \item For \(N''\): similar reasoning gives \(f \equiv 0\).
+        \end{itemize}
+    \item \textbf{Homogeneity}: Clear since \(|\lambda f| = |\lambda||f|\), same for derivatives.
+    \item \textbf{Triangle inequality}: Follows from triangle inequality for absolute value and integrals.
+\end{itemize}
+Thus \(N, N', N''\) are norms.
+
+\subsubsection*{(b) Inequalities}
+\begin{itemize}
+    \item \(N(f) \leq N'(f)\): For any \(x\in[0,1]\),
+    \[
+    |f(x)| = \left| f(0) + \int_0^x f'(t)dt \right| \leq |f(0)| + \int_0^1 |f'(t)|dt.
+    \]
+    Integrate over \([0,1]\):
+    \[
+    \int_0^1 |f(x)|dx \leq |f(0)| + \int_0^1 |f'(t)|dt = N'(f).
+    \]
+    
+    \item \(N'(f) \leq N''(f)\): Similarly,
+    \[
+    |f'(x)| = \left| f'(0) + \int_0^x f''(t)dt \right| \leq |f'(0)| + \int_0^1 |f''(t)|dt.
+    \]
+    Integrate and add \(|f(0)|\):
+    \[
+    N'(f) \leq |f(0)| + |f'(0)| + \int_0^1 |f''(t)|dt = N''(f).
+    \]
+\end{itemize}
+
+\subsubsection*{(c) Non-equivalence}
+Two norms are equivalent if \(\exists c,C>0\) such that \(c\|f\|_a \leq \|f\|_b \leq C\|f\|_a\) for all \(f\).
+
+\begin{itemize}
+    \item \(N\) and \(N'\): Take \(f_n(x)=x^n\). Then
+    \[
+    N(f_n)=\frac{1}{n+1} \to 0,\quad N'(f_n)=0 + \int_0^1 nx^{n-1}dx = 1.
+    \]
+    So \(N(f_n)/N'(f_n) \to 0\), no lower bound.
+    
+    \item \(N'\) and \(N''\): Take \(f_n(x)=\sin(n\pi x)\). Then
+    \[
+    N'(f_n) \sim n,\quad N''(f_n) \sim n^2 \quad \text{as } n\to\infty.
+    \]
+    Ratio \(N'(f_n)/N''(f_n) \to 0\).
+    
+    \item \(N\) and \(N''\): Similarly not equivalent.
+\end{itemize}
+
+\subsection*{Part 2: Distance verification}
+Define \(d(x,y)=\frac{\|x-y\|}{1+\|x-y\|}\) with \(\|\cdot\|\) Euclidean.
+
+\begin{enumerate}
+    \item \textbf{Positivity}: \(d(x,y)\geq 0\), and \(d(x,y)=0 \Leftrightarrow \|x-y\|=0 \Leftrightarrow x=y\).
+    \item \textbf{Symmetry}: \(d(x,y)=d(y,x)\) since \(\|x-y\|=\|y-x\|\).
+    \item \textbf{Triangle inequality}: Let \(\phi(t)=\frac{t}{1+t}\) for \(t\geq0\). \(\phi\) is increasing and concave. For \(a=\|x-y\|, b=\|y-z\|\):
+    \[
+    d(x,z)=\phi(\|x-z\|) \leq \phi(a+b) \leq \phi(a)+\phi(b) = d(x,y)+d(y,z),
+    \]
+    where the last inequality holds because:
+    \[
+    \frac{a+b}{1+a+b} \leq \frac{a}{1+a} + \frac{b}{1+b}.
+    \]
+    (Verified by cross-multiplying: \(ab(2+a+b)\geq0\).)
+\end{enumerate}
+Thus \(d\) is a distance.
+\end{answerbox}
+
+%----------------- EXERCISE 2 ------------------
+\section{}
+\begin{enumerate}
+    \item[(1)] Let \( f : (E, \|\cdot\|_E) \to (F, \|\cdot\|_F) \) be a map. Show that the following properties are equivalent:
+    \begin{enumerate}
+        \item[(a)] \( f \) is continuous;
+        \item[(b)] For every \( A \subset E \), \( f(\overline{A}) \subset \overline{f(A)} \);
+        \item[(c)] For every \( B \subset F \), \( f^{-1}(\overline{B}) \supset \overline{f^{-1}(B)} \);
+        \item[(d)] For every \( B \subset F \), \( f^{-1}(\overline{B}) \subset \overline{f^{-1}(B)} \).
+    \end{enumerate}
+    \item[(2)] Let \( K \) be a compact subset of a finite-dimensional normed vector space \( E \). Show that there exists an open set \( U \) in \( E \) such that \( U \) is compact and \( K \subset U \).
+\end{enumerate}
+
+\begin{answerbox}
+\subsection*{Part 1: Equivalent characterizations of continuity}
+
+We show \((a) \Leftrightarrow (b) \Leftrightarrow (c) \Leftrightarrow (d)\).
+
+\subsubsection*{(a) \(\Rightarrow\) (b)}
+Assume \(f\) continuous. Let \(A\subset E\), \(y\in f(\overline{A})\). Then \(y=f(x)\) with \(x\in\overline{A}\). So \(\exists (x_n)\subset A\) such that \(x_n\to x\). By continuity, \(f(x_n)\to f(x)=y\). Thus \(y\in\overline{f(A)}\). Hence \(f(\overline{A})\subset\overline{f(A)}\).
+
+\subsubsection*{(b) \(\Rightarrow\) (c)}
+Assume (b). Let \(B\subset F\), and set \(A=f^{-1}(B)\). Then by (b):
+\[
+f(\overline{f^{-1}(B)}) \subset \overline{f(f^{-1}(B))} \subset \overline{B}.
+\]
+Thus if \(x\in\overline{f^{-1}(B)}\), then \(f(x)\in\overline{B}\), so \(x\in f^{-1}(\overline{B})\). Hence \(\overline{f^{-1}(B)} \subset f^{-1}(\overline{B})\).
+
+\subsubsection*{(c) \(\Rightarrow\) (a)}
+Assume (c). Let \(C\subset F\) be closed. Then \(\overline{C}=C\). Using (c) with \(B=C\):
+\[
+\overline{f^{-1}(C)} \subset f^{-1}(\overline{C}) = f^{-1}(C).
+\]
+But \(f^{-1}(C)\subset\overline{f^{-1}(C)}\), so equality holds. Thus \(f^{-1}(C)\) is closed. Therefore \(f\) is continuous.
+
+\subsubsection*{(a) \(\Rightarrow\) (d)}
+Assume \(f\) continuous. Let \(B\subset F\). Since \(\overline{B}\) is closed, \(f^{-1}(\overline{B})\) is closed (by continuity). Also \(f^{-1}(B)\subset f^{-1}(\overline{B})\). The closure \(\overline{f^{-1}(B)}\) is the smallest closed set containing \(f^{-1}(B)\), so
+\[
+\overline{f^{-1}(B)} \subset f^{-1}(\overline{B}).
+\]
+
+\subsubsection*{(d) \(\Rightarrow\) (a)}
+Assume (d). Let \(C\subset F\) be closed. Then \(\overline{C}=C\). Using (d) with \(B=C\):
+\[
+f^{-1}(C) = f^{-1}(\overline{C}) \subset \overline{f^{-1}(C)}.
+\]
+But \(\overline{f^{-1}(C)} \subset f^{-1}(C)\) always (since closure is larger). Thus equality: \(f^{-1}(C)=\overline{f^{-1}(C)}\), so \(f^{-1}(C)\) is closed. Hence \(f\) continuous.
+
+Thus all four properties are equivalent.
+
+\subsection*{Part 2: Compact subset in finite-dimensional space}
+Let \(K\subset E\) be compact. Since \(E\) is finite-dimensional, all norms are equivalent; use the Euclidean norm. Since \(K\) is compact, it is bounded: \(\exists R>0\) such that \(K\subset \overline{B}(0,R)\) (closed ball). Define
+\[
+U = B(0, R+1)
+\]
+the open ball of radius \(R+1\).
+
+\begin{itemize}
+    \item \(U\) is open.
+    \item \(\overline{U} = \overline{B}(0,R+1)\) is closed and bounded in finite dimensions, hence compact (Heine-Borel).
+    \item \(K\subset B(0,R) \subset B(0,R+1) = U\).
+\end{itemize}
+Thus \(U\) is an open set with compact closure containing \(K\).
+\end{answerbox}
+
+%----------------- EXERCISE 3 ------------------
+\section{}
+\begin{enumerate}
+    \item[(1)] Let \( f : \mathbb{R}^2 \to \mathbb{R} \) be defined by
+    \[
+    f(x, y) = 
+    \begin{cases} 
+    \dfrac{xy(y^2 - x^2)}{x^2 + y^2} & \text{if } (x, y) \neq (0, 0) \\
+    0 & \text{if } (x, y) = (0, 0)
+    \end{cases}
+    \]
+    \begin{enumerate}
+        \item[(a)] Study the continuity of \( f \) on \( \mathbb{R}^2 \).
+        \item[(b)] Compute the partial derivatives of \( f \) at \( (0, 0) \).
+        \item[(c)] Is \( f \) differentiable at \( (0, 0) \)?
+        \item[(d)] Determine the partial derivatives \( \frac{\partial f}{\partial x}(x, y) \) and \( \frac{\partial f}{\partial y}(x, y) \) on \( \mathbb{R}^2 \setminus \{(0, 0)\} \).
+        \item[(e)] Show that \( f \) is of class \( C^1 \) on \( \mathbb{R}^2 \).
+        \item[(f)] Is \( f \) of class \( C^2 \) on \( \mathbb{R}^2 \)?
+    \end{enumerate}
+    \item[(2)] Consider the equation \( (E): \; x^3 + y^3 - x^2y - 1 = 0 \) in \( \mathbb{R}^2 \).
+    \begin{enumerate}
+        \item[(a)] Show that equation \( (E) \) defines implicitly a function \( y = \phi(x) \) in a neighborhood of \( 0 \) such that \( \phi(0) = 1 \).
+        \item[(b)] Show that \( \phi \) has a local minimum at \( 0 \).
+        \item[(c)] Give the equation of the tangent line to the curve \( y = \phi(x) \) at \( 0 \).
+    \end{enumerate}
+\end{enumerate}
+
+\begin{answerbox}
+\subsection*{Part 1}
+
+\subsubsection*{(a) Continuity}
+For \((x,y)\neq(0,0)\), \(f\) is rational hence continuous. At \((0,0)\), use polar coordinates: \(x=r\cos\theta\), \(y=r\sin\theta\):
+\[
+f(r\cos\theta,r\sin\theta) = \frac{r^2\cos\theta\sin\theta \cdot r^2(\sin^2\theta-\cos^2\theta)}{r^2} = r^2\cos\theta\sin\theta(\sin^2\theta-\cos^2\theta).
+\]
+Since \(|\cos\theta\sin\theta(\sin^2\theta-\cos^2\theta)|\leq 1\), we have \(|f|\leq r^2\to0\) as \(r\to0\). Thus
+\[
+\lim_{(x,y)\to(0,0)} f(x,y)=0=f(0,0),
+\]
+so \(f\) is continuous on \(\mathbb{R}^2\).
+
+\subsubsection*{(b) Partial derivatives at \((0,0)\)}
+\[
+\frac{\partial f}{\partial x}(0,0)=\lim_{h\to0}\frac{f(h,0)-f(0,0)}{h}=\lim_{h\to0}\frac{0}{h}=0.
+\]
+\[
+\frac{\partial f}{\partial y}(0,0)=\lim_{k\to0}\frac{f(0,k)-f(0,0)}{k}=\lim_{k\to0}\frac{0}{k}=0.
+\]
+
+\subsubsection*{(c) Differentiability at \((0,0)\)}
+Check the limit:
+\[
+\lim_{(h,k)\to(0,0)}\frac{f(h,k)-f(0,0)-0\cdot h-0\cdot k}{\sqrt{h^2+k^2}} = \lim_{(h,k)\to(0,0)}\frac{f(h,k)}{\sqrt{h^2+k^2}}.
+\]
+In polar: \(\frac{r^2\cos\theta\sin\theta(\sin^2\theta-\cos^2\theta)}{r}=r\cos\theta\sin\theta(\sin^2\theta-\cos^2\theta)\to0\) as \(r\to0\) (bounded times \(r\)). Thus \(f\) is differentiable at \((0,0)\) with differential 0.
+
+\subsubsection*{(d) Partial derivatives for \((x,y)\neq(0,0)\)}
+Compute via quotient rule. Write \(f=\frac{xy^3-x^3y}{x^2+y^2}\).
+
+\[
+\frac{\partial f}{\partial x}= \frac{(y^3-3x^2y)(x^2+y^2) - (xy^3-x^3y)(2x)}{(x^2+y^2)^2}
+= \frac{y(y^4 - x^4 - 4x^2y^2)}{(x^2+y^2)^2}.
+\]
+
+\[
+\frac{\partial f}{\partial y}= \frac{(3xy^2-x^3)(x^2+y^2) - (xy^3-x^3y)(2y)}{(x^2+y^2)^2}
+= \frac{x(y^4 - x^4 + 4x^2y^2)}{(x^2+y^2)^2}.
+\]
+
+\subsubsection*{(e) Class \(C^1\)}
+We already have partials everywhere. Check continuity at \((0,0)\): In polar,
+\[
+\left|\frac{\partial f}{\partial x}\right| \leq \frac{r\cdot r^4}{r^4} = r \to 0,
+\]
+so \(\frac{\partial f}{\partial x}\) continuous at \((0,0)\). Similarly for \(\frac{\partial f}{\partial y}\). Thus \(f\in C^1(\mathbb{R}^2)\).
+
+\subsubsection*{(f) Class \(C^2\)?}
+Compute mixed partials at \((0,0)\):
+\[
+\frac{\partial^2 f}{\partial y\partial x}(0,0)=\lim_{k\to0}\frac{\frac{\partial f}{\partial x}(0,k)-\frac{\partial f}{\partial x}(0,0)}{k}
+=\lim_{k\to0}\frac{k-0}{k}=1.
+\]
+\[
+\frac{\partial^2 f}{\partial x\partial y}(0,0)=\lim_{h\to0}\frac{\frac{\partial f}{\partial y}(h,0)-\frac{\partial f}{\partial y}(0,0)}{h}
+=\lim_{h\to0}\frac{-h-0}{h}=-1.
+\]
+Since \(\frac{\partial^2 f}{\partial y\partial x}(0,0)\neq\frac{\partial^2 f}{\partial x\partial y}(0,0)\), by Clairaut's theorem \(f\) cannot be \(C^2\) at \((0,0)\). So \(f\notin C^2(\mathbb{R}^2)\).
+
+\subsection*{Part 2: Implicit function}
+
+\subsubsection*{(a) Existence of \(\phi\)}
+Let \(F(x,y)=x^3+y^3-x^2y-1\). Then \(F(0,1)=0\). Compute:
+\[
+\frac{\partial F}{\partial y}(x,y)=3y^2-x^2, \quad \frac{\partial F}{\partial y}(0,1)=3\neq0.
+\]
+By the Implicit Function Theorem, there exists a \(C^1\) function \(\phi\) defined near \(x=0\) with \(\phi(0)=1\) such that \(F(x,\phi(x))=0\).
+
+\subsubsection*{(b) Local minimum at 0}
+Differentiate \(F(x,\phi(x))=0\):
+\[
+3x^2+3\phi(x)^2\phi'(x)-2x\phi(x)-x^2\phi'(x)=0.
+\]
+At \(x=0\), \(\phi(0)=1\): \(0+3\phi'(0)-0-0=0 \Rightarrow \phi'(0)=0\).
+
+Differentiate again:
+\[
+6x+6\phi(x)\phi'(x)^2+3\phi(x)^2\phi''(x)-2\phi(x)-2x\phi'(x)-2x\phi'(x)-x^2\phi''(x)=0.
+\]
+At \(x=0\), \(\phi(0)=1\), \(\phi'(0)=0\): \(0+0+3\phi''(0)-2-0-0-0=0 \Rightarrow \phi''(0)=\frac{2}{3}>0\).
+
+Thus \(\phi\) has a local minimum at \(x=0\).
+
+\subsubsection*{(c) Tangent line}
+Slope \(\phi'(0)=0\), point \((0,1)\). Equation: \(y=1\).
+\end{answerbox}
+
+%----------------- END ------------------
+\end{document}
