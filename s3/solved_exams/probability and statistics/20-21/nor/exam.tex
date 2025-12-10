@@ -1,0 +1,87 @@
+\documentclass[12pt]{article}
+
+%----------------- Packages ------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage[breakable]{tcolorbox}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{float}
+\usetikzlibrary{arrows.meta, decorations.markings}
+
+%----------------- Page Setup -----------------
+\geometry{a4paper, margin=2.5cm}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Final Exam — \textbf{2021}}
+\lhead{probability and statistics}
+\cfoot{\thepage}
+
+%----------------- Title Styling --------------
+\titleformat{\section}{\normalfont\Large\bfseries}{Exercise \thesection:}{1em}{}
+\titleformat{\subsection}{\normalfont\bfseries}{Answer:}{1em}{}
+
+%----------------- Custom Boxes ----------------
+\tcbuselibrary{listingsutf8}
+\newtcolorbox{answerbox}{
+  colback=gray!10,
+  colframe=black,
+  fonttitle=\bfseries,
+  title=Answer Area,
+  breakable,
+  before skip=10pt,
+  after skip=10pt
+}
+
+%----------------- Document Start --------------
+\begin{document}
+
+%----------------- Exam Info -------------------
+\begin{center}
+  \Large\textbf{UNIVERSITY NAME} \\[1em]
+  \large\textit{probability and statistics — Final Exam} \\[0.5em]
+  \large\textit{Year: 2021} \\[2em]
+\end{center}
+
+\vspace{0.5cm}
+
+%----------------- EXERCISE 1 ------------------
+\section{}
+A parking lot has 10 spaces numbered from 1 to 10. The number of cars \( N \) arriving at the lot in one hour follows a Poisson distribution with parameter \( \lambda > 0 \). It is assumed that drivers choose a space at random and independently of one another.
+
+Let \( G \) be the event “the driver chooses space number 1” and \( X \) be the random variable “number of drivers who choose space number 1”.
+\\
+$\text{Calculate}$:
+\begin{enumerate}
+    \item \( E(N) \)
+    \item \( P(G) \)
+    \item \( P(X = k \mid N = m) \) (distinguish the cases \( k > m \) and \( k \leq m \))
+    \item \( P(X = k) \)
+    \item \( E(X) \) and \( \text{Var}(X) \)
+    \item The probability generating function of \( N \) and that of \( X \).
+\end{enumerate}
+
+\begin{answerbox}
+
+\end{answerbox}
+
+%----------------- EXERCISE 2 ------------------
+\section{}
+Let \( X \) be a uniformly distributed random variable on the interval \([-1, 1]\).
+
+\begin{enumerate}
+    \item Find the distribution function of the random variable \( Y = 4-X^2 \).
+    \item Compute \( P(2 \leq Y \leq 3.5) \).
+\end{enumerate}
+
+\begin{answerbox}
+
+\end{answerbox}
+
+%----------------- END ------------------
+\end{document}

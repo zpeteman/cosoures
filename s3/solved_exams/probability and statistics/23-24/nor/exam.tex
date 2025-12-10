@@ -1,0 +1,113 @@
+\documentclass[12pt]{article}
+
+%----------------- Packages ------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage[breakable]{tcolorbox}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{float}
+\usetikzlibrary{arrows.meta, decorations.markings}
+
+%----------------- Page Setup -----------------
+\geometry{a4paper, margin=2.5cm}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Final Exam — \textbf{2024}}
+\lhead{Probability and Statistics}
+\cfoot{\thepage}
+
+%----------------- Title Styling --------------
+\titleformat{\section}{\normalfont\Large\bfseries}{Exercise \thesection:}{1em}{}
+\titleformat{\subsection}{\normalfont\bfseries}{Answer:}{1em}{}
+
+%----------------- Custom Boxes ----------------
+\tcbuselibrary{listingsutf8}
+\newtcolorbox{answerbox}{
+  colback=gray!10,
+  colframe=black,
+  fonttitle=\bfseries,
+  title=Answer Area,
+  breakable,
+  before skip=10pt,
+  after skip=10pt
+}
+
+%----------------- Document Start --------------
+\begin{document}
+
+%----------------- Exam Info -------------------
+\begin{center}
+  \Large\textbf{UNIVERSITY NAME} \\[1em]
+  \large\textit{Probability and Statistics — Final Exam} \\[0.5em]
+  \large\textit{Year: 2024} \\[2em]
+\end{center}
+
+\vspace{0.5cm}
+
+%----------------- EXERCISE 1 ------------------
+\section{}
+In a factory, two machines \( M_1 \) and \( M_2 \) are used together to produce parts. Over a given period, the probabilities of breaking down are 0.01 and 0.008, respectively. Moreover, the probability of the event “Machine \( M_2 \) is broken down given that \( M_1 \) is broken down” is equal to 0.4.
+
+\begin{enumerate}
+    \item What is the probability that both machines break down at the same time?
+    \item What is the probability that at least one machine is working?
+\end{enumerate}
+
+\begin{answerbox}
+
+\end{answerbox}
+
+%----------------- EXERCISE 2 ------------------
+\section{}
+Let \( (X, Y) \) be a random pair with probability density function
+
+\[
+f(x, y) = 
+\begin{cases} 
+a x y^2 & \text{if } 0 \leq x \leq y \leq 1, \\
+0 & \text{otherwise},
+\end{cases}
+\]
+
+\begin{enumerate}
+    \item Calculate \( a \).
+    \item Calculate the marginal densities of \( X \) and \( Y \).
+    \item Give the cumulative distribution function of \( Y \).
+    \item Compute the expected value of \( Y \).
+    \item Calculate \( P\left(X > \frac{1}{2} Y\right) \).
+\end{enumerate}
+
+\begin{answerbox}
+
+\end{answerbox}
+
+%----------------- EXERCISE 3 ------------------
+\section{}
+A company wants to hire an executive. \( n \) candidates apply for the position. Each of them takes a test in turn, and the first one who passes the test is hired. Let \( p \) be the probability that a candidate passes the test. Let \( X \) be the random variable defined by:
+
+\[
+X = 
+\begin{cases} 
+k & \text{if the } k^{\text{th}} \text{ candidate is hired}, \\
+n + 1 & \text{if no candidate is hired},
+\end{cases}
+\]
+
+\begin{enumerate}
+    \item Give the probability distribution of \( X \).
+    \item Calculate \( E(X) \).
+    \item Find the minimum value of \( p \) such that there is more than a 50\% chance of hiring one of the candidates.
+\end{enumerate}
+
+\begin{answerbox}
+
+\end{answerbox}
+
+%----------------- END ------------------
+\end{document}

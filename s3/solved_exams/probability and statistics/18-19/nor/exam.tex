@@ -1,0 +1,102 @@
+\documentclass[12pt]{article}
+
+%----------------- Packages ------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage[breakable]{tcolorbox}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{float}
+\usetikzlibrary{arrows.meta, decorations.markings}
+
+%----------------- Page Setup -----------------
+\geometry{a4paper, margin=2.5cm}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Final Exam — \textbf{2019}}
+\lhead{Probability and Statistics}
+\cfoot{\thepage}
+
+%----------------- Title Styling --------------
+\titleformat{\section}{\normalfont\Large\bfseries}{Exercise \thesection:}{1em}{}
+\titleformat{\subsection}{\normalfont\bfseries}{Answer:}{1em}{}
+
+%----------------- Custom Boxes ----------------
+\tcbuselibrary{listingsutf8}
+\newtcolorbox{answerbox}{
+  colback=gray!10,
+  colframe=black,
+  fonttitle=\bfseries,
+  title=Answer Area,
+  breakable,
+  before skip=10pt,
+  after skip=10pt
+}
+
+%----------------- Document Start --------------
+\begin{document}
+
+%----------------- Exam Info -------------------
+\begin{center}
+  \Large\textbf{UNIVERSITY NAME} \\[1em]
+  \large\textit{Probability and Statistics — Final Exam} \\[0.5em]
+  \large\textit{Year: 2019} \\[2em]
+\end{center}
+
+\vspace{0.5cm}
+
+%----------------- EXERCISE 1 ------------------
+\section{}
+Let \( X \) be a random variable uniformly distributed on \([0,1]\) with probability density function  
+\[
+f_X(x) = 
+\begin{cases} 
+1 & \text{if } 0 \leq x \leq 1, \\
+0 & \text{otherwise.}
+\end{cases}
+\]  
+Define \( Y = -\ln X \).
+
+\begin{enumerate}
+    \item Find the probability density function of \( Y \).
+    \item Compute \( P\left( |Y - 1| > \frac{1}{10} \right) \).
+\end{enumerate}
+
+\begin{answerbox}
+
+\end{answerbox}
+
+%----------------- EXERCISE 2 ------------------
+\section{}
+A player starts a video game and plays several matches. It is assumed that the probability of winning the first match is \( 0.1 \):  
+
+- If they win a match, the probability of winning the next one is \( 0.8 \).  
+
+- If they lose a match, the probability of winning the next one is \( 0.6 \).  
+
+Let \( G_n \) be the event “the player wins the \( n \)-th match” and let \( p_n = P(G_n) \).
+
+\begin{enumerate}
+    \item Calculate \( p_2 \).
+    \item Given that the player won the second match, calculate the probability that they lost the first one.
+    \item Find the probability that the player wins at least one match in the first three matches.
+    \item Show that for all natural numbers \( n \geq 1 \), we have  
+    \[
+    p_{n+1} = \frac{1}{5} p_n + \frac{3}{5}.
+    \]
+    \item Assume the sequence \( (p_n)_{n \geq 1} \) converges to a limit \( \ell \). Determine \( \ell \) and show that the sequence \( (p_n - \ell)_{n \geq 1} \) is geometric.
+    \item Deduce an expression for \( p_n \) as a function of \( n \).
+\end{enumerate}
+
+\begin{answerbox}
+
+\end{answerbox}
+
+
+%----------------- END ------------------
+\end{document}
