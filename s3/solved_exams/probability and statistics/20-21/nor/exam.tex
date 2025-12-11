@@ -67,7 +67,67 @@ $\text{Calculate}$:
 \end{enumerate}
 
 \begin{answerbox}
+\begin{enumerate}
+  \item \( E(N) \)
 
+\( N \sim \mathcal{P}(\lambda) \), so:
+\[
+E(N) = \lambda.
+\]
+
+  \item \( P(G) \)
+
+  Each driver chooses a space uniformly among 10 spaces:
+\[
+P(G) = \frac{1}{10}.
+\]
+
+  \item \( P(X = k \mid N = m) \)
+
+  Given \( N = m \), drivers choose independently. \( X \mid N = m \sim \text{Binomial}(m, \frac{1}{10}) \).  
+Thus:
+\[
+P(X = k \mid N = m) = 
+\begin{cases}
+\binom{m}{k} \left( \frac{1}{10} \right)^k \left( \frac{9}{10} \right)^{m-k} & \text{if } 0 \le k \le m, \\
+0 & \text{if } k > m.
+\end{cases}
+\]
+
+  \item \( P(X = k) \)
+
+  By total probability:
+\begin{align*}
+  P(X = k)  & = \sum_{m=k}^{\infty} P(X = k \mid N = m) P(N = m) \\
+            & = \sum_{m=k}^{\infty} \binom{m}{k} \left( \frac{1}{10} \right)^k \left( \frac{9}{10} \right)^{m-k} \cdot \frac{e^{-\lambda} \lambda^m}{m!}.
+\end{align*}
+Let \( j = m - k \), then \( m = k + j \):
+\[
+P(X = k) = e^{-\lambda} \left( \frac{1}{10} \right)^k \sum_{j=0}^{\infty} \binom{k+j}{k} \left( \frac{9}{10} \right)^{j} \frac{\lambda^{k+j}}{(k+j)!}.
+\]
+Note: \(\binom{k+j}{k} \frac{1}{(k+j)!} = \frac{1}{k! \, j!}\). So:
+\[
+P(X = k) = e^{-\lambda} \frac{(\lambda/10)^k}{k!} \sum_{j=0}^{\infty} \frac{(9\lambda/10)^j}{j!}
+= e^{-\lambda} \frac{(\lambda/10)^k}{k!} e^{9\lambda/10}.
+\]
+Thus:
+\[
+P(X = k) = \frac{e^{-\lambda/10} (\lambda/10)^k}{k!}.
+\]
+
+  \item \( E(X) \) and \( \text{Var}(X) \)
+
+  Since \( X \sim \mathcal{P}(\lambda/10) \):
+\[
+E(X) = \frac{\lambda}{10}, \quad \text{Var}(X) = \frac{\lambda}{10}.
+\]
+
+  \item Probability generating functions
+
+  For \( N \): \( G_N(s) = E(s^N) = e^{\lambda(s-1)} \).  
+
+  For \( X \): Since \( X \sim \mathcal{P}(\lambda/10) \), \( G_X(s) = e^{(\lambda/10)(s-1)} \). 
+\end{enumerate}
 \end{answerbox}
 
 %----------------- EXERCISE 2 ------------------
@@ -80,7 +140,61 @@ Let \( X \) be a uniformly distributed random variable on the interval \([-1, 1]
 \end{enumerate}
 
 \begin{answerbox}
+\( X \sim \mathcal{U}([-1,1]) \), so \( f_X(x) = \frac{1}{2} \mathbf{1}_{[-1,1]}(x) \).
 
+\begin{enumerate}
+  \item Distribution function of \( Y = 4 - X^2 \)
+
+  Note: \( Y \) takes values in \([3, 4]\), since \( X^2 \in [0,1] \). For \( y \in [3,4] \):
+\[
+F_Y(y) = P(Y \le y) = P(4 - X^2 \le y) = P(X^2 \ge 4 - y).
+\]
+Let \( t = 4 - y \in [0,1] \). Then:
+\[
+F_Y(y) = P(X^2 \ge t) = P(|X| \ge \sqrt{t}) = 1 - P(|X| < \sqrt{t}).
+\]
+Since \( f_X \) is symmetric:
+\[
+P(|X| < \sqrt{t}) = \int_{-\sqrt{t}}^{\sqrt{t}} \frac{1}{2} \, dx = \frac{1}{2} \cdot 2\sqrt{t} = \sqrt{t}.
+\]
+Thus:
+\[
+F_Y(y) = 1 - \sqrt{4 - y}, \quad y \in [3,4].
+\]
+Outside: \( F_Y(y) = 0 \) for \( y < 3 \), and \( F_Y(y) = 1 \) for \( y > 4 \).
+
+The density: for \( y \in (3,4) \):
+\[
+f_Y(y) = \frac{d}{dy} F_Y(y) = \frac{d}{dy} \left( 1 - (4-y)^{1/2} \right) = \frac{1}{2} (4-y)^{-1/2}.
+\]
+Thus:
+\[
+F_Y(y) = 
+\begin{cases}
+0 & y < 3, \\
+1 - \sqrt{4-y} & 3 \le y \le 4, \\
+1 & y > 4,
+\end{cases}
+\quad
+f_Y(y) = 
+\begin{cases}
+\frac{1}{2\sqrt{4-y}} & 3 < y < 4, \\
+0 & \text{otherwise}.
+\end{cases}
+\]
+
+  \item Compute \( P(2 \le Y \le 3.5) \)
+
+  Since \( Y \ge 3 \), this is \( P(3 \le Y \le 3.5) \). Using the CDF:
+\[
+P(3 \le Y \le 3.5) = F_Y(3.5) - F_Y(3) = \left(1 - \sqrt{4 - 3.5}\right) - \left(1 - \sqrt{4-3}\right).
+\]
+Compute: \( 4 - 3.5 = 0.5 \), \( \sqrt{0.5} = \frac{\sqrt{2}}{2} \). \( 4 - 3 = 1 \), \( \sqrt{1} = 1 \).  
+So:
+\[
+P = \left(1 - \frac{\sqrt{2}}{2}\right) - (1 - 1) = 1 - \frac{\sqrt{2}}{2} - 0 = 1 - \frac{\sqrt{2}}{2}.
+\]
+\end{enumerate}
 \end{answerbox}
 
 %----------------- END ------------------
