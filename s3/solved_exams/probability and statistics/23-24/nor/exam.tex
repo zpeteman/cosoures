@@ -60,7 +60,24 @@ In a factory, two machines \( M_1 \) and \( M_2 \) are used together to produce 
 \end{enumerate}
 
 \begin{answerbox}
+Let \(A\) = "Machine \(M_1\) breaks down", \(B\) = "Machine \(M_2\) breaks down".  
+Given:  
+\(P(A) = 0.01\), \(P(B) = 0.008\), \(P(B \mid A) = 0.4\).
 
+\begin{enumerate}
+  \item Probability both break down:
+
+  \[
+P(A \cap B) = P(B \mid A) \cdot P(A) = 0.4 \times 0.01 = 0.004.
+\]
+
+  \item Probability that at least one machine is working:
+
+  This is the complement of both breaking down:
+\[
+1 - P(A \cap B) = 1 - 0.004 = 0.996.
+\]
+\end{enumerate}
 \end{answerbox}
 
 %----------------- EXERCISE 2 ------------------
@@ -84,7 +101,99 @@ a x y^2 & \text{if } 0 \leq x \leq y \leq 1, \\
 \end{enumerate}
 
 \begin{answerbox}
+\begin{enumerate}
+  \item Calculate \(a\):
 
+  The joint density must integrate to 1 over the region \(0 \leq x \leq y \leq 1\):
+\[
+\int_{y=0}^{1} \int_{x=0}^{y} a x y^2 \, dx \, dy = 1.
+\]
+Inner integral: 
+\[
+\int_{0}^{y} a x y^2 \, dx = a y^2 \left[ \frac{x^2}{2} \right]_{0}^{y} = a y^2 \cdot \frac{y^2}{2} = \frac{a}{2} y^4.
+\]
+Then:
+\[
+\int_{0}^{1} \frac{a}{2} y^4 \, dy = \frac{a}{2} \cdot \left[ \frac{y^5}{5} \right]_{0}^{1} = \frac{a}{2} \cdot \frac{1}{5} = \frac{a}{10}.
+\]
+Set \(\frac{a}{10} = 1 \Rightarrow a = 10\).
+
+\item Marginal densities:
+
+For \(0 \leq y \leq 1\):
+\[
+f_Y(y) = \int_{x=0}^{y} 10 x y^2 \, dx = 10 y^2 \cdot \frac{y^2}{2} = 5 y^4.
+\]
+
+For \(0 \leq x \leq 1\):
+\[
+f_X(x) = \int_{y=x}^{1} 10 x y^2 \, dy = 10 x \left[ \frac{y^3}{3} \right]_{y=x}^{1} = 10 x \left( \frac{1}{3} - \frac{x^3}{3} \right) = \frac{10}{3} x (1 - x^3).
+\]
+
+  \item CDF of \(Y\):
+
+  For \(0 \leq t \leq 1\):
+\[
+F_Y(t) = \int_{0}^{t} 5 y^4 \, dy = \left[ y^5 \right]_{0}^{t} = t^5.
+\]
+\[
+F_Y(t) = 
+\begin{cases}
+0 & t < 0, \\
+t^5 & 0 \leq t \leq 1, \\
+1 & t > 1.
+\end{cases}
+\]
+
+  \item Expected value of \(Y\):
+
+  \[
+E(Y) = \int_{0}^{1} y \cdot 5y^4 \, dy = 5 \int_{0}^{1} y^5 \, dy = 5 \cdot \frac{1}{6} = \frac{5}{6}.
+\]
+
+  \item Calculate \(P\left(X > \frac{1}{2} Y\right)\):
+
+  Region condition: \(0 \leq x \leq y \leq 1\) and \(x > y/2\) (i.e., \(y < 2x\)).
+Since \(x \leq y\), the inequality \(x > y/2\) is equivalent to \(y < 2x\) and \(x \leq y\).  
+Thus \(x \leq y < 2x\). Also \(y \leq 1\).  
+
+Integrate over \(x\) from 0 to 1, and for each \(x\), \(y\) runs from \(x\) to \(\min(2x, 1)\).
+
+For \(0 \leq x \leq 1/2\), \(2x \leq 1\), so \(y \in [x, 2x]\).  
+
+For \(1/2 < x \leq 1\), \(2x > 1\), so \(y \in [x, 1]\).
+
+\[
+P = \int_{x=0}^{1/2} \int_{y=x}^{2x} 10 x y^2 \, dy \, dx + \int_{x=1/2}^{1} \int_{y=x}^{1} 10 x y^2 \, dy \, dx.
+\]
+
+First inner integral:
+\[
+\int_{x}^{2x} 10 x y^2 \, dy = 10 x \left[ \frac{y^3}{3} \right]_{x}^{2x} = 10 x \left( \frac{8x^3}{3} - \frac{x^3}{3} \right) = 10 x \cdot \frac{7x^3}{3} = \frac{70}{3} x^4.
+\]
+First outer:
+\[
+\int_{0}^{1/2} \frac{70}{3} x^4 \, dx = \frac{70}{3} \cdot \frac{(1/2)^5}{5} = \frac{70}{3} \cdot \frac{1}{160} = \frac{70}{480} = \frac{7}{48}.
+\]
+
+Second inner integral:
+\[
+\int_{x}^{1} 10 x y^2 \, dy = 10 x \left( \frac{1}{3} - \frac{x^3}{3} \right) = \frac{10}{3} x (1 - x^3).
+\]
+Second outer:
+\[
+\int_{1/2}^{1} \frac{10}{3} x (1 - x^3) \, dx = \frac{10}{3} \int_{1/2}^{1} (x - x^4) \, dx = \frac{10}{3} \left[ \frac{x^2}{2} - \frac{x^5}{5} \right]_{1/2}^{1}.
+\]
+Evaluate at 1: \(\frac{1}{2} - \frac{1}{5} = \frac{3}{10}\).  
+
+At \(x=1/2\): \(\frac{(1/2)^2}{2} - \frac{(1/2)^5}{5} = \frac{1/4}{2} - \frac{1/32}{5} = \frac{1}{8} - \frac{1}{160} = \frac{20}{160} - \frac{1}{160} = \frac{19}{160}\).  
+
+Difference: \(\frac{3}{10} - \frac{19}{160} = \frac{48}{160} - \frac{19}{160} = \frac{29}{160}\).  
+
+Multiply by \(\frac{10}{3}\): \(\frac{10}{3} \cdot \frac{29}{160} = \frac{290}{480} = \frac{29}{48}\).
+
+Sum: \(\frac{7}{48} + \frac{29}{48} = \frac{36}{48} = \frac{3}{4}\).
+\end{enumerate}
 \end{answerbox}
 
 %----------------- EXERCISE 3 ------------------
@@ -106,7 +215,73 @@ n + 1 & \text{if no candidate is hired},
 \end{enumerate}
 
 \begin{answerbox}
+\begin{enumerate}
+  \item Probability distribution of \(X\):
 
+  For \(k = 1, 2, \dots, n\):  
+First \(k-1\) candidates fail, \(k\)-th passes:
+\[
+P(X = k) = (1-p)^{k-1} p.
+\]
+If no one passes: all \(n\) fail:
+\[
+P(X = n+1) = (1-p)^n.
+\]
+
+  \item Calculate \(E(X)\):
+
+\[
+E(X) = \sum_{k=1}^{n} k (1-p)^{k-1} p + (n+1)(1-p)^n.
+\]
+Let \(q = 1-p\). The sum \(\sum_{k=1}^{n} k q^{k-1} p = p \cdot \frac{1 - (n+1)q^n + n q^{n+1}}{(1-q)^2}\) (using formula for finite geometric series derivative). Since \(1-q = p\):
+\[
+p \cdot \frac{1 - (n+1)q^n + n q^{n+1}}{p^2} = \frac{1 - (n+1)q^n + n q^{n+1}}{p}.
+\]
+Then:
+\[
+E(X) = \frac{1 - (n+1)q^n + n q^{n+1}}{p} + (n+1)q^n.
+\]
+Simplify:
+\[
+E(X) = \frac{1}{p} - \frac{(n+1)q^n}{p} + \frac{n q^{n+1}}{p} + (n+1)q^n.
+\]
+Combine terms with \((n+1)q^n\):
+\[
+(n+1)q^n - \frac{(n+1)q^n}{p} = (n+1)q^n \left(1 - \frac{1}{p}\right) = (n+1)q^n \cdot \frac{p-1}{p} = -(n+1)q^n \cdot \frac{q}{p}.
+\]
+So:
+\[
+E(X) = \frac{1}{p} + \frac{n q^{n+1}}{p} - (n+1)q^n \cdot \frac{q}{p} = \frac{1}{p} + \frac{q^{n+1}}{p} \left[ n - (n+1) \right] = \frac{1}{p} - \frac{q^{n+1}}{p}.
+\]
+Thus:
+\[
+E(X) = \frac{1 - (1-p)^{n+1}}{p}.
+\]
+
+  \item Minimum \(p\) such that \(P(\text{hire}) > 0.5\):
+
+  Probability of hiring = \(1 - P(X = n+1) = 1 - (1-p)^n\).  
+Require:
+\[
+1 - (1-p)^n > 0.5 \quad \Rightarrow \quad (1-p)^n < 0.5.
+\]
+Take natural log (since \(1-p > 0\)):
+\[
+n \ln(1-p) < \ln(0.5) \quad \Rightarrow \quad \ln(1-p) < \frac{\ln(0.5)}{n}.
+\]
+Since \(\ln(1-p) < 0\), we have:
+\[
+1-p > e^{\frac{\ln(0.5)}{n}} = 0.5^{1/n}.
+\]
+Thus:
+\[
+p < 1 - 0.5^{1/n} \quad \text{(but wait, this flips inequality? Let's check carefully).}
+\]
+Actually: \((1-p)^n < 0.5 \Rightarrow 1-p < 0.5^{1/n}\) (since \(n\)th root is increasing). So:
+\[
+p > 1 - 0.5^{1/n}.
+\]
+\end{enumerate}
 \end{answerbox}
 
 %----------------- END ------------------
