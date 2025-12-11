@@ -68,7 +68,43 @@ Define \( Y = -\ln X \).
 \end{enumerate}
 
 \begin{answerbox}
+\begin{enumerate}
+  \item Probability density function of \( Y \)
 
+Since \( X \sim \mathcal{U}([0,1]) \), and \( Y = -\ln X \). The transformation is strictly decreasing.
+The CDF method:
+For \( y > 0 \),
+\[
+F_Y(y) = P(Y \le y) = P(-\ln X \le y) = P(X \ge e^{-y}) = 1 - F_X(e^{-y}).
+\]
+Since \( f_X(x)=1 \) for \( x \in [0,1] \), \( F_X(x) = x \) for \( 0 \le x \le 1 \). For \( y>0 \), \( e^{-y} \in (0,1] \), so:
+\[
+F_Y(y) = 1 - e^{-y}.
+\]
+Differentiating:
+\[
+f_Y(y) = \frac{d}{dy}(1 - e^{-y}) = e^{-y}, \quad y > 0.
+\]
+Thus,
+\[
+\boxed{f_Y(y) = e^{-y} \mathbf{1}_{(0,\infty)}(y)}.
+\]
+
+\item Compute \( P\left( |Y - 1| > \frac{1}{10} \right) \)
+\[
+P\left( |Y - 1| > \frac{1}{10} \right) = 1 - P\left( |Y - 1| \le \frac{1}{10} \right) = 1 - P\left( 0.9 \le Y \le 1.1 \right).
+\]
+\[
+P(0.9 \le Y \le 1.1) = \int_{0.9}^{1.1} e^{-y} \, dy = \left[ -e^{-y} \right]_{0.9}^{1.1} = e^{-0.9} - e^{-1.1}.
+\]
+Thus,
+\[
+P\left( |Y - 1| > \frac{1}{10} \right) = 1 - \left( e^{-0.9} - e^{-1.1} \right) = 1 - e^{-0.9} + e^{-1.1}.
+\]
+\[
+\boxed{1 - e^{-0.9} + e^{-1.1}}.
+\]
+\end{enumerate}
 \end{answerbox}
 
 %----------------- EXERCISE 2 ------------------
@@ -94,7 +130,77 @@ Let \( G_n \) be the event “the player wins the \( n \)-th match” and let \(
 \end{enumerate}
 
 \begin{answerbox}
+Given: \( P(G_1) = p_1 = 0.1 \), and
+\[
+P(G_{n+1} \mid G_n) = 0.8, \quad P(G_{n+1} \mid G_n^c) = 0.6.
+\]
 
+\begin{enumerate}
+  \item Calculate \( p_2 \)
+\[
+p_2 = P(G_2) = P(G_2 \mid G_1)P(G_1) + P(G_2 \mid G_1^c)P(G_1^c)
+= 0.8 \cdot 0.1 + 0.6 \cdot 0.9  = 0.62.
+\]
+
+  \item Given \( G_2 \), probability they lost the first one
+\[
+P(G_1^c \mid G_2) = \frac{P(G_2 \mid G_1^c) P(G_1^c)}{P(G_2)} = \frac{0.6 \cdot 0.9}{0.62} = \frac{0.54}{0.62} = \frac{27}{31}.
+\]
+
+  \item Probability that the player wins at least one match in the first three
+Easier to compute complement: loses all three matches.
+Let \( L_i = G_i^c \). Then:
+$$
+P(L_1) = 0.9, \quad P(L_2 \mid L_1) = 1 - 0.6 = 0.4, \quad \\
+$$
+$$
+P(L_3 \mid L_2) = 1 - 0.6 = 0.4 \quad (\text{since after loss, win prob } 0.6)
+$$
+But careful: the loss-loss transition probability is actually \( P(L_{n+1} \mid L_n) = 1 - 0.6 = 0.4 \), yes.
+
+So:
+\[
+P(L_1 \cap L_2 \cap L_3) = P(L_1) P(L_2 \mid L_1) P(L_3 \mid L_2) = 0.9 \cdot 0.4 \cdot 0.4 = 0.144.
+\]
+Thus:
+\[
+P(\text{at least one win}) = 1 - 0.144 = 0.856.
+\]
+
+  \item Show that \( p_{n+1} = \frac{1}{5} p_n + \frac{3}{5} \)
+\[
+p_{n+1} = P(G_{n+1}) = P(G_{n+1} \mid G_n) P(G_n) + P(G_{n+1} \mid G_n^c) P(G_n^c)
+\]
+\[
+= 0.8 p_n + 0.6 (1 - p_n) = 0.8 p_n + 0.6 - 0.6 p_n = 0.2 p_n + 0.6 = \frac{1}{5} p_n + \frac{3}{5}.
+\]
+
+  \item Limit \( \ell \) and show \( (p_n - \ell) \) geometric
+If limit \( \ell \) exists, then from recurrence: \( \ell = \frac{1}{5} \ell + \frac{3}{5} \) \(\Rightarrow\) \( \ell - \frac{1}{5}\ell = \frac{3}{5} \) \(\Rightarrow\) \( \frac{4}{5}\ell = \frac{3}{5} \) \(\Rightarrow\) \( \ell = \frac{3}{4} \).
+Now consider \( d_n = p_n - \ell = p_n - \frac{3}{4} \). Then:
+\[
+d_{n+1} = p_{n+1} - \frac{3}{4} = \left( \frac{1}{5} p_n + \frac{3}{5} \right) - \frac{3}{4} = \frac{1}{5} p_n - \frac{3}{20}.
+\]
+But note \( \frac{3}{20} = \frac{1}{5} \cdot \frac{3}{4} \), so:
+\[
+d_{n+1} = \frac{1}{5} p_n - \frac{1}{5} \cdot \frac{3}{4} = \frac{1}{5} \left( p_n - \frac{3}{4} \right) = \frac{1}{5} d_n.
+\]
+Thus \( (d_n) \) is geometric with ratio \( \frac{1}{5} \).
+
+\[
+\ell = \frac{3}{4}, \quad p_n - \ell \text{ is geometric with ratio } \frac{1}{5}.
+\]
+
+  \item Expression for \( p_n \)
+Since \( d_1 = p_1 - \frac{3}{4} = 0.1 - 0.75 = -0.65 = -\frac{13}{20} \), then:
+\[
+d_n = d_1 \left( \frac{1}{5} \right)^{n-1} = -\frac{13}{20} \cdot \left( \frac{1}{5} \right)^{n-1}.
+\]
+Thus:
+\[
+p_n = \ell + d_n = \frac{3}{4} - \frac{13}{20} \cdot \left( \frac{1}{5} \right)^{n-1}.
+\]
+\end{enumerate}
 \end{answerbox}
 
 
