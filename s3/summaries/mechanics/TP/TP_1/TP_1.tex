@@ -1,0 +1,118 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{pgfplotstable}
+\usepackage{float}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+% Adjust margins to fit tables
+\geometry{hmargin=2cm, vmargin=2cm}
+
+\title{\textbf{Compte Rendu : Pendule de Torsion}}
+\author{Ilyas Zanam \\ Noha Maghfoul}
+\date{}
+
+\begin{document}
+
+\begin{titlepage}
+    \centering
+    \vspace*{2cm}
+    
+    {\Huge\bfseries Compte rendu Tp N°1\par}
+    \vspace{1cm}
+    {\LARGE Pendule de Torsion\par}
+    \vspace{2cm}
+    
+    % Add your image here
+    % \includegraphics[width=0.4\textwidth]{pnd.png}
+    
+    \vspace{2cm}
+    
+    {\Large réalisé par:\par}
+    \vspace{0.5cm}
+    {\large Ilyas Zanan \hspace{2cm} Noha Maghfoul\par}
+    
+    \vspace{1.5cm}
+    
+    {\Large encadré par:\par}
+    \vspace{0.5cm}
+    {\large Pr. Mohamed AHD\par}
+    
+    \vspace{1.5cm}
+    
+    {\Large responsable:\par}
+    \vspace{0.5cm}
+    {\large Pr. Mohamed GOUIGHRI\par}
+    
+    \vfill
+    
+\end{titlepage}
+
+\newpage
+
+\begin{center}
+    \textbf{\large Compte rendu Pendule de Torsion}
+\end{center}
+
+\section{Isochronisme des petites oscillations}
+\begin{enumerate}
+    \item Tableau des mesures ($\theta_1 > \theta_2$) 
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+    \hline
+    temps(s) & $t_1$ & $t_2$ & $t_3$ & $t_m$ & $\Delta t_m$ & $\Delta t_{ch}$ & $\Delta t$ & $T_0$ & $\Delta T_0$ \\
+    \hline
+    $\theta_1$ &  &  &  &  &  & 0,1 & &  &  \\
+    \hline
+    $\theta_2$ &  &  &  &  &  & 0,1 &  &  &  \\
+    \hline
+    \end{tabular}
+\end{table}
+
+    \item
+
+    \item
+
+\end{enumerate}
+\section{Détermination de $C$ et $I_0$}
+
+\begin{enumerate}
+    \item Tableau des mesures ($r_1 = 5cm, r_2 = 10cm$)
+\begin{table}[H]
+    \centering
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+    \hline
+    temps(s) & $t_1$ & $t_2$ & $t_3$ & $t_m$ & $\Delta t_m$ & $\Delta t_{ch}$ & $\Delta t$ & $T$ & $\Delta T$ \\
+    \hline
+    $r_1$ &  &  &  &  &  & 0,1 &  &  &  \\
+    \hline
+    $r_2$ &  &  &  &  &  & 0,1 &  &  &  \\
+    \hline
+    \end{tabular}
+\end{table}
+
+\noindent \textbf{Remarque :} Les relations utilisées étaient données en TP, à savoir :
+\[ \Delta t_m = \sup|t_m - t_i| \quad , \quad T = \frac{t_m}{10} \quad , \quad \Delta T = \frac{\Delta t}{10} \quad , \quad \Delta t = \Delta t_m + \Delta t_{ch} \]
+    
+    \item 
+
+    \item
+
+\end{enumerate}
+
+\section{Détermination de $I_{GZ}$ experimentalement}
+
+\input{section_3.tex}
+
+\end{document}
