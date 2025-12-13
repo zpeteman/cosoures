@@ -11,6 +11,8 @@
 \usepackage[breakable]{tcolorbox}
 \usepackage{graphicx}
 \usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
 \usepackage{float}
 \usetikzlibrary{arrows.meta, decorations.markings}
 
@@ -62,7 +64,68 @@ Determine the nature (convergence/divergence) of the following sequences:
 \]
 
 \begin{answerbox}
-
+\begin{enumerate}
+    \item[a)] For $u_n = \cos\left( \pi \frac{2n^3 + n^2 + a n + b}{2n^2} \right)$:
+    
+    Simplify the fraction:
+    \[
+    \frac{2n^3 + n^2 + a n + b}{2n^2} = n + \frac{1}{2} + \frac{a}{2n} + \frac{b}{2n^2}
+    \]
+    
+    The argument becomes:
+    \[
+    \pi\left(n + \frac{1}{2} + \frac{a}{2n} + \frac{b}{2n^2}\right) = \pi n + \frac{\pi}{2} + \frac{a\pi}{2n} + \frac{b\pi}{2n^2}
+    \]
+    
+    Since $\cos(\theta + \pi n) = (-1)^n\cos\theta$, we have:
+    \[
+    u_n = \cos\left(\pi n + \frac{\pi}{2} + \frac{a\pi}{2n} + \frac{b\pi}{2n^2}\right) = (-1)^n \cos\left(\frac{\pi}{2} + \frac{a\pi}{2n} + \frac{b\pi}{2n^2}\right)
+    \]
+    
+    Using $\cos\left(\frac{\pi}{2} + \epsilon\right) = -\sin\epsilon$, we get:
+    \[
+    u_n = (-1)^n \left[-\sin\left(\frac{a\pi}{2n} + \frac{b\pi}{2n^2}\right)\right] = (-1)^{n+1} \sin\left(\frac{a\pi}{2n} + \frac{b\pi}{2n^2}\right)
+    \]
+    
+    As $n \to \infty$, $\frac{a\pi}{2n} + \frac{b\pi}{2n^2} \to 0$, so $\sin\left(\frac{a\pi}{2n} + \frac{b\pi}{2n^2}\right) \sim \frac{a\pi}{2n}$.
+    
+    Therefore:
+    \[
+    u_n \sim (-1)^{n+1} \frac{a\pi}{2n}
+    \]
+    
+    This shows that:
+    \begin{itemize}
+        \item If $a \neq 0$, $u_n$ converges to 0 (alternating but decreasing in absolute value).
+        \item If $a = 0$, then $u_n \sim (-1)^{n+1} \frac{b\pi}{2n^2}$ converges to 0 faster.
+        \item In all cases, $\lim_{n\to\infty} u_n = 0$.
+    \end{itemize}
+    
+    \item[b)] For $u_n = \left( 1 - \frac{1}{n^a} \right)^n$ with $a > 0$:
+    
+    Take the natural logarithm:
+    \[
+    \ln u_n = n \ln\left(1 - \frac{1}{n^a}\right)
+    \]
+    
+    Using the asymptotic expansion $\ln(1+x) = x - \frac{x^2}{2} + o(x^2)$ as $x \to 0$:
+    \[
+    \ln\left(1 - \frac{1}{n^a}\right) = -\frac{1}{n^a} - \frac{1}{2n^{2a}} + o\left(\frac{1}{n^{2a}}\right)
+    \]
+    
+    So:
+    \[
+    \ln u_n = -\frac{n}{n^a} - \frac{n}{2n^{2a}} + o\left(\frac{n}{n^{2a}}\right) = -n^{1-a} - \frac{1}{2}n^{1-2a} + o(n^{1-2a})
+    \]
+    
+    Now analyze based on $a$:
+    
+    \begin{itemize}
+        \item If $0 < a < 1$: Then $1-a > 0$, so $\ln u_n \sim -n^{1-a} \to -\infty$, thus $u_n \to 0$.
+        \item If $a = 1$: Then $\ln u_n = -1 - \frac{1}{2n} + o(1/n) \to -1$, so $u_n \to e^{-1}$.
+        \item If $a > 1$: Then $1-a < 0$, so $n^{1-a} \to 0$, and $\ln u_n \to 0$, thus $u_n \to 1$.
+    \end{itemize}
+\end{enumerate}
 \end{answerbox}
 
 %----------------- EXERCISE 2 ------------------
@@ -83,7 +146,118 @@ Let \( f(x) = \sum_{n=1}^{\infty} f_n(x) \) when it exists.
 \end{enumerate}
 
 \begin{answerbox}
+\begin{enumerate}
+    \item Domain and continuity:
+    
+    For $x > 0$, each $f_n(x)$ is positive and well-defined. Compare with a convergent series:
+    \[
+    0 < f_n(x) = \frac{x}{n(1+n^2 x)} < \frac{x}{n \cdot n^2 x} = \frac{1}{n^3}
+    \]
+    
+    Since $\sum \frac{1}{n^3}$ converges, by the Weierstrass M-test, $\sum f_n(x)$ converges uniformly on any interval $[\delta, \infty)$ with $\delta > 0$. Each $f_n(x)$ is continuous on $(0, \infty)$, so the uniform convergence implies $f(x)$ is continuous on $(0, \infty)$.
+    
+    \item Limit as $x \to \infty$:
+    
+    For fixed $n$, $\lim_{x\to\infty} f_n(x) = \lim_{x\to\infty} \frac{x}{n(1+n^2 x)} = \frac{1}{n^3}$.
+    
+    Interchanging limit and summation (justified by uniform convergence on $[M, \infty)$ for large $M$):
+    \[
+    \lim_{x\to\infty} f(x) = \sum_{n=1}^{\infty} \lim_{x\to\infty} f_n(x) = \sum_{n=1}^{\infty} \frac{1}{n^3} = \zeta(3)
+    \]
+    
+    where $\zeta(3)$ is Apéry's constant.
+    
+    
+    \item Differentiability:
+    
+    For $x > 0$, compute the derivative:
+    \[
+    f_n'(x) = \frac{d}{dx}\left(\frac{x}{n(1+n^2 x)}\right) = \frac{1}{n(1+n^2 x)} - \frac{n^2 x}{n(1+n^2 x)^2} = \frac{1}{n(1+n^2 x)^2}
+    \]
+    
+    Now check uniform convergence of $\sum f_n'(x)$ on $[\delta, \infty)$ with $\delta > 0$:
+    \[
+    |f_n'(x)| = \frac{1}{n(1+n^2 x)^2} \leq \frac{1}{n(1+n^2\delta)^2} \leq \frac{1}{n \cdot n^4 \delta^2} = \frac{1}{\delta^2 n^5}
+    \]
+    
+    Since $\sum \frac{1}{n^5}$ converges, $\sum f_n'(x)$ converges uniformly on $[\delta, \infty)$. By the theorem on differentiation of series, $f$ is differentiable on $(0, \infty)$ and:
+    \[
+    f'(x) = \sum_{n=1}^{\infty} f_n'(x) = \sum_{n=1}^{\infty} \frac{1}{n(1+n^2 x)^2}
+    \]
+    
+    \item Graph of $f$: 
+    
+    \begin{tikzpicture}
+    \begin{axis}[
+        % Axis setup
+        axis lines = middle,
+        xlabel = $x$,
+        ylabel = $y$,
+        xmin = 0, xmax = 6,    % X-axis range
+        ymin = 0, ymax = 1.4,  % Y-axis range
+        grid = major,
+        width=12cm, height=8cm,
+        % Ticks setup
+        xtick = {0, 1, ..., 6},
+        ytick = {0, 0.5, 1.0, 1.202}, 
+        yticklabels = {0, 0.5, 1.0, $\zeta(3)$}, % Label the asymptote explicitly
+        legend pos = south east,
+        legend style={nodes={scale=0.9, transform shape}}, 
+        title = {}
+    ]
 
+    % 1. Plot the Function f(x)
+    % We approximate the infinite sum using the first 20 terms.
+    % The terms decay as 1/n^3, so 20 terms is visually indistinguishable from infinity here.
+    \addplot[
+        color=blue,
+        very thick,
+        samples=200,
+        domain=0:6,
+        smooth
+    ]
+    {
+        x/(1*(1+1^2*x)) +
+        x/(2*(1+2^2*x)) +
+        x/(3*(1+3^2*x)) +
+        x/(4*(1+4^2*x)) +
+        x/(5*(1+5^2*x)) +
+        x/(6*(1+6^2*x)) +
+        x/(7*(1+7^2*x)) +
+        x/(8*(1+8^2*x)) +
+        x/(9*(1+9^2*x)) +
+        x/(10*(1+10^2*x)) +
+        x/(11*(1+11^2*x)) +
+        x/(12*(1+12^2*x)) +
+        x/(13*(1+13^2*x)) +
+        x/(14*(1+14^2*x)) +
+        x/(15*(1+15^2*x)) +
+        x/(16*(1+16^2*x)) +
+        x/(17*(1+17^2*x)) +
+        x/(18*(1+18^2*x)) +
+        x/(19*(1+19^2*x)) +
+        x/(20*(1+20^2*x))
+    };
+    \addlegendentry{$f(x)$}
+
+    % 2. Plot the Horizontal Asymptote y = zeta(3) approx 1.20205
+    \addplot[
+        color=red,
+        dashed,
+        thick,
+        domain=0:6
+    ]
+    {1.2020569}; 
+    \addlegendentry{$y = \zeta(3)$}
+
+    \end{axis}
+\end{tikzpicture}
+
+
+
+
+
+  \end{enumerate}
 \end{answerbox}
 
 %----------------- EXERCISE 3 ------------------
@@ -110,7 +284,140 @@ Let \( f(x) = \sum_{n=0}^{\infty} u_n x^n \) when it exists, and let \( R \) be 
 \end{enumerate}
 
 \begin{answerbox}
+Given $u_0 = u_1 = 1$ and $u_{n+2} = u_{n+1} + 2u_n + (-1)^n$, with $f(x) = \sum_{n=0}^{\infty} u_n x^n$.
 
+\begin{enumerate}
+    \item Bounds on $u_n$ and radius of convergence:
+    
+    First, prove by induction that $1 \leq u_n \leq 2^{n+1} - 1$.
+    
+    \textbf{Base case:} For $n=0$: $1 \leq u_0 = 1 \leq 2^{1} - 1 = 1$ 
+    For $n=1$: $1 \leq u_1 = 1 \leq 2^{2} - 1 = 3$ 
+    
+    \textbf{Inductive step:} Assume $1 \leq u_k \leq 2^{k+1} - 1$ for $k = n, n+1$.
+    
+    Then:
+    \[
+    u_{n+2} = u_{n+1} + 2u_n + (-1)^n \geq 1 + 2\cdot 1 - 1 = 2 \geq 1
+    \]
+    (using $(-1)^n \geq -1$)
+    
+    And:
+    \[
+    u_{n+2} \leq (2^{n+2} - 1) + 2(2^{n+1} - 1) + 1 = 2^{n+2} - 1 + 2^{n+2} - 2 + 1 = 2^{n+3} - 2
+    \]
+    But $2^{n+3} - 2 \leq 2^{n+3} - 1$, so the upper bound holds.
+    
+    From $u_n \leq 2^{n+1} - 1 < 2^{n+1}$, we have $\sqrt[n]{u_n} < \sqrt[n]{2^{n+1}} = 2 \cdot 2^{1/n} \to 2$.
+    
+    By the Cauchy-Hadamard theorem, $R = 1/\limsup \sqrt[n]{u_n} \geq 1/2$.
+    
+    \item Functional equation for $f(x)$:
+    
+    For $|x| < \min(1, R)$, multiply the recurrence by $x^{n+2}$ and sum from $n=0$ to $\infty$:
+    \[
+    \sum_{n=0}^{\infty} u_{n+2} x^{n+2} = \sum_{n=0}^{\infty} u_{n+1} x^{n+2} + 2\sum_{n=0}^{\infty} u_n x^{n+2} + \sum_{n=0}^{\infty} (-1)^n x^{n+2}
+    \]
+    
+    Rewrite in terms of $f(x)$:
+    \begin{align*}
+    \sum_{n=0}^{\infty} u_{n+2} x^{n+2} &= f(x) - u_0 - u_1 x = f(x) - 1 - x \\
+    \sum_{n=0}^{\infty} (-1)^n x^{n+2} &= x^2 \sum_{n=0}^{\infty} (-x)^n = \frac{x^2}{1+x}
+    \end{align*}
+    
+    Substitute into the recurrence:
+    \[
+    f(x) - 1 - x = x(f(x) - 1) + 2x^2 f(x) + \frac{x^2}{1+x}
+    \]
+    
+    Solve for $f(x)$:
+    \begin{align*}
+    f(x) - 1 - x &= xf(x) - x + 2x^2 f(x) + \frac{x^2}{1+x} \\
+    f(x) &= \frac{1 - x + \frac{x^2}{1+x}}{1 - x - 2x^2}
+    \end{align*}
+    
+    Simplify numerator and denominator:
+    \[
+    1 - x + \frac{x^2}{1+x} = \frac{(1-x)(1+x) + x^2}{1+x} = \frac{1 - x^2 + x^2}{1+x} = \frac{1}{1+x}
+    \]
+    
+    And $1 - x - 2x^2 = (1+x)(1-2x)$.
+    
+    Therefore:
+    \[
+    f(x) = \frac{\frac{1}{1+x}}{(1+x)(1-2x)} = \frac{1}{(1+x)^2(1-2x)}
+    \]
+    
+    But wait, the problem statement says $f(x) = \frac{x^2 + x + 1}{(x+1)^2(1-2x)}$. Let me check the numerator again:
+    
+    Actually: $1 - x + \frac{x^2}{1+x} = \frac{(1-x)(1+x) + x^2}{1+x} = \frac{1 - x^2 + x^2}{1+x} = \frac{1}{1+x}$. But $u_0 = 1, u_1 = 1$, so $f(x) = 1 + x + \sum_{n=2}^\infty u_n x^n$.
+    
+    I should have: $f(x) - 1 - x = \sum_{n=2}^\infty u_n x^n = \sum_{n=0}^\infty u_{n+2} x^{n+2}$.
+    
+    So the equation becomes:
+    \[
+    f(x) - 1 - x = x(f(x) - 1) + 2x^2 f(x) + \frac{x^2}{1+x}
+    \]
+    
+    Solving:
+    \begin{align*}
+    f(x) - xf(x) - 2x^2 f(x) &= 1 + x - x + \frac{x^2}{1+x} \\
+    f(x) &= \frac{1+x+x^2}{(1+x)(1 - x - 2x^2)}
+    \end{align*}
+    
+    Since $1 - x - 2x^2 = (1+x)(1-2x)$, we get:
+    \[
+    f(x) = \frac{x^2 + x + 1}{(x+1)^2(1-2x)}
+    \]
+    which matches the problem statement.
+    
+    \item Explicit formula for $u_n$:
+    
+    Perform partial fraction decomposition:
+    \[
+    \frac{x^2 + x + 1}{(x+1)^2(1-2x)} = \frac{A}{x+1} + \frac{B}{(x+1)^2} + \frac{C}{1-2x}
+    \]
+    
+    Multiply both sides by $(x+1)^2(1-2x)$:
+    \[
+    x^2 + x + 1 = A(x+1)(1-2x) + B(1-2x) + C(x+1)^2
+    \]
+    
+    Solve for coefficients:
+    \begin{itemize}
+        \item At $x = -1$: $1 - 1 + 1 = B(1+2) \Rightarrow 1 = 3B \Rightarrow B = \frac{1}{3}$
+        \item At $x = \frac{1}{2}$: $\frac{1}{4} + \frac{1}{2} + 1 = C\left(\frac{3}{2}\right)^2 \Rightarrow \frac{7}{4} = \frac{9}{4}C \Rightarrow C = \frac{7}{9}$
+        \item At $x = 0$: $1 = A(1)(1) + B(1) + C(1) \Rightarrow 1 = A + \frac{1}{3} + \frac{7}{9} \Rightarrow A = 1 - \frac{1}{3} - \frac{7}{9} = -\frac{1}{9}$
+    \end{itemize}
+    
+    So:
+    \[
+    f(x) = -\frac{1}{9}\cdot\frac{1}{1+x} + \frac{1}{3}\cdot\frac{1}{(1+x)^2} + \frac{7}{9}\cdot\frac{1}{1-2x}
+    \]
+    
+    Expand as power series:
+    \begin{align*}
+    \frac{1}{1+x} &= \sum_{n=0}^{\infty} (-1)^n x^n \\
+    \frac{1}{(1+x)^2} &= \sum_{n=0}^{\infty} (-1)^n (n+1) x^n \quad \text{(derivative of geometric series)} \\
+    \frac{1}{1-2x} &= \sum_{n=0}^{\infty} 2^n x^n
+    \end{align*}
+    
+    Therefore:
+    \begin{align*}
+    f(x) &= -\frac{1}{9} \sum_{n=0}^{\infty} (-1)^n x^n + \frac{1}{3} \sum_{n=0}^{\infty} (-1)^n (n+1) x^n + \frac{7}{9} \sum_{n=0}^{\infty} 2^n x^n \\
+    &= \sum_{n=0}^{\infty} \left[ -\frac{1}{9}(-1)^n + \frac{1}{3}(-1)^n (n+1) + \frac{7}{9} 2^n \right] x^n
+    \end{align*}
+    
+    So the explicit formula is:
+    \[
+    u_n = \frac{7}{9} \cdot 2^n + (-1)^n \left( \frac{n+1}{3} - \frac{1}{9} \right) = \frac{7}{9} \cdot 2^n + (-1)^n \left( \frac{3n+2}{9} \right)
+    \]
+    
+    Or equivalently:
+    \[
+    u_n = \frac{1}{9} \left[ 7 \cdot 2^n + (-1)^n (3n+2) \right]
+    \]
+\end{enumerate}
 \end{answerbox}
 
 %----------------- END ------------------

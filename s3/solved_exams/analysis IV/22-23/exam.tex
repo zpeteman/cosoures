@@ -63,7 +63,60 @@ Determine the nature (convergence/divergence) of the following numerical series:
 \]
 
 \begin{answerbox}
-
+\begin{enumerate}
+    \item[1)] Use Stirling's formula: $n! \sim \sqrt{2\pi n}\left(\frac{n}{e}\right)^n$
+    
+    Then:
+    \[
+    u_n = \frac{n^n}{n!} \sim \frac{n^n}{\sqrt{2\pi n}\left(\frac{n}{e}\right)^n} = \frac{e^n}{\sqrt{2\pi n}}
+    \]
+    
+    Since $\lim_{n\to\infty} \frac{e^n}{\sqrt{2\pi n}} = +\infty$, the sequence diverges to $+\infty$.
+    
+    \item[2)] First note that:
+    \[
+    \frac{2}{n(n+1)} = 2\left(\frac{1}{n} - \frac{1}{n+1}\right)
+    \]
+    
+    For the convergence of the series $\sum u_n$, use the asymptotic expansion:
+    \[
+    \log(1+x) = x - \frac{x^2}{2} + o(x^2) \quad \text{as } x \to 0
+    \]
+    
+    With $x = \frac{2}{n(n+1)} \sim \frac{2}{n^2}$:
+    \[
+    u_n = \frac{2}{n(n+1)} - \frac{1}{2}\left(\frac{2}{n(n+1)}\right)^2 + o\left(\frac{1}{n^4}\right)
+    \]
+    
+    The main term: $\frac{2}{n(n+1)} = 2\left(\frac{1}{n} - \frac{1}{n+1}\right)$
+    
+    So:
+    \[
+    \sum_{n=1}^N \frac{2}{n(n+1)} = 2\sum_{n=1}^N \left(\frac{1}{n} - \frac{1}{n+1}\right) = 2\left(1 - \frac{1}{N+1}\right) \to 2
+    \]
+    
+    The remaining terms form a convergent series since they are $O(1/n^4)$.
+    
+    \item[3)] First analyze the argument:
+    \[
+    \frac{a n + 1}{\sqrt{n^2 + a n + 1}} = \frac{a + \frac{1}{n}}{\sqrt{1 + \frac{a}{n} + \frac{1}{n^2}}}
+    \]
+    
+    As $n \to \infty$:
+    \[
+    \frac{a n + 1}{\sqrt{n^2 + a n + 1}} \to a
+    \]
+    
+    So:
+    \[
+    \frac{\pi}{2} \frac{a n + 1}{\sqrt{n^2 + a n + 1}} \to \frac{\pi a}{2}
+    \]
+    
+    And thus:
+    \[
+    u_n \to \sin\left(\frac{\pi a}{2}\right)
+    \]
+\end{enumerate}
 \end{answerbox}
 
 %----------------- EXERCISE 2 ------------------
@@ -116,7 +169,144 @@ When the series \( \sum f_n(x) \) converges, denote \( f_\alpha(x) = \sum_{n=1}^
 \end{enumerate}
 
 \begin{answerbox}
-
+\begin{enumerate}
+    \item Domain $D_\alpha$:
+    
+    For $x = 0$: $f_n(0) = 0$ for all $n$, so the series converges to 0.
+    
+    For $x \neq 0$: As $n \to \infty$,
+    \[
+    |f_n(x)| \sim \frac{n^\alpha |x|}{n^2 x^2} = \frac{1}{|x|} n^{\alpha-2}
+    \]
+    
+    By the $p$-series test, $\sum n^{\alpha-2}$ converges if and only if $\alpha-2 < -1$, i.e., $\alpha < 1$.
+    
+    Also, for fixed $x \neq 0$, $f_n(x) = O(n^{\alpha-2})$, so by comparison:
+    
+    \begin{itemize}
+        \item If $\alpha < 1$: $\sum |f_n(x)|$ converges for all $x \in \mathbb{R}$.
+        \item If $\alpha = 1$: $f_n(x) \sim \frac{1}{n|x|}$, and $\sum \frac{1}{n}$ diverges.
+        \item If $\alpha > 1$: Diverges even faster.
+    \end{itemize}
+    
+    \item Assuming $\alpha < 1$:
+    
+    \begin{enumerate}
+        \item For $x > 0$:
+        
+        Lower bound: Since $1 + n^2 x^2 \geq 1$,
+        \[
+        f_n(x) = \frac{n^\alpha x}{1 + n^{2} x^2} \leq n^\alpha x
+        \]
+        
+        Actually, we need $n^{\alpha-2}$ bound. Better approach:
+        \[
+        f_n(x) = \frac{x}{1+x^2} \cdot \frac{n^\alpha (1+x^2)}{1+n^2 x^2}
+        \]
+        
+        Consider $g(t) = \frac{1+t^2}{1+n^2 t^2}$ for fixed $n$ and $t=x>0$... Wait, the given inequality is:
+        \[
+        \frac{x}{1+x^2} n^{\alpha-2} \leq f_n(x) \leq \frac{1}{x} n^{\alpha-2}
+        \]
+        
+        Check: $f_n(x) = \frac{n^\alpha x}{1+n^2 x^2} = \frac{1}{x} \cdot \frac{n^\alpha x^2}{1+n^2 x^2} \leq \frac{1}{x} \cdot \frac{n^\alpha}{n^2} = \frac{1}{x} n^{\alpha-2}$
+        
+        For the lower bound: $f_n(x) \geq \frac{n^\alpha x}{1+x^2} \cdot \frac{1}{n^2}$ when $n^2 x^2 \leq 1$? Actually:
+        
+        $f_n(x) = \frac{x}{1+x^2} \cdot n^{\alpha-2} \cdot \frac{n^2(1+x^2)}{1+n^2 x^2} \geq \frac{x}{1+x^2} n^{\alpha-2}$ if $\frac{n^2(1+x^2)}{1+n^2 x^2} \geq 1$
+        
+        But $\frac{n^2(1+x^2)}{1+n^2 x^2} = \frac{n^2 + n^2 x^2}{1+n^2 x^2} \geq 1$ since $n^2 \geq 1$.
+        
+        \item Sum the inequalities:
+        
+        Let $A = \sum_{n=1}^\infty n^{\alpha-2}$ (converges since $\alpha-2 < -1$ when $\alpha < 1$).
+        
+        Then:
+        \[
+        \frac{x}{1+x^2} A \leq f_\alpha(x) \leq \frac{1}{x} A
+        \]
+        
+        As $x \to \infty$: $\frac{x}{1+x^2} \sim \frac{1}{x}$, so $f_\alpha(x) \sim \frac{A}{x}$.
+    \end{enumerate}
+    
+    \item For $\alpha < 0$:
+    
+    Want to show: $\int_0^1 f_\alpha(t) dt = \sum_{n=1}^\infty \frac{1}{2} n^{\alpha-2} \log(1+n^2)$
+    
+    Compute the integral:
+    \[
+    \int_0^1 f_n(t) dt = \int_0^1 \frac{n^\alpha t}{1+n^2 t^2} dt
+    \]
+    
+    Let $u = 1 + n^2 t^2$, then $du = 2n^2 t dt$, so $t dt = \frac{du}{2n^2}$.
+    
+    When $t=0$: $u=1$; when $t=1$: $u=1+n^2$.
+    
+    So:
+    \[
+    \int_0^1 f_n(t) dt = n^\alpha \int_1^{1+n^2} \frac{1}{u} \cdot \frac{du}{2n^2} = \frac{n^{\alpha-2}}{2} \int_1^{1+n^2} \frac{du}{u} = \frac{1}{2} n^{\alpha-2} \log(1+n^2)
+    \]
+    
+    Now interchange sum and integral (justified by uniform convergence or monotone convergence since all terms are positive):
+    \[
+    \int_0^1 f_\alpha(t) dt = \int_0^1 \sum_{n=1}^\infty f_n(t) dt = \sum_{n=1}^\infty \int_0^1 f_n(t) dt = \sum_{n=1}^\infty \frac{1}{2} n^{\alpha-2} \log(1+n^2)
+    \]
+    
+    \item For $0 \leq \alpha < 1$:
+    
+    \begin{enumerate}
+        \item Continuity on $\mathbb{R}^+$:
+        
+        For $x > 0$, each $f_n$ is continuous and we have uniform convergence on $[x_0, \infty)$ for any $x_0 > 0$ since:
+        \[
+        |f_n(x)| \leq \frac{1}{x_0} n^{\alpha-2} \quad \text{for } x \geq x_0
+        \]
+        and $\sum n^{\alpha-2}$ converges.
+        
+        At $x=0$: $f_n(0)=0$ and $f_\alpha(0)=0$. Need to check continuity at 0.
+        
+        \item For $x = \frac{1}{N}$:
+        \[
+        f_\alpha\left(\frac{1}{N}\right) = \sum_{n=1}^\infty \frac{n^\alpha \cdot \frac{1}{N}}{1 + n^2 \cdot \frac{1}{N^2}} = N \sum_{n=1}^\infty \frac{n^\alpha}{N^2 + n^2}
+        \]
+        
+        So:
+        \[
+        f_\alpha\left(\frac{1}{N}\right) \geq N \sum_{n=1}^N \frac{n^\alpha}{N^2 + n^2} \geq N \sum_{n=1}^N \frac{n^\alpha}{N^2 + N^2} = \frac{1}{2N} \sum_{n=1}^N n^\alpha
+        \]
+        
+        For $0 \leq \alpha < 1$, $\sum_{n=1}^N n^\alpha \sim \frac{N^{\alpha+1}}{\alpha+1}$.
+        
+        So:
+        \[
+        f_\alpha\left(\frac{1}{N}\right) \gtrsim \frac{1}{2N} \cdot \frac{N^{\alpha+1}}{\alpha+1} = \frac{1}{2(\alpha+1)} N^\alpha
+        \]
+        
+        Since $\alpha \geq 0$, $N^\alpha \geq 1$, so $f_\alpha\left(\frac{1}{N}\right)$ doesn't tend to 0 as $N \to \infty$.
+        
+        But $f_\alpha(0) = 0$, so $f_\alpha$ is discontinuous at 0.
+        
+        \item Uniform convergence on $\mathbb{R}_+$?
+        
+        No, because if the series converged uniformly on $\mathbb{R}_+$, the sum would be continuous at 0 (as each $f_n$ is continuous), but we just showed discontinuity at 0.
+    \end{enumerate}
+    
+    \item Differentiability and monotonicity:
+    
+    For $x > 0$:
+    \[
+    f_n'(x) = \frac{n^\alpha(1 + n^2 x^2) - n^\alpha x \cdot 2n^2 x}{(1+n^2 x^2)^2} = \frac{n^\alpha(1 - n^2 x^2)}{(1+n^2 x^2)^2}
+    \]
+    
+    For $x \geq 1$, $f_n'(x) \leq 0$ since $1 - n^2 x^2 \leq 0$.
+    
+    Check uniform convergence of $\sum f_n'(x)$ on $[1, \infty)$:
+    \[
+    |f_n'(x)| = \frac{n^\alpha |1 - n^2 x^2|}{(1+n^2 x^2)^2} \leq \frac{n^\alpha \cdot n^2 x^2}{(n^2 x^2)^2} = \frac{n^{\alpha+2} x^2}{n^4 x^4} = \frac{n^{\alpha-2}}{x^2} \leq n^{\alpha-2}
+    \]
+    
+    Since $\sum n^{\alpha-2}$ converges, $\sum f_n'$ converges uniformly on $[1, \infty)$, so $f_\alpha$ is differentiable on $(0, \infty)$ and decreasing on $[1, \infty)$.
+\end{enumerate}
 \end{answerbox}
 
 %----------------- EXERCISE 3 ------------------
@@ -149,7 +339,89 @@ Let \( \sum a_n x^n \) be a power series with radius of convergence \( R \) and 
 \end{enumerate}
 
 \begin{answerbox}
-
+\begin{enumerate}
+    \item If $f(x) = \sum_{n=0}^\infty a_n x^n$ with radius $R$, then:
+    \begin{itemize}
+        \item $f$ is $C^\infty$ on $(-R, R)$
+        \item $f'(x) = \sum_{n=1}^\infty n a_n x^{n-1} = \sum_{n=0}^\infty (n+1) a_{n+1} x^n$
+        \item $f''(x) = \sum_{n=2}^\infty n(n-1) a_n x^{n-2} = \sum_{n=0}^\infty (n+2)(n+1) a_{n+2} x^n$
+    \end{itemize}
+    
+    \item Substitute into (E):
+    \begin{align*}
+    4x f''(x) + & 2f'(x) - f(x) = \\ 
+    & \sum_{n=0}^\infty [4(n+2)(n+1) a_{n+2} x^{n+1} + 2(n+1) a_{n+1} x^n - a_n x^n]
+    \end{align*}
+    
+    Shift index in first sum: let $m = n+1$, then $n = m-1$:
+    \[
+    = \sum_{m=1}^\infty 4(m+1)m a_{m+1} x^m + \sum_{n=0}^\infty [2(n+1) a_{n+1} - a_n] x^n
+    \]
+    
+    Combine terms for $n \geq 1$:
+    \[
+    = (2a_1 - a_0) + \sum_{n=1}^\infty [4(n+1)n a_{n+1} + 2(n+1) a_{n+1} - a_n] x^n
+    \]
+    
+    For this to be 0 for all $x$ in $(-R, R)$, all coefficients must be 0:
+    \begin{align*}
+    2a_1 - a_0 &= 0 \quad \Rightarrow \quad a_1 = \frac{a_0}{2} \\
+    4(n+1)n a_{n+1} + 2(n+1) a_{n+1} - a_n &= 0 \quad \text{for } n \geq 1
+    \end{align*}
+    
+    Simplify recurrence for $n \geq 1$:
+    \[
+    (n+1)[4n + 2] a_{n+1} = a_n \quad \Rightarrow \quad (n+1)(4n+2) a_{n+1} = a_n
+    \]
+    
+    But wait, the problem states: $a_{n+1} = \frac{a_n}{(2n+1)(2n+2)}$
+    
+    Check: $(n+1)(4n+2) = 2(n+1)(2n+1) = 2(2n+1)(n+1)$
+    
+    So: $a_{n+1} = \frac{a_n}{2(2n+1)(n+1)} = \frac{a_n}{(2n+1)(2n+2)}$
+    
+    Also check for $n=0$: $a_1 = \frac{a_0}{(2\cdot0+1)(2\cdot0+2)} = \frac{a_0}{1\cdot 2} = \frac{a_0}{2}$ 
+    
+    So the recurrence holds for all $n \geq 0$.
+    
+    \item Express $a_n$ in terms of $a_0$:
+    
+    For $n=0$: $a_0 = a_0$
+    
+    For $n=1$: $a_1 = \frac{a_0}{1\cdot 2} = \frac{a_0}{2!}$
+    
+    For $n=2$: $a_2 = \frac{a_1}{3\cdot 4} = \frac{a_0}{2! \cdot 3\cdot 4} = \frac{a_0}{4!}$
+    
+    For $n=3$: $a_3 = \frac{a_2}{5\cdot 6} = \frac{a_0}{4! \cdot 5\cdot 6} = \frac{a_0}{6!}$
+    
+    Pattern: $a_n = \frac{a_0}{(2n)!}$
+    
+    Check by induction: Assume $a_n = \frac{a_0}{(2n)!}$, then:
+    \[
+    a_{n+1} = \frac{a_n}{(2n+1)(2n+2)} = \frac{a_0}{(2n)!} \cdot \frac{1}{(2n+1)(2n+2)} = \frac{a_0}{(2n+2)!}
+    \]
+    
+    So $f(x) = a_0 \sum_{n=0}^\infty \frac{x^n}{(2n)!}$
+    
+    Radius of convergence: Use ratio test:
+    \[
+    \left|\frac{a_{n+1} x^{n+1}}{a_n x^n}\right| = \left|\frac{x}{(2n+1)(2n+2)}\right| \to 0 \quad \text{as } n \to \infty
+    \]
+    
+    So $R = \infty$.
+    
+    \item The function $\varphi(x)$:
+    
+    For $x > 0$: $\cosh(\sqrt{x}) = \sum_{n=0}^\infty \frac{(\sqrt{x})^{2n}}{(2n)!} = \sum_{n=0}^\infty \frac{x^n}{(2n)!}$
+    
+    For $x < 0$: $\cos(\sqrt{-x}) = \sum_{n=0}^\infty (-1)^n \frac{(\sqrt{-x})^{2n}}{(2n)!} = \sum_{n=0}^\infty (-1)^n \frac{(-x)^n}{(2n)!} = \sum_{n=0}^\infty \frac{x^n}{(2n)!}$
+    
+    For $x=0$: $\varphi(0)=1 = \sum_{n=0}^\infty \frac{0^n}{(2n)!} = 1$
+    
+    So in all cases: $\varphi(x) = \sum_{n=0}^\infty \frac{x^n}{(2n)!}$
+    
+    This is exactly the solution of (E) with $a_0=1$.
+\end{enumerate}
 \end{answerbox}
 
 %----------------- END ------------------
