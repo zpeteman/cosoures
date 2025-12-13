@@ -52,7 +52,15 @@
 
 %----------------- EXERCISE 1 ------------------
 \section{}
+Determine the nature (convergence/divergence) of the following numerical series:
 
+\[
+\begin{aligned}
+&1) \; u_n = \frac{n^n}{n!} \\
+&2) \; u_n = \log\left(1 + \frac{2}{n(n+1)}\right) \\
+&3) \; u_n = \sin \left(\frac{\pi}{2} \frac{a n + 1}{\sqrt{n^2 + a n + 1}}\right)
+\end{aligned}
+\]
 
 \begin{answerbox}
 
@@ -60,7 +68,52 @@
 
 %----------------- EXERCISE 2 ------------------
 \section{}
+For all \( n \in \mathbb{N}^* \), define the function:
 
+\[
+f_n : \mathbb{R} \longrightarrow \mathbb{R}, \quad x \mapsto \frac{n^\alpha x}{1 + n^{2} x^2}
+\]
+
+When the series \( \sum f_n(x) \) converges, denote \( f_\alpha(x) = \sum_{n=1}^{\infty} f_n(x) \).
+
+\begin{enumerate}
+    \item Determine, according to the values of \( \alpha \), the domain \( D_\alpha \) of definition of \( f_\alpha \).
+    
+    From now on, assume \( \alpha < 1 \).
+    
+    \item 
+    \begin{enumerate}
+        \item Show that for all \( x \in \mathbb{R}_+^* \),
+        \[
+        \frac{x}{1+x^2} n^{\alpha-2}\leq f_n(x) \leq \frac{1}{x} n^{\alpha-2}.
+        \]
+        \item Show that there exists \( A > 0 \) (depending on \( \alpha \)) such that
+        \[
+        \forall x \in \mathbb{R}_+^*, \quad \frac{A x}{1+x^2} \leq f_\alpha(x) \leq \frac{A}{x}.
+        \]
+        Deduce an equivalent of \( f_\alpha \) at \( \infty \).
+    \end{enumerate}
+    
+    \item If \( \alpha < 0 \), show that
+    \[
+    \int_0^1 f_\alpha(t) \, dt = \sum_{n=1}^{\infty} \frac{1}{2} n^{\alpha-2}\log(1+n^{2}).
+    \]
+    
+    \item Assume \( 0 \leq \alpha < 1 \).
+    \begin{enumerate}
+        \item Show that \( f_\alpha \) is continuous on \( \mathbb{R}^+ \).
+        
+        \item Show that for all \( N \in \mathbb{N}^* \)
+        \[
+        f_{\alpha}\left(\frac{1}{N}\right) \ge N \sum_{n=1}^{N} \frac{n^{\alpha}}{N^2 + n^2}
+        \]
+        Deduce the discontinuity of \( f_\alpha \) at 0.
+        
+        \item Does the series \( \sum f_n \) converge uniformly on \( \mathbb{R}_+ \)?
+    \end{enumerate}
+    
+    \item (Optional) Show that \( f_\alpha \) is differentiable on \( (0, +\infty) \) and decreasing on \( [1, +\infty) \).
+\end{enumerate}
 
 \begin{answerbox}
 
@@ -68,7 +121,32 @@
 
 %----------------- EXERCISE 3 ------------------
 \section{}
+Consider the differential equation:
+\[
+4x y''(x) + 2y'(x) - y(x) = 0 \quad (E)
+\]
+Let \( \sum a_n x^n \) be a power series with radius of convergence \( R \) and sum \( f \).
 
+\begin{enumerate}
+    \item Justify that \( f \) is of class \( C^2 \) on \( (-R, R) \). Deduce, for \( x \in (-R, R) \), an expression of \( f'(x) \) and \( f''(x) \).
+    
+    \item Show that \( f \) is a solution of \( (E) \) if and only if
+    \[
+    a_{n+1} = \frac{a_n}{(2n+1)(2n+2)}, \quad \forall n \in \mathbb{N}.
+    \]
+    
+    \item Express \( a_n \) in terms of \( n \) and \( a_0 \). Determine the radius of convergence of the power series \( \sum a_n x^n \).
+    
+    \item Expand into a power series the function defined by:
+    \[
+    \varphi(x) = 
+    \begin{cases}
+    \cosh(\sqrt{x}) & \text{if } x > 0 \\
+    1 & \text{if } x = 0 \\
+    \cos(\sqrt{-x}) & \text{if } x < 0
+    \end{cases}
+    \]
+\end{enumerate}
 
 \begin{answerbox}
 

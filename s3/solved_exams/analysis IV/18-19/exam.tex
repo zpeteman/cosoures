@@ -52,7 +52,14 @@
 
 %----------------- EXERCISE 1 ------------------
 \section{}
+Determine the nature (convergence/divergence) of the following sequences:
 
+\[
+\begin{aligned}
+&a) \; u_n = \cos \left( \pi \frac{2n^3 + n^2 + a n + b}{2n^2} \right), \quad a, b \in \mathbb{R} \\
+&b) \; u_n = \left( 1 - \frac{1}{n^a} \right)^n, \quad a > 0
+\end{aligned}
+\]
 
 \begin{answerbox}
 
@@ -60,7 +67,20 @@
 
 %----------------- EXERCISE 2 ------------------
 \section{}
+Consider the series of functions \( \sum_{n \geq 1} f_n \) where
 
+\[
+f_n(x) = \frac{x}{n(1+n^2 x)}.
+\]
+
+Let \( f(x) = \sum_{n=1}^{\infty} f_n(x) \) when it exists.
+
+\begin{enumerate}
+    \item Show that $f$ is defined and continious on  \( \mathbb{R}^+ \setminus \{0\} \).
+    \item Show that there exists a unique \( \lambda > 0 \) such that \( \lim_{x \to \infty}f(x) = \lambda \).
+    \item Show that $f$ is differentiable on \( \mathbb{R}^+_*\) and compute \( f'(x) \). 
+    \item Sketch the graph of \( f \).
+\end{enumerate}
 
 \begin{answerbox}
 
@@ -68,7 +88,26 @@
 
 %----------------- EXERCISE 3 ------------------
 \section{}
+Define the sequence \( (u_n) \) by \( u_0 = u_1 = 1 \) and for \( n \in \mathbb{N} \):
 
+\[
+u_{n+2} = u_{n+1} + 2u_n + (-1)^n.
+\]
+
+Let \( f(x) = \sum_{n=0}^{\infty} u_n x^n \) when it exists, and let \( R \) be its radius of convergence.
+
+\begin{enumerate}
+    \item Show that \( \forall n \in \mathbb{N} \),
+    \[
+    1 \leq u_n \leq 2^{n+1} - 1
+    \]
+    and deduce that \( R \geq \frac{1}{2} \).
+    \item Show that for \( |x| < \min(1, R)\), \( f(x) \) satisfies:
+    \[
+    f(x) = \frac{x^2 + x + 1}{(x+1)^2 (1 - 2x)}.
+    \]
+    \item Give an explicit expression for \( u_n \) as a function of \( n \).
+\end{enumerate}
 
 \begin{answerbox}
 

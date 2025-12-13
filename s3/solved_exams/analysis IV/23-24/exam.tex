@@ -52,7 +52,15 @@
 
 %----------------- EXERCISE 1 ------------------
 \section{}
+Determine the nature (convergence/divergence) of the following numerical series of general term:
 
+\[
+\begin{aligned}
+&a) \; u_n = \frac{n^n}{(2n)!} \\
+&b) \; u_n = \frac{n + \cos n}{e^n + \sin n} \\
+&c) \; u_n = \sqrt{1 + \frac{(-1)^n}{\sqrt{n}}} - 1
+\end{aligned}
+\]
 
 \begin{answerbox}
 
@@ -60,15 +68,69 @@
 
 %----------------- EXERCISE 2 ------------------
 \section{}
+Consider the series of functions \(\sum b_n\) defined by:
 
+\[
+f_n(x) = \frac{1}{n + n^2 x}
+\]
 
+We denote:
+
+\[
+f(x) = \sum_{n=1}^\infty f_n(x)
+\]
+
+\begin{enumerate}
+    \item Determine the domain of definition of \(f\).
+    
+    \item Show that \(f\) is continuous on \(\mathbb{R}^*_+\) and compute: 
+    $$
+    \lim_{x \to \infty} f(x) ; \lim_{x \to 0} f(x)
+    $$
+    deduction. 
+    
+    \item Show that \(f\) is of class \(C^1\) on \(\mathbb{R}^*_+\) and give its derivative.
+    
+    \item Sketch the variation table of \(f\) on \(\mathbb{R}^*_+\) and draw its graph.
+    
+    \item 
+    \begin{enumerate}
+      \item Show the existence and compute the integral:
+      \[
+      \int_1^\infty \frac{1}{y + y^2 x} \, dy
+      \]
+      
+      \item Show that:
+      \[
+      \log \frac{x+1}{x} \leq f(x) \leq \log \left( \frac{1+2x}{2x} \right) + \frac{1}{1+x}
+      \]
+      Deduce an equivalent of \( f(x) \) at 0.
+    \end{enumerate}   
+\end{enumerate}
 \begin{answerbox}
 
 \end{answerbox}
 
 %----------------- EXERCISE 3 ------------------
 \section{}
+Let \( f : x \in (-1, 1) \longrightarrow \frac{\arcsin x}{\sqrt{1-x^2}} \).
 
+\begin{enumerate}
+    \item Justify that \( f \) can be expanded as a power series.
+    
+    \item Show that \( f \) satisfies a first-order differential equation.
+    
+    \item Deduce the power series expansion of \( f \).
+    
+    \item Deduce that for any integer \( n \):
+    \[
+    \sum_{k=0}^{n} \frac{1}{2k+1} \binom{2k}{k} \binom{2(n-k)}{n-k} = \frac{2^{4n}(n!)^2}{(2n+1)!}
+    \]
+    It is recalled that:
+    \[
+    \frac{1}{\sqrt{1-x^2}} = \sum_{n=0}^{\infty} \frac{(2n)!}{2^{2n}(n!)^2} x^{2n}
+    \]
+\end{enumerate}
 
 \begin{answerbox}
 
