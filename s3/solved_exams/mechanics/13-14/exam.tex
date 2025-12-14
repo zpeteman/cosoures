@@ -1,0 +1,136 @@
+\documentclass[12pt]{article}
+
+%----------------- Packages ------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage[breakable]{tcolorbox}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{float}
+\usetikzlibrary{arrows.meta, decorations.markings}
+
+%----------------- Page Setup -----------------
+\geometry{a4paper, margin=2.5cm}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Final Exam — \textbf{2014}}
+\lhead{Rigid Body Mechanics}
+\cfoot{\thepage}
+
+%----------------- Title Styling --------------
+\titleformat{\section}{\normalfont\Large\bfseries}{Exercise \thesection:}{1em}{}
+\titleformat{\subsection}{\normalfont\bfseries}{Answer:}{1em}{}
+
+%----------------- Custom Boxes ----------------
+\tcbuselibrary{listingsutf8}
+\newtcolorbox{answerbox}{
+  colback=gray!10,
+  colframe=black,
+  fonttitle=\bfseries,
+  title=Answer Area,
+  breakable,
+  before skip=10pt,
+  after skip=10pt
+}
+
+%----------------- Document Start --------------
+\begin{document}
+
+%----------------- Exam Info -------------------
+\begin{center}
+  \Large\textbf{UNIVERSITY NAME} \\[1em]
+  \large\textit{Rigid Body Mechanics — Final Exam} \\[0.5em]
+  \large\textit{Year: 2014} \\[2em]
+\end{center}
+
+\vspace{0.5cm}
+
+%----------------- EXERCISE 1 ------------------
+\section{}
+Let \( R_0 (O, \bar{x}_0, \bar{y}_0, \bar{z}_0) \) be a Galilean orthonormal direct frame relative to which we propose to study the motion of a system (\(\Sigma\)) consisting of:
+
+- A straight rod (T) along the direction \(\text{class}(O, \bar{x})\), with negligible cross-section and mass, which can rotate freely around its fixed endpoint O.
+- A solid homogeneous sphere (S) of mass \(M\), radius \(a\), and center G.
+
+The sphere (S) is pierced along its axis \((G, \bar{x})\) by the rod (T). It can slide along the rod and rotate around it.
+
+All friction is neglected (i.e., the different contacts are considered frictionless) and we assume the connection at O is perfect.  
+The motion parameters of (\(\Sigma\)) in the frame \(R_0\) are the three usual Euler angles (\(\psi, \theta, \phi\)) and \(\overline{OG} = \rho(t)\).
+
+All results will be expressed in the basis \((i, \bar{w}, \bar{z})\).
+
+\begin{enumerate}
+    \item Determine the following instantaneous rotation vectors:  
+\[
+\hat{\Omega} (T/R_0), \quad \hat{\Omega} (S/T), \quad \hat{\Omega} (S/R_0)
+\]
+
+    \item Calculate the velocity and acceleration vectors of point G relative to \(R_0\).
+
+    \item Calculate the inertia matrix at point O of the system \(\Sigma\):  
+\[
+\Pi_0 (\Sigma)
+\]
+
+    \item Calculate the angular momentum about O of the system \(\Sigma\) relative to \(R_0\):  
+\[
+\tilde{L}_0 (\Sigma / R_0)
+\]
+
+    \item Show that:  
+\[
+\tilde{L}_0 (\Sigma / R_0) \cdot \tilde{z}_0 = \text{const} = k_1 \quad \text{and} \quad \tilde{L}_0 (\Sigma / R_0) \cdot \tilde{z} = \text{const} = k_2.
+\]  
+Deduce two equations of motion in the form of first integrals.
+
+    \item Determine the kinetic energy of the system \(\Sigma\) relative to the frame \(R_0\).
+
+    \item By applying the kinetic energy theorem to \(\Sigma\), give a third equation of motion in the form of a first integral. (Assume the rod-sphere connection is perfect.)
+
+    \item In the special case where the axis \((O, \bar{z})\) remains coincident with the axis \((O, \bar{z}_0)\), determine \(\rho(t)\). Given:  
+\[
+\rho(0) = 0 \quad \text{and} \quad \dot{\rho}(0) = \rho_0
+\]
+Show that:  
+\[
+\tilde{L}_0 (\Sigma / R_0) \cdot \tilde{z}_0 = \text{const} = k_1 \quad \text{and} \quad \tilde{L}_0 (\Sigma / R_0) \cdot \tilde{z} = \text{const} = k_2.
+\]  
+Deduce two equations of motion in the form of first integrals.
+
+    \item Determine the kinetic energy of the system \(\Sigma\) relative to the frame \(R_0\).
+
+    \item By applying the kinetic energy theorem to \(\Sigma\), give a third equation of motion in the form of a first integral. (Assume the rod-sphere connection is perfect.)
+
+    \item In the special case where the axis \((O, \bar{z})\) remains coincident with the axis \((O, \bar{z}_0)\), determine \(\rho(t)\). Given:  
+\[
+\rho(0) = 0 \quad \text{and} \quad \dot{\rho}(0) = \rho_0
+\]
+\end{enumerate}
+
+\section*{System Diagram}
+
+
+\newpage
+\begin{answerbox}
+    \begin{enumerate}
+    \item  
+    \item 
+    \item  
+    \item 
+    \item 
+    \item 
+    \item 
+    \item 
+    \item 
+    \item
+    \item
+    \end{enumerate}
+\end{answerbox}
+
+%----------------- END ------------------
+\end{document}

@@ -1,0 +1,112 @@
+\documentclass[12pt]{article}
+
+%----------------- Packages ------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage[breakable]{tcolorbox}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{float}
+\usetikzlibrary{arrows.meta, decorations.markings}
+
+%----------------- Page Setup -----------------
+\geometry{a4paper, margin=2.5cm}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Final Exam — \textbf{2015}}
+\lhead{Rigid Body Mechanics}
+\cfoot{\thepage}
+
+%----------------- Title Styling --------------
+\titleformat{\section}{\normalfont\Large\bfseries}{Exercise \thesection:}{1em}{}
+\titleformat{\subsection}{\normalfont\bfseries}{Answer:}{1em}{}
+
+%----------------- Custom Boxes ----------------
+\tcbuselibrary{listingsutf8}
+\newtcolorbox{answerbox}{
+  colback=gray!10,
+  colframe=black,
+  fonttitle=\bfseries,
+  title=Answer Area,
+  breakable,
+  before skip=10pt,
+  after skip=10pt
+}
+
+%----------------- Document Start --------------
+\begin{document}
+
+%----------------- Exam Info -------------------
+\begin{center}
+  \Large\textbf{UNIVERSITY NAME} \\[1em]
+  \large\textit{Rigid Body Mechanics — Make-Up Exam} \\[0.5em]
+  \large\textit{Year: 2015} \\[2em]
+\end{center}
+
+\vspace{0.5cm}
+
+%----------------- EXERCISE 1 ------------------
+\section{}
+Consider a perfect rigid body \( S \) composed of a homogeneous disk \( S_1 \) of center \( D \), radius \( a \), and mass \( M \), and a homogeneous rod \( S_2 \) of center of mass \( T \), length \( L \), and mass \( m \), welded to the disk at point \( D \).
+
+The system is in motion in the vertical plane \( X_0 OY_0 \) of the reference frame \( R_0 (O, X_0, Y_0, Z_0) \), with basis \( (\bar{x}_0, \bar{y}_0, \bar{z}_0) \), assumed to be fixed and Galilean. The disk \( S_1 \) rolls without slipping on the axis \( OY_0 \).  
+\( I \) denotes the geometric contact point of \( S_1 \) with the axis \( OY_0 \), and \( y \) represents the coordinate of point \( D \) on the axis \( OY_0 \). The position of the rod relative to the vertical is defined by the angle \( \theta \). We denote by \( \bar{R} \) the reaction force exerted on the system at point \( I \).
+
+\begin{enumerate}
+    \item 
+    \begin{enumerate}
+        \item State the kinetic energy theorem.
+        \item Prove this theorem.
+    \end{enumerate}
+    
+    \item Calculate the inertia matrix at point \( D \) of the disk \( S_1 \).
+    
+    \item Calculate the inertia matrix at point \( T \) of the rod \( S_2 \) and deduce its inertia matrix at point \( D \) by applying Huygens' theorem.
+    
+    \item Calculate the sliding velocity of the solid and deduce the condition for rolling without slipping.
+    
+    \item Determine, as a function of the angle \( \theta \), the absolute velocity of point \( T \), expressed in the basis of \( R_0 \).
+    
+    \item Calculate the kinetic energy of the system \( E_c (S/R_0) \) as a function of \( \theta \) and \( \dot{\theta} \).
+    
+    \item 
+    \begin{enumerate}
+        \item By applying the kinetic energy theorem to the system in \( R_0 \), determine the first integral of energy.
+        \item Deduce the differential equation of motion of the system.
+    \end{enumerate}
+    
+    \item Limiting to the case of small angles and keeping only first-order terms in \( \theta \) and \( \dot{\theta} \), specify the nature of the motion and calculate the period of small oscillations \( T_0 \).
+    
+    \item Retrieve the differential equation of motion of the system by applying the angular momentum theorem at the geometric point \( I \) in the reference frame \( R_0 \).
+\end{enumerate}
+
+\newpage
+\begin{answerbox}
+  \begin{enumerate}
+    \item 
+    \begin{enumerate}
+      \item 
+      \item
+    \end{enumerate}
+    \item
+    \item
+    \item
+    \item
+    \item
+    \item
+    \begin{enumerate}
+      \item 
+      \item
+    \end{enumerate}
+    \item
+    \item
+  \end{enumerate}
+\end{answerbox}
+
+%----------------- END ------------------
+\end{document}

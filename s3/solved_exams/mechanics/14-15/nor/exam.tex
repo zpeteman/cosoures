@@ -1,0 +1,126 @@
+\documentclass[12pt]{article}
+
+%----------------- Packages ------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage[breakable]{tcolorbox}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{float}
+\usetikzlibrary{arrows.meta, decorations.markings}
+
+%----------------- Page Setup -----------------
+\geometry{a4paper, margin=2.5cm}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Final Exam — \textbf{2015}}
+\lhead{Rigid Body Mechanics}
+\cfoot{\thepage}
+
+%----------------- Title Styling --------------
+\titleformat{\section}{\normalfont\Large\bfseries}{Exercise \thesection:}{1em}{}
+\titleformat{\subsection}{\normalfont\bfseries}{Answer:}{1em}{}
+
+%----------------- Custom Boxes ----------------
+\tcbuselibrary{listingsutf8}
+\newtcolorbox{answerbox}{
+  colback=gray!10,
+  colframe=black,
+  fonttitle=\bfseries,
+  title=Answer Area,
+  breakable,
+  before skip=10pt,
+  after skip=10pt
+}
+
+%----------------- Document Start --------------
+\begin{document}
+
+%----------------- Exam Info -------------------
+\begin{center}
+  \Large\textbf{UNIVERSITY NAME} \\[1em]
+  \large\textit{Rigid Body Mechanics — Final Exam} \\[0.5em]
+  \large\textit{Year: 2015} \\[2em]
+\end{center}
+
+\vspace{0.5cm}
+
+%----------------- EXERCISE 1 ------------------
+\section{}
+\begin{enumerate}
+    \item Show that the velocity vector field of a rigid body defines a torsor.
+    
+    \item Show that the angular momentum is an antisymmetric vector field.
+    
+    \item Show the following formula: for any point \(A\) belonging to the rigid body \(S\) of mass \(m\) and center of mass \(G\),
+    \[
+    L_A(S/R_0) = \Pi_A(S) \cdot \hat{\Omega}(S/R_0) + m \cdot \overrightarrow{AG} \times \overrightarrow{V}(A/R_0).
+    \]
+    
+    \item 
+    \begin{enumerate}
+        \item Write the theorem of angular momentum about a point \(A\) that is mobile in \(R_0\).
+        \item Prove this theorem.
+    \end{enumerate}
+\end{enumerate}
+
+\begin{answerbox}
+\begin{enumerate}
+    \item 
+    \item 
+    \item 
+    \item 
+    \begin{enumerate}
+        \item 
+        \item 
+    \end{enumerate}
+\end{enumerate}
+\end{answerbox}
+
+\newpage
+%----------------- EXERCISE 2 ------------------
+\section{}
+A physical pendulum \(S\), consisting of a homogeneous rod of length \(B_a\) and negligible mass, welded to a homogeneous ball of mass \(m\), radius \(a\), and center of mass \(G\), is in motion relative to a fixed Galilean reference frame \(R_0(X_0, Y_0, Z_0)\) with basis \((\bar{x}_0, \bar{y}_0, \bar{z}_0)\).
+
+The system is moving in the vertical plane \(X_0OY_0\) (with \(G \in X_0OY_0\)) and \(A\) is a mobile point. The motion is frictionless at \(A\).  
+\(R\) denotes the reaction force exerted on the system at point \(A\).
+
+The position of point \(A\) on the axis \(OY_0\) is given by the coordinate \(y\) (with \(\overrightarrow{OA} = y \overrightarrow{y_0}\)) and the position of the system relative to the vertical is defined by the angle \(\theta\). The system is displaced from its equilibrium position and then released without initial velocity.
+
+\begin{enumerate}
+    \item Calculate the inertia matrix of the ball at point \(G\).
+    
+    \item Determine the velocity vector of point \(G\) in \(R_0\).
+    
+    \item By applying the dynamic resultant theorem, show that \(y\) and \(\theta\) are related by the following relation: \(y = -6a \dot{\theta} \cos\theta\). Deduce that the kinetic resultant of the system is given by:
+    \[
+    P(S/R_0) = -6m a \dot{\theta} \sin\theta \overrightarrow{x_0}
+    \]
+    
+    \item By applying the kinetic energy theorem to the solid, determine the first integral of energy and deduce the differential equation of motion of the solid.
+    
+    \item Retrieve the differential equation of motion of the solid by applying the angular momentum theorem to the solid, at point \(A\), in the reference frame \(R_0\).
+    
+    \item Determine the period of small oscillations (keeping only first-order terms in \(\theta\) and \(\dot{\theta}\)).
+\end{enumerate}
+
+\newpage
+
+\begin{answerbox}
+\begin{enumerate}
+  \item 
+  \item 
+  \item 
+  \item 
+  \item 
+  \item 
+\end{enumerate}
+\end{answerbox}
+
+%----------------- END ------------------
+\end{document}
