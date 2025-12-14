@@ -1,273 +1,245 @@
-% file: section3.tex
+% ============================================================
+% 1. INPUT DATA (Edit values here - DEFINED ONLY ONCE)
+% ============================================================
+% !!! IMPORTANT: CONSTANT C !!!
+\def\constanteC{0.048} 
+\pgfmathsetmacro{\pisq}{3.14159^2}
 
-% ============================================================
-% 1. INPUT DATA 
-% ============================================================
 \pgfplotstableread{
 r   t1      t2      t3
-3   12.45   12.55   12.50
-4   12.75   12.80   12.85
-5   13.15   13.20   13.25
-6   13.75   13.80   13.85
-7   14.45   14.50   14.55
-8   15.25   15.30   15.35
-9   16.90   17.00   16.95
-10  22.30   22.40   22.35
-}\myExperimentData
-
-% ============================================================
-% 2. CALCULATIONS
-% ============================================================
-\pgfplotstablecreatecol[create col/expr={(\thisrow{t1}+\thisrow{t2}+\thisrow{t3})/3}]{tm}{\myExperimentData}
-\pgfplotstablecreatecol[create col/expr={max(abs(\thisrow{tm}-\thisrow{t1}), max(abs(\thisrow{tm}-\thisrow{t2}), abs(\thisrow{tm}-\thisrow{t3})))}]{Dtm}{\myExperimentData}
-\pgfplotstablecreatecol[create col/set={0.1}]{const}{\myExperimentData}
-\pgfplotstablecreatecol[create col/expr={0.1 + \thisrow{Dtm}}]{Dt}{\myExperimentData}
-\pgfplotstablecreatecol[create col/expr={\thisrow{tm}/10}]{T}{\myExperimentData}
-\pgfplotstablecreatecol[create col/expr={\thisrow{Dt}/10}]{DT}{\myExperimentData}
-\pgfplotstablecreatecol[create col/expr={\thisrow{T}^2}]{Tsq}{\myExperimentData}
-\pgfplotstablecreatecol[create col/expr={2 * \thisrow{T} * \thisrow{DT}}]{DTsq}{\myExperimentData}
-\pgfplotstablecreatecol[create col/expr={\thisrow{r}^2}]{rsq}{\myExperimentData}
-\pgfplotstablecreatecol[create col/expr={2 * \thisrow{r} * 0.1}]{Drsq}{\myExperimentData}
-
-% ============================================================
-% 3. DOCUMENT CONTENT
-% ============================================================
-\begin{enumerate}
-
-    % --- (a) TABLE ---
-    \item Tableau de mesures et calculs.
-    \begin{table}[H]
-        \centering
-        \renewcommand{\arraystretch}{1.4}
-        \setlength{\tabcolsep}{3.5pt}
-        \resizebox{\textwidth}{!}{
-            \pgfplotstabletypeset[
-                columns={r, t1, t2, t3, tm, Dtm, const, Dt, T, DT, Tsq, DTsq, rsq, Drsq},
-                every head row/.style={before row=\hline, after row=\hline},
-                every last row/.style={after row=\hline},
-                every row/.style={after row=\hline},
-                columns/r/.style={column name={$r$}, precision=0, column type={|c|}},
-                columns/t1/.style={column name={$t_1$}, fixed, precision=2, column type={c|}},
-                columns/t2/.style={column name={$t_2$}, fixed, precision=2, column type={c|}},
-                columns/t3/.style={column name={$t_3$}, fixed, precision=2, column type={c|}},
-                columns/tm/.style={column name={$t_m$}, fixed, precision=2, column type={c|}},
-                columns/Dtm/.style={column name={$\Delta t_m$}, fixed, precision=2, column type={c|}},
-                columns/const/.style={column name={$\Delta t_{ch}$}, string type, postproc cell content/.style={@cell content={0.1}}, column type={c|}},
-                columns/Dt/.style={column name={$\Delta t$}, fixed, precision=2, column type={c|}},
-                columns/T/.style={column name={$T$}, fixed, precision=3, column type={c|}},
-                columns/DT/.style={column name={$\Delta T$}, fixed, precision=3, column type={c|}},
-                columns/Tsq/.style={column name={$T^2$}, fixed, precision=3, column type={c|}},
-                columns/DTsq/.style={column name={$\Delta T^2$}, fixed, precision=3, column type={c|}},
-                columns/rsq/.style={column name={$r^2$}, fixed, precision=0, column type={c|}},
-                columns/Drsq/.style={column name={$\Delta r^2$}, fixed, precision=1, column type={c|}}
-            ]{\myExperimentData}
-        }
-    \end{table}
-
-    % --- (b) & (c) GRAPH WITH RECTANGLES ---
-    \item \& c) Graphe de $T^2$ en fonction de $r^2$ avec rectangles d'incertitude.
-    
-    \begin{center}
-        \begin{tikzpicture}
-            \begin{axis}[
-                width=0.85\textwidth, height=0.6\textwidth,
-                title={Variation de $T^2$ en fonction de $r^2$},
-                xlabel={$r^2$ ($cm^2$)}, 
-                ylabel={$T^2$ ($s^2$)},
-                grid=major, 
-                % ADJUST THESE IF GRAPH IS SQUASHED
-                xmin=0, xmax=110,
-                ymin=0, ymax=6,
-                legend pos=north west
-            ]
-            
-            % 1. DRAW RECTANGLES (The complex loop)
-            % This reads the table row by row and draws a box for each point
-            \pgfplotstableforeachcolumnelement{rsq}\of\myExperimentData\as\xval{
-                \pgfplotstablegetelem{\pgfplotstablerow}{Tsq}\of\myExperimentData \let\yval=\pgfplotsretval
-                \pgfplotstablegetelem{\pgfplotstablerow}{Drsq}\of\myExperimentData \let\dx=\pgfplotsretval
-                \pgfplotstablegetelem{\pgfplotstablerow}{DTsq}\of\myExperimentData \let\dy=\pgfplotsretval
-                
-                % Draw the rectangle: (x-dx, y-dy) to (x+dx, y+dy)
-                \edef\drawrect{\noexpand\draw[blue!50, fill=blue!10, thin] 
-                    (axis cs: \xval-\dx, \yval-\dy) rectangle (axis cs: \xval+\dx, \yval+\dy);}
-                \drawrect
-            }
-
-            % 2. Plot the center points
-            \addplot[only marks, mark=+, thick, blue] table [x=rsq, y=Tsq] {\myExperimentData};
-            \addlegendentry{Points expérimentaux}
-
-            % 3. Linear Regression (Red Line)
-            \addplot[red, thick, domain=0:110] table [
-                y={create col/linear regression={y=Tsq, x=rsq}}
-            ] {\myExperimentData};
-            \addlegendentry{Droite de régression}
-
-            % Save slope/intercept
-            \xdef\slope{\pgfplotstableregressiona}
-            \xdef\intercept{\pgfplotstableregressionb}
-
-            \end{axis}
-        \end{tikzpicture}
-    \end{center}
-
-    % --- (d) ---
-    \item Pentes limites et pente moyenne.
-    
-    L'équation de la droite est : $T^2 = \pgfmathprintnumber{\slope} \cdot r^2 + \pgfmathprintnumber{\intercept}$.
-    
-    Pente moyenne $p = \pgfmathprintnumber{\slope} \ s^2/cm^2$.
-    
-    Calcul de l'incertitude $\Delta p = \frac{|p_1 - p_2|}{2} = \dots$
-
-    % --- (e) ---
-    \item Masse $m$ et $\Delta m$.
-    \[ m = \dots \quad (\pm \dots) \text{ g} \]
-
-    % --- (f) ---
-    \item Moment d'inertie $I_{GZ}$.
-    \[ I_{GZ} = \dots \quad (\pm \dots) \text{ kg}\cdot m^2 \]
-
-    % --- (g) ---
-    \item Conclusion et comparaison.
-
-\end{enumerate}% ============================================================
-% 1. INPUT DATA (Edit values here)
-% ============================================================
-\pgfplotstableread{
-r   t1      t2      t3
-3   12.45   12.55   12.50
-4   12.75   12.80   12.85
-5   13.15   13.20   13.25
-6   13.75   13.80   13.85
-7   14.45   14.50   14.55
-8   15.25   15.30   15.35
-9   16.90   17.00   16.95
-10  22.30   22.40   22.35
+3   7.91    7.64    7.78
+4   9.15    9.01    8.95
+5   10.33   10.78   10.52
+6   12.28   12.01   11.95 
+7   13.84   13.71   13.65 
+8   15.16   15.09   15.20
+9   17.12   17.04   17.06
+10  19.01   18.88   18.89
 }\myExperimentData
 
 % ============================================================
 % 2. AUTOMATIC CALCULATIONS
 % ============================================================
+% Average time for 10 oscillations
 \pgfplotstablecreatecol[create col/expr={(\thisrow{t1}+\thisrow{t2}+\thisrow{t3})/3}]{tm}{\myExperimentData}
+
+% Uncertainty in average time
 \pgfplotstablecreatecol[create col/expr={max(abs(\thisrow{tm}-\thisrow{t1}), max(abs(\thisrow{tm}-\thisrow{t2}), abs(\thisrow{tm}-\thisrow{t3})))}]{Dtm}{\myExperimentData}
+
+% Chronometer uncertainty constant
 \pgfplotstablecreatecol[create col/set={0.1}]{const}{\myExperimentData}
+
+% Total time uncertainty: Δt = Δt_ch + Δt_m
 \pgfplotstablecreatecol[create col/expr={0.1 + \thisrow{Dtm}}]{Dt}{\myExperimentData}
+
+% Period T = t_m / 10
 \pgfplotstablecreatecol[create col/expr={\thisrow{tm}/10}]{T}{\myExperimentData}
+
+% Uncertainty in period: ΔT = Δt / 10
 \pgfplotstablecreatecol[create col/expr={\thisrow{Dt}/10}]{DT}{\myExperimentData}
+
+% T² = T²
 \pgfplotstablecreatecol[create col/expr={\thisrow{T}^2}]{Tsq}{\myExperimentData}
+
+% Uncertainty in T²: ΔT² = 2T·ΔT
 \pgfplotstablecreatecol[create col/expr={2 * \thisrow{T} * \thisrow{DT}}]{DTsq}{\myExperimentData}
+
+% r² (in cm²)
 \pgfplotstablecreatecol[create col/expr={\thisrow{r}^2}]{rsq}{\myExperimentData}
+
+% Uncertainty in r²: Δr² = 2r·Δr (assuming Δr = 0.1 cm)
 \pgfplotstablecreatecol[create col/expr={2 * \thisrow{r} * 0.1}]{Drsq}{\myExperimentData}
 
 % ============================================================
-% 3. DOCUMENT CONTENT
+% 3. CALCULATE LIMIT SLOPES FOR UNCERTAINTY
 % ============================================================
-\section*{IV.3 - Détermination de $I_{GZ}$ expérimentalement}
 
-Le balancier étant toujours avec les deux surcharges.
+% Get First Point (Index 0)
+\pgfplotstablegetelem{0}{rsq}\of\myExperimentData \pgfmathsetmacro{\xFirst}{\pgfplotsretval}
+\pgfplotstablegetelem{0}{Drsq}\of\myExperimentData \pgfmathsetmacro{\dxFirst}{\pgfplotsretval}
+\pgfplotstablegetelem{0}{Tsq}\of\myExperimentData \pgfmathsetmacro{\yFirst}{\pgfplotsretval}
+\pgfplotstablegetelem{0}{DTsq}\of\myExperimentData \pgfmathsetmacro{\dyFirst}{\pgfplotsretval}
 
-\begin{enumerate} % requires \usepackage{enumitem} in main.tex
-% OR use \begin{enumerate} and manual \item[a)] if you don't have the package.
+% Get Last Point (Index 7)
+\pgfplotstablegetelem{7}{rsq}\of\myExperimentData \pgfmathsetmacro{\xLast}{\pgfplotsretval}
+\pgfplotstablegetelem{7}{Drsq}\of\myExperimentData \pgfmathsetmacro{\dxLast}{\pgfplotsretval}
+\pgfplotstablegetelem{7}{Tsq}\of\myExperimentData \pgfmathsetmacro{\yLast}{\pgfplotsretval}
+\pgfplotstablegetelem{7}{DTsq}\of\myExperimentData \pgfmathsetmacro{\dyLast}{\pgfplotsretval}
+
+% --- 1. Max Slope (p1) ---
+% Max Rise / Min Run
+\pgfmathsetmacro{\numMax}{(\yLast + \dyLast) - (\yFirst - \dyFirst)}
+\pgfmathsetmacro{\denMax}{(\xLast - \dxLast) - (\xFirst + \dxFirst)}
+\pgfmathsetmacro{\pmax}{\numMax / \denMax}
+
+% --- 2. Min Slope (p2) ---
+% Min Rise / Max Run
+\pgfmathsetmacro{\numMin}{(\yLast - \dyLast) - (\yFirst + \dyFirst)}
+\pgfmathsetmacro{\denMin}{(\xLast + \dxLast) - (\xFirst - \dxFirst)}
+\pgfmathsetmacro{\pmin}{\numMin / \denMin}
+
+% --- 3. Uncertainty in Slope ---
+\pgfmathsetmacro{\Dp}{abs(\pmax - \pmin) / 2}
+
+% --- 4. MAIN LINE (Passing through First and Last Points) ---
+% Slope = (yLast - yFirst) / (xLast - xFirst)
+\pgfmathsetmacro{\slopeFL}{(\yLast - \yFirst) / (\xLast - \xFirst)}
+% Intercept = yFirst - slope * xFirst
+\pgfmathsetmacro{\interceptFL}{\yFirst - \slopeFL * \xFirst}
+
+
+% ============================================================
+% 4. DOCUMENT CONTENT
+% ============================================================
+\begin{enumerate}
 
     % --- Question a) ---
-    \item Prendre la valeur de 10 oscillations pour chaque distance de $r_3=3$ cm à $r_{10}=10$ cm. Remplir le tableau suivant.
+    \item Tableau des mesures et calculs associés : 
     
     \begin{table}[H]
         \centering
         \renewcommand{\arraystretch}{1.5}
         \setlength{\tabcolsep}{3.5pt}
-        \resizebox{\textwidth}{!}{
-            % NO BLANK LINES INSIDE [] !
+        \resizebox{\textwidth}{!}{%
             \pgfplotstabletypeset[
                 columns={r, t1, t2, t3, tm, Dtm, const, Dt, T, DT, Tsq, DTsq, rsq, Drsq},
                 every head row/.style={before row=\hline, after row=\hline},
                 every last row/.style={after row=\hline},
                 every row/.style={after row=\hline},
-                columns/r/.style={column name={$r$}, precision=0, column type={|c|}},
-                columns/t1/.style={column name={$t_1$}, fixed, precision=2, column type={c|}},
-                columns/t2/.style={column name={$t_2$}, fixed, precision=2, column type={c|}},
-                columns/t3/.style={column name={$t_3$}, fixed, precision=2, column type={c|}},
-                columns/tm/.style={column name={$t_m$}, fixed, precision=2, column type={c|}},
-                columns/Dtm/.style={column name={$\Delta t_m$}, fixed, precision=2, column type={c|}},
-                columns/const/.style={column name={$\Delta t_{ch}$}, string type, postproc cell content/.style={@cell content={0.1}}, column type={c|}},
-                columns/Dt/.style={column name={$\Delta t$}, fixed, precision=2, column type={c|}},
-                columns/T/.style={column name={$T$}, fixed, precision=3, column type={c|}},
-                columns/DT/.style={column name={$\Delta T$}, fixed, precision=3, column type={c|}},
-                columns/Tsq/.style={column name={$T^2$}, fixed, precision=3, column type={c|}},
-                columns/DTsq/.style={column name={$\Delta T^2$}, fixed, precision=3, column type={c|}},
-                columns/rsq/.style={column name={$r^2$}, fixed, precision=0, column type={c|}},
-                columns/Drsq/.style={column name={$\Delta r^2$}, fixed, precision=1, column type={c|}}
-            ]{\myExperimentData}
+                columns/r/.style={column name={Distance r (cm)}, precision=0, column type={|c|}},
+                columns/t1/.style={column name={$t_1$ (s)}, fixed, precision=2, column type={c|}},
+                columns/t2/.style={column name={$t_2$ (s)}, fixed, precision=2, column type={c|}},
+                columns/t3/.style={column name={$t_3$ (s)}, fixed, precision=2, column type={c|}},
+                columns/tm/.style={column name={$t_m$ (s)}, fixed, precision=2, column type={c|}},
+                columns/Dtm/.style={column name={$\Delta t_m$ (s)}, fixed, precision=2, column type={c|}},
+                columns/const/.style={column name={$\Delta t_{ch}$ (s)}, string type, postproc cell content/.style={@cell content={0.1}}, column type={c|}},
+                columns/Dt/.style={column name={$\Delta t$ (s)}, fixed, precision=2, column type={c|}},
+                columns/T/.style={column name={$T$ (s)}, fixed, precision=3, column type={c|}},
+                columns/DT/.style={column name={$\Delta T$ (s)}, fixed, precision=3, column type={c|}},
+                columns/Tsq/.style={column name={$T^2$ ($s^2$)}, fixed, precision=3, column type={c|}},
+                columns/DTsq/.style={column name={$\Delta T^2$ ($s^2$)}, fixed, precision=3, column type={c|}},
+                columns/rsq/.style={column name={$r^2$ ($cm^2$)}, fixed, precision=0, column type={c|}},
+                columns/Drsq/.style={column name={$\Delta r^2$ ($cm^2$)}, fixed, precision=1, column type={c|}}
+            ]{\myExperimentData}%
         }
     \end{table}
-
-    % --- Question b) ---
-    \item En précisant les échelles choisies, représenter graphiquement $T^2$ en fonction de $r^2$.
+    
+    % --- Question b) & c) ---
+    \item le graphe de $T^2$ en fonction de $r^2$ avec les rectangles d'incertitude.
     
     \begin{center}
         \begin{tikzpicture}
             \begin{axis}[
-                width=0.85\textwidth, height=0.55\textwidth,
-                title={Graphe de $T^2$ en fonction de $r^2$},
-                xlabel={$r^2$ ($m^2$)}, 
+                width=0.9\textwidth, 
+                height=0.6\textwidth,
+                title={},
+                xlabel={$r^2$ ($cm^2$)},
                 ylabel={$T^2$ ($s^2$)},
-                grid=major, 
+                grid=both,
+                grid style={line width=.1pt, draw=gray!20},
+                major grid style={line width=.2pt, draw=gray!50},
                 legend pos=north west,
+                xmin=5, xmax=105,
+                ymin=0.5, ymax=4,
             ]
             
-            % Plot Points with Error Bars
+            % 1. UNCERTAINTY RECTANGLES (ALL POINTS)
+            \pgfplotstableforeachcolumnelement{rsq}\of\myExperimentData\as\xval{
+                \pgfplotstablegetelem{\pgfplotstablerow}{Drsq}\of\myExperimentData  \let\dxval\pgfplotsretval
+                \pgfplotstablegetelem{\pgfplotstablerow}{Tsq}\of\myExperimentData   \let\yval\pgfplotsretval
+                \pgfplotstablegetelem{\pgfplotstablerow}{DTsq}\of\myExperimentData  \let\dyval\pgfplotsretval
+                \draw[red, fill=red, fill opacity=0.1, draw opacity=0.4] 
+                    (axis cs: \xval-\dxval, \yval-\dyval) rectangle (axis cs: \xval+\dxval, \yval+\dyval);
+            }
+
+            % 2. POINTS EXPERIMENTAUX
             \addplot[
-                only marks, mark=*, blue,
+                only marks, mark=*, mark size=2pt, color=black,
                 error bars/.cd, y dir=both, y explicit, x dir=both, x explicit,
             ] table [x=rsq, y=Tsq, x error=Drsq, y error=DTsq] {\myExperimentData};
-            \addlegendentry{Points expérimentaux}
     
-            % Calculate and Plot Regression Line
-            \addplot[
-                red, thick, domain=0:110
-            ] table [
-                y={create col/linear regression={y=Tsq, x=rsq}}
-            ] {\myExperimentData};
-            \addlegendentry{Droite de régression}
-    
-            % Store slope/intercept for later text
-            \xdef\slope{\pgfplotstableregressiona}
-            \xdef\intercept{\pgfplotstableregressionb}
+            % 3. LIMIT SLOPES
+            \draw[red, dashed, thick, shorten >= -2cm, shorten <= -2cm] 
+                (axis cs: {\xFirst+\dxFirst}, {\yFirst-\dyFirst}) -- (axis cs: {\xLast-\dxLast}, {\yLast+\dyLast});
+            
+            \draw[blue, dashed, thick, shorten >= -2cm, shorten <= -2cm] 
+                (axis cs: {\xFirst-\dxFirst}, {\yFirst+\dyFirst}) -- (axis cs: {\xLast+\dxLast}, {\yLast-\dyLast});
+            
             \end{axis}
         \end{tikzpicture}
     \end{center}
 
-    % --- Question c) ---
-    \item Représenter sur le même graphique les rectangles d'incertitudes $\Delta(T^2)$ et $\Delta(r^2)$.
-    
-    \textit{(Note: Les rectangles sont représentés par les barres d'erreur bleues sur le graphique ci-dessus.)}
+
+
+
+    % --- Question c) is now handled in the graph above ---
 
     % --- Question d) ---
-    \item Tracer les droites limites et calculer leurs pentes $p_1$ et $p_2$, et en déduire la pente moyenne $p$.
+    \item 
+    \textbf{Pentes limites} (calculées avec les rectangles d'incertitude) :
+    \begin{align*}
+    p_1 &= \frac{(T^2_8 + \Delta T^2_8) - (T^2_1 - \Delta T^2_1)}{(r^2_8 - \Delta r^2_8) - (r^2_1 + \Delta r^2_1)}  \\
+    \textbf{AN: } & = \frac{3.083}{88.4} \\
+    & = 0.034 \text{ s}^2/\text{cm}^2\\
+    p_2 &= \frac{(T^2_8 - \Delta T^2_8) - (T^2_1 + \Delta T^2_1)}{(r^2_8 + \Delta r^2_8) - (r^2_1 - \Delta r^2_1)}  \\
+    \textbf{AN: } & = \frac{2.871}{93.6} \\
+    & = 0.030 \text{ s}^2/\text{cm}^2\\
+    \implies p & = \frac{p_1 + p_2}{2} \\
+    \iff & = \frac{0.034 + 0.030}{2} \\
+    & = 0.032 \text{ s}^2/\text{cm}^2
+    \end{align*}
     
-    L'équation de la droite de régression calculée est : $T^2 = \pgfmathprintnumber{\slope} \cdot r^2 + \pgfmathprintnumber{\intercept}$.
-    
-    La pente moyenne est :
-    \[ p = \pgfmathprintnumber{\slope} \ s^2/cm^2 \]
-    
-    Calcul de l'incertitude sur la pente :
-    \[ \Delta p = \frac{|p_1 - p_2|}{2} = \dots \]
+    \textbf{Incertitude sur la pente :}
+    \begin{align*}
+        \Delta p & = \frac{|p_1 - p_2|}{2} \\
+        \textbf{AN :  } & = \frac{|0.034 - 0.030|}{2} \\
+        &  = 0.002\text{ s}^2/\text{cm}^2
+    \end{align*}    
     
     % --- Question e) ---
-    \item Déterminer alors la masse $m$ et son incertitude $\Delta m$.
-    \[ m = \dots \]
-    \[ m = ( \dots \pm \dots ) \text{ unit} \]
+    \item À partir de la relation théorique $T^2 = \frac{4\pi^2}{C} m r^2 + \frac{4\pi^2 I_{GZ}}{C}$, la pente est $p = \frac{4\pi^2 m}{C}$.
+    
+    Convertissons la pente en unités SI ($\text{s}^2/\text{m}^2$) en multipliant par $10000$ :
+    \[ p_{SI} = p \times 10000 = 320 \, \text{s}^2/\text{m}^2 \]
+    \[\Delta p_{SI} = \Delta p \times 10000 = 20 \, \text{s}^2/\text{m}^2 \] 
 
+    \begin{align*}
+        m & = \frac{p_{SI} \cdot C}{4\pi^2} \\
+        \textbf{AN: } & = \frac{320 \times 0.048}{4\pi^2} \\
+        & = 0.389 \, \text{kg} \\
+        \Delta m & = \frac{\Delta p_{SI} \cdot \Delta C}{4\pi^2} \\
+        \textbf{AN: } & = \frac{20 \times 0.004}{4\pi^2} \\
+        & = 0.002 \, \text{kg}
+    \end{align*}
+
+    Alors : $$m = 0.389 \pm 0.002 \, \text{kg}$$
+    
     % --- Question f) ---
-    \item Calculer le moment d'inertie $I_{GZ}$ et $\Delta I_{GZ}$.
-    \[ I_{GZ} = \dots \]
-    \[ I_{GZ} = ( \dots \pm \dots ) \text{ unit} \]
+    \item 
+    \begin{align*}
+        b_1 & = (T^2_1 - \Delta T^2_1) - p_1 (r^2_1 + \Delta r^2_1) \\
+        \implies & = 0.241 \, \text{s}^2 \\
+        b_2 & = (T^2_1 + \Delta T^2_1) - p_2 (r^2_1 - \Delta r^2_1) \\
+        \implies & = 0.393 \, \text{s}^2 \\
+        b & = \frac{b_1 + b_2}{2} \\
+        \implies & = 0.317 \, \text{s}^2 \\
+        \Delta b & = \frac{|b_2 - b_1|}{2} \\
+        \implies & = 0.076 \, \text{s}^2 
+    \end{align*} 
+    On calcule $I_{GZ}$ avec la relation : 
+    \begin{align*}
+        I_{GZ} & = \frac{b \cdot C}{4\pi^2} \\
+        \textbf{AN: } & = \frac{0.317 \times 0.048}{4\pi^2} \\
+        & = 3.854 \times 10^{-4} \, \text{kg}\cdot\text{m}^2 \\
+        \Delta I_{GZ} & = \frac{\Delta b \cdot \Delta C}{4\pi^2} \\
+        \textbf{AN: } & = \frac{0.076 \times 0.004}{4\pi^2} \\
+        & = 7.70 \times 10^{-6} \, \text{kg}\cdot\text{m}^2 
+    \end{align*}
+    
+    Alors : $$I_{GZ} = 3.854 \times 10^{-4} \pm 7.70 \times 10^{-6} \, \text{kg}\cdot\text{m}^2$$
 
     % --- Question g) ---
-    \item Comparer avec $I_{GZ}$ trouvé précédemment. Conclure.
-    
-    \vspace{2cm} % Space for writing
+    \item 
+    Compte tenu de la méthode graphique qui moyenne les erreurs sur plusieurs mesures, la valeur expérimentale est souvent plus représentative du comportement réel du système oscillant que le calcul théorique idéal. L'ordre de grandeur reste cependant cohérent $(10^{-4} \, \text{kg}\cdot\text{m}^2)$, validant ainsi l'approche expérimentale malgré les écarts. 
 
 \end{enumerate}

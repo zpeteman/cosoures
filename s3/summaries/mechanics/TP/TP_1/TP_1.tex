@@ -8,9 +8,9 @@
 \usepackage{array}
 \usepackage{graphicx}
 \usepackage{booktabs}
-\usepackage{pgfplotstable}
 \usepackage{float}
-\usepackage{pgfplots}
+\usepackage{pgfplots, pgfplotstable}
+\usepackage{tikz}
 \pgfplotsset{compat=1.18}
 
 % Adjust margins to fit tables
@@ -32,7 +32,7 @@
     \vspace{2cm}
     
     % Add your image here
-    % \includegraphics[width=0.4\textwidth]{pnd.png}
+    \includegraphics[width=0.5\textwidth]{image.png}
     
     \vspace{2cm}
     
@@ -47,10 +47,6 @@
     {\large Pr. Mohamed AHD\par}
     
     \vspace{1.5cm}
-    
-    {\Large responsable:\par}
-    \vspace{0.5cm}
-    {\large Pr. Mohamed GOUIGHRI\par}
     
     \vfill
     
@@ -72,16 +68,27 @@
     \hline
     temps(s) & $t_1$ & $t_2$ & $t_3$ & $t_m$ & $\Delta t_m$ & $\Delta t_{ch}$ & $\Delta t$ & $T_0$ & $\Delta T_0$ \\
     \hline
-    $\theta_1$ &  &  &  &  &  & 0,1 & &  &  \\
+    $\theta_1$ & 5.62 & 5.36 & 5.50 & 5.49 & 0.13 & 0,10 & 0.23 & 0.549 & 0.023 \\
     \hline
-    $\theta_2$ &  &  &  &  &  & 0,1 &  &  &  \\
+    $\theta_2$ & 5.23 & 5.22 & 5.01 & 5.15 & 0.14 & 0,10 & 0.24 & 0.515 & 0.024 \\
     \hline
     \end{tabular}
 \end{table}
 
-    \item
-
-    \item
+    \item$ 
+    \begin{cases}
+        \text{Pour } \theta_1: T_0 = 0.549s ; \Delta T_0 =0.023s \\
+        \text{Pour } \theta_2: T_0 = 0.515s ; \Delta T_0 =0.024s
+    \end{cases}
+    $
+    Dondc : 
+    \begin{align*}
+        \Delta T_0 & = |T_0(\theta_1) - T_0(\theta_2)| \\
+        & = |0.549 - 0.515| \\
+        & = 0.034s
+    \end{align*}
+    $\implies \text{La différence est faible.}$
+    \item Les deux périodes sont identiques dans les limites de l'erreur. Donc, on peut conclure que le pendule de torsion est isochrone pour les petites oscillations.
 
 \end{enumerate}
 \section{Détermination de $C$ et $I_0$}
@@ -95,21 +102,64 @@
     \hline
     temps(s) & $t_1$ & $t_2$ & $t_3$ & $t_m$ & $\Delta t_m$ & $\Delta t_{ch}$ & $\Delta t$ & $T$ & $\Delta T$ \\
     \hline
-    $r_1$ &  &  &  &  &  & 0,1 &  &  &  \\
+    $r_1$ & 10.86 & 10.65 & 10.58 & 10.69 & 0.17 & 0,10 & 0.27 & 1.069 & 0.027 \\
     \hline
-    $r_2$ &  &  &  &  &  & 0,1 &  &  &  \\
+    $r_2$ & 19.06 & 18.99 & 18.80 & 18.95 & 0.15 & 0,10 & 0.25 & 1.895 & 0.025 \\
     \hline
     \end{tabular}
 \end{table}
 
-\noindent \textbf{Remarque :} Les relations utilisées étaient données en TP, à savoir :
-\[ \Delta t_m = \sup|t_m - t_i| \quad , \quad T = \frac{t_m}{10} \quad , \quad \Delta T = \frac{\Delta t}{10} \quad , \quad \Delta t = \Delta t_m + \Delta t_{ch} \]
+    \item On sait que : 
+    \begin{align*}
+        C &= 8 \pi^2 m \frac{r^2_2 - r^2_1}{T^2_2 - T^2_1} \\
+        \textbf{AN:  } C & = 8 \pi^2 \times 0.1974 \times \frac{0.1^2 - 0.05^2}{1.895^2 - 1.069^2} \\
+        & = 0.0477 \, \text{N.m/rad}
+    \end{align*}
+    L'incertitude sur C est donnée par :
+    \begin{align*}
+        \frac{\Delta C}{C} & = \frac{\Delta m}{m} + \frac{\Delta (r^2_2 - r^2_1)}{r^2_2 - r^2_1} + \frac{\Delta (T^2_2 - T^2_1)}{T^2_2 - T^2_1} \\
+        \textbf{AN: } \frac{\Delta C}{C} & = 0.0005 + 0.04 + 0.06 \\
+        & = 0.1005
+    \end{align*}
+    $\implies \Delta C = 0.1005 \times 0.0477 = 0.00479 \, \text{N.m/rad}$  
     
-    \item 
+    Or on garde seulement deux chiffres significatifs dans l'incertitude. Donc :
+    $$ C = 0.048 \pm 0.004 \, \text{N.m/rad} $$
+    
+    \item On sait que:
+    \begin{align*}
+        I_0 & = \frac{C}{4\pi^2} T^2_0 \\
+        \textbf{AN: } I_0 & = \frac{0.048}{4\pi^2} \times 0.549^2 \\ 
+        & = 3,643 \times 10^{-4} \, \text{kg.m}^2
+    \end{align*} 
+    L'incertitude sur $I_0$ est donnée par :
+    \begin{align*}
+        \frac{\Delta I_0}{I_0} & = \frac{\Delta C}{C} + 2 \frac{\Delta T_0}{T_0} \\
+        \textbf{AN: } \frac{\Delta I_0}{I_0} & = 0.1005 + 2 \times \frac{0.023}{0.549} \\
+        & = 0.18428
+    \end{align*}
+    $\implies \Delta I_0 = 0.18428 \times 3.643 \times 10^{-4} = 6.7136 \times 10^{-5} \, \text{kg.m}^2$ 
 
-    \item
-
+    Or on garde seulement deux chiffres significatifs dans l'incertitude. Donc :
+    $$ I_0 = 3 \times 10^{-4} \pm 6 \times 10^{-5} \, \text{kg.m}^2 $$
 \end{enumerate}
+
+Ainsi :
+
+On sait que : 
+\begin{align*}
+    I_{GZ} & = m \frac{r^2_2 - 3r^2_1}{2} \\
+    \textbf{AN: } I_{GZ} & = 0.1974 \times \frac{0.1^2 - 3 \times 0.05^2}{2} \\
+    & = 2.4675 \times 10^{-4} \, \text{kg.m}^2
+\end{align*}
+L'incertitude sur $I_{GZ}$ est donnée par :
+\begin{align*}
+    \Delta I_{GZ} & = \left|\frac{\partial I_{GZ}}{\partial m}\right|\Delta m + \left|\frac{\partial I_{GZ}}{\partial r_1}\right|\Delta r_1 + \left|\frac{\partial I_{GZ}}{\partial r_2}\right|\Delta r_2\\
+    \textbf{AN: } \Delta I_{GZ} & = \left(1.25 \times 10^{-3} + 0.0296 + 0.0197 \right) \times 0.001\\
+    & = 4.9425 \times 10^{-5} \, \text{kg.m}^2 \\
+    & \approx 5 \times 10^{-5} \, \text{kg.m}^2
+\end{align*}
+D'ou : $$I_{GZ} = 2.4 \times 10^{-4} \pm 5 \times 10^{-5} \, \text{kg.m}^2$$
 
 \section{Détermination de $I_{GZ}$ experimentalement}
 
