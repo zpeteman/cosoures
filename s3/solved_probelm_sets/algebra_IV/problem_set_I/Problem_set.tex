@@ -68,21 +68,13 @@ A = \begin{pmatrix}
 \end{enumerate}
 
 \begin{correctionbox}
-    \noindent \textbf{1. Finding the eigenvalues}
-
-We compute the characteristic polynomial, Using cofactor expansion along the first row:
+    \begin{enumerate}
+        \item Finding the eigenvalues
 \begin{align*}
-\det(A - \lambda I) &= (2-\lambda)\left[(-4-\lambda)(5-\lambda) + 24\right] + 4\left[-6 + 4 + \lambda\right] \\
-&= (2-\lambda)\left[\lambda^2 - \lambda + 4\right] + 4(\lambda - 2) \\
-&= (2-\lambda)\lambda(\lambda - 1)
+\det(A - \lambda I) = \lambda(2-\lambda)(\lambda - 1)
 \end{align*}
 
-Setting \(\det(A - \lambda I) = 0\) gives:
-\[
-\lambda_1 = 0, \quad \lambda_2 = 1, \quad \lambda_3 = 2
-\]
-
-\noindent \textbf{2. Finding eigenvectors and basis \(B\)}
+    \item Finding eigenvectors and basis \(B\)
 
 \textbf{For \(\lambda = 0\):} Solve \(A\mathbf{v} = 0\)
 \[
@@ -113,7 +105,7 @@ D = \begin{pmatrix}
 \end{pmatrix}
 \]
 
-\noindent \textbf{3. Change of basis matrix and similarity transformation}
+    \item Change of basis matrix and similarity transformation
 
 Change of basis matrix:
 \[
@@ -134,6 +126,7 @@ P^{-1}AP = D = \begin{pmatrix}
 \]
 
 This confirms that \(A\) is diagonalizable and \(B\) is a basis of eigenvectors.
+    \end{enumerate}
 \end{correctionbox}
 
 % ----------- EXERCISE 2 -------------
@@ -161,15 +154,8 @@ We compute, Using the cofactor expansion along the first row:
 &\quad - (-1)\left[(2)(1-\lambda) - (1)(1)\right] \\
 &\quad + (1)\left[(2)(1) - (-\lambda)(1)\right]\\
 \iff P(\lambda) &= (2-\lambda)(\lambda^2 - \lambda - 1) + (1 - 2\lambda) + (2 + \lambda) \\
-&= (2-\lambda)(\lambda^2 - \lambda - 1) + 3 - \lambda \\
-&= (-\lambda^3 + 3\lambda^2 - \lambda - 2) + (3 - \lambda) \\
 &= -\lambda^3 + 3\lambda^2 - 2\lambda + 1
 \end{align*}
-
-Therefore, the characteristic polynomial is:
-\[
-\boxed{P(\lambda) = -\lambda^3 + 3\lambda^2 - 2\lambda + 1}
-\]
 \end{correctionbox}
 
 % ----------- EXERCISE 3 -------------
@@ -181,8 +167,6 @@ Let \( A \in M_K \) with characteristic polynomial \( P \) such that \( P(0) \ne
 \end{itemize}
 
 \begin{correctionbox}
-Let $ A \in M_n(K) $ with characteristic polynomial $ P $ such that $ P(0) \neq 0 $.
-
 \begin{enumerate}
     \item Since $ P(\lambda) = \det(A - \lambda I) $, we have $ P(0) = \det(A) $. The hypothesis $ P(0) \neq 0 $ implies $ \det(A) \neq 0 $, so $ A $ is invertible. 
     
@@ -226,24 +210,15 @@ A = \begin{pmatrix}
 
 \begin{correctionbox}
 \begin{enumerate}
-    \item The characteristic polynomial of $A$ is $P(\lambda) = \det(A - \lambda I)$. We compute, Using cofactor expansion along the first row:
+    \item The characteristic polynomial of $A$ is $P(\lambda) = \det(A - \lambda I)$.
     \begin{align*}
     P(\lambda) &= (3-\lambda)\det\begin{pmatrix}4-\lambda & 2 \\ 1 & 3-\lambda\end{pmatrix} 
     - 1\cdot\det\begin{pmatrix}2 & 2 \\ 1 & 3-\lambda\end{pmatrix} 
     + 1\cdot\det\begin{pmatrix}2 & 4-\lambda \\ 1 & 1\end{pmatrix} \\
-    &= (3-\lambda)(\lambda-2)(\lambda-5) + 3\lambda - 6 \\
-    &= -( \lambda-2)(\lambda-3)(\lambda-5) + 3(\lambda-2) \\
-    &= (\lambda-2)(-\lambda^2 + 8\lambda - 12) \\
-    &= -(\lambda-2)(\lambda-2)(\lambda-6) \\
     &= -(\lambda-2)^2(\lambda-6).
     \end{align*}
-    Thus, up to sign convention (since some authors define $P(\lambda)=\det(\lambda I-A)$), the characteristic polynomial is 
-    \[
-    P(\lambda) = (\lambda-2)^2(\lambda-6).
-    \]
-
+    
     \item The eigenvalues are the roots of $P(\lambda)$: $\lambda_1 = 2$ (algebraic multiplicity 2) and $\lambda_2 = 6$ (algebraic multiplicity 1).
-
     \textbf{Eigenspace for $\lambda = 2$:} Solve $(A - 2I)v = 0$:
     \[
     A - 2I = \begin{pmatrix}
@@ -260,7 +235,6 @@ A = \begin{pmatrix}
     \[
     \left\{ \begin{pmatrix}-1 \\ 1 \\ 0\end{pmatrix}, \begin{pmatrix}-1 \\ 0 \\ 1\end{pmatrix} \right\}.
     \]
-    The geometric multiplicity is 2.
 
     \textbf{Eigenspace for $\lambda = 6$:} Solve $(A - 6I)v = 0$:
     \[
@@ -281,11 +255,6 @@ A = \begin{pmatrix}
     The geometric multiplicity is 1.
 
     \item Since all eigenvalues are real (assuming $K = \mathbb{R}$ or $\mathbb{C}$) and the characteristic polynomial splits into linear factors, $A$ is triangulable over $K$.
-
-    For diagonalizability, we check if the geometric multiplicity equals the algebraic multiplicity for each eigenvalue:
-   ,For $\lambda = 2$: algebraic multiplicity = 2, geometric multiplicity = 2.
-   ,For $\lambda = 6$: algebraic multiplicity = 1, geometric multiplicity = 1.
-    Since these match for all eigenvalues, $A$ is diagonalizable.
 \end{enumerate}
 \end{correctionbox}
 
@@ -647,25 +616,6 @@ with the recurrence (for $ p \geq 3 $):
 A^p = 3A^{p-1} - 2A^{p-2}.
 \]
 
-Explicitly:
-\[
-\boxed{
-\begin{aligned}
-A^0 &= I, \\
-A^1 &= A, \\
-A^2 &= A^2, \\
-A^3 &= 3A^2 - 2A, \\
-A^4 &= 7A^2 - 6A, \\
-A^5 &= 15A^2 - 14A, \\
-&\vdots \\
-A^p &= (2^p - 1)A^2 - (2^p - 2)A \quad \text{for all } p \geq 1.
-\end{aligned}
-}
-\]
-
-(One verifies the closed form by induction using the recurrence $ A^p = 3A^{p-1} - 2A^{p-2} $ and the base cases $ p=1,2 $.)
-
-Hence, for all $ p \in \mathbb{N} $, $ A^p $ is a linear combination of $ I $, $ A $, and $ A^2 $, as required.
 \end{correctionbox}
 
 \end{document}

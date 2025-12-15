@@ -1,0 +1,208 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{lipsum}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage[most]{tcolorbox}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta}
+\usetikzlibrary{arrows.meta, decorations.markings}
+
+\geometry{a4paper, margin=2.5cm}
+\pagestyle{fancy}
+
+\fancyhf{}
+\rhead{Problem Set III}
+\lhead{Analysis IV}
+\cfoot{\thepage}
+
+\titleformat{\section}{\normalfont\Large\bfseries}{Exercise \thesection:}{1em}{}
+\titleformat{\subsection}{\normalfont\bfseries}{Correction:}{1em}{}
+
+\newtcolorbox{correctionbox}{
+  colback=gray!5,
+  colframe=black,
+  fonttitle=\bfseries,
+  title=Correction,
+  before skip=10pt,
+  after skip=10pt,
+  breakable,
+  enhanced
+}
+
+\setlength{\headheight}{14.49998pt}
+
+\begin{document}
+
+\begin{center}
+\Large\textbf{Ibn Tofail University} \\[1em]
+\large\textit{Analysis IV} \\[2em]
+\large\textit{Problem Set III} \\[0.5em]
+\end{center}
+
+\vspace{1cm}
+
+% ----------- EXERCISE 1 -------------
+\section{}
+Study the nature of convergence of each of the following sequences of functions:
+
+\begin{enumerate}
+    \item $f_n(x) = \frac{1}{1+n(nx-1)^2}$, for $x \in I = [0, 1]$.
+    \item $f_n(x) = \begin{cases}
+            (n-1)x & \text{if } x \in \left[0, \frac{1}{n}\right], \\
+            1-x & \text{if } x \in \left[\frac{1}{n}, 1\right].
+        \end{cases}$
+    \item $f_n(x) = e^{-nx}\cos x^2$, for $x > 0$.
+\end{enumerate}
+
+\begin{correctionbox}
+\begin{enumerate}
+    \item 
+    Pointwise limit: $f(x)=0$ on $[0,1]$. \\
+    Uniform convergence? $\sup_{x\in[0,1]}|f_n(x)-0| = f_n(1/n)=1 \not\to 0$. \\
+    Convergence is \textbf{pointwise but not uniform}.
+
+    \item 
+    Pointwise limit: $f(x)=1-x$ on $[0,1]$. \\
+    Uniform norm: $\sup_{x\in[0,1]}|f_n(x)-f(x)| = \sup_{x\in[0,1/n]}|nx-1| = 1 \not\to 0$. \\
+    Convergence is \textbf{pointwise but not uniform}.
+
+    \item 
+    Pointwise limit: $f(x)=0$ on $(0,+\infty)$. \\
+    Uniform norm: consider $x_n=1/n$, then $|f_n(x_n)|=e^{-1}\cos(1/n^2)\to e^{-1}\neq0$. \\
+    Convergence is \textbf{pointwise but not uniform} on $(0,+\infty)$.
+\end{enumerate}
+\end{correctionbox}
+
+% ----------- EXERCISE 2 -------------
+\section{}
+Consider the sequence of functions $f_n : [-1, 1] \to \mathbb{R}$, defined by
+$$x \mapsto f_n(x) = e^{-nx^2}\sin nx + \sqrt{1-x^2}, \quad n \in \mathbb{N}.$$
+
+\begin{enumerate}
+    \item Show that the sequence of functions $(f_n)$ converges pointwise on $I = [-1, 1]$ to a function $f$, which you will determine.
+    \item Show that $(f_n)$ converges uniformly to $f$ on $[\omega, 1]$, where $\omega$ is a positive constant.
+    \item Show that $(f_n)$ does not converge uniformly to $f$ on $[0, 1]$.
+\end{enumerate}
+
+\begin{correctionbox}
+\begin{enumerate}
+    \item For $x=0$: $f_n(0)=1 \to 1$. \\
+    For $x\neq0$: $e^{-nx^2}\sin nx \to 0$, so $f_n(x)\to\sqrt{1-x^2}$. \\
+    Pointwise limit: $f(x)=\begin{cases} 1 & x=0 \\ \sqrt{1-x^2} & x\in[-1,1]\setminus\{0\} \end{cases}$.
+
+    \item For $x\in[\omega,1]$, $|f_n(x)-f(x)| = |e^{-nx^2}\sin nx| \leq e^{-n\omega^2} \to 0$. \\
+    Convergence is \textbf{uniform} on $[\omega,1]$.
+
+    \item Choose $x_n=\pi/(2n)$. Then $|f_n(x_n)-f(x_n)| = e^{-\pi^2/(4n)} \to 1 \neq 0$. \\
+    Convergence is \textbf{not uniform} on $[0,1]$.
+\end{enumerate}
+\end{correctionbox}
+
+% ----------- EXERCISE 3 -------------
+\section{}
+Determine the domain of convergence $D$ of each series:
+
+\begin{enumerate}
+    \item $\sum_{n>0} \frac{\cos nx}{n!}$.
+    \item $\sum_{n>1} \frac{1}{(z-n)^2}$.
+    \item $\sum_{n>1} \left|\sin\frac{x}{2^n} - \tan\frac{x}{2^n}\right|^{\frac{1}{2}}$.
+    \item $\sum_{n>1} \frac{n!(x-3)^{2n}}{n^{n+1}}$.
+\end{enumerate}
+
+\begin{correctionbox}
+\begin{enumerate}
+    \item $|u_n(x)|\leq 1/n!$, $\sum 1/n!$ converges. \\
+    $D = \mathbb{R}$ (absolutely and uniformly convergent).
+
+    \item For fixed $z$, $|u_n(z)|\sim 1/n^2$, so converges for $z\in\mathbb{C}\setminus\{2,3,4,\dots\}$. \\
+    $D = \mathbb{C}\setminus\{n\in\mathbb{N} : n\geq2\}$.
+
+    \item As $n\to\infty$, $u_n(x) \sim \frac{|x|^{3/2}}{\sqrt{2}}\cdot 2^{-3n/2}$, geometric decay. \\
+    $D = \mathbb{R}$.
+
+    \item Ratio test: $L(x)=|x-3|^2/e$. \\
+    Converges if $|x-3|<\sqrt{e}$, diverges if $|x-3|>\sqrt{e}$. \\
+    $D = (3-\sqrt{e},\,3+\sqrt{e})$.
+\end{enumerate}
+\end{correctionbox}
+
+% ----------- EXERCISE 4 -------------
+\section{}
+Consider the following series of functions: 
+$$g_n(x) = \frac{\sin x}{x^2+1} + \frac{\sin 2x}{x^2+2^2} + \ldots + \frac{\sin nx}{x^2+n^2} + \ldots$$
+
+\begin{enumerate}
+    \item Determine the domain of convergence $D$.
+    \item Study the uniform convergence on $D$.
+\end{enumerate}
+
+\begin{correctionbox}
+\begin{enumerate}
+    \item $|u_n(x)| \leq 1/n^2$, $\sum 1/n^2$ converges. \\
+    By Weierstrass M-test: $D = \mathbb{R}$.
+
+    \item Since $|u_n(x)|\leq 1/n^2$ and $\sum 1/n^2$ converges, \\
+    convergence is \textbf{uniform} on $\mathbb{R}$.
+\end{enumerate}
+\end{correctionbox}
+
+% ----------- EXERCISE 5 -------------
+\section{}
+Consider the series of functions with general term: 
+$$f_n(x) = \frac{nx}{1+n^2x^2} - \frac{nx+x}{1+n^2x^2+2n^2x+x^2}$$
+
+\begin{enumerate}
+    \item Determine the domain of convergence $D$.
+    \item Calculate the sum of the series.
+    \item What is the nature of convergence of this series on $D$?
+    \item Determine the nature of convergence of this series on $I = ]0, +\infty[$ and $I = [a, +\infty[$ with $a > 0$.
+\end{enumerate}
+
+\begin{correctionbox}
+\begin{enumerate}
+    \item The series telescopes: $f_n(x)=u_n(x)-u_{n+1}(x)$ with $u_n(x)=\frac{nx}{1+(nx)^2}$. \\
+    Partial sum: $S_N(x)=u_1(x)-u_{N+1}(x) \to u_1(x)$. \\
+    $D = \mathbb{R}$.
+
+    \item Sum: $S(x)=u_1(x)=\frac{x}{1+x^2}$.
+
+    \item Remainder: $|R_N(x)|=\left|\frac{(N+1)x}{1+((N+1)x)^2}\right|$. \\
+    $\sup_{x\in\mathbb{R}}|R_N(x)|=1/2 \not\to0$ $\Rightarrow$ \textbf{not uniform} on $\mathbb{R}$.
+
+    \item On $]0,+\infty[$: still not uniform (supremum $1/2$). \\
+    On $[a,+\infty[$ with $a>0$: $\sup_{x\geq a}|R_N(x)|=\frac{(N+1)a}{1+((N+1)a)^2}\to0$ $\Rightarrow$ \textbf{uniform}.
+\end{enumerate}
+\end{correctionbox}
+
+% ----------- EXERCISE 6 -------------
+\section{}
+Consider the series of functions with general term: $f_n(x) = (\sin x)^\alpha (\cos x)^n$.
+
+\begin{enumerate}
+    \item Determine the sum and domain of convergence of this series.
+    \item Show that we have uniform convergence on any compact $[a, b]$ included in $\left]0, \frac{\pi}{2}\right[$.
+\end{enumerate}
+
+\newpage
+
+\begin{correctionbox}
+\begin{enumerate}
+    \item Geometric series: $\sum (\sin x)^\alpha (\cos x)^n = (\sin x)^\alpha \cdot \frac{1}{1-\cos x}$ \\
+    Converges if $|\cos x|<1$, i.e., $x\notin\pi\mathbb{Z}$. \\
+    Domain: $D=\mathbb{R}\setminus\pi\mathbb{Z}$ (assuming $\alpha$ integer).
+
+    \item On $[a,b]\subset(0,\pi/2)$: \\
+    $|f_n(x)|\leq (\sin b)^\alpha (\cos a)^n = M_n$. \\
+    $\sum M_n$ converges (geometric with ratio $\cos a<1$). \\
+    By Weierstrass M-test: \textbf{uniform} convergence.
+\end{enumerate}
+\end{correctionbox}
+
+\end{document}
