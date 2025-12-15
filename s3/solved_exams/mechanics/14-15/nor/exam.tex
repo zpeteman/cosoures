@@ -69,17 +69,51 @@
     \end{enumerate}
 \end{enumerate}
 
+\newpage
+
 \begin{answerbox}
-\begin{enumerate}
-    \item 
-    \item 
-    \item 
-    \item 
-    \begin{enumerate}
-        \item 
-        \item 
-    \end{enumerate}
-\end{enumerate}
+  \begin{enumerate}
+      \item The velocity field of a rigid body \(S\) in a frame \(R_0\) satisfies:
+      \[
+      \vec{V}(P/R_0) = \vec{V}(A/R_0) + \vec{\Omega}(S/R_0) \times \overrightarrow{AP}
+      \]
+      for any two points \(A, P \in S\). This defines a \textit{torsor} (a screw field) because:
+      \begin{itemize}
+          \item It is linear in the point \(P\),
+          \item The difference between velocities at two points is given by the same \(\vec{\Omega}\) for all \(P\),
+          \item The field is equiprojective: \((\vec{V}(P) - \vec{V}(A)) \cdot \overrightarrow{AP} = 0\).
+      \end{itemize}
+
+      \item Angular momentum \(\vec{L}_A(S/R_0)\) about point \(A\) is defined as:
+      \[
+      \vec{L}_A = \int_S \overrightarrow{AP} \times \vec{V}(P) \, dm
+      \]
+      Using the rigid body velocity field, one can show that for another point \(B\):
+      \[
+      \vec{L}_B = \vec{L}_A + \overrightarrow{AB} \times \vec{P}(S/R_0)
+      \]
+      where \(\vec{P}\) is the linear momentum. This transformation law is that of an antisymmetric vector field (or dual vector of a torsor).
+
+      \item Starting from definition:
+      \begin{align*}
+          \vec{L}_A(S/R_0) &= \int_S \overrightarrow{AP} \times \vec{V}(P/R_0) \, dm \\
+          &= \int_S \overrightarrow{AP} \times \left[ \vec{V}(A/R_0) + \vec{\Omega} \times \overrightarrow{AP} \right] dm \\
+          &= \left( \int_S \overrightarrow{AP} \, dm \right) \times \vec{V}(A/R_0) + \int_S \overrightarrow{AP} \times (\vec{\Omega} \times \overrightarrow{AP}) \, dm \\
+          &= m \, \overrightarrow{AG} \times \vec{V}(A/R_0) + \mathbf{I}_A(S) \cdot \vec{\Omega}
+      \end{align*}
+      where \(\mathbf{I}_A(S)\) is the inertia tensor at \(A\).
+
+      \item 
+      \begin{enumerate}
+          \item Theorem of angular momentum about a mobile point \(A\):
+          \[
+          \frac{d}{dt} \vec{L}_A(S/R_0) = \vec{M}_A(\text{ext}) + m \, \overrightarrow{AG} \times \vec{a}(A/R_0)
+          \]
+          where \(\vec{M}_A(\text{ext})\) is the moment of external forces about \(A\).
+
+          \item Proof: Start from the fixed-point angular momentum theorem for \(A\) fixed in \(R_0\), then use the transport formula for the time derivative when \(A\) is moving.
+      \end{enumerate}
+  \end{enumerate}
 \end{answerbox}
 
 \newpage
@@ -109,17 +143,69 @@ The position of point \(A\) on the axis \(OY_0\) is given by the coordinate \(y\
     \item Determine the period of small oscillations (keeping only first-order terms in \(\theta\) and \(\dot{\theta}\)).
 \end{enumerate}
 
+\begin{center}
+    \includegraphics[width=0.7\textwidth]{image.png}   
+\end{center}
+
 \newpage
 
 \begin{answerbox}
-\begin{enumerate}
-  \item 
-  \item 
-  \item 
-  \item 
-  \item 
-  \item 
-\end{enumerate}
+  \begin{enumerate}
+      \item For a homogeneous solid sphere of mass \(m\), radius \(a\), inertia matrix at \(G\) in principal axes:
+      \[
+      \mathbf{I}_G = \frac{2}{5} m a^2 \, \mathbf{I}_3
+      \]
+      where \(\mathbf{I}_3\) is the \(3\times 3\) identity matrix.
+
+      \item Let \(O\) be the fixed pivot. The ball is welded to a massless rod of length \(Ba\). Let \(G\) be the center of the ball. Then:
+      \[
+      \overrightarrow{OG} = (Ba + a \sin\theta) \vec{x}_0 + a(1 - \cos\theta) \vec{y}_0
+      \]
+      The velocity:
+      \[
+      \vec{V}(G/R_0) = \dot{\theta} \left[ (Ba + a \cos\theta) \vec{y}_0 + a \sin\theta \vec{x}_0 \right]
+      \]
+      (Derived from \(\vec{V} = \frac{d}{dt} \overrightarrow{OG}\) with \(\dot{\theta}\) as the rotation rate.)
+
+      \item Using dynamic resultant theorem: sum of forces = \(m \vec{a}_G\).
+      Forces: weight \(mg \vec{y}_0\) and reaction \(\vec{R}\) at \(A\).
+      Projecting along \(\vec{x}_0\) and eliminating \(R_x\) yields:
+      \[
+      y = -6a \dot{\theta} \cos\theta
+      \]
+      The linear momentum:
+      \[
+      \vec{P}(S/R_0) = m \vec{V}(G/R_0) = -6ma \dot{\theta} \sin\theta \, \vec{x}_0
+      \]
+      (after using the constraint from no friction at \(A\)).
+
+      \item Kinetic energy:
+      \[
+      T = \frac{1}{2} m \vec{V}_G^2 + \frac{1}{2} \mathbf{I}_G \dot{\theta}^2
+      \]
+      Potential energy: \(V = mg \cdot OG_y = mg a(1 - \cos\theta)\).
+      Energy conservation: \(T + V = \text{const}\).
+      Differentiating gives:
+      \[
+      \left( \frac{7}{5}ma^2 + m(Ba)^2 \right) \ddot{\theta} + mga \sin\theta = 0
+      \]
+
+      \item Angular momentum theorem about \(A\):
+      \[
+      \frac{d}{dt} \vec{L}_A = \overrightarrow{AG} \times m\vec{g} + \overrightarrow{AA} \times \vec{R} = \overrightarrow{AG} \times m\vec{g}
+      \]
+      Computing \(\vec{L}_A = \mathbf{I}_A \dot{\theta} \vec{z}_0\) and differentiating yields the same differential equation as in (d).
+
+      \item For small \(\theta\), \(\sin\theta \approx \theta\):
+      \[
+      \ddot{\theta} + \frac{g}{L_{\text{eff}}} \theta = 0
+      \]
+      with \(L_{\text{eff}} = \frac{\frac{7}{5}a^2 + (Ba)^2}{a}\).
+      Period:
+      \[
+      T = 2\pi \sqrt{ \frac{L_{\text{eff}}}{g} }
+      \]
+  \end{enumerate}
 \end{answerbox}
 
 %----------------- END ------------------

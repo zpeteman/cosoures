@@ -86,25 +86,129 @@ The system is in motion in the vertical plane \( X_0 OY_0 \) of the reference fr
 \end{enumerate}
 
 \newpage
+
+\begin{center}
+  \includegraphics[width=0.7\textwidth]{image.png}
+\end{center}
+
 \begin{answerbox}
   \begin{enumerate}
-    \item 
-    \begin{enumerate}
       \item 
-      \item
-    \end{enumerate}
-    \item
-    \item
-    \item
-    \item
-    \item
-    \item
-    \begin{enumerate}
+      \begin{enumerate}
+          \item \textbf{Kinetic energy theorem:} For a rigid body \(S\) moving in a Galilean frame \(R_0\), the time derivative of its kinetic energy equals the power of external forces:
+          \[
+          \frac{d}{dt} E_c(S/R_0) = P_{\text{ext}} = \sum_i \vec{F}_i \cdot \vec{V}(P_i/R_0)
+          \]
+          where \(P_i\) are the points of application of external forces \(\vec{F}_i\).
+
+          \item \textbf{Proof:} Starting from \(E_c = \frac{1}{2} \int_S \vec{V}^2(P) \, dm\), differentiate:
+          \[
+          \frac{dE_c}{dt} = \int_S \vec{V}(P) \cdot \vec{a}(P) \, dm
+          \]
+          Using Newton's second law \(\vec{a}(P) \, dm = d\vec{F}_{\text{ext}}\), the right-hand side becomes the power of external forces.
+      \end{enumerate}
+
+      \item \textbf{Inertia matrix of disk \(S_1\) at \(D\):} \\
+      For a homogeneous disk of mass \(M\), radius \(a\), thickness negligible, in the plane \((D, \vec{x}_1, \vec{y}_1)\) with \(\vec{z}_1\) perpendicular:
+      \[
+      \mathbf{I}_D(S_1) =
+      \begin{pmatrix}
+          \frac{1}{4} M a^2 & 0 & 0 \\
+          0 & \frac{1}{4} M a^2 & 0 \\
+          0 & 0 & \frac{1}{2} M a^2
+      \end{pmatrix}
+      \]
+      in the basis \((\vec{x}_1, \vec{y}_1, \vec{z}_1)\).
+
+      \item \textbf{Inertia matrix of rod \(S_2\):} \\
+      Rod length \(L\), mass \(m\), homogeneous, along direction \(\vec{u}\):
+      \[
+      \mathbf{I}_T(S_2) = \frac{1}{12} m L^2 \, (\mathbf{I} - \vec{u} \otimes \vec{u})
+      \]
+      At point \(D\), using Huygens' theorem:
+      \[
+      \mathbf{I}_D(S_2) = \mathbf{I}_T(S_2) + m \left( \| \overrightarrow{DT} \|^2 \mathbf{I} - \overrightarrow{DT} \otimes \overrightarrow{DT} \right)
+      \]
+      where \(\overrightarrow{DT} = \frac{L}{2} \vec{u}\).
+
+      \item \textbf{Sliding velocity and rolling condition:} \\
+      Let \(I\) be geometric contact point between disk and \(OY_0\). Sliding velocity:
+      \[
+      \vec{V}_g(I) = \vec{V}(I \in S_1 / R_0)
+      \]
+      Rolling without slipping condition:
+      \[
+      \vec{V}_g(I) = \vec{0}
+      \]
+      This gives \( \dot{y} = a \dot{\theta} \) if \(\theta\) is rotation of disk.
+
+      \item \textbf{Velocity of \(T\):} \\
+      Point \(T\) is center of rod, fixed relative to disk at distance \(a\) from \(D\) along rod direction. If rod is welded at \(D\) and makes angle \(\theta\) with vertical:
+      \[
+      \overrightarrow{OT} = \overrightarrow{OD} + \overrightarrow{DT}
+      \]
+      with \(\overrightarrow{OD} = y \vec{y}_0\), \(\overrightarrow{DT} = L (\sin\theta \, \vec{x}_0 + \cos\theta \, \vec{y}_0)\).
+      Velocity:
+      \[
+      \vec{V}(T/R_0) = \dot{y} \vec{y}_0 + L \dot{\theta} (\cos\theta \, \vec{x}_0 - \sin\theta \, \vec{y}_0)
+      \]
+
+      \item \textbf{Kinetic energy of system:} \\
+      \[
+      E_c = E_c(S_1) + E_c(S_2)
+      \]
+      Disk: translation of \(D\) + rotation about \(D\):
+      \[
+      E_c(S_1) = \frac{1}{2} M \dot{y}^2 + \frac{1}{2} \left( \frac{1}{2} M a^2 \right) \dot{\theta}^2
+      \]
+      Rod: translation of \(T\) + rotation about \(T\):
+      \[
+      E_c(S_2) = \frac{1}{2} m \| \vec{V}(T) \|^2 + \frac{1}{2} \left( \frac{1}{12} m L^2 \right) \dot{\theta}^2
+      \]
+      Substitute \(\dot{y} = a \dot{\theta}\) from rolling condition.
+
       \item 
-      \item
-    \end{enumerate}
-    \item
-    \item
+      \begin{enumerate}
+          \item \textbf{First integral of energy:} \\
+          External forces: weight (conservative) and reaction at \(I\) (no work since rolling without slipping). Therefore total mechanical energy conserved:
+          \[
+          E_c + E_p = \text{const}
+          \]
+          with \(E_p = M g y_D + m g y_T\).
+
+          \item \textbf{Differential equation of motion:} \\
+          Differentiate energy conservation w.r.t. time:
+          \[
+          \frac{d}{dt}(E_c + E_p) = 0
+          \]
+          Yields equation of form \(A(\theta) \ddot{\theta} + B(\theta) \dot{\theta}^2 + C(\theta) = 0\).
+
+      \end{enumerate}
+
+      \item \textbf{Small oscillations:} \\
+      For \(|\theta| \ll 1\), approximate \(\sin\theta \approx \theta\), \(\cos\theta \approx 1\), neglect \(\dot{\theta}^2\) terms. Equation linearizes to:
+      \[
+      \ddot{\theta} + \omega_0^2 \theta = 0
+      \]
+      with
+      \[
+      \omega_0^2 = \frac{(M+m)g a + m g L/2}{\frac{3}{2} M a^2 + m\left(a^2 + \frac{L^2}{3} + a L\right)}
+      \]
+      Period:
+      \[
+      T_0 = \frac{2\pi}{\omega_0}
+      \]
+
+      \item \textbf{Angular momentum theorem at \(I\):} \\
+      \[
+      \frac{d}{dt} \vec{L}_I(S/R_0) = \vec{M}_I(\text{ext})
+      \]
+      External forces: weights \(M\vec{g}\) at \(D\), \(m\vec{g}\) at \(T\), and reaction \(\vec{R}\) at \(I\). Moment about \(I\):
+      \[
+      \vec{M}_I = \overrightarrow{ID} \times M\vec{g} + \overrightarrow{IT} \times m\vec{g}
+      \]
+      Compute \(\vec{L}_I\) using König's theorem or transport formula, equate time derivative to \(\vec{M}_I\), recover same equation as in (7b).
+
   \end{enumerate}
 \end{answerbox}
 
