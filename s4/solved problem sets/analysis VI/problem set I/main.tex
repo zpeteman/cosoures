@@ -1,0 +1,90 @@
+% Problem set template (English)
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{comment}
+\usepackage{tcolorbox}
+\tcbuselibrary{breakable,skins}
+% Load settings (edit settings.tex)
+\input{settings.tex}
+
+% Font setup: use system fonts if enabled, otherwise defaults.
+\ifpsetusefontspec
+  \usepackage{fontspec}
+  \ifx\psetmainfontname\empty\else
+    \setmainfont{\psetmainfontname}
+  \fi
+  % Note: language selection has been removed. If you require
+  % polyglossia/babel later, re-add it manually.
+\else
+  \ifpsetfontsans
+    \usepackage{helvet}
+    \renewcommand{\familydefault}{\sfdefault}
+  \fi
+  \ifpsetfontmono
+    \usepackage{courier}
+    \renewcommand{\familydefault}{\ttdefault}
+  \fi
+\fi
+
+% Load STEM and helper packages from a single file.
+% Edit `packages.tex` to change which packages are loaded.
+\input{packages.tex}
+
+% physics and siunitx both may provide a `\qty` macro. Ensure `\qty`
+% refers to siunitx's `\SI` implementation for consistent behavior.
+\AtBeginDocument{\let\qty\SI}
+
+% Problem counter and macro
+\newcounter{problem}
+\newcommand{\problem}[2][]{%
+  \refstepcounter{problem}%
+  \par\bigskip
+  \noindent\textbf{Problem \theproblem.}%
+  \ifx\\#1\\\else\ \textbf{(#1 pts)}\fi\ \begin{itshape}#2\end{itshape}\par
+}
+
+% Controls solution visibility and boxed style (see settings.tex)
+\ifshowsolutions
+  \ifboxsolutions
+    \newtcolorbox{solutionbox}{%
+      breakable,
+      enhanced,
+      colback=\solutionbgcolor,
+      colframe=\solutionframecolor,
+      before upper=\sloppy,
+      boxrule=0.5pt,
+      arc=4pt,
+      left=8pt,
+      right=8pt,
+      top=6pt,
+      bottom=6pt,
+      before skip=\topsep,
+      after skip=\topsep
+    }
+    \newenvironment{solution}{\begin{solutionbox}\textbf{Solution. } }{\end{solutionbox}}
+  \else
+    \newenvironment{solution}{\par\medskip\noindent\textbf{Solution. } }{\par\medskip}
+  \fi
+\else
+  \excludecomment{solution}
+\fi
+
+% Document header
+\begin{document}
+\begin{center}
+  {\Large \textbf{\coursename}}\\[4pt]
+  {\large Problem Set \#\psetnumber}\\[2pt]
+  {\duedate}\\[2pt]
+  {\instructor}
+\end{center}
+\hrule
+\vspace{8pt}
+
+% Include problems file (edit this file for content)
+\input{problems.tex}
+
+\end{document}

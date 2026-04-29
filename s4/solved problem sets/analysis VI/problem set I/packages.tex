@@ -1,0 +1,49 @@
+% packages.tex
+% Centralized packages for classic problem set template (STEM-ready).
+
+% Math
+\usepackage{mathtools}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+% Computer science: code listings. Use `minted` if enabled in settings.
+\ifpsetuseminted
+  \usepackage{minted}
+\else
+  \usepackage{listings}
+  \lstset{basicstyle=\ttfamily\small,breaklines=true,breakatwhitespace=true}
+\fi
+\ifpsetuseminted
+  \newenvironment{code}[1][text]{\VerbatimEnvironment\begin{minted}{#1}}{\end{minted}}
+\else
+  \lstnewenvironment{code}[1][]{}{ }
+\fi
+
+% Physics and units
+\usepackage{siunitx}
+\sisetup{detect-all}
+% Load `physics` after siunitx to avoid siunitx warning about \qty; then
+% at begin document copy siunitx's \SI to \qty so both work consistently.
+\usepackage{physics}
+\AtBeginDocument{\RenewCommandCopy\qty\SI}
+
+% Chemistry
+\usepackage[version=4]{mhchem}
+
+% Graphs & diagrams
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning, shapes.geometric, calc}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
+% Provide a `center` legend position style (maps to centered placement).
+\pgfplotsset{/pgfplots/legend pos/center/.style={legend style={at={(0.5,0.5)},anchor=center}}}
+
+% Common helpers
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{caption}

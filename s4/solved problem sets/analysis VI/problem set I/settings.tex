@@ -1,0 +1,65 @@
+% Settings for the problem set template.
+% Edit this file to change appearance and toggles.
+
+% ----------------------- Visibility toggles -----------------------
+% Show/hide solutions (change the flag below).
+\newif\ifshowsolutions
+\showsolutionstrue
+
+% Boxed solutions (breakable) if enabled below.
+\newif\ifboxsolutions
+\boxsolutionstrue
+
+
+% ----------------------- Metadata (customize) --------------------
+\newcommand{\coursename}{Analysis VI}
+\newcommand{\psetnumber}{1}
+\newcommand{\duedate}{February 21, 2026}
+\newcommand{\instructor}{Ilyas Zanan}
+
+
+% ----------------------- Colors ----------------------------------
+% Define colors for solution boxes and page/text.
+\newcommand{\solutionbgcolor}{gray!6}
+\newcommand{\solutionframecolor}{black}
+\newcommand{\bodytextcolor}{black}
+% Page background color (optional): set and enable pagecolor in main.tex.
+\newcommand{\pagebgcolor}{white}
+
+
+% ----------------------- Font choices ----------------------------
+% Font choices: pick serif/sans/mono or enable system fonts.
+\newif\ifpsetfontserif
+\newif\ifpsetfontsans
+\newif\ifpsetfontmono
+\psetfontseriftrue
+\psetfontsansfalse
+\psetfontmonofalse
+
+% To use system fonts with XeLaTeX/LuaLaTeX set this true and give a font name.
+\newif\ifpsetusefontspec
+\psetusefontspecfalse
+\newcommand{\psetmainfontname}{}
+
+
+% ----------------------- Subject / STEM support ------------------
+% Subjects (math, CS, physics, chemistry) are enabled by default.
+
+% Code listings: use `listings` by default. Enable `minted` for syntax highlighting.
+\newif\ifpsetuseminted
+% `minted` provides nicer highlighting but requires `-shell-escape` and
+% an external Pygments executable. To avoid build problems we default to
+% `listings` now. Set \psetusemintedtrue if you know your toolchain supports it.
+\psetusemintedfalse
+
+% Show difficulty label for problems (optional)
+\newif\ifpsetshowdifficulty
+\psetshowdifficultytrue
+
+
+
+
+% ----------------------- Notes ----------------------------------
+% Notes:
+% - Edit these settings to change the problem set appearance.
+% - To use system fonts, enable `\psetusefontspec` and compile with XeLaTeX/LuaLaTeX.
